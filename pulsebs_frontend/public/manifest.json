@@ -1,0 +1,8 @@
+{
+  "short_name": "SE2 Project",
+  "name": "PULSeBS Group1 - SE2 Project",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

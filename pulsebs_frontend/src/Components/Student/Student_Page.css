@@ -1,0 +1,49 @@
+.StudentHeader{
+    background-color:#151A4F;
+    color: #F6F6F6;
+    min-height: 20vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+}
+
+h1{
+    font-weight: bold;
+    padding-left: 30px;
+    margin-right: 15px;
+}
+
+#UserGreeting{
+    font-weight: bold;
+    font-size: large;
+    padding-left: 30px;
+    margin-right: 15px;
+}
+
+.NavBar{
+    margin-bottom: 1px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.nav_btn{
+    width: 8vw;
+    height: 4vh;
+    padding:10px;
+    background-color:#151A4F;
+    color: #F6F6F6;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+
+.nav_btn:hover {
+    color:#151A4F;
+    background-color: #F6F6F6;
+}
