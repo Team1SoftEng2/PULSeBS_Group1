@@ -1,0 +1,86 @@
+#LoginPageContainer{
+    background-color:#575656;
+    min-height: 100vh;
+    width: 100;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.AnimationContainer{
+    background-color: #B9E6FF;
+  min-height: 80vh;
+  width: 30vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.LoginFormContainer{
+    background-color: #F6F6F6;
+    color: #322E18;
+  height: 80vh;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.FormText {
+  color: #322E18;
+}
+
+input{
+  background-color: #F6F6F6;
+  color: #322E18;
+  font-size: medium;
+  outline: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 5px, solid, #151A4F;
+  margin: 10px;
+  width: 16vw;
+  height: 4vh;
+}
+
+input[type=submit]{
+  margin: 10px;
+  padding: 25px, 20px;
+  height: 5vh;
+  text-align: center;
+  background-color:#151A4F;
+  color: #F6F6F6;
+  border-radius: 5px;
+  border: none;
+}
+
+input[type=submit]:hover{
+  margin: 10px;
+  padding: 25px, 20px;
+  height: 5vh;
+  text-align: center;
+  font-weight: bold;
+  background-color: #396bf5;
+  color: #F6F6F6;
+  border-radius: 5px;
+  border: none;
+}
+
+.FormButtonsContainer{
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 16vw;
+  height: 10vh;
+
+}
