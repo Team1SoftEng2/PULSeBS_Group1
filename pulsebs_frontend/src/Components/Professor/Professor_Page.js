@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import ProfessorHeader from './ProfessorHeader/ProfessorHeader';
-import HomePageCalendarProfessor from './HomePageCalendarProfessor/HomePageCalendareProfessor';
+import HomePageCalendarProfessor from './HomePageCalendarProfessor/HomePageCalendarProfessor';
 import MyLecturesProfessor from './MyLecturesProfessor/MyLecturesProfessor';
 import RegisterAttendance from './Register_Attendance/Register_Attendance';
 import Statistics from './Statistics/Statistics';
