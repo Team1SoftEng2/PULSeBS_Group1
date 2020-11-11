@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Route, Link, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import StudentHeader from './StudentHeader/StudentHeader';
 import HomePageCalendarStudent from './HomePageCalendar_Student/HomePageCalendar_Student';
 import MyLecturesStudent from './MyLectures_Student/MyLectures_Student';
-import BookSeat from './Book_a_Seat/Book_a_Seat';
+import BookSeat from './BookSeat/BookSeat';
 import TutorialStudent from './TutorialStudent/TutorialStudent';
 import './Student_Page.css';
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Link, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import ProfessorHeader from './ProfessorHeader/ProfessorHeader';
-import HomePageCalendarProfessor from './HomePageCalendar_Professor/HomePageCalendare_Professor';
-import MyLecturesProfessor from './MyLectures_Professor/MyLectures_Professor';
+import HomePageCalendarProfessor from './HomePageCalendarProfessor/HomePageCalendareProfessor';
+import MyLecturesProfessor from './MyLecturesProfessor/MyLecturesProfessor';
 import RegisterAttendance from './Register_Attendance/Register_Attendance';
 import Statistics from './Statistics/Statistics';
 import TutorialProfessor from './TutorialProfessor/TutorialProfessor';
