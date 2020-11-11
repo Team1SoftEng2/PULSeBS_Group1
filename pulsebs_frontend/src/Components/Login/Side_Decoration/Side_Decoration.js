@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import animationData from '../../Animations/Login_Animation.json';
+import animationData from '../../../Assets/Animations/Login_Animation.json';
 
 const sideDecoration = () => {
 
