@@ -1,7 +1,6 @@
-.ProfessorHeader{
+.BookingManagerHeader{
     background-color:#151A4F;
     color: #F6F6F6;
-    min-height: 20vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
