@@ -20,17 +20,17 @@
 }
 
 .LoginFormContainer{
-    background-color: #F6F6F6;
-    color: #322E18;
-  height: 80vh;
-  width: 30vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  background-color: #F6F6F6;
+  color: #322E18;
+height: 80vh;
+width: 35vw;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
 }
 
 .FormText {
@@ -47,34 +47,24 @@ input{
   border-right: none;
   border-bottom: 5px, solid, #151A4F;
   margin: 10px;
-  width: 16vw;
+  width: 12vw;
   height: 4vh;
 }
 
-input[type=submit]{
-  margin: 10px;
-  padding: 25px, 20px;
-  height: 5vh;
-  text-align: center;
-  background-color:#151A4F;
-  color: #F6F6F6;
-  border-radius: 5px;
-  border: none;
+button {
+  width: 100px;
 }
 
-input[type=submit]:hover{
-  margin: 10px;
-  padding: 25px, 20px;
-  height: 5vh;
-  text-align: center;
-  font-weight: bold;
-  background-color: #396bf5;
-  color: #F6F6F6;
-  border-radius: 5px;
-  border: none;
+.FormInputContainer{
+  margin-top: 15px;
+  width: 20vw;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
-.FormButtonsContainer{
+.FormButtonContainer{
   margin-top: 20px;
   display: flex;
   flex-direction: row;
