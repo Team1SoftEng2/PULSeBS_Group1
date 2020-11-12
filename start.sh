@@ -2,10 +2,10 @@
 
 # starting server
 cd server
-npm start
+npm start &
 
 # starting client
-cd ../client
+cd ../pulsebs_frontend
 npm install
 npm start
 
