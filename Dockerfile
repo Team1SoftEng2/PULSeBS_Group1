@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-RUN apt-get update
+RUN apt update
 RUN apt get -y nodejs
 RUN apt get -y npm 
 
