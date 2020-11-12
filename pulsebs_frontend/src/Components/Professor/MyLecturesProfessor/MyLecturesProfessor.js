@@ -1,11 +1,11 @@
 import React from 'react';
-import {Col, Row, Button} from 'react-bootstrap';
+import {Col, Row, Button, Accordion,Card} from 'react-bootstrap';
 
 const lectures = [
     {
         lectureId: "prova1",
-        courseId: "",
-        teacherId: "",
+        courseId: "C1",
+        teacherId: "T1",
         date: "",
         time: "",
         mode: "", 
@@ -14,8 +14,8 @@ const lectures = [
     },
     {
         lectureId: "prova2",
-        courseId: "",
-        teacherId: "",
+        courseId: "C2",
+        teacherId: "T2",
         date: "",
         time: "",
         mode: "", 
@@ -24,8 +24,8 @@ const lectures = [
     },
     {
         lectureId: "prova3",
-        courseId: "",
-        teacherId: "",
+        courseId: "C3",
+        teacherId: "T1",
         date: "",
         time: "",
         mode: "", 
@@ -36,62 +36,71 @@ const lectures = [
 
 const bookings = [
     {
-        studentId:"",
-        lectureId:""
+        studentId:"S1,S2,S3",
+        lectureId:"prova1"
     },
     {
-        studentId:"",
-        lectureId:""
+        studentId:"S2",
+        lectureId:"prova2"
     },
     {
-        studentId:"",
-        lectureId:""
+        studentId:"S2,S3",
+        lectureId:"prova3"
     }
 ]
 
-
-
-function myLecturesProfessor() {
-    return (
-        <LectureList lectures={lectures}/>
-    );
+function myLecturesProfessor(){   
+        return (
+            <LectureList lectures={lectures} />
+        );
 }
 
-
-function LectureList({lectures, ...rest}) {
+function LectureList(props) {
     return (
         <Col>
             {lectures.map((lecture, index) => (
-                <Lecture key={index} {...lecture} {...rest} />
+                <Lecture key={index} {...lecture} />
             ))}
+        
         </Col>
     );
 }
 
-function Lecture({lectureId, courseId, room, ...rest}) {
+function Lecture(props) {
+    
     return (
         <Row>
-            <Col>{lectureId}</Col>
-            <Col>{room}</Col>
-            <Col><Button>Students List</Button></Col>
-        </Row>
+            <Accordion defaultActiveKey="1">
+            <Card>
+                <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                    <h3>{props.lectureId}</h3>
+                </Accordion.Toggle>
+                </Card.Header>
+                <Accordion.Collapse eventKey="0">
+                <Card.Body>
+                    <BookingList bookings={bookings} room={props.room} lectureId={props.lectureId}/>
+                </Card.Body>
+                </Accordion.Collapse>
+            </Card>
+            </Accordion>
+      </Row>
     );
 }
 
-function BookingList({bookings, ...rest}) {
+function BookingList(props) {
+    const studId=props.bookings.find(b=>b.lectureId===props.lectureId);
     return (
         <Col>
-            {bookings.map((booking, index) => (
-                <Booking key={index} {...booking} {...rest} />
-            ))}
+            <h5>
+            {props.room}
+            </h5>
+
+            {studId.studentId} 
+            
         </Col>
     );
 }
 
-function Booking({studentId, ...rest}) {
-    return (
-        <p>{studentId}</p>
-    );
-}
 
 export default myLecturesProfessor;
