@@ -1,9 +1,9 @@
 name: Docker Image CI
-  on:
-    push:
-      branches: [ main ]
-    pull_request:
-      branches: [ main ]
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
