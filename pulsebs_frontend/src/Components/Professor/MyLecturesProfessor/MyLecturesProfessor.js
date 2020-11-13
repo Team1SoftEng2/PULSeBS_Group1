@@ -1,106 +1,103 @@
 import React from 'react';
-import {Col, Row, Button, Accordion,Card} from 'react-bootstrap';
+import {Col, Row, Button, Accordion, Card, Container} from 'react-bootstrap';
+import { useHistory } from "react-router-dom";
+import API from '../../../api/API';
 
-const lectures = [
-    {
-        lectureId: "prova1",
-        courseId: "C1",
-        teacherId: "T1",
-        date: "",
-        time: "",
-        mode: "", 
-        room: "aulaA",
-        maxSeats: ""
-    },
-    {
-        lectureId: "prova2",
-        courseId: "C2",
-        teacherId: "T2",
-        date: "",
-        time: "",
-        mode: "", 
-        room: "aulaB",
-        maxSeats: ""
-    },
-    {
-        lectureId: "prova3",
-        courseId: "C3",
-        teacherId: "T1",
-        date: "",
-        time: "",
-        mode: "", 
-        room: "aulaC",
-        maxSeats: ""
-    }
-]
 
-const bookings = [
-    {
-        studentId:"S1,S2,S3",
-        lectureId:"prova1"
-    },
-    {
-        studentId:"S2",
-        lectureId:"prova2"
-    },
-    {
-        studentId:"S2,S3",
-        lectureId:"prova3"
-    }
-]
+export default function MyLecturesProfessor(){   
 
-function myLecturesProfessor(){   
-        return (
-            <LectureList lectures={lectures} />
+    const [lectures, setLectures] = React.useState([]);
+    
+    const history = useHistory();
+
+    React.useEffect(() => {
+        API.getLectures()
+        .then((lectures) => {
+            setLectures(lectures);
+        })
+        .catch((err)=> {
+            if(err.status && err.status === 401)
+                history.push('/');
+            else 
+                console.log(err);
+            });
+      }, [history]);
+
+
+    return (
+            <Container>
+                <LectureList lectures={lectures} history = {history} />
+            </Container>
         );
 }
 
-function LectureList(props) {
+
+
+
+
+
+
+function LectureList({lectures, ...rest}) {
     return (
-        <Col>
+        <Row>
             {lectures.map((lecture, index) => (
-                <Lecture key={index} {...lecture} />
+                <Lecture key={index} {...lecture} {...rest} />
             ))}
         
-        </Col>
+        </Row>
     );
 }
 
-function Lecture(props) {
+function Lecture({lectureId, courseId, room, ...rest}) {
     
     return (
-        <Row>
+        <Col lg={12}>
             <Accordion defaultActiveKey="1">
-            <Card>
+            <Card text="center">
                 <Card.Header>
                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                    <h3>{props.lectureId}</h3>
+                    <h5>{lectureId}</h5>
                 </Accordion.Toggle>
                 </Card.Header>
                 <Accordion.Collapse eventKey="0">
                 <Card.Body>
-                    <BookingList bookings={bookings} room={props.room} lectureId={props.lectureId}/>
+                    <BookingList lectureId={lectureId} {...rest} />
                 </Card.Body>
                 </Accordion.Collapse>
             </Card>
             </Accordion>
-      </Row>
-    );
-}
-
-function BookingList(props) {
-    const studId=props.bookings.find(b=>b.lectureId===props.lectureId);
-    return (
-        <Col>
-            <h5>
-            {props.room}
-            </h5>
-
-            {studId.studentId} 
-            
         </Col>
     );
 }
 
+function BookingList({lectureId, history, ...rest}) {
 
-export default myLecturesProfessor;
+    const [bookings, setBookings] = React.useState([]);
+
+    React.useEffect(() => {
+        API.getBookings(lectureId)
+        .then((bookings) => {
+            setBookings(bookings);
+        })
+        .catch((err)=> {
+            if(err.status && err.status === 401)
+                history.push('/');
+            else 
+                console.log(err);
+            });
+      }, [history, lectureId]);
+
+    return (
+        <Col>
+            {bookings.map((booking, index) => (
+                <Booking key={index} {...booking} {...rest} />
+            ))}
+        </Col>
+    );
+}
+
+function Booking({studentId, ...rest}) {
+    return (
+        <p>{studentId}</p>
+    );
+}
