@@ -4,16 +4,18 @@ async function getLectures() {
             {
                 lectureId: "prova1",
                 courseId: "C1",
+                courseName: "Software Engineering 2",
                 teacherId: "T1",
-                date: "",
-                time: "",
-                mode: "", 
+                date: "10/10/2020",
+                time: "10:30",
+                mode: "online", 
                 room: "aulaA",
-                maxSeats: ""
+                maxSeats: "300"
             },
             {
                 lectureId: "prova2",
                 courseId: "C2",
+                courseName: "Software Engineering 2",
                 teacherId: "T2",
                 date: "",
                 time: "",
@@ -24,6 +26,7 @@ async function getLectures() {
             {
                 lectureId: "prova3",
                 courseId: "C3",
+                courseName: "Software Engineering 2",
                 teacherId: "T1",
                 date: "",
                 time: "",
@@ -39,13 +42,19 @@ async function getBookings(lectureId) {
     return new Promise((resolve, reject) => {
         resolve([
             {
-                studentId:`Student1 of lecture ${lectureId}`
+                studentId:`StudentId1`,
+                studentName:`Student1_Name`,
+                studentSurname:`Student1_Surname`,
             },
             {
-                studentId:`Student2 of lecture ${lectureId}`
+                studentId:`StudentId2`,
+                studentName:`Student2_Name`,
+                studentSurname:`Student2_Surname`,
             },
             {
-                studentId:`Student3 of lecture ${lectureId}`
+                studentId:`StudentId3`,
+                studentName:`Student3_Name`,
+                studentSurname:`Student3_Surname`,
             }
         ]
         );
