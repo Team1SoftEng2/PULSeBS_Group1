@@ -13,7 +13,7 @@ externalDocs:
 servers:
 - url: /
 tags:
-- name: operations
+- name: authentication
   description: log in/log out operations
 - name: bookings
   description: Actions on bookings
@@ -47,7 +47,7 @@ paths:
           description: Unauthorized
         "404":
           description: Not Found
-      x-swagger-router-controller: Operations
+      x-swagger-router-controller: Authentication
   /api/logout:
     post:
       tags:
@@ -58,7 +58,7 @@ paths:
       responses:
         "200":
           description: OK
-      x-swagger-router-controller: Operations
+      x-swagger-router-controller: Authentication
   /api/bookings:
     get:
       tags:
