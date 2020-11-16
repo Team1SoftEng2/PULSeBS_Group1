@@ -17,3 +17,12 @@
   color: #61dafb;
 }
 
+.Booked { 
+  color: white;
+  background-color: blue;
+}
+
+.Not_Booked {
+  color: white;
+  background-color: red;
+}

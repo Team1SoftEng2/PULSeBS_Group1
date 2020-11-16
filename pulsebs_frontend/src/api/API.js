@@ -9,7 +9,7 @@ async function getLectures() {
                 time: "",
                 mode: "", 
                 room: "aulaA",
-                maxSeats: ""
+                maxSeats: "",
             },
             {
                 lectureId: "prova2",
@@ -19,7 +19,7 @@ async function getLectures() {
                 time: "",
                 mode: "", 
                 room: "aulaB",
-                maxSeats: ""
+                maxSeats: "",
             },
             {
                 lectureId: "prova3",
@@ -29,7 +29,7 @@ async function getLectures() {
                 time: "",
                 mode: "", 
                 room: "aulaC",
-                maxSeats: ""
+                maxSeats: "",
             }
         ]);
     });
@@ -52,5 +52,32 @@ async function getBookings(lectureId) {
     });
 }
 
+class BookingLectures{
+    constructor(lectureId,courseId,teacherId,room,booked){
+       this.lectureId=lectureId;
+       this.courseId=courseId;
+       this.teacherId= teacherId;
+       this.date= "";
+       this.time="";
+       this.mode= ""; 
+       this.room= room;
+       this.maxSeats= "";
+       this.booked=booked;
+    }
+    book_the_lecture = () =>{console.log("prima "+this.booked);
+                               this.booked=!this.booked
+                               //this.setState(this.state);
+                               console.log("dopo "+this.booked);};
+}
+
+
+
 const API = { getLectures, getBookings };
 export default API;
+
+
+export const  StudentBookedList = [
+    new BookingLectures('prova1','c1','t1','aulaAA',false),
+    new BookingLectures('prova2','c2','t2','aulaBB',false),
+    new BookingLectures('prova3','c3','t1','aulaCC',true),
+    ]

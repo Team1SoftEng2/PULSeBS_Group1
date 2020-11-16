@@ -5,6 +5,7 @@ import StudentPage from './Components/Student/Student_Page';
 import ProfessorPage from './Components/Professor/Professor_Page';
 import SuppOfficerPage from './Components/SuppOfficer/SuppOfficer_Page';
 import BookingManagerPage from './Components/BookingManager/BookingManager_Page';
+import './App.css';
 
 function App() {
   return (
