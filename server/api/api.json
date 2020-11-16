@@ -16,7 +16,7 @@
     },
     "tags": [
         {
-            "name": "operations",
+            "name": "authentication",
             "description": "log in/log out operations"
         },
         {

@@ -1,10 +1,10 @@
 import React from 'react';
-import {Col, Row, Button, Accordion, Card, Container} from 'react-bootstrap';
+import { Col, Row, Button, Accordion, Card} from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 import API from '../../../api/API';
 
 
-export default function MyLecturesProfessor(){   
+export default function MyLecturesProfessor() {
 
     const [lectures, setLectures] = React.useState([]);
 
@@ -12,84 +12,81 @@ export default function MyLecturesProfessor(){
 
     React.useEffect(() => {
         API.getLectures()
-        .then((res) => {
-            setLectures(res);
-        })
-        .catch((err)=> {
-            if(err.status && err.status === 401)
-                history.push('/');
-            else 
-                console.log(err);
+            .then((res) => {
+                setLectures(res);
+            })
+            .catch((err) => {
+                if (err.status && err.status === 401)
+                    history.push('/');
+                else
+                    console.log(err);
             });
-      }, [history]);
+    }, [history]);
 
 
     return (
-            <Container>
-                <LectureList lectures={lectures} history = {history} />
-            </Container>
-        );
-}
-
-
-
-
-
-
-
-function LectureList({lectures, ...rest}) {
-    return (
-        <Row>
-            {lectures.map((lecture, index) => (
-                <Lecture key={index} {...lecture} {...rest} />
-            ))}
-        
-        </Row>
+        <div id='MyLecturesProfessorContainer'>
+            <LectureList lectures={lectures} history={history} />
+        </div>
     );
 }
 
-function Lecture({lectureId, courseId, room, history, ...rest}) {
+function LectureList({ lectures, ...rest }) {
+    return (
+        <div>
+            {lectures.map((lecture, index) => (
+                <Lecture key={index} {...lecture} {...rest} />
+            ))}
+        </div>
+    );
+}
+
+function Lecture({ lectureId, courseId, courseName, room, date, time, mode, history, ...rest }) {
 
     const [bookings, setBookings] = React.useState([]);
 
     React.useEffect(() => {
         API.getBookings(lectureId)
-        .then((res) => {
-            setBookings(res);
-        })
-        .catch((err)=> {
-            if(err.status && err.status === 401)
-                history.push('/');
-            else 
-                console.log(err);
+            .then((res) => {
+                setBookings(res);
+            })
+            .catch((err) => {
+                if (err.status && err.status === 401)
+                    history.push('/');
+                else
+                    console.log(err);
             });
-      }, [history, lectureId]);
+    }, [history, lectureId]);
 
     return (
-        <Col lg={12}>
+        <Col>
             <Accordion defaultActiveKey="1">
-            <Card text="center">
-                <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                <Row>
-                    <Col>{lectureId}</Col>
-                    <Col>Booked students: {bookings.length}</Col>
-                    <Col>Room: {room}</Col>    
-                </Row>
-                </Accordion.Toggle>
-                </Card.Header>
-                <Accordion.Collapse eventKey="0">
-                <Card.Body>
-                    <BookingList lectureId={lectureId} bookings={bookings} {...rest} />
-                </Card.Body>
-                </Accordion.Collapse>
-            </Card>
+                <Card text="space-around">
+                    <Card.Header>
+                        <Accordion.Toggle lg={10} as={Button} variant="link" eventKey="0">
+                            <Row >
+                                <Col className='HeaderText'>{lectureId}</Col>
+                                <Col className='HeaderText'>{courseName}</Col>
+                                <Col className='HeaderText'>Date: {date}</Col>
+                                <Col className='HeaderText'>Time: {time}</Col>
+                                <Col className='HeaderText'>Mode: {mode}</Col>
+                                <Col className='HeaderText'>Booked students: {bookings.length}</Col>
+                                <Col className='HeaderText'>Room: {room}</Col>
+                            </Row>
+                        </Accordion.Toggle>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey="0">
+                        <Card.Body>
+                            <BookingList className='LectureText' lectureId={lectureId} bookings={bookings} {...rest} />
+                        </Card.Body>
+                    </Accordion.Collapse>
+                </Card>
             </Accordion>
         </Col>
     );
 }
 
-function BookingList({lectureId, bookings, ...rest}) {
+function BookingList({ lectureId, bookings, ...rest }) {
 
     return (
         <Col>
@@ -100,8 +97,8 @@ function BookingList({lectureId, bookings, ...rest}) {
     );
 }
 
-function Booking({studentId, ...rest}) {
+function Booking({ studentId, studentName, studentSurname, ...rest }) {
     return (
-        <p>{studentId}</p>
+        <p>{studentId} {studentName} {studentSurname}</p>
     );
 }
