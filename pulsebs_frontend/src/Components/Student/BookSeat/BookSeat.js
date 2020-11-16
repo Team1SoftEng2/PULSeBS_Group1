@@ -47,7 +47,7 @@ function Booking_LectureList({book_lectures,...rest}){
 
 function Book_Lecture({...book_lecture}) {
     
-    const [contatore, setContatore] = useState(book_lecture.booked);
+    const [contatore, setBook] = useState(book_lecture.booked);
     
     return (
         <Col lg={12}>
@@ -74,11 +74,8 @@ function Book_Lecture({...book_lecture}) {
                         <td>
                             <button className={(contatore) ? 'Booked' : 'Not_Booked'} 
                             onClick={ ()=>{
-                                            //book_lecture.book_the_lecture();
-                                            setContatore(!contatore);
-                                            
-                                            
-                                            
+                                            book_lecture.book_the_lecture();
+                                            setBook(!contatore);   
                                 }}>
                                 Book
                         </button> 

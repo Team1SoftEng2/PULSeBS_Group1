@@ -8,7 +8,7 @@ import TutorialStudent from './TutorialStudent/TutorialStudent';
 import './Student_Page.css';
 
 class studentPage extends Component {
-    state={book_stud:1}
+    
     render() {
         return (
             <div>
