@@ -4,11 +4,16 @@ var utils = require('../utils/writer.js');
 var Student = require('../service/StudentService');
 
 module.exports.apiStudentsIdGET = function apiStudentsIdGET (req, res) {
-  Student.apiStudentsIdGET(req.params.id)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+  const studentId = req.params.id;
+  Student.getStudentById(studentId)
+    .then(function(response) {
+      if (!response) {
+          utils.writeJson(res, response, 404);
+      } else {
+          utils.writeJson(res, response);
+      }
+  })
+  .catch(function(response) {
+      utils.writeJson(res, { errors: [{ 'param': 'Server', 'msg': response }], }, 500);
+  });
 };

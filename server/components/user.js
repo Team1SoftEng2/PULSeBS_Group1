@@ -1,12 +1,9 @@
 class User{    
     constructor(id, name, surname, email, hash) {
-        if(id)
-            this.id = id;
-
+        this.userId = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
-        
         if(hash)
             this.hash = hash;
     }

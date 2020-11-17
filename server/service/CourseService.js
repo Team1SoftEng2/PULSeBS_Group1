@@ -1,13 +1,38 @@
 'use strict';
 
+const Course = require('../components/course');
+const db = require('../components/db')
 
-/**
- * Get info about a course
- *
- * id Integer 
- * returns course
- **/
-exports.apiCoursesIdGET = function(id) {
-  // Implement function here
+exports.getCourseById = function (courseId) {
+  return new Promise((resolve, reject) => {
+    const sql = "SELECT * FROM Course WHERE CourseID = ?";
+    db.all(sql, [courseId], (err, rows) => {
+        if (err){
+          console.log(err);
+          reject(err);
+        }
+        else if (rows.length === 0)
+          resolve(undefined);
+        else {
+          const course = new Course(rows[0].CourseID, rows[0].TeacherID, rows[0].courseName)
+          resolve(course);
+        }
+    });
+  });
 }
 
+exports.getStudentCourses = function (studentId) {
+  return new Promise((resolve, reject) => {
+    const sql = " SELECT * FROM Courses, <enrolling_table> WHERE StudentID = ? AND <join> ";
+    db.all(sql, [studentId], (err, rows) => {
+        if (err){
+          console.log(err);
+          reject(err);
+        }
+        else {
+          const courses = rows.map((row) => new Course(row.CourseID, row.TeacherID, rows.courseName));
+          resolve(courses);
+        }
+    });
+  });
+}

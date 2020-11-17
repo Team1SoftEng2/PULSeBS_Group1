@@ -18,7 +18,7 @@ module.exports.apiLoginPOST = function apiLoginPOST (req, res) {
                     const token = jsonwebtoken.sign({ user: user.id }, jwtSecret, { expiresIn: expireTime });
                     res.cookie('token', token, { httpOnly: true, sameSite: true, maxAge: 1000 * expireTime });
                     res.json({ 
-                      id: user.id,
+                      userId: user.userId,
                       name: user.name,
                       surname: user.surname,
                       email: user.email
