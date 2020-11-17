@@ -55,8 +55,7 @@ app.use(
 // Authenticated APIs here
 app.post('/api/logout', authController.apiLogoutPOST);
 app.get('/api/courses/:id', courseController.apiCoursesIdGET);
-
-
+app.get('/api/students/:id', studentController.apiStudentsIdGET);
 
 // Error handlers for validation and authentication errors
 

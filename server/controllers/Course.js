@@ -16,6 +16,4 @@ module.exports.apiCoursesIdGET = function apiCoursesIdGET (req, res) {
   .catch(function(response) {
       utils.writeJson(res, { errors: [{ 'param': 'Server', 'msg': response }], }, 500);
   });
-
-    
 };
