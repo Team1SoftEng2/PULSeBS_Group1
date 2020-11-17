@@ -20,3 +20,19 @@ exports.getCourseById = function (courseId) {
     });
   });
 }
+
+exports.getStudentCourses = function (studentId) {
+  return new Promise((resolve, reject) => {
+    const sql = " SELECT * FROM Courses, <enrolling_table> WHERE StudentID = ? AND <join> ";
+    db.all(sql, [studentId], (err, rows) => {
+        if (err){
+          console.log(err);
+          reject(err);
+        }
+        else {
+          const courses = rows.map((row) => new Course(row.CourseID, row.TeacherID, rows.courseName));
+          resolve(courses);
+        }
+    });
+  });
+}

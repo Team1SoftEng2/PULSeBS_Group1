@@ -17,3 +17,14 @@ module.exports.apiCoursesIdGET = function apiCoursesIdGET (req, res) {
       utils.writeJson(res, { errors: [{ 'param': 'Server', 'msg': response }], }, 500);
   });
 };
+
+module.exports.apiStudentsIdCourses = function (req, res) {
+  const studentId = req.params.id;
+  Course.getStudentCourses(studentId)
+    .then(function(response) {
+      utils.writeJson(res, response);      
+    })
+    .catch(function(response) {
+      utils.writeJson(res, { errors: [{ 'param': 'Server', 'msg': response }], }, 500);
+    });
+}

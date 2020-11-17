@@ -132,6 +132,28 @@ paths:
         "500":
           description: Internal Server Error
       x-swagger-router-controller: Student
+  /api/students/{id}/courses:
+    parameters:
+      - name: id
+        schema:
+          type: integer
+        in: path
+        required: true
+    get:
+      tags:
+        - courses
+      description: Get list of courses the student is enrolled in
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courses'
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Server Error
   /api/courses/{id}:
     get:
       tags:
