@@ -4,12 +4,17 @@ var utils = require('../utils/writer.js');
 var Bookings = require('../service/BookingsService');
 
 module.exports.apiBookingsGET = function apiBookingsGET(req, res) {
-  Bookings.apiBookingsGET(req.query.lectureId)
-    .then(function (response) {
-      utils.writeJson(res, response);
+  const lectureId = req.query.lectureId;
+  Bookings.getBookings(lectureId)
+    .then(function(response) {
+      if (!response) {
+          utils.writeJson(res, response, 404);
+      } else {
+          utils.writeJson(res, response);
+      }
     })
-    .catch(function (response) {
-      utils.writeJson(res, response);
+    .catch(function(response) {
+      utils.writeJson(res, { errors: [{ 'param': 'Server', 'msg': response }], }, 500);
     });
 };
 

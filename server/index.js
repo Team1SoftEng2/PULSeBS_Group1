@@ -43,6 +43,7 @@ app.use(cookieParser());
 // Public APIs here
 app.post('/api/login', authController.apiLoginPOST);
 
+
 // Authentication endpoint
 app.use(
     jwt({
@@ -56,6 +57,7 @@ app.use(
 app.post('/api/logout', authController.apiLogoutPOST);
 app.get('/api/courses/:id', courseController.apiCoursesIdGET);
 app.get('/api/students/:id', studentController.apiStudentsIdGET);
+app.get('/api/bookings', bookingsController.apiBookingsGET);
 
 // Error handlers for validation and authentication errors
 
