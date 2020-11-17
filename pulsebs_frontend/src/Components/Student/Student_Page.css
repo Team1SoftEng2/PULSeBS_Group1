@@ -9,18 +9,13 @@
 
 }
 
-nav{
-    background-color:#151A4F;
+.HeaderText1{
+    color: #000;
+    background-color: #F6F6F6;
     text-decoration: none;
 }
 
-.nav-link{
+.table{
     color:#F6F6F6;
-    text-decoration: none;
-    text-align: center;
-}
-
-.nav-link:hover {
-    color: #B9E6FF;
-
+    background-color: #151A4F;
 }

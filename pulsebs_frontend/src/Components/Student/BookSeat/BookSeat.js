@@ -36,12 +36,14 @@ export default function BookSeat({colonna}) {
 function Booking_LectureList({book_lectures,...rest}){
     
     return (
-        <Row>
-        {StudentBookedList.map((book_lecture) => (
-                <Book_Lecture lectureId={book_lecture.lectureId} {...book_lecture} />
-            ))}
-        
-        </Row>
+        <div id='MyLecturesStudentContainer'>
+            <Row >
+            {StudentBookedList.map((book_lecture) => (
+                    <Book_Lecture lectureId={book_lecture.lectureId} {...book_lecture} />
+                ))}
+            
+            </Row>
+        </div>
     )
 }
 
@@ -53,10 +55,7 @@ function Book_Lecture({...book_lecture}) {
         <Col lg={12}>
             
             <InputGroup className="mb-3 mt-2">
-                <InputGroup.Prepend >
-                
-                </InputGroup.Prepend>
-                <Table striped bordered hover>
+                <Table striped bordered >
                     
                     <tbody>
                     <tr>
@@ -66,18 +65,19 @@ function Book_Lecture({...book_lecture}) {
                         <td>Teacher</td>
                         <td></td>
                         </tr>
-                        <tr>
-                        <td>{book_lecture.courseId}</td>
-                        <td>{book_lecture.lectureId}</td>
-                        <td>{book_lecture.room}</td>
-                        <td>{book_lecture.teacherId}</td>
-                        <td>
+                    <tr>
+                        <td className='HeaderText1'>{book_lecture.courseId}</td>
+                        <td className='HeaderText1'>{book_lecture.lectureId}</td>
+                        <td className='HeaderText1'>{book_lecture.room}</td>
+                        <td className='HeaderText1'>{book_lecture.teacherId}</td>
+                        <td className='HeaderText1'>
                             <button className={(contatore) ? 'Booked' : 'Not_Booked'} 
                             onClick={ ()=>{
                                             book_lecture.book_the_lecture();
                                             setBook(!contatore);   
                                 }}>
-                                Book
+                                {contatore ? "Booked":"Book"}
+                                
                         </button> 
                         </td>
                         </tr>
