@@ -42,7 +42,6 @@ app.use(cookieParser());
 
 // Public APIs here
 app.post('/api/login', authController.apiLoginPOST);
-app.post('/api/bookings', bookingsController.apiBookingsPOST);
 
 // Authentication endpoint
 app.use(
@@ -58,7 +57,7 @@ app.post('/api/logout', authController.apiLogoutPOST);
 app.get('/api/courses/:id', courseController.apiCoursesIdGET);
 app.get('/api/students/:id', studentController.apiStudentsIdGET);
 app.get('/api/bookings', bookingsController.apiBookingsGET);
-
+app.post('/api/bookings', bookingsController.apiBookingsPOST);
 app.get('/api/lectures', lecturesController.apiLecturesGET);
 
 
