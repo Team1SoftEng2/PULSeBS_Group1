@@ -32,9 +32,9 @@ exports.getBookings = function(lectureId) {
 exports.apiBookingsPOST = function(body) {
   return new Promise((resolve, reject) => {
     // @todo: write SQL query 
-    const sql = "";
-    db.run(sql, [body.studenId, body.lectureId],
-      (err) => {err ? reject(err) : resolve(201)});
+    const sql = "INSERT INTO Booking (StudentID, LectureID) VALUES (?, ?)";
+    db.run(sql, [body.studentId, body.lectureId],
+      (err) => {err ? reject(err) : resolve(null)});
   });
 }
 
