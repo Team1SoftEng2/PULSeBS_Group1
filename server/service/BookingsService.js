@@ -6,11 +6,9 @@ const Booking = require("../components/booking");
 
 exports.getBookings = function(lectureId) {
   return new Promise((resolve, reject) => {
-    
     var sql = "SELECT * FROM Booking";
     if(lectureId)
       sql = sql + " WHERE LectureID = ?";
-
     db.all(sql, [lectureId], (err, rows) => {
         if (err){
           console.log(err);
@@ -22,8 +20,6 @@ exports.getBookings = function(lectureId) {
         }
     });
   });
-
-
 }
 
 

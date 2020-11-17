@@ -7,11 +7,7 @@ module.exports.apiBookingsGET = function apiBookingsGET(req, res) {
   const lectureId = req.query.lectureId;
   Bookings.getBookings(lectureId)
     .then(function(response) {
-      if (!response) {
-          utils.writeJson(res, response, 404);
-      } else {
-          utils.writeJson(res, response);
-      }
+      utils.writeJson(res, response);
     })
     .catch(function(response) {
       utils.writeJson(res, { errors: [{ 'param': 'Server', 'msg': response }], }, 500);
