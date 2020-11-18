@@ -1,45 +1,25 @@
 import React, { useState } from 'react';
-import { Row, Table, Component, Container, Card, Accordion, Col, Button, FormControl, InputGroup } from 'react-bootstrap';
-import { propTypes } from 'react-bootstrap/esm/Image';
-import { useHistory } from "react-router-dom";
+import { Row, Table, Col, InputGroup } from 'react-bootstrap';
 import API from '../../../api/API';
 import { StudentBookedList } from '../../../api/API';
 
 
 export default function BookSeat({ colonna }) {
 
-    //const [book_lectures, setBookLectures] = React.useState([]);
-
-    //const history = useHistory();
-    /*
-        React.useEffect(() => {
-            API.getLectures()
-            .then((res) => {
-                setBookLectures(res);
-            })
-            .catch((err)=> {
-                if(err.status && err.status === 401)
-                    history.push('/');
-                else 
-                    console.log(err);
-                });
-          }, [history]);
-    
-    */
     return (
         <div class='BookSeatContainer'>
-            <Booking_LectureList />
+            <BookingLectureList />
         </div>
     );
 }
 
-function Booking_LectureList({ book_lectures, ...rest }) {
+function BookingLectureList({ book_lectures, ...rest }) {
 
     return (
         <div class='BookSeatContainer'>
             <Row>
                 {StudentBookedList.map((book_lecture) => (
-                    <Book_Lecture lectureId={book_lecture.lectureId} {...book_lecture} />
+                    <BookLecture lectureId={book_lecture.lectureId} {...book_lecture} />
                 ))}
 
             </Row>
@@ -47,7 +27,7 @@ function Booking_LectureList({ book_lectures, ...rest }) {
     )
 }
 
-function Book_Lecture({ ...book_lecture }) {
+function BookLecture({ ...book_lecture }) {
 
     const [counter, setBook] = useState(book_lecture.booked);
 
