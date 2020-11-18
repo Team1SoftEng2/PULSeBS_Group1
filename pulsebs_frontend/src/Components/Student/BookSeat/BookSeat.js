@@ -1,42 +1,34 @@
-import React, { useState } from 'react';
-import { Row, Table, Col, InputGroup } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Button, Table, Col, InputGroup } from 'react-bootstrap';
 import API from '../../../api/API';
-import { StudentBookedList } from '../../../api/API';
 
+function BookSeat(props) {
+    let [courses, setCourses] = useState([]);
+    let [bookings, setBookings] = useState([]);
 
-export default function BookSeat({ colonna }) {
+    const getCourses = () => {
+        API.getStudentCourses('s27001')
+            .then( (courses) => {
+                setCourses(courses);
+            })
+            .catch( (c) => console.log("ERROR = " + c));
+    };
 
-    return (
-        <div class='BookSeatContainer'>
-            <BookingLectureList />
-        </div>
-    );
-}
+    const getBookings = () => {
+        API.getBookings()
+            .then( (bookings) => {
+                setBookings(bookings.filter( (b) => b.studentId == 's27001') )
+            })
+            .catch( (c) => console.log("ERROR = " + c));
+    }
 
-function BookingLectureList({ book_lectures, ...rest }) {
+    useEffect( () => getCourses, [courses] );
+    useEffect( () => getBookings, [bookings] );
 
-    return (
-        <div class='BookSeatContainer'>
-            <Row>
-                {StudentBookedList.map((book_lecture) => (
-                    <BookLecture lectureId={book_lecture.lectureId} {...book_lecture} />
-                ))}
-
-            </Row>
-        </div>
-    )
-}
-
-function BookLecture({ ...book_lecture }) {
-
-    const [counter, setBook] = useState(book_lecture.booked);
-
-    return (
+    return <div className='BookSeatContainer'>
         <Col lg={10}>
-
             <InputGroup className="mb-3 mt-2">
                 <Table bordered>
-
                     <tbody>
                         <tr>
                             <td>Course</td>
@@ -45,28 +37,52 @@ function BookLecture({ ...book_lecture }) {
                             <td>Teacher</td>
                             <td>Booking Status</td>
                         </tr>
-                        <tr>
-                            <td className='TableContent'>{book_lecture.courseId}</td>
-                            <td className='TableContent'>{book_lecture.lectureId}</td>
-                            <td className='TableContent'>{book_lecture.room}</td>
-                            <td className='TableContent'>{book_lecture.teacherId}</td>
-                            <td className='TableContent'>
-                                <button className={(counter) ? 'Not_Booked' : 'Booked'}
-                                    onClick={() => {
-                                        book_lecture.book_the_lecture();
-                                        setBook(!counter);
-                                    }}>
-                                    {counter ? "Booked" : "Book"}
-
-                                </button>
-                            </td>
-                        </tr>
+                        {courses.map( (c) => <BookLectures key={c.courseId} courseId={c.courseId} bookings={bookings}/>)}
                     </tbody>
                 </Table>
-
-
-
             </InputGroup>
         </Col>
-    );
+    </div>;
 }
+
+function BookLectures(props) {
+    let [lectures, setLectures] = useState([]);
+
+    const getLectures = () => {
+        API.getLectures(props.courseId)
+            .then( (lectures) => {
+                setLectures(lectures);
+            })
+            .catch( (c) => console.log("ERROR = " + c));
+    };
+
+    useEffect( () => getLectures, [lectures] );
+    // console.log(props.bookings.filter((b) => b.lectureId == 'IS1001').lenght);
+    return <>
+        {lectures.map( (lecture) => <BookLecture key={lecture.lectureId} lecture={lecture} booked={props.bookings.filter((b) => b.lectureId == lecture.lectureId)}/>)}
+    </>;
+
+}
+
+function BookLecture(props) {
+    const [booked, setBooked] = useState(props.booked.lenght);
+    console.log(props.booked.length);
+
+    return <tr>
+        <td className='TableContent'>{props.lecture.courseId}</td>
+        <td className='TableContent'>{props.lecture.lectureId}</td>
+        <td className='TableContent'>{props.lecture.mode}</td>
+        <td className='TableContent'>{props.lecture.teacherId}</td>
+        <td className='TableContent'>
+            <button className={(booked) ? "Not_Book" : "Book"}
+                    onClick={() => {
+                    //book_lecture.book_the_lecture();
+                    setBooked(!booked);
+                }}>
+                {booked ? "Booked" : "Book"}
+            </button>
+        </td>
+    </tr>
+}
+
+export default BookSeat;
