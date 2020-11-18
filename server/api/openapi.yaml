@@ -317,9 +317,9 @@ components:
         $ref: '#/components/schemas/booking'
     body:
       properties:
-        email:
+        id:
           type: string
-          format: email
+          format: id
         password:
           minLength: 6
           type: string

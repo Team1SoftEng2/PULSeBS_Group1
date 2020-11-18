@@ -18,6 +18,7 @@
     "expect": "^25.1.0",
     "jest-sonar-reporter": "^2.0.0"
   },
+  "proxy": "http://localhost:8080",
   "jest": {
     "testEnvironment": "node",
     "collectCoverage": true,

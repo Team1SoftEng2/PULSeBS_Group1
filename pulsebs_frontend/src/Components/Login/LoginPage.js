@@ -9,12 +9,12 @@ export default function LoginPage() {
     
     const history = useHistory();
     
-    const [email, setEmail] = React.useState("");
+    const [id, setId] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [errMsg, setErrMsg] = React.useState("");
 
     const postLogin = () => {
-        API.login(email, password)
+        API.login(id, password)
         .then( result => {
             //insert regex here TODO
             history.push({pathname:"/user"});
@@ -40,18 +40,18 @@ export default function LoginPage() {
     }, [history]);
     */
 
-    const handleEmail = (value) => {
-        setEmail(value);
+    const handleId = (value) => {
+        setId(value);
         setPassword(password);
     }
 
     const handlePassword = (value) => {
-        setEmail(email);
+        setId(id);
         setPassword(value);
     }
 
     return <div id="LoginPageContainer">
-            <LoginForm email={email} password={password} handleEmail={handleEmail} handlePassword={handlePassword} postLogin={postLogin} />
+            <LoginForm id={id} password={password} handleId={handleId} handlePassword={handlePassword} postLogin={postLogin} />
             <SideDecoration />
         </div>
 }
