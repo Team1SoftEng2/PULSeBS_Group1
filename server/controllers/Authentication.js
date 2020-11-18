@@ -1,5 +1,14 @@
 'use strict';
 
+//-----------------------------------------------------------------------------------------------
+//@todo fix auth propagation to controller from index
+
+const jsonwebtoken = require('jsonwebtoken');
+var jwtSecret = '6xvL4xkAAbG49hcXf5GIYSvkDICiUAR6EdR5dLdwW7hMzUjjMUe9t6M5kSAYxsvX';
+const authErrorObj = { errors: [{ 'param': 'Server', 'msg': 'Authorization error' }] };
+const expireTime = 400; //seconds
+
+//--------------------------------------------------------------------------------------------
 var utils = require('../utils/writer.js');
 var Authentication = require('../service/AuthenticationService');
 
@@ -29,7 +38,7 @@ module.exports.apiLoginPOST = function apiLoginPOST (req, res) {
         }).catch(
             // Delay response when wrong user/pass is sent to avoid fast guessing attempts
             (err) => {
-                new Promise((resolve) => { setTimeout(resolve, 1000) }).then(() => res.status(401).json(authErrorObj))
+                new Promise((resolve) => { setTimeout(resolve, 1000) }).then(() => res.status(401).json(auth.authErrorObj))
             }
         );
 };

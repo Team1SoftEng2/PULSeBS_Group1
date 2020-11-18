@@ -16,8 +16,19 @@ export default function LoginPage() {
     const postLogin = () => {
         API.login(id, password)
         .then( result => {
-            //insert regex here TODO
-            history.push({pathname:"/user"});
+            
+            //NB!!! PUT HERE REGEX INSTEAD OF SWITCH !!!
+
+            switch (result.userId.charAt(0)) {
+                case "s":
+                    history.push({pathname:"/student"});
+                    break;
+                case "t":
+                    history.push({pathname:"/professor"});
+                    break;
+                default:
+                    break;
+            }
         })
         .catch((errorObj) => {
             console.log(errorObj);
