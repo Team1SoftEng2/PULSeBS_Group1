@@ -18,7 +18,7 @@ module.exports.apiCoursesIdGET = function apiCoursesIdGET (req, res) {
   });
 };
 
-module.exports.apiStudentsIdCourses = function (req, res) {
+module.exports.apiStudentsIdCoursesGET = function (req, res) {
   const studentId = req.params.id;
   Course.getStudentCourses(studentId)
     .then(function(response) {

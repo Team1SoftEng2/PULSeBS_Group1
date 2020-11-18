@@ -42,6 +42,7 @@ app.use(cookieParser());
 
 // Public APIs here
 app.post('/api/login', authController.apiLoginPOST);
+app.get('/api/students/:id/courses', courseController.apiStudentsIdCoursesGET)
 
 // Authentication endpoint
 app.use(
