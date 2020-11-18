@@ -6,8 +6,19 @@ const bcrypt = require('bcrypt');
 
 exports.getUserByEmail = function (email) {
   return new Promise((resolve, reject) => {
-    // @todo: write SQL query 
-    const sql = "SELECT * FROM users WHERE email = ?";
+    
+    const sql = `SELECT StudentId as ID, Name, Surname, emailAddress, password
+                 FROM Student
+                 UNION
+                 SELECT TeacherID as ID, Name, Surname, emailAddress, password
+                 FROM Teacher
+                 UNION
+                 SELECT BookingManagerID as ID, Name, Surname, emailAddress, password
+                 FROM BookingManager
+                 SELECT SupportOperatorID as ID, Name, Surname, emailAddress, password
+                 FROM SupportOperator
+                 WHERE email = ?`;
+
     db.all(sql, [email], (err, rows) => {
         if (err) 
             reject(err);
