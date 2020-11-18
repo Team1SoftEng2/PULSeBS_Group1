@@ -47,7 +47,7 @@
                         "application/json":{
                             "schema": {
                                 "properties": {
-                                    "email": { "type": "string", "format": "email" },
+                                    "id": { "type": "string", "format": "id" },
                                     "password": { "type": "string", "minLength": 6 }
                                 }
                             }
