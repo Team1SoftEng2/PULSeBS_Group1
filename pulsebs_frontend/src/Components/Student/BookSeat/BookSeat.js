@@ -1,29 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Table, Col, InputGroup } from 'react-bootstrap';
+import { Table, Col, InputGroup } from 'react-bootstrap';
 import API from '../../../api/API';
+import { useHistory } from "react-router-dom";
 
-function BookSeat(props) {
+function BookSeat() {
     let [courses, setCourses] = useState([]);
     let [bookings, setBookings] = useState([]);
 
-    const getCourses = () => {
-        API.getStudentCourses('s27001')
-            .then( (courses) => {
-                setCourses(courses);
-            })
-            .catch( (c) => console.log("ERROR = " + c));
-    };
+    let history = useHistory();
 
-    const getBookings = () => {
-        API.getBookings()
-            .then( (bookings) => {
-                setBookings(bookings.filter( (b) => b.studentId == 's27001') )
-            })
-            .catch( (c) => console.log("ERROR = " + c));
-    }
+    useEffect( () => API.getStudentCourses('s27001')
+                        .then( (res) => {
+                            setCourses(res);
+                        })
+                        .catch( (err) => {
+                            if (err.status && err.status === 401)
+                                history.push('/');
+                            else
+                                console.log(err);
+                        }), [history]
+    );
 
-    useEffect( () => getCourses, [courses] );
-    useEffect( () => getBookings, [bookings] );
+    useEffect( () => API.getBookings()
+                        .then( (res) => {
+                            setBookings(res.filter( (b) => b.studentId == 's27001') )
+                        })
+                        .catch( (err) => {
+                            if (err.status && err.status === 401)
+                                history.push('/');
+                            else
+                                console.log(err);
+                        }), [history]
+    );
 
     return <div className='BookSeatContainer'>
         <Col lg={10}>
@@ -37,7 +45,11 @@ function BookSeat(props) {
                             <td>Teacher</td>
                             <td>Booking Status</td>
                         </tr>
-                        {courses.map( (c) => <BookLectures key={c.courseId} courseId={c.courseId} bookings={bookings}/>)}
+                        {courses.map( (c) => 
+                        <BookLectures key={c.courseId} 
+                                    courseId={c.courseId} 
+                                    bookings={bookings}
+                                    history={history}/>)}
                     </tbody>
                 </Table>
             </InputGroup>
@@ -47,16 +59,20 @@ function BookSeat(props) {
 
 function BookLectures(props) {
     let [lectures, setLectures] = useState([]);
+    let history = props.history;
 
-    const getLectures = () => {
-        API.getLectures(props.courseId)
-            .then( (lectures) => {
-                setLectures(lectures);
-            })
-            .catch( (c) => console.log("ERROR = " + c));
-    };
+    useEffect( () => API.getLectures(props.courseId)
+                        .then( (res) => {
+                            setLectures(res);
+                        })
+                        .catch( (err) => {
+                            if (err.status && err.status === 401)
+                                history.push('/');
+                            else
+                                console.log(err);
+                        }), [history]
+    );
 
-    useEffect( () => getLectures, [lectures] );
     // console.log(props.bookings.filter((b) => b.lectureId == 'IS1001').lenght);
     return <>
         {lectures.map( (lecture) => <BookLecture key={lecture.lectureId} lecture={lecture} booked={props.bookings.filter((b) => b.lectureId == lecture.lectureId)}/>)}
