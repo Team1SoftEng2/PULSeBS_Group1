@@ -4,11 +4,14 @@ type("1605712416809.png","http://localhost:3000/")
 type(Key.ENTER)
 wait(2)
 
+username="1605784266001.png"
+password="1605712212356.png"
+loginButton="1605712233274.png"
 #Login error, invalid email
-type("1605712079393.png","s21111@studenti.polito.it")
-type("1605712212356.png","11111")
+type(email,"s21111@studenti.polito.it")
+type(password,"11111")
 
-click("1605712233274.png")
+click(loginButton)
 
 wait(1) # to be filled
 
@@ -16,10 +19,10 @@ wait(1.5)
 click("1605712302688.png")
 wait(1.5)
 #Login error, invalid password
-type("1605712079393.png","s27001@gmail.com")
-type("1605712212356.png","asasasa")
+type(username,"s27001@gmail.com")
+type(password,"asasasa")
 
-click("1605712233274.png")
+click(loginButton)
 
 wait(1) # to be filled
 
@@ -28,10 +31,10 @@ click("1605712302688.png")
 wait(1.5)
 # Successful Login
 
-type("1605712079393.png","s27001@gmail.com")
-type("1605712212356.png","s27001")
+type(username,"s27001@gmail.com")
+type(password,"s27001")
 
-click("1605712233274.png")
+click(loginButton)
 
 wait(1) # to be filled
 
@@ -42,10 +45,10 @@ click("1605712302688.png")
 wait(1.5)
 
 #Login error, invalid email
-type("1605712079393.png","t21111@studenti.polito.it")
-type("1605712212356.png"," ")
+type(username,"t21111@studenti.polito.it")
+type(password," ")
 
-click("1605712233274.png")
+click(loginButton)
 
 wait(1) # to be filled
 
@@ -53,10 +56,10 @@ wait(1.5)
 click("1605712302688.png")
 wait(1.5)
 #Login error, invalid password
-type("1605712079393.png","t37001@gmail.com")
-type("1605712212356.png","asasasa")
+type(username,"t37001@gmail.com")
+type(password,"asasasa")
 
-click("1605712233274.png")
+haclick(loginButton)
 
 wait(1) # to be filled
 
@@ -65,10 +68,10 @@ click("1605712302688.png")
 wait(1.5)
 # Successful Login
 
-type("1605712079393.png","t37001@gmail.com")
-type("1605712212356.png","t37001")
+type(username,"t37001@gmail.com")
+type(password,"t37001")
 
-click("1605712233274.png")
+click(loginButton)
 
 wait(1) # to be filled
 
