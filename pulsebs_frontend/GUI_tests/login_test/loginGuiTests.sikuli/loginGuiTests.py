@@ -7,6 +7,7 @@ wait(2)
 username="1605784266001.png"
 password="1605712212356.png"
 loginButton="1605712233274.png"
+refreshButton="1605712302688.png"
 #Login error, invalid email
 type(email,"s21111@studenti.polito.it")
 type(password,"11111")
@@ -16,7 +17,7 @@ click(loginButton)
 wait(1) # to be filled
 
 wait(1.5)
-click("1605712302688.png")
+click(refreshButton)
 wait(1.5)
 #Login error, invalid password
 type(username,"s27001@gmail.com")
@@ -27,7 +28,7 @@ click(loginButton)
 wait(1) # to be filled
 
 wait(1.5)
-click("1605712302688.png")
+click(refreshButton)
 wait(1.5)
 # Successful Login
 
@@ -41,7 +42,7 @@ wait(1) # to be filled
 #-----------------------------------------------
 #Testing the Login Page for teachers
 wait(1.5)
-click("1605712302688.png")
+click(refreshButton)
 wait(1.5)
 
 #Login error, invalid email
@@ -53,7 +54,7 @@ click(loginButton)
 wait(1) # to be filled
 
 wait(1.5)
-click("1605712302688.png")
+click(refreshButton)
 wait(1.5)
 #Login error, invalid password
 type(username,"t37001@gmail.com")
@@ -64,7 +65,7 @@ haclick(loginButton)
 wait(1) # to be filled
 
 wait(1.5)
-click("1605712302688.png")
+click(refreshButton)
 wait(1.5)
 # Successful Login
 
