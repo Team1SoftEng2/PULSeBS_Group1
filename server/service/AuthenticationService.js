@@ -23,7 +23,7 @@ exports.getUserById = function (id) {
                  FROM SupportOperator
                  WHERE ID = ?`;
 
-    db.all(sql, [id], (err, row) => {
+    db.all(sql, [id, id, id, id], (err, row) => {
       console.log(row);
         if (err) 
             reject(err);
