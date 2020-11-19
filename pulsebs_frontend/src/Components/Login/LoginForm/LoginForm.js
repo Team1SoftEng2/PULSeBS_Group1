@@ -6,7 +6,7 @@ export default function LoginForm({postLogin, id, password, handleId, handlePass
     <h1>Lecture Booking</h1>
     <h5>Welcome!<br/>Please Login or Sign Up to continue</h5>
     <div className="FormInputContainer">
-    <label for="id">Id</label>
+    <label for="id">Username</label>
       <input
         type = "id"
         id= "id" 
