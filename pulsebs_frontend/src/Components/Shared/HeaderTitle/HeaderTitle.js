@@ -6,7 +6,6 @@ function headerTitle(props) {
         <div>
             <header>
                 <h1>Lesson Booker</h1>
-                <p id="UserGreeting">Welcome {props.username}!</p>
             </header>
         </div>
     );
