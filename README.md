@@ -1,7 +1,7 @@
 # PULSeBS_Group1
 
 ## Users
-- Studentd: s270001, test
+- Studentd: s27001, test
 - Teacher: t37001, test
 
 
