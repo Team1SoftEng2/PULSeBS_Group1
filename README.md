@@ -1,5 +1,10 @@
 # PULSeBS_Group1
 
+## Users
+- Student: s27001, test
+- Teacher: t37001, test
+
+
 ## Badges
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Team1SoftEng2_PULSeBS_Group1&metric=alert_status)](https://sonarcloud.io/dashboard?id=Team1SoftEng2_PULSeBS_Group1)
 
