@@ -81,8 +81,18 @@ function BookLectures(props) {
 }
 
 function BookLecture(props) {
-    const [booked, setBooked] = useState(props.booked.lenght);
-    console.log(props.booked.length);
+    const [booked, setBooked] = useState(props.booked.length);
+
+    const handleClick = () => {
+        if(!booked){
+            setBooked(!booked);
+            API.addBooking({
+                studentId: 's27001',
+                lectureId: props.lecture.lectureId
+                })
+                .catch( (err) => console.log(err) );
+        }
+    }
 
     return <tr>
         <td className='TableContent'>{props.lecture.courseId}</td>
@@ -91,10 +101,7 @@ function BookLecture(props) {
         <td className='TableContent'>{props.lecture.teacherId}</td>
         <td className='TableContent'>
             <button className={(booked) ? "Not_Book" : "Book"}
-                    onClick={() => {
-                    //book_lecture.book_the_lecture();
-                    setBooked(!booked);
-                }}>
+                    onClick={() => handleClick() }>
                 {booked ? "Booked" : "Book"}
             </button>
         </td>
