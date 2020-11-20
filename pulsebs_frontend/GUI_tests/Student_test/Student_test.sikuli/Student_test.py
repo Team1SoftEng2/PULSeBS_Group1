@@ -1,8 +1,5 @@
 #Testing of the Student page
-click("1605714275397.png")
-type("1605715898250.png","http://localhost:3000/student")
-type(Key.ENTER)
-wait(1.5)
+
 
 find("1605716150659.png")
 
