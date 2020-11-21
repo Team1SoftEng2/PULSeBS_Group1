@@ -13,7 +13,7 @@ sections:
 ### Macro statistics
 
 - Number of stories committed vs done: 3 - 0 
-- Total points committed vs done: 13 - 
+- Total points committed vs done: 13 - 0
 - Nr of hours planned vs spent (as a team): 72 - 67
 
 **Remember**  a story is done ONLY if it fits the Definition of Done:
@@ -37,7 +37,7 @@ sections:
 
 > place technical tasks corresponding to story `#0` and leave out story points (not applicable in this case)
 
-- Hours per task (average, standard deviation): average 2h 58m, standard deviation 
+- Hours per task (average, standard deviation): average 2h 58m, standard deviation 6h 37m
 
 - Total task estimation error ratio: sum of total hours estimation / sum of total hours spent from previous table: 65/67.17 = 0.97
   
