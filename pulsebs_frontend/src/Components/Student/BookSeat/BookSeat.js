@@ -32,6 +32,25 @@ function BookSeat() {
                                 console.log(err);
                         }), [history]
     );
+    
+    //DON'T DELETE PLS
+    //è da mettere nel posto giusto con il calendario
+    /*
+    let [lecturesDate, setLecturesDate] = useState([]); //calendar
+    //insert the min e max date for the calendar
+    useEffect( () => API.getLecturesDate(props.courseId,"19-11-2020","21-11-2020")
+                        .then( (res) => {
+                            setLecturesDate(res);
+                        })
+                        .catch( (err) => {
+                            if (err.status && err.status === 401)
+                                history.push('/');
+                            else
+                                console.log(err);
+                        }), [history]
+    );
+    */
+    
 
     return <div className='BookSeatContainer'>
         <Col lg={10}>
@@ -59,6 +78,7 @@ function BookSeat() {
 
 function BookLectures(props) {
     let [lectures, setLectures] = useState([]);
+    
     let history = props.history;
 
     useEffect( () => API.getLectures(props.courseId)
@@ -72,10 +92,10 @@ function BookLectures(props) {
                                 console.log(err);
                         }), [history]
     );
-
-    // console.log(props.bookings.filter((b) => b.lectureId == 'IS1001').lenght);
+    
     return <>
-        {lectures.map( (lecture) => <BookLecture key={lecture.lectureId} lecture={lecture} booked={props.bookings.filter((b) => b.lectureId == lecture.lectureId)}/>)}
+        {lectures.map( (lecture) => <BookLecture key={lecture.lectureId} lecture={lecture} 
+        booked={props.bookings.filter((b) => b.lectureId == lecture.lectureId)}/>)}
     </>;
 
 }
@@ -93,7 +113,7 @@ function BookLecture(props) {
                 .catch( (err) => console.log(err) );
         }
     }
-
+    console.log(props.booked.length)
     return <tr>
         <td className='TableContent'>{props.lecture.courseId}</td>
         <td className='TableContent'>{props.lecture.lectureId}</td>

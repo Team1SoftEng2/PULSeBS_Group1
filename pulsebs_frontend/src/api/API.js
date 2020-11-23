@@ -67,6 +67,22 @@ async function getLectures(courseId) {
     }
 }
 
+async function getLecturesDate(courseId,min,max) {
+    let url = "/lectures";
+    if(courseId){
+        const queryParams = "?courseId=" + courseId;
+        url += queryParams;
+    }
+    const response = await fetch(baseURL + url);
+    const lecturesJson = await response.json();
+    if(response.ok){
+        return lecturesJson.filter((l)=>(l.date>=min && l.date<=max));
+    } else {
+        let err = {status: response.status, errObj:lecturesJson};
+        throw err;  // An object with the error coming from the server
+    }
+}
+
 async function getBookings(lectureId) {
     let url = "/bookings";
     if(lectureId){
@@ -104,6 +120,5 @@ async function addBooking(booking) {
     });
 }
 
-
-const API = { getLectures, getStudentCourses, getBookings, login, addBooking };
+const API = { getLectures, getStudentCourses, getBookings, login, addBooking, getLecturesDate };
 export default API;
