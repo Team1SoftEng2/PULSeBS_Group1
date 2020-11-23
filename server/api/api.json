@@ -263,6 +263,34 @@
                     }
                 }
             }
+        },
+        "/api/lectures/{id}": {
+            "delete": {
+                "tags": ["lectures"],
+                "description": "Delete a lecture up 1h before its scheduled time",
+                "parameters": [
+                    {
+                        "name": "lectureID",
+                        "schema": { "type": "string" },
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted" 
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Lecture not found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
         }
     },
     "components": {

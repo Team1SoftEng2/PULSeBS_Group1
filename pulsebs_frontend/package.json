@@ -1,7 +1,7 @@
 {
   "name": "pulsebs_frontend",
   "version": "0.1.0",
-  "proxy": "http://localhost:8080/",
+  "proxy": "http://localhost:8080",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.5",
@@ -19,7 +19,6 @@
     "expect": "^25.1.0",
     "jest-sonar-reporter": "^2.0.0"
   },
-  "proxy": "http://localhost:8080",
   "jest": {
     "testEnvironment": "node",
     "collectCoverage": true,
@@ -53,5 +52,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.21.5"
   }
 }
