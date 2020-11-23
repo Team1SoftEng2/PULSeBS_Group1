@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 'use strict';
 
-const moment = require('momentjs');
+const moment = require('moment');
 const utils = require('../utils/writer.js');
 const Lectures = require('../service/LecturesService');
 const Lecture = require('../components/lecture.js');
