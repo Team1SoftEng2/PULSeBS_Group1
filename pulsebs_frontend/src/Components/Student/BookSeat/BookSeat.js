@@ -3,13 +3,14 @@ import { Table, Col, InputGroup } from 'react-bootstrap';
 import API from '../../../api/API';
 import { useHistory } from "react-router-dom";
 
-function BookSeat() {
+function BookSeat(props) {
+    const authObj = props.authObj;
+
     let [courses, setCourses] = useState([]);
     let [bookings, setBookings] = useState([]);
 
     let history = useHistory();
-
-    useEffect( () => API.getStudentCourses('s27001')
+    useEffect( () => API.getStudentCourses(authObj.authUser)
                         .then( (res) => {
                             setCourses(res);
                         })
@@ -23,7 +24,7 @@ function BookSeat() {
 
     useEffect( () => API.getBookings()
                         .then( (res) => {
-                            setBookings(res.filter( (b) => b.studentId == 's27001') )
+                            setBookings(res.filter( (b) => b.studentId == authObj.authUser) )
                         })
                         .catch( (err) => {
                             if (err.status && err.status === 401)
@@ -51,7 +52,6 @@ function BookSeat() {
     );
     */
     
-
     return <div className='BookSeatContainer'>
         <Col lg={10}>
             <InputGroup className="mb-3 mt-2">
@@ -59,14 +59,17 @@ function BookSeat() {
                     <tbody>
                         <tr>
                             <td>Course</td>
-                            <td>Lecture</td>
+                            <td>Date</td>
+                            <td>Time</td>
                             <td>Room</td>
                             <td>Teacher</td>
+                            <td>Seats</td>
                             <td>Booking Status</td>
                         </tr>
                         {courses.map( (c) => 
-                        <BookLectures key={c.courseId} 
-                                    courseId={c.courseId} 
+                        <BookLectures key={c.courseId}
+                                    userId={authObj.authUser}
+                                    course={c} 
                                     bookings={bookings}
                                     history={history}/>)}
                     </tbody>
@@ -81,7 +84,7 @@ function BookLectures(props) {
     
     let history = props.history;
 
-    useEffect( () => API.getLectures(props.courseId)
+    useEffect( () => API.getLectures(props.course.courseId)
                         .then( (res) => {
                             setLectures(res);
                         })
@@ -94,8 +97,10 @@ function BookLectures(props) {
     );
     
     return <>
-        {lectures.map( (lecture) => <BookLecture key={lecture.lectureId} lecture={lecture} 
-        booked={props.bookings.filter((b) => b.lectureId == lecture.lectureId)}/>)}
+        {lectures.map( (lecture) => <BookLecture key={lecture.lectureId}
+                                                {...props} 
+                                                lecture={lecture} 
+                                                booked={props.bookings.filter((b) => b.lectureId == lecture.lectureId)}/>)}
     </>;
 
 }
@@ -107,18 +112,20 @@ function BookLecture(props) {
         if(!booked){
             setBooked(!booked);
             API.addBooking({
-                studentId: 's27001',
+                studentId: props.userId,
                 lectureId: props.lecture.lectureId
                 })
                 .catch( (err) => console.log(err) );
         }
     }
-    console.log(props.booked.length)
+    
     return <tr>
-        <td className='TableContent'>{props.lecture.courseId}</td>
-        <td className='TableContent'>{props.lecture.lectureId}</td>
-        <td className='TableContent'>{props.lecture.mode}</td>
+        <td className='TableContent'>{props.course.name}</td>
+        <td className='TableContent'>{props.lecture.date}</td>
+        <td className='TableContent'>{props.lecture.time}</td>
+        <td className='TableContent'>{(props.lecture.mode === "present") ? props.lecture.room : "Virtual Classroom"}</td>
         <td className='TableContent'>{props.lecture.teacherId}</td>
+        <td className='TableContent'>{(props.lecture.mode === "present") ? props.lecture.maxSeats : "∞"}</td>
         <td className='TableContent'>
             <button className={(booked) ? "Not_Book" : "Book"}
                     onClick={() => handleClick() }>

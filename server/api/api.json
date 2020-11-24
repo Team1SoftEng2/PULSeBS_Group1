@@ -319,6 +319,32 @@
                     }
                 }
             }
+        },
+        "/api/user": {
+            "get": {
+                "tags": ["authentication"],
+                "description": "Get information about autenticated user",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json":{
+                                "schema": { "$ref":"#/components/schemas/user" }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
         }
     },
     "components": {

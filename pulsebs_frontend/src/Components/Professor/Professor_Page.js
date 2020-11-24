@@ -8,23 +8,26 @@ import Statistics from './Statistics/Statistics';
 import TutorialProfessor from './TutorialProfessor/TutorialProfessor';
 import './Professor_Page.css';
 
-class professorPage extends Component {
-    render() {
-        return (
-            <div>
+function professorPage (props) {
+    const authObj = props.authObj
 
-                <BrowserRouter>
-                <ProfessorHeader username="UserName" />
+    if(authObj.userRole !== "professor")
+        return <Redirect to = "/"/>
+    else 
+        return <div>
+            {authObj.authErr && <Redirect to = "/"/>}
+            <BrowserRouter>
+                <ProfessorHeader username="UserName"/>
                 <Switch>
                     <Route path="/professor" exact component={HomePageCalendarProfessor} />
                     <Route path="/professor/my_lectures" exact component={MyLecturesProfessor} />
                     <Route path="/professor/register_attendance" exact component={RegisterAttendance} />
                     <Route path="/professor/statistics" exact component={Statistics} />
                     <Route path="/professor/tutorial" exact component={TutorialProfessor} />
-                    </Switch>
-                </BrowserRouter>
-            </div>);
-    }
+                </Switch>
+            </BrowserRouter>
+        </div>;
+    
 }
 
 export default professorPage;

@@ -43,10 +43,6 @@ app.use(cookieParser());
 
 // Public APIs here
 app.post('/api/login', authController.apiLoginPOST);
-app.get('/api/lectures', lecturesController.apiLecturesGET);
-app.get('/api/students/:id/courses', courseController.apiStudentsIdCoursesGET);
-app.get('/api/bookings', bookingsController.apiBookingsGET);
-app.post('/api/bookings', bookingsController.apiBookingsPOST);
 
 // Authentication endpoint
 app.use(
@@ -62,6 +58,11 @@ app.post('/api/logout', authController.apiLogoutPOST);
 app.get('/api/courses/:id', courseController.apiCoursesIdGET);
 app.get('/api/students/:id', studentController.apiStudentsIdGET);
 app.delete('/api/lectures/:id', lecturesController.apiLecturesIdDELETE);
+app.get('/api/lectures', lecturesController.apiLecturesGET);
+app.get('/api/students/:id/courses', courseController.apiStudentsIdCoursesGET);
+app.get('/api/bookings', bookingsController.apiBookingsGET);
+app.post('/api/bookings', bookingsController.apiBookingsPOST);
+//app.get('/api/user', authController.apiUserGET);
 
 // Error handlers for validation and authentication errors
 

@@ -6,7 +6,7 @@ export default function LoginForm({postLogin, id, password, handleId, handlePass
     <h1>Lecture Booking</h1>
     <h5>Welcome!<br/>Please Login or Sign Up to continue</h5>
     <div className="FormInputContainer">
-    <label for="id">Username</label>
+    <label htmlFor="id">Username</label>
       <input
         type = "id"
         id= "id" 
@@ -15,7 +15,7 @@ export default function LoginForm({postLogin, id, password, handleId, handlePass
       />
     </div>
     <div className= "FormInputContainer">
-    <label for="password">Password</label>
+    <label htmlFor="password">Password</label>
       <input
         type = "password" 
         id= "password" 
@@ -25,7 +25,7 @@ export default function LoginForm({postLogin, id, password, handleId, handlePass
     </div>
     <div className="FormButtonContainer">
     <button
-      class="btn btn-outline-primary"
+      className="btn btn-outline-primary"
       id="Login" 
       onClick={e => postLogin()}>Login</button>
     </div>

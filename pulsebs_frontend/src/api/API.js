@@ -1,19 +1,17 @@
 import User from './User';
 const baseURL = "/api";
 
-/*
-async function isAuthenticated(){
-    let url = "/user";
-    const response = await fetch(baseURL + url);
-    const userJson = await response.json();
-    if(response.ok){
-        return userJson;
-    } else {
-        let err = { status: response.status, errObj: userJson};
-        throw err;
-    }
-}
-*/
+// async function isAuthenticated(){
+//     let url = "/user";
+//     const response = await fetch(baseURL + url);
+//     const userJson = await response.json();
+//     if(response.ok){
+//         return userJson;
+//     } else {
+//         let err = { status: response.status, errObj: userJson};
+//         throw err;
+//     }
+// }
 
 async function login(id, password) {
     return new Promise((resolve, reject) => {

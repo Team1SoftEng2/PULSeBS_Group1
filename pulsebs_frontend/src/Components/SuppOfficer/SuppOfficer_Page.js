@@ -6,21 +6,25 @@ import SystemUpdate from './SystemUpdate/SystemUpdate';
 import SystemConfigure from './SystemConfigure/SystemConfigure';
 import './SuppOfficer_Page.css';
 
-class suppOfficerPage extends Component {
-    render() {
-        return (
-            <div>
-                <BrowserRouter>
+function suppOfficerPage (props) {
+    const authObj = props.authObj
+
+    // if(authObj.userRole !== "professor")
+    //     return <Redirect to = "/"/>
+    // else     
+        return <div>
+            {authObj.authErr && <Redirect to = "/"/>}
+            <BrowserRouter>
                 <SuppOfficerHeader username="UserName" />
                 <Switch>
                     <Route path="/support_officer" exact component={SystemConfigure} />
                     <Route path="/support_officer/setup" exact component={SystemSetup} />
                     <Route path="/support_officer/update" exact component={SystemUpdate} />
                     <Route path="/support_officer/configure" exact component={SystemConfigure} />
-                    </Switch>
-                </BrowserRouter>
-            </div>);
-    }
+                </Switch>
+            </BrowserRouter>
+        </div>;
+    
 }
 
 export default suppOfficerPage;
