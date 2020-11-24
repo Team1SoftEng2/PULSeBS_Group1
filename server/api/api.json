@@ -39,7 +39,7 @@
     "paths": {
         "/api/login": {
             "post": {
-                "tags": ["operations"],
+                "tags": ["authentication"],
                 "description": "Log in",
                 "parameters": [],
                 "requestBody":{
@@ -76,7 +76,7 @@
         }, 
           "/api/logout": {
             "post":{
-                "tags": ["operations"],
+                "tags": ["authentication"],
                 "description": "Log Out",
                 "parameters": [],
                 "responses": {
@@ -138,6 +138,34 @@
                     "401": {
                         "description": "Unauthorized"
                       },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/bookings/{lectureId}": {
+            "delete": {
+                "tags": ["bookings"],
+                "description": "Delete a booking given its key by query parameters",
+                "parameters": [
+                    {
+                        "name": "lectureId",
+                        "schema": { "type": "string" },
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content" 
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
                     "500": {
                         "description": "Internal Server Error"
                     }
@@ -270,21 +298,21 @@
                 "description": "Delete a lecture up 1h before its scheduled time",
                 "parameters": [
                     {
-                        "name": "lectureID",
+                        "name": "id",
                         "schema": { "type": "string" },
-                        "in": "query",
+                        "in": "path",
                         "required": true
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "Deleted" 
+                    "204": {
+                        "description": "No Content" 
                     },
                     "401": {
                         "description": "Unauthorized"
                     },
                     "404": {
-                        "description": "Lecture not found"
+                        "description": "Not Found"
                     },
                     "500": {
                         "description": "Internal Server Error"
