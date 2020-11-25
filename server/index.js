@@ -62,7 +62,7 @@ app.get('/api/lectures', lecturesController.apiLecturesGET);
 app.get('/api/students/:id/courses', courseController.apiStudentsIdCoursesGET);
 app.get('/api/bookings', bookingsController.apiBookingsGET);
 app.post('/api/bookings', bookingsController.apiBookingsPOST);
-//app.get('/api/user', authController.apiUserGET);
+app.get('/api/users/:id', authController.apiUserGET);
 
 // Error handlers for validation and authentication errors
 

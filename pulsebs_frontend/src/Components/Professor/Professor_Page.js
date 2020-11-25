@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import React from 'react';
+import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import ProfessorHeader from './ProfessorHeader/ProfessorHeader';
 import HomePageCalendarProfessor from './HomePageCalendarProfessor/HomePageCalendarProfessor';
 import MyLecturesProfessor from './MyLecturesProfessor/MyLecturesProfessor';

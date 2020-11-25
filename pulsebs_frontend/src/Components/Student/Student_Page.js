@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import StudentHeader from './StudentHeader/StudentHeader';
 import HomePageCalendarStudent from './HomePageCalendar_Student/HomePageCalendar_Student';

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import React from 'react';
+import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import SuppOfficerHeader from './SuppOfficerHeader/SuppOfficerHeader'
 import SystemSetup from './SystemSetup/SystemSetup';
 import SystemUpdate from './SystemUpdate/SystemUpdate';

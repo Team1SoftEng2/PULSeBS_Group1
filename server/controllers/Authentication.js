@@ -46,20 +46,21 @@ module.exports.apiLogoutPOST = function apiLogoutPOST (req, res) {
   res.clearCookie('token').end();
 };
 
-// module.exports.apiUserGET = function(req, res) {
-//   console.log(req);
-//   const id = req.user && req.user.user;
-//   Authentication.getUserById(id)
-//     .then( (user) => {
-//         utils.writeJson(
-//           { 
-//             userId: user.userId,
-//             name: user.name,
-//             surname: user.surname,
-//             email: user.email
-//           }, { 'msg': 'OK'}, 200);
-//     })
-//     .catch(function (response) {
-//       utils.writeJson(res, {errors: [{'msg': 'Internal Server Error' }],}, 500);
-//     });
-// }
+module.exports.apiUserGET = function(req, res) {
+  const id = req.params.id;
+
+  Authentication.getUserById(id)
+    .then( (user) => {
+      console.log(user);
+      res.json({ 
+        userId: user.userId,
+        name: user.name,
+        surname: user.surname,
+        email: user.email
+      });
+    })
+    .catch(function (response) {
+      console.log(response);
+      utils.writeJson(res, {errors: [{'msg': 'Internal Server Error' }],}, 500);
+    });
+}

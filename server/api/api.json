@@ -320,11 +320,18 @@
                 }
             }
         },
-        "/api/user": {
+        "/api/users/{id}": {
             "get": {
                 "tags": ["authentication"],
-                "description": "Get information about autenticated user",
-                "parameters": [],
+                "description": "Get information about a user by id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "schema": { "type": "string" },
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",

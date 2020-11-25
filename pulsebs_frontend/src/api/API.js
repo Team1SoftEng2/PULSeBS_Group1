@@ -1,17 +1,17 @@
 import User from './User';
 const baseURL = "/api";
 
-// async function isAuthenticated(){
-//     let url = "/user";
-//     const response = await fetch(baseURL + url);
-//     const userJson = await response.json();
-//     if(response.ok){
-//         return userJson;
-//     } else {
-//         let err = { status: response.status, errObj: userJson};
-//         throw err;
-//     }
-// }
+async function getUser(userId){
+    let url = "/users/" + userId;
+    const response = await fetch(baseURL + url);
+    const userJson = await response.json();
+    if(response.ok){
+        return userJson;
+    } else {
+        let err = { status: response.status, errObj: userJson};
+        throw err;
+    }
+}
 
 async function login(id, password) {
     return new Promise((resolve, reject) => {
@@ -24,7 +24,6 @@ async function login(id, password) {
         }).then((response) => {
             if (response.ok) {
                 response.json().then((user) => {
-                    console.log(user);
                     resolve(new User(user.userId, user.name, user.surname, user.email));
                 });
             } else {
@@ -118,5 +117,5 @@ async function addBooking(booking) {
     });
 }
 
-const API = { getLectures, getStudentCourses, getBookings, login, addBooking, getLecturesDate };
+const API = { getLectures, getStudentCourses, getBookings, login, addBooking, getLecturesDate, getUser };
 export default API;

@@ -24,7 +24,7 @@ function BookSeat(props) {
 
     useEffect( () => API.getBookings()
                         .then( (res) => {
-                            setBookings(res.filter( (b) => b.studentId == authObj.authUser) )
+                            setBookings(res)
                         })
                         .catch( (err) => {
                             if (err.status && err.status === 401)
@@ -68,6 +68,7 @@ function BookSeat(props) {
                         </tr>
                         {courses.map( (c) => 
                         <BookLectures key={c.courseId}
+                                    {...props}
                                     userId={authObj.authUser}
                                     course={c} 
                                     bookings={bookings}
@@ -100,17 +101,20 @@ function BookLectures(props) {
         {lectures.map( (lecture) => <BookLecture key={lecture.lectureId}
                                                 {...props} 
                                                 lecture={lecture} 
-                                                booked={props.bookings.filter((b) => b.lectureId == lecture.lectureId)}/>)}
+                                                lectureBookings={props.bookings.filter((b) => b.lectureId == lecture.lectureId)}/>)}
     </>;
 
 }
 
 function BookLecture(props) {
-    const [booked, setBooked] = useState(props.booked.length);
+    const [booked, setBooked] = useState(props.lectureBookings.filter((b) =>  b.studentId == props.authObj.authUser).length);
+    const [professor, setProfessor] = useState();
+    const [bookedSeats, setBookedSeats] = useState(props.lectureBookings.length);
 
     const handleClick = () => {
-        if(!booked){
+        if(!booked && bookedSeats < props.lectures.maxSeats){
             setBooked(!booked);
+            setBookedSeats(bookedSeats + 1);
             API.addBooking({
                 studentId: props.userId,
                 lectureId: props.lecture.lectureId
@@ -118,14 +122,20 @@ function BookLecture(props) {
                 .catch( (err) => console.log(err) );
         }
     }
+
+    useEffect( () => API.getUser(props.lecture.teacherId)
+                        .then( (res) => {
+                            setProfessor(res.name + " " + res.surname);
+                        })
+                        .catch( (err) => console.log(err) ), []);
     
     return <tr>
         <td className='TableContent'>{props.course.name}</td>
         <td className='TableContent'>{props.lecture.date}</td>
         <td className='TableContent'>{props.lecture.time}</td>
         <td className='TableContent'>{(props.lecture.mode === "present") ? props.lecture.room : "Virtual Classroom"}</td>
-        <td className='TableContent'>{props.lecture.teacherId}</td>
-        <td className='TableContent'>{(props.lecture.mode === "present") ? props.lecture.maxSeats : "∞"}</td>
+        <td className='TableContent'>{professor}</td>
+        <td className='TableContent'>{(props.lecture.mode === "present") ? bookedSeats + "/" + props.lecture.maxSeats : "∞"}</td>
         <td className='TableContent'>
             <button className={(booked) ? "Not_Book" : "Book"}
                     onClick={() => handleClick() }>

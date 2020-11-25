@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import React from 'react';
+import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import BookingManagerHeader from './BookingManagerHeader/BookingManagerHeader';
 import ContactTracing from './ContactTracing/ContactTracing';
 import MonitorUsage from './MonitorUsage/MonitorUsage';
