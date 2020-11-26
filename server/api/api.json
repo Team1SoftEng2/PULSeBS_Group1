@@ -408,7 +408,7 @@
                     "studentId": { "type": "integer" },
                     "lectureId": { "type": "integer" }
                 },
-                "required": ["studentId, lectureId"]
+                "required": ["studentId", "lectureId"]
             },
             "bookings": {
                 "type": "array",

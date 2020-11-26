@@ -28,12 +28,14 @@ expressAppConfig.addValidator();
 const app = expressAppConfig.getApp();
 
 // Set validator middleware
-// var taskSchema = JSON.parse(fs.readFileSync(path.join('.', 'json_schemas', 'task_schema.json')).toString());
-// var userSchema = JSON.parse(fs.readFileSync(path.join('.', 'json_schemas', 'user_schema.json')).toString());
-// var validator = new Validator({ allErrors: true });
-// validator.ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-07.json'));
-// validator.ajv.addSchema([userSchema, taskSchema]);
-// var validate = validator.validate;
+var userSchema = JSON.parse(fs.readFileSync(path.join('.', 'json_schemas', 'user_schema.json')).toString());
+var courseSchema = JSON.parse(fs.readFileSync(path.join('.', 'json_schemas', 'course_schema.json')).toString());
+var lectureSchema = JSON.parse(fs.readFileSync(path.join('.', 'json_schemas', 'lecture_schema.json')).toString());
+var bookingSchema = JSON.parse(fs.readFileSync(path.join('.', 'json_schemas', 'booking_schema.json')).toString());
+var validator = new Validator({ allErrors: true });
+//validator.ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-07.json'));
+validator.ajv.addSchema([userSchema, courseSchema, lectureSchema, bookingSchema]);
+var validate = validator.validate;
 
 
 // Set authentication features
@@ -43,6 +45,7 @@ app.use(cookieParser());
 
 // Public APIs here
 app.post('/api/login', authController.apiLoginPOST);
+app.post('/api/bookings', validate({body: bookingSchema}), bookingsController.apiBookingsPOST);
 
 // Authentication endpoint
 app.use(
@@ -61,7 +64,7 @@ app.delete('/api/lectures/:id', lecturesController.apiLecturesIdDELETE);
 app.get('/api/lectures', lecturesController.apiLecturesGET);
 app.get('/api/students/:id/courses', courseController.apiStudentsIdCoursesGET);
 app.get('/api/bookings', bookingsController.apiBookingsGET);
-app.post('/api/bookings', bookingsController.apiBookingsPOST);
+
 app.get('/api/users/:id', authController.apiUserGET);
 
 // Error handlers for validation and authentication errors

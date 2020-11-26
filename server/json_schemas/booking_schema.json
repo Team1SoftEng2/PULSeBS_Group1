@@ -1,0 +1,17 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id" : "booking_schema.json",
+    "title": "Booking",
+    "description": "JSON Schema for Booking objects",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "path to the JSON Schema to use for the validation of the JSOn file describing the booking"
+        },
+        "studentId": { "type": "integer" },
+        "lectureId": { "type": "integer" }
+    },
+    "required": ["studentId", "lectureId"]
+}

@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id" : "course_schema.json",
+    "title": "Course",
+    "description": "JSON Schema for Course objects",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "path to the JSON Schema to use for the validation of the JSOn file describing the course"
+        },
+        "courseId": { "type": "string" },
+        "teacherId": { "type": "integer" },
+        "name": { "type": "string" }
+    },
+    "required": ["courseId", "teacherId", "name"]
+}
