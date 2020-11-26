@@ -112,14 +112,17 @@ function BookLecture(props) {
     const [bookedSeats, setBookedSeats] = useState(props.lectureBookings.length);
 
     const handleClick = () => {
-        if(!booked && bookedSeats < props.lectures.maxSeats){
-            setBooked(!booked);
-            setBookedSeats(bookedSeats + 1);
-            API.addBooking({
-                studentId: props.userId,
-                lectureId: props.lecture.lectureId
-                })
-                .catch( (err) => console.log(err) );
+        if(!booked){
+            if(props.lecture.mode === "present" && bookedSeats < props.lecture.maxSeats)
+                API.addBooking({
+                    studentId: props.userId,
+                    lectureId: props.lecture.lectureId
+                    })
+                    .then( () => {
+                        setBooked(!booked);
+                        setBookedSeats(bookedSeats + 1);
+                    })
+                    .catch( (err) => console.log(err) );
         }
     }
 

@@ -48,10 +48,8 @@ module.exports.apiLogoutPOST = function apiLogoutPOST (req, res) {
 
 module.exports.apiUserGET = function(req, res) {
   const id = req.params.id;
-
   Authentication.getUserById(id)
     .then( (user) => {
-      console.log(user);
       res.json({ 
         userId: user.userId,
         name: user.name,
@@ -60,7 +58,6 @@ module.exports.apiUserGET = function(req, res) {
       });
     })
     .catch(function (response) {
-      console.log(response);
       utils.writeJson(res, {errors: [{'msg': 'Internal Server Error' }],}, 500);
     });
 }
