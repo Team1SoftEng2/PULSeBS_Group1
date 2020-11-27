@@ -10,28 +10,26 @@ const Courses = require('../service/CourseService');
 
 module.exports.apiLecturesGET = async function apiLecturesGET(req, res) {
   const courseId = req.query.courseId;
-  if (courseId) {
-    Lectures.getLectures(courseId)
-        .then(function(response) {
-          utils.writeJson(res, response);
-        })
-        .catch(function(response) {
-          utils.writeJson(res, {errors: [{'param': 'Server', 'msg': response}]}, 500);
-        });
-  } else {
-    // get all courses of teacher by retriving the id via cookies and then get all the lectures of that courses
-    const user = req.user && req.user.user;
-    const courses = await Courses.getCourseByTeacherID(user);
-    const lectures = await Promise.all(courses.map(async (course) => {
-      return await Lectures.getLectures(course.courseId);
-    }));
-    utils.writeJson(res, lectures[0]);
-  }
+  Lectures.getLectures(courseId)
+      .then(function(response) {
+        utils.writeJson(res, response);
+      })
+      .catch(function(response) {
+        utils.writeJson(res, {errors: [{'param': 'Server', 'msg': response}]}, 500);
+      });
 };
 
+module.exports.apiTeacherLecturesGET = async function apiTeacherLecturesGET(req, res) {
+  // get all courses of teacher by retriving the id via cookies and then get all the lectures of that courses
+  const user = req.user && req.user.user;
+  const courses = await Courses.getCourseByTeacherID(user);
+  const lectures = await Promise.all(courses.map(async (course) => {
+    return await Lectures.getLectures(course.courseId);
+  }));
+  utils.writeJson(res, lectures[0]);
+};
 
 module.exports.apiLecturesIdDELETE = async function apiLecturesIdDELETE(req, res) {
-
   const lectureId = req.params.id;
   Lectures.getLectureById(lectureId)
       .then((lecture) => {

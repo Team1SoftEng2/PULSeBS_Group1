@@ -49,7 +49,7 @@ async function getStudentCourses(studentId) {
 }
 
 async function getTeacherLectures() {
-    let url = "/lectures";
+    let url = "/teachers/lectures";
     const response = await fetch(baseURL + url);
     const lecturesJson = await response.json();
     if(response.ok){
