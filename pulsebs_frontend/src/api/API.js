@@ -48,6 +48,18 @@ async function getStudentCourses(studentId) {
     }
 }
 
+async function getTeacherLectures() {
+    let url = "/lectures";
+    const response = await fetch(baseURL + url);
+    const lecturesJson = await response.json();
+    if(response.ok){
+        return lecturesJson;
+    } else {
+        let err = {status: response.status, errObj:lecturesJson};
+        throw err;  // An object with the error coming from the server
+    }
+}
+
 async function getLectures(courseId) {
     let url = "/lectures";
     if(courseId){
@@ -117,5 +129,22 @@ async function addBooking(booking) {
     });
 }
 
-const API = { getLectures, getStudentCourses, getBookings, login, addBooking, getLecturesDate, getUser };
+async function deleteLectureById(lectureId) {
+    return new Promise((resolve, reject) => {
+        fetch(baseURL + "/lectures/" + lectureId, {
+            method: 'DELETE'
+        }).then( (response) => {
+            if(response.ok) {
+                resolve({status: "DONE"});
+            } else {
+                // analyze the cause of error
+                response.json()
+                .then( (obj) => {reject(obj);} ) // error msg in the response body
+                .catch( (err) => {reject({ errors: [{ param: "Application", msg: "Cannot parse server response" }] }) }); // something else
+            }
+        }).catch( (err) => {reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); // connection errors
+    });
+}
+
+const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getLecturesDate, getUser, deleteLectureById };
 export default API;

@@ -11,7 +11,7 @@ export default function MyLecturesProfessor() {
     const history = useHistory();
 
     React.useEffect(() => {
-        API.getLectures()
+        API.getTeacherLectures()
             .then((res) => {
                 setLectures(res);
             })
@@ -26,7 +26,7 @@ export default function MyLecturesProfessor() {
 
     return (
         <div id='MyLecturesProfessorContainer'>
-            <LectureList lectures={lectures} history={history} />
+            <LectureList lectures={lectures} history={history} setLectures={setLectures}/>
         </div>
     );
 }
@@ -41,7 +41,7 @@ function LectureList({ lectures, ...rest }) {
     );
 }
 
-function Lecture({ lectureId, courseId, courseName, room, date, time, mode, history, ...rest }) {
+function Lecture({lectureId, courseId, courseName, room, date, time, mode, history, setLectures, ...rest}) {
 
     const [bookings, setBookings] = React.useState([]);
 
@@ -58,6 +58,28 @@ function Lecture({ lectureId, courseId, courseName, room, date, time, mode, hist
             });
     }, [history, lectureId]);
 
+    const deleteLectureAndUpdate = (lectureID) => {
+        API.deleteLectureById(lectureID)
+        .then((res) => {
+            API.getLectures()
+            .then((result) => {
+                setLectures(result);
+            })
+            .catch((err) => {
+                if (err.status && err.status === 401)
+                    history.push('/');
+                else
+                    console.log(err);
+            });
+        })
+        .catch((err) => {
+            if (err.status && err.status === 401)
+                    history.push('/');
+                else
+                    console.log(err);
+        });
+    }
+
     return (
         <Col>
             <Accordion defaultActiveKey="1">
@@ -72,6 +94,12 @@ function Lecture({ lectureId, courseId, courseName, room, date, time, mode, hist
                                 <Col className='HeaderText'>Mode: {mode}</Col>
                                 <Col className='HeaderText'>Booked students: {bookings.length}</Col>
                                 <Col className='HeaderText'>Room: {room}</Col>
+                                <Col>
+                                    <Button 
+                                        onClick={() => deleteLectureAndUpdate(lectureId) }>
+                                            Delete
+                                    </Button>
+                                </Col>
                             </Row>
                         </Accordion.Toggle>
                     </Card.Header>
