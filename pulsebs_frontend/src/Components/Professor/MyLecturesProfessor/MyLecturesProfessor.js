@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row, Button, Accordion, Card} from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 import API from '../../../api/API';
-
+import moment from 'moment';
 
 export default function MyLecturesProfessor() {
 
@@ -16,8 +16,8 @@ export default function MyLecturesProfessor() {
                 setLectures(res);
             })
             .catch((err) => {
-                if (err.status && err.status === 401)
-                    history.push('/');
+                if (err.status && err.status === 401){
+                    history.push('/');}
                 else
                     console.log(err);
             });
@@ -44,6 +44,7 @@ function LectureList({ lectures, ...rest }) {
 function Lecture({lectureId, courseId, courseName, room, date, time, mode, history, setLectures, ...rest}) {
 
     const [bookings, setBookings] = React.useState([]);
+    const [errMsg, setErrMsg] = React.useState();
 
     React.useEffect(() => {
         API.getBookings(lectureId)
@@ -61,7 +62,7 @@ function Lecture({lectureId, courseId, courseName, room, date, time, mode, histo
     const deleteLectureAndUpdate = (lectureID) => {
         API.deleteLectureById(lectureID)
         .then((res) => {
-            API.getLectures()
+            API.getTeacherLectures()
             .then((result) => {
                 setLectures(result);
             })
@@ -75,8 +76,10 @@ function Lecture({lectureId, courseId, courseName, room, date, time, mode, histo
         .catch((err) => {
             if (err.status && err.status === 401)
                     history.push('/');
-                else
-                    console.log(err);
+                else{
+                    console.log(err.errors[0].msg);
+                    setErrMsg(err.errors[0].msg);
+                }
         });
     }
 
@@ -94,11 +97,12 @@ function Lecture({lectureId, courseId, courseName, room, date, time, mode, histo
                                 <Col className='HeaderText'>Mode: {mode}</Col>
                                 <Col className='HeaderText'>Booked students: {bookings.length}</Col>
                                 <Col className='HeaderText'>Room: {room}</Col>
-                                <Col>
-                                    <Button 
-                                        onClick={() => deleteLectureAndUpdate(lectureId) }>
-                                            Delete
-                                    </Button>
+                                <Col lg={12}>
+                                    {errMsg? 
+                                        <div>
+                                            <p className='HeaderText'>{errMsg}</p>
+                                            {/*<Button variant="danger" onClick={()=>setErrMsg()}>ok</Button>*/}
+                                        </div> : <p></p>}
                                 </Col>
                             </Row>
                         </Accordion.Toggle>
@@ -109,6 +113,10 @@ function Lecture({lectureId, courseId, courseName, room, date, time, mode, histo
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
+                <Button 
+                    onClick={() => deleteLectureAndUpdate(lectureId) }>
+                    Delete
+                </Button>
             </Accordion>
         </Col>
     );

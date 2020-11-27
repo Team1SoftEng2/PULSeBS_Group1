@@ -135,7 +135,7 @@ async function deleteLectureById(lectureId) {
             method: 'DELETE'
         }).then( (response) => {
             if(response.ok) {
-                resolve({status: "DONE"});
+                resolve("DONE");
             } else {
                 // analyze the cause of error
                 response.json()

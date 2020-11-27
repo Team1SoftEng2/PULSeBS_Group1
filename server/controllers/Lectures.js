@@ -34,27 +34,18 @@ module.exports.apiLecturesIdDELETE = async function apiLecturesIdDELETE(req, res
   Lectures.getLectureById(lectureId)
       .then((lecture) => {
         // verify that I'm in time to delete it
+        const now = moment();
+        let startTime = moment(lecture.date, 'dd-MM-YYYY HH:mm');
+        startTime = startTime.subtract(1, 'hours');
+        console.log(startTime);
+        console.log(now.isBefore(startTime));
 
-        const myTime = lecture.time;
-        const values = myTime.split('~');
-        let startTime = moment(values[0]);
-        // const endTime = values[1];
-
-        startTime = startTime.subtract({hours: '1'});
-        const nowTime = moment('h:mm');
-
-        const today = moment('D-M-YYYY');
-
-        if (today.isBefore(moment(lecture.date)) && nowTime.isBefore(startTime)) {
-          Lecture.deleteLectureById(lectureId)
-              .then((result) => {
-                utils.writeJson(res, result);
-              })
-              .catch((err) => {
-                utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
-              });
+        if (now.isBefore(startTime)) {
+          Lectures.deleteLectureById(lectureId)
+              .then((result) => utils.writeJson(res, 'OK'))
+              .catch((err) => utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'Internal Server Error'}]}, 500));
         } else {
-          utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'not in time to delete this lecture'}]}, 400);
+          utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'not in time'}]}, 400);
         }
       })
       .catch( (err) => {
