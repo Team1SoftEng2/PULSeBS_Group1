@@ -1,33 +1,33 @@
 import React from 'react';
 
-export default function LoginForm({postLogin, id, password, handleId, handlePassword, ...rest}) {
+export default function LoginForm({ postLogin, id, password, handleId, handlePassword, ...rest }) {
 
-  return <div className= "LoginFormContainer">
+  return <div className="LoginFormContainer">
     <h1>Lecture Booking</h1>
-    <h5>Welcome!<br/>Please Login or Sign Up to continue</h5>
+    <h5>Welcome!<br />Please Login to continue</h5>
     <div className="FormInputContainer">
-    <label htmlFor="id">Username</label>
       <input
-        type = "id"
-        id= "id" 
-        name= "id" 
-        onChange={ e => handleId(e.target.value)}
+        placeholder='Username'
+        type="id"
+        id="id"
+        name="id"
+        onChange={e => handleId(e.target.value)}
       />
     </div>
-    <div className= "FormInputContainer">
-    <label htmlFor="password">Password</label>
+    <div className="FormInputContainer">
       <input
-        type = "password" 
-        id= "password" 
-        name= "password"
-        onChange={ e => handlePassword(e.target.value)}
-        />
+        placeholder='Password'
+        type="password"
+        id="password"
+        name="password"
+        onChange={e => handlePassword(e.target.value)}
+      />
     </div>
     <div className="FormButtonContainer">
-    <button
-      className="btn btn-outline-primary"
-      id="Login" 
-      onClick={e => postLogin()}>Login</button>
+      <button
+        className="btn btn-outline-primary"
+        id="Login"
+        onClick={e => postLogin()}>Login</button>
     </div>
   </div>
 

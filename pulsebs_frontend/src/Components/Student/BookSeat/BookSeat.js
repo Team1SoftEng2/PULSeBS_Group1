@@ -59,13 +59,13 @@ function BookSeat(props) {
                 <Table bordered>
                     <tbody>
                         <tr>
-                            <td>Course</td>
-                            <td>Date</td>
-                            <td>Time</td>
-                            <td>Room</td>
-                            <td>Teacher</td>
-                            <td>Seats</td>
-                            <td>Booking Status</td>
+                            <td className= "table-header">Course</td>
+                            <td className= "table-header">Date</td>
+                            <td className= "table-header">Time</td>
+                            <td className= "table-header">Room</td>
+                            <td className= "table-header">Teacher</td>
+                            <td className= "table-header">Seats</td>
+                            <td className= "table-header">Booking Status</td>
                         </tr>
                         {courses.map( (c) => 
                         <BookLectures key={c.courseId}
@@ -154,9 +154,9 @@ function BookLecture(props) {
         <td className='TableContent'>{professor}</td>
         <td className='TableContent'>{(props.lecture.mode === "present") ? bookedSeats + "/" + props.lecture.maxSeats : "∞"}</td>
         <td className='TableContent'>
-            <button className={(booked) ? "Not_Book" : "Book"}
+            <button className= {((props.lecture.mode === "present")? ((booked) ? "Not_Book" : "Book"): "Online")}
                     onClick={() => handleClick() }>
-                {booked ? "Booked" : "Book"}
+                {(props.lecture.mode === "present")?(booked ? "Unbook" : "Book"): "Online"}
             </button>
         </td>
     </tr>

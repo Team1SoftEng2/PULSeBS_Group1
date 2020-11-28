@@ -20,6 +20,10 @@
     height: 100vh;
 }
 
+.nav-link{
+    font-weight: 600;
+}
+
 .row {
     width: 100%;
     display: flex;
@@ -37,4 +41,28 @@
 .table{
     color:#F6F6F6;
     background-color: #151A4F;
+}
+
+.table-header{
+    font-size: 600;
+}
+
+button{
+    outline: none;
+    font-weight: 600;
+    border: none;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+button.Not_Book{
+    background-color: #E3170A;
+}
+
+button.Book{
+    background-color: #179873;
+}
+
+button.Online{
+    background-color: #B9E6FF;
 }

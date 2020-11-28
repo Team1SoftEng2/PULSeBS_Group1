@@ -90,6 +90,7 @@ function Lecture({lectureId, courseId, courseName, room, date, time, mode, histo
                     <Card.Header>
                         <Accordion.Toggle lg={10} as={Button} variant="link" eventKey="0">
                             <Row >
+                                <span className='HeaderText'>▼</span>
                                 <Col className='HeaderText'>{lectureId}</Col>
                                 <Col className='HeaderText'>{courseName}</Col>
                                 <Col className='HeaderText'>Date: {date}</Col>
