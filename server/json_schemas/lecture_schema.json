@@ -10,9 +10,9 @@
             "type": "string",
             "description": "path to the JSON Schema to use for the validation of the JSOn file describing the lecture"
         },
-        "lectureId": { "type": "integer" },
+        "lectureId": { "type": "string" },
         "courseId": { "type": "string" },
-        "teacherId": { "type": "integer" },
+        "teacherId": { "type": "string" },
         "date": { "type": "string", "format": "date" },
         "time": { "type": "string", "format": "time"},
         "mode": { "type": "string" },

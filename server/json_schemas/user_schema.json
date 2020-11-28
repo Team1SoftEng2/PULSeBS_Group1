@@ -10,7 +10,7 @@
         "type": "string",
         "description": "path to the JSON Schema to use for the validation of the JSOn file describing the user"
       },
-      "userId": { "type": "integer" },
+      "userId": { "type": "string" },
       "name": { "type": "string" },
       "surname": { "type": "string" },
       "email": { "type": "string", "format": "email"},

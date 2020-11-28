@@ -10,8 +10,8 @@
             "type": "string",
             "description": "path to the JSON Schema to use for the validation of the JSOn file describing the booking"
         },
-        "studentId": { "type": "integer" },
-        "lectureId": { "type": "integer" }
+        "studentId": { "type": "string" },
+        "lectureId": { "type": "string" }
     },
     "required": ["studentId", "lectureId"]
 }

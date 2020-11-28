@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, Col, InputGroup } from 'react-bootstrap';
 import API from '../../../api/API';
 import { useHistory } from "react-router-dom";
+import moment from 'moment';
 
 function BookSeat(props) {
     const authObj = props.authObj;
@@ -119,20 +120,19 @@ function BookLecture(props) {
                     lectureId: props.lecture.lectureId
                     })
                     .then( () => {
-                        setBooked(!booked);
+                        setBooked(true);
                         setBookedSeats(bookedSeats + 1);
                     })
                     .catch( (err) => console.log(err) );
-        }else{
-           
-            setBooked(booked) ;
+        } else {
+            // setBooked(booked) ;
             API.cancelBooking({
                 studentId: props.userId,
                 lectureId: props.lecture.lectureId
             })
             .catch( (err) => console.log(err) )
             .then(() => {
-                setBooked(booked);
+                setBooked(false);
                 setBookedSeats(bookedSeats - 1);});
 
         }
@@ -143,11 +143,13 @@ function BookLecture(props) {
                             setProfessor(res.name + " " + res.surname);
                         })
                         .catch( (err) => console.log(err) ), []);
+
+    const date = moment(props.lecture.date, "DD-MM-YYYY HH:mm:ss");
     
     return <tr>
         <td className='TableContent'>{props.course.name}</td>
-        <td className='TableContent'>{props.lecture.date}</td>
-        <td className='TableContent'>{props.lecture.time}</td>
+        <td className='TableContent'>{date.format("DD-MM-YYYY")}</td>
+        <td className='TableContent'>{date.format("hh:mm")}</td>
         <td className='TableContent'>{(props.lecture.mode === "present") ? props.lecture.room : "Virtual Classroom"}</td>
         <td className='TableContent'>{professor}</td>
         <td className='TableContent'>{(props.lecture.mode === "present") ? bookedSeats + "/" + props.lecture.maxSeats : "∞"}</td>
