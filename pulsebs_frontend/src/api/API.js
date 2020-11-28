@@ -145,6 +145,28 @@ async function deleteLectureById(lectureId) {
         }).catch( (err) => {reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); // connection errors
     });
 }
+async function cancelBooking(booking) {
+    return new Promise((resolve, reject) =>{
+        fetch(baseURL + "/bookings", {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(booking),
+        }).then((response) => {
+            if (response.ok) {
+                resolve(null);
+            } else {
+                // analyze the cause of error
+                response.json()
+                .then( (obj) => {reject(obj);})
+                .catch( (err) => { reject({errors: [{ param: "Application", msg: "Cannot parse server response" }]})}); //something else
+            }
+        }).catch( (err) => {reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); // connection errors
+        
+    
+    })
+}
 
-const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getLecturesDate, getUser, deleteLectureById };
+const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getLecturesDate, getUser, deleteLectureById,cancelBooking };
 export default API;

@@ -39,3 +39,14 @@ module.exports.apiBookingsPOST = function apiBookingsPOST(req, res) {
 
   
 };
+//booking delete
+module.exports.apiBookingsDelete = function apiBookingsDelete(req, res) {
+  Bookings.apiBookingsDelete(req.body)
+  .then(function (response) {
+    utils.writeJson(res, {'msg': 'Delete'}, 202);
+    
+  })
+  .catch(function (response) {
+    utils.writeJson(res, {errors: [{'msg': 'Delete Internal Server Error' }],}, 502);
+  });
+};

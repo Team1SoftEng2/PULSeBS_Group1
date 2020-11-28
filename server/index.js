@@ -46,6 +46,8 @@ app.use(cookieParser());
 // Public APIs here
 app.post('/api/login', authController.apiLoginPOST);
 app.post('/api/bookings', validate({body: bookingSchema}), bookingsController.apiBookingsPOST);
+// DELETE bookings
+app.delete('/api/bookings', bookingsController.apiBookingsDelete);
 
 // Authentication endpoint
 app.use(

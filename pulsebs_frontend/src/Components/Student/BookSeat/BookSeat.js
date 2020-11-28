@@ -123,6 +123,18 @@ function BookLecture(props) {
                         setBookedSeats(bookedSeats + 1);
                     })
                     .catch( (err) => console.log(err) );
+        }else{
+           
+            setBooked(booked) ;
+            API.cancelBooking({
+                studentId: props.userId,
+                lectureId: props.lecture.lectureId
+            })
+            .catch( (err) => console.log(err) )
+            .then(() => {
+                setBooked(booked);
+                setBookedSeats(bookedSeats - 1);});
+
         }
     }
 

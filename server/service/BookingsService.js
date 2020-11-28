@@ -38,3 +38,14 @@ exports.apiBookingsPOST = function(body) {
   });
 }
 
+/*
+* Delete a booking  
+* */
+
+exports.apiBookingsDelete = function( body )  {
+  return new Promise( ( ( resolve, reject ) => {
+      const sql = `DELETE FROM Booking WHERE StudentID = ? AND LectureID = ?;`
+      db.run( sql, [body.studentId, body.lectureId], 
+        (err) => {err ? reject(err) : resolve(null)} );
+  } ) );
+}
