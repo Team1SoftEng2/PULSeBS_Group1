@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, Col, InputGroup } from 'react-bootstrap';
 import API from '../../../api/API';
 import { useHistory } from "react-router-dom";
+import moment from 'moment';
 
 function BookSeat(props) {
     const authObj = props.authObj;
@@ -58,13 +59,13 @@ function BookSeat(props) {
                 <Table bordered>
                     <tbody>
                         <tr>
-                            <td>Course</td>
-                            <td>Date</td>
-                            <td>Time</td>
-                            <td>Room</td>
-                            <td>Teacher</td>
-                            <td>Seats</td>
-                            <td>Booking Status</td>
+                            <td className= "table-header">Course</td>
+                            <td className= "table-header">Date</td>
+                            <td className= "table-header">Time</td>
+                            <td className= "table-header">Room</td>
+                            <td className= "table-header">Teacher</td>
+                            <td className= "table-header">Seats</td>
+                            <td className= "table-header">Booking Status</td>
                         </tr>
                         {courses.map( (c) => 
                         <BookLectures key={c.courseId}
@@ -119,10 +120,21 @@ function BookLecture(props) {
                     lectureId: props.lecture.lectureId
                     })
                     .then( () => {
-                        setBooked(!booked);
+                        setBooked(true);
                         setBookedSeats(bookedSeats + 1);
                     })
                     .catch( (err) => console.log(err) );
+        } else {
+            // setBooked(booked) ;
+            API.cancelBooking({
+                studentId: props.userId,
+                lectureId: props.lecture.lectureId
+            })
+            .catch( (err) => console.log(err) )
+            .then(() => {
+                setBooked(false);
+                setBookedSeats(bookedSeats - 1);});
+
         }
     }
 
@@ -131,18 +143,20 @@ function BookLecture(props) {
                             setProfessor(res.name + " " + res.surname);
                         })
                         .catch( (err) => console.log(err) ), []);
+
+    const date = moment(props.lecture.date, "DD-MM-YYYY HH:mm:ss");
     
     return <tr>
         <td className='TableContent'>{props.course.name}</td>
-        <td className='TableContent'>{props.lecture.date}</td>
-        <td className='TableContent'>{props.lecture.time}</td>
+        <td className='TableContent'>{date.format("DD-MM-YYYY")}</td>
+        <td className='TableContent'>{date.format("hh:mm")}</td>
         <td className='TableContent'>{(props.lecture.mode === "present") ? props.lecture.room : "Virtual Classroom"}</td>
         <td className='TableContent'>{professor}</td>
         <td className='TableContent'>{(props.lecture.mode === "present") ? bookedSeats + "/" + props.lecture.maxSeats : "∞"}</td>
         <td className='TableContent'>
-            <button className={(booked) ? "Not_Book" : "Book"}
+            <button className= {((props.lecture.mode === "present")? ((booked) ? "Not_Book" : "Book"): "Online")}
                     onClick={() => handleClick() }>
-                {booked ? "Booked" : "Book"}
+                {(props.lecture.mode === "present")?(booked ? "Unbook" : "Book"): "Online"}
             </button>
         </td>
     </tr>

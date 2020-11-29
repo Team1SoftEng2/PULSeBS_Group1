@@ -16,8 +16,8 @@ const sideDecoration = () => {
   return <div className= "AnimationContainer">
     <Lottie
       options={defaultOptions}
-      height={400}
-      width={400}
+      height={350}
+      width={350}
     />
   </div>
 

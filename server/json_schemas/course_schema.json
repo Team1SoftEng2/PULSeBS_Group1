@@ -11,7 +11,7 @@
             "description": "path to the JSON Schema to use for the validation of the JSOn file describing the course"
         },
         "courseId": { "type": "string" },
-        "teacherId": { "type": "integer" },
+        "teacherId": { "type": "string" },
         "name": { "type": "string" }
     },
     "required": ["courseId", "teacherId", "name"]
