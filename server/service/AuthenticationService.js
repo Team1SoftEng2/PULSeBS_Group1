@@ -24,14 +24,12 @@ exports.getUserById = function (id) {
                  WHERE ID = ?`;
 
     db.all(sql, [id, id, id, id], (err, row) => {
-      console.log(row);
         if (err) 
             reject(err);
         else if (row.length === 0 || row.length >1)
             resolve(undefined);
         else{
             const user = new User(row[0].ID, row[0].Name, row[0].Surname, row[0].emailAddress, row[0].password);
-            console.log(user);
             resolve(user);
         }
     });

@@ -11,13 +11,12 @@ const Courses = require('../service/CourseService');
 
 module.exports.apiLecturesGET = async function apiLecturesGET(req, res) {
   const courseId = req.query.courseId;
-  Lectures.getLectures(courseId)
-      .then(function(response) {
-        utils.writeJson(res, response);
-      })
-      .catch(function(response) {
-        utils.writeJson(res, {errors: [{'param': 'Server', 'msg': response}]}, 500);
-      });
+  let err;
+  let lectures;
+  [err, lectures] = await to(Lectures.getLectures(courseId));
+  if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
+  if (!lectures) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lecture not found'}]}, 404);
+  else return utils.writeJson(res, lectures);
 };
 
 module.exports.apiTeacherLecturesGET = async function apiTeacherLecturesGET(req, res) {
