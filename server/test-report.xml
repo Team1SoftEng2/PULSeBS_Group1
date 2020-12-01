@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/__tests__/unit_tests/AuthenticationService.test.js">
-    <testCase name="Testing getUserById" duration="3"/>
-    <testCase name="Testing checkPassword" duration="143"/>
-  </file>
   <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/__tests__/unit_tests/Lectures.test.js">
-    <testCase name="richiedi tutte le lezioni" duration="2"/>
+    <testCase name="get all lectures test" duration="4"/>
+    <testCase name="get all lectures available to a teacher" duration="10">
+      <failure message="TypeError: Cannot read property &apos;then&apos; of undefined"><![CDATA[TypeError: Cannot read property 'then' of undefined
+    at to (/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/node_modules/await-to-js/src/await-to-js.ts:11:6)
+    at Object.apiTeacherLecturesGET (/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/controllers/Lectures.js:29:26)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/__tests__/unit_tests/Lectures.test.js:108:21)
+    at Object.asyncJestTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/node_modules/jest-jasmine2/build/jasmineAsyncInstall.js:106:37)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/server/node_modules/jest-jasmine2/build/queueRunner.js:45:12
+    at new Promise (<anonymous>)
+    at mapper (/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/node_modules/jest-jasmine2/build/queueRunner.js:28:19)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/server/node_modules/jest-jasmine2/build/queueRunner.js:75:41
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)]]></failure>
+    </testCase>
+  </file>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/__tests__/unit_tests/service.test.js">
+    <testCase name="AuthenticationService Test Testing getUserById" duration="2"/>
+    <testCase name="AuthenticationService Test Testing checkPassword" duration="140"/>
+    <testCase name="BookingsService Testing getBookings" duration="0"/>
+    <testCase name="BookingsService Testing apiBookingsPOST" duration="1"/>
+    <testCase name="BookingsService Testing apiBookingsDelete" duration="0"/>
+    <testCase name="CourseService Test Testing getCourseById" duration="0"/>
+    <testCase name="CourseService Test Testing getStudentCourses" duration="0"/>
+    <testCase name="CourseService Test Testing getCourseByTeacherID" duration="1"/>
+    <testCase name="LecturesService Test getLectures" duration="0"/>
+    <testCase name="LecturesService Test getLectureById" duration="0"/>
+    <testCase name="LecturesService Test deleteLectureById" duration="1"/>
   </file>
 </testExecutions>
