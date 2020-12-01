@@ -6,7 +6,7 @@
   "scripts": {
     "prestart": "npm install",
     "start": "node index.js",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "keywords": [
     "swagger"
@@ -30,6 +30,17 @@
   "devDependencies": {
     "eslint": "^7.14.0",
     "eslint-config-google": "^0.14.0",
-    "jest": "^26.6.3"
+    "jest": "^26.6.3",
+    "jest-sonar-reporter": "^2.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverage": true,
+    "testResultsProcessor": "jest-sonar-reporter",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/__test__/",
+      "/components/__mocks__"
+    ]
   }
 }
