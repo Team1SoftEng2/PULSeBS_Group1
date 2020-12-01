@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
+<<<<<<< HEAD
   <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/__tests__/unit_tests/Lectures.test.js">
     <testCase name="get all lectures test" duration="4"/>
     <testCase name="get all lectures available to a teacher" duration="10">
@@ -27,5 +28,15 @@
     <testCase name="LecturesService Test getLectures" duration="0"/>
     <testCase name="LecturesService Test getLectureById" duration="0"/>
     <testCase name="LecturesService Test deleteLectureById" duration="1"/>
+=======
+  <file path="/home/gabriele/Scrivania/PULSeBS_Group1/server/__tests__/unit_tests/Lectures.test.js">
+    <testCase name="get all lectures test" duration="5"/>
+    <testCase name="get all lectures available to a teacher" duration="0"/>
+    <testCase name="delete a lecture by id" duration="5"/>
+  </file>
+  <file path="/home/gabriele/Scrivania/PULSeBS_Group1/server/__tests__/unit_tests/AuthenticationService.test.js">
+    <testCase name="Testing getUserById" duration="3"/>
+    <testCase name="Testing checkPassword" duration="114"/>
+>>>>>>> 8315545a4b846045a87341a34822daeb815fc8e4
   </file>
 </testExecutions>
