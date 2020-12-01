@@ -62,6 +62,7 @@ class homePageCalendarStudent extends Component {
           step={30}
           views={['work_week']}
           view='work_week'
+          onView = {()=>{}}
           min={new Date(2020, 0, 1, 8, 0)} // 8.00 am
           max={new Date(2020, 0, 1, 19, 30)} //19.30 pm
           date={this.state.date}

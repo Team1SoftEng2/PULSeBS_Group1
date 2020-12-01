@@ -15,7 +15,7 @@ describe('Testing', () => {
   describe('App', () => {
     test('renders App component', async () => {
       render(<LoginForm />);
-      await screen.findByText(/Email/);
+      await screen.findByText(/Lecture Booking/);
    
       //expect(screen.queryByText(/Email/)).toBeNull();
    
