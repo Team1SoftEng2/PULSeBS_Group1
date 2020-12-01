@@ -74,15 +74,44 @@ const courses = [
 // -------------------------------------------------------------------------------------------
 
 test('get all lectures test', () => {
-  const req = httpMocks.createRequest();
+  const req1 = httpMocks.createRequest();
+  const req2 = httpMocks.createRequest({query: {courseId: 'IS001'}});
   const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
 
   // ridefinisco la funzione che interagisce con il database
   Lectures.getLectures.mockImplementation(() => Promise.resolve(lectures));
 
-  return Controller.apiLecturesGET(req, res).then(() => {
+  // calling function to be tested
+  Controller.apiLecturesGET(req1, res).then(() => {
+    // expect.assertions(1);
     const data = res._getJSONData();
     expect(data).toEqual(lectures);
+  });
+  Controller.apiLecturesGET(req2, res).then(() => {
+    const data = res._getJSONData();
+    // expect.assertions(1);
+    expect(data).toEqual( [
+      {
+        lectureId: 'IS1003',
+        courseId: 'IS001',
+        teacherId: 't37001',
+        date: '20-11-2020 13:00',
+        time: '13:00~14:30',
+        mode: 'present',
+        room: 'Aula 1',
+        maxSeats: 150,
+      },
+      {
+        lectureId: 'IS1004',
+        courseId: 'IS001',
+        teacherId: 't37001',
+        date: '20-11-2020 13:00',
+        time: '13:00~14:30',
+        mode: 'present',
+        room: 'Aula 1',
+        maxSeats: 150,
+      },
+    ]);
   });
 });
 
@@ -93,40 +122,67 @@ test('get all lectures available to a teacher', () => {
 
   // ridefinisco la funzione che interagisce con il database
   Lectures.getLectures.mockImplementation((id) => {
-    Promise.resolve(lectures.filter((lectureId)=> {
-      return id === lectureId;
-    }));
+    const filteredLectures = lectures.filter((lecture)=> {
+      return id === lecture.courseId;
+    });
+    return Promise.resolve(filteredLectures);
   });
 
   Courses.getCourseByTeacherID.mockImplementation((id) => {
-    Promise.resolve(
-        courses.filter((teacherId) => {
-          return teacherId === id;
-        }));
+    const filteredCourses = courses.filter((course) => {
+      return course.teacherId === id;
+    });
+    return Promise.resolve(filteredCourses);
   });
 
-  return Controller.apiTeacherLecturesGET(req, res).then(() => {
+  // calling function to be tested
+  Controller.apiTeacherLecturesGET(req, res).then(() => {
     const data = res._getJSONData();
-    expect(data).toEqual([{
-      lectureId: 'IS1003',
-      courseId: 'IS001',
-      teacherId: 't37001',
-      date: '20-11-2020 13:00',
-      time: '13:00~14:30',
-      mode: 'present',
-      room: 'Aula 1',
-      maxSeats: 150,
-    },
-    {
-      lectureId: 'IS1004',
-      courseId: 'IS001',
-      teacherId: 't37001',
-      date: '20-11-2020 13:00',
-      time: '13:00~14:30',
-      mode: 'present',
-      room: 'Aula 1',
-      maxSeats: 150,
-    }]);
+    // expect.assertions(1);
+    expect(data).toEqual([
+      {
+        lectureId: 'IS1003',
+        courseId: 'IS001',
+        teacherId: 't37001',
+        date: '20-11-2020 13:00',
+        time: '13:00~14:30',
+        mode: 'present',
+        room: 'Aula 1',
+        maxSeats: 150,
+      },
+      {
+        lectureId: 'IS1004',
+        courseId: 'IS001',
+        teacherId: 't37001',
+        date: '20-11-2020 13:00',
+        time: '13:00~14:30',
+        mode: 'present',
+        room: 'Aula 1',
+        maxSeats: 150,
+      },
+    ]);
   });
 });
 
+// must do other cases
+
+test('delete a lecture by id', () => {
+  const req = httpMocks.createRequest({params: {id: 'IS1004'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectureById.mockImplementation((id) => {
+    const filteredLectures = lectures.filter((lecture)=> {
+      return id === lecture.lectureId;
+    });
+    return Promise.resolve(filteredLectures[0]);
+  });
+
+  Lectures.deleteLectureById.mockImplementation(() => Promise.resolve('OK'));
+
+  Controller.apiLecturesIdDELETE(req, res).then(() => {
+    const data = res._getJSONData();
+    // expect.assertions(1);
+    expect(data).toEqual({"errors": [{"msg": "not in time", "param": "Server"}]});
+  });
+});

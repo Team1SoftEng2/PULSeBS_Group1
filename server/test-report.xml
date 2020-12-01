@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/__tests__/unit_tests/AuthenticationService.test.js">
-    <testCase name="Testing getUserById" duration="3"/>
-    <testCase name="Testing checkPassword" duration="143"/>
+  <file path="/home/gabriele/Scrivania/PULSeBS_Group1/server/__tests__/unit_tests/Lectures.test.js">
+    <testCase name="get all lectures test" duration="5"/>
+    <testCase name="get all lectures available to a teacher" duration="0"/>
+    <testCase name="delete a lecture by id" duration="5"/>
   </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/__tests__/unit_tests/Lectures.test.js">
-    <testCase name="richiedi tutte le lezioni" duration="2"/>
+  <file path="/home/gabriele/Scrivania/PULSeBS_Group1/server/__tests__/unit_tests/AuthenticationService.test.js">
+    <testCase name="Testing getUserById" duration="3"/>
+    <testCase name="Testing checkPassword" duration="114"/>
   </file>
 </testExecutions>
