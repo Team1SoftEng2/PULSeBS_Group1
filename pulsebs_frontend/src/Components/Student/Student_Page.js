@@ -17,7 +17,7 @@ function studentPage(props){
         return <div>
             {authObj.authErr && <Redirect to = "/"/>}
             <BrowserRouter>
-                <StudentHeader username="UserName"/>
+                <StudentHeader/>
                 <Switch>
                     <Route path="/student" exact component={() => <HomePageCalendarStudent {...props}/>} />
                     <Route path="/student/my_lectures" exact component={ () => <MyLecturesStudent {...props}/>} />

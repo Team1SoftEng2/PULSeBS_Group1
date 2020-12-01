@@ -40,16 +40,10 @@ nav{
     color: #151A4F;
 }
 
-.nav-link{
-    color:#F6F6F6;
-    text-decoration: none;
-    text-align: center;
-}
-
 .nav-link:hover {
-    color: #B9E6FF;
+   color: #B9E6FF;
 
-}
+} 
 
 .accordion{
     width:90vw;
