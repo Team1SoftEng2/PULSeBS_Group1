@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Professor/__test__/professor.test.js">
-    <testCase name="Testing correction of the rendering of LoginForm component renders LoginForm component" duration="39"/>
+    <testCase name="Testing correction of the rendering of LoginForm component renders LoginForm component" duration="36"/>
   </file>
   <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Login/__test__/login.test.js">
-    <testCase name="Testing renders LoginForm component by role" duration="141"/>
-    <testCase name="App renders App component" duration="13"/>
-  </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/__test__/components.test.js">
-    <testCase name="App renders App component" duration="19"/>
+    <testCase name="Testing renders LoginForm component by role" duration="119"/>
+    <testCase name="App renders App component" duration="12"/>
   </file>
   <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/App.test.js">
     <testCase name="renders learn react link" duration="1"/>
   </file>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/__test__/components.test.js">
+    <testCase name="App renders App component" duration="18"/>
+  </file>
   <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Student/HomePageCalendar_Student/__test__/HomePageCalendar_Student.test.js">
-    <testCase name="Renders Calendar Legend Correctly" duration="272"/>
-    <testCase name="Renders Calendar Correctly" duration="146"/>
+    <testCase name="Renders Calendar Legend Correctly" duration="248"/>
+    <testCase name="Renders Calendar Correctly" duration="164"/>
   </file>
 </testExecutions>

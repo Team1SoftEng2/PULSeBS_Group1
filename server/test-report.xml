@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/__tests__/unit_tests/Lectures.test.js">
-    <testCase name="get all lectures test" duration="6"/>
-    <testCase name="get all lectures available to a teacher" duration="0"/>
-    <testCase name="delete a lecture by id" duration="8"/>
+    <testCase name="get all lectures test" duration="24"/>
+    <testCase name="get all lectures available to a teacher" duration="1"/>
+    <testCase name="delete a lecture by id" duration="16"/>
   </file>
   <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/server/__tests__/unit_tests/service.test.js">
-    <testCase name="AuthenticationService Test Testing getUserById" duration="1"/>
-    <testCase name="AuthenticationService Test Testing checkPassword" duration="141"/>
-    <testCase name="BookingsService Testing getBookings" duration="1"/>
-    <testCase name="BookingsService Testing apiBookingsPOST" duration="0"/>
+    <testCase name="AuthenticationService Test Testing getUserById" duration="3"/>
+    <testCase name="AuthenticationService Test Testing checkPassword" duration="175"/>
+    <testCase name="BookingsService Testing getBookings" duration="0"/>
+    <testCase name="BookingsService Testing apiBookingsPOST" duration="1"/>
     <testCase name="BookingsService Testing apiBookingsDelete" duration="0"/>
     <testCase name="CourseService Test Testing getCourseById" duration="1"/>
     <testCase name="CourseService Test Testing getStudentCourses" duration="0"/>
-    <testCase name="CourseService Test Testing getCourseByTeacherID" duration="0"/>
+    <testCase name="CourseService Test Testing getCourseByTeacherID" duration="1"/>
     <testCase name="LecturesService Test getLectures" duration="1"/>
     <testCase name="LecturesService Test getLectureById" duration="0"/>
-    <testCase name="LecturesService Test deleteLectureById" duration="0"/>
+    <testCase name="LecturesService Test deleteLectureById" duration="1"/>
   </file>
 </testExecutions>

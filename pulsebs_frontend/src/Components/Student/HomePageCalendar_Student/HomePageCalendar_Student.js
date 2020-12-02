@@ -29,7 +29,7 @@ class homePageCalendarStudent extends Component {
     this.state = {
       date: new Date(),
       first:true,
-      authObj:this.props.authObj.authUser,
+      authObj:this.props.authObj,
       professors:[],
       courses:[],
       lectures:[],
