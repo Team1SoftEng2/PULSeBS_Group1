@@ -41,18 +41,15 @@ class homePageCalendarStudent extends Component {
   getBooked(lecture,course,professor,userId){
     API.getBookings()
                         .then( (res) => {
-                          
                         this.setState({res:res})
-                        console.log(res)
                         data=lecture.date
                         time=lecture.time
                         time=time.split("~")
                         inizio=time[0].split(":")
                         fine=time[1].split(":")
                         data=data.split("-")
-                        console.log(res)
                         let b=true;
-                        if(res.some(r=>r.lectureId===lecture.lectureId)) b=false
+                        if(res.filter(s=>s.studentId===userId).some(r=>r.lectureId===lecture.lectureId)) b=false
                         if(!lezion.some(l=>l.title===lecture.lectureId )){
                             lezion[x]={
                             title:lecture.lectureId,
@@ -60,7 +57,7 @@ class homePageCalendarStudent extends Component {
                             professor: professor,
                             room: lecture.room,
                             mode:lecture.mode,
-                            booked: b,
+                            booked: b, //true=not booked(green) false=booked(red)
                             start:new Date(data[2],data[1]-1, data[0], inizio[0], inizio[1]), 
                             end: new Date(data[2],data[1]-1, data[0], fine[0], fine[1])
                             }
