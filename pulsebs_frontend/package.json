@@ -25,8 +25,7 @@
   },
   "jest": {
     "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "/test/"
+      "/node_modules/"
     ]
   },
   "scripts": {
@@ -63,10 +62,5 @@
     "eslint": "^7.14.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-react": "^7.21.5"
-  },
-  "jestSonar": {
-    "reportPath": ".",
-    "reportFile": "test-report.xml",
-    "indent": 4
   }
 }
