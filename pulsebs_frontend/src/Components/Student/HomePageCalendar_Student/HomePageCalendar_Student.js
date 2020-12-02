@@ -58,6 +58,7 @@ class homePageCalendarStudent extends Component {
                             start:new Date(data[2],data[1]-1, data[0], inizio[0], inizio[1]), 
                             end: new Date(data[2],data[1]-1, data[0], fine[0], fine[1])
                             }
+                            
                   x++;   
             }
         })
