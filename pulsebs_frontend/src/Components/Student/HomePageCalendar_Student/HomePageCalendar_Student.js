@@ -34,42 +34,64 @@ class homePageCalendarStudent extends Component {
       courses:[],
       lectures:[],
       events:[],
+      res:false,
     };
   }
 
-  getProfessor(lecture,course){
-  API.getUser(lecture.teacherId)
-        .then( (professors) => {
-            this.setState( { professors:professors || [] } );
-            data=lecture.date
-            time=lecture.time
-            time=time.split("~")
-            inizio=time[0].split(":")
-            fine=time[1].split(":")
-            data=data.split("-")
-            if(!lezion.some(l=>l.title===lecture.lectureId )){
-                  lezion[x]={
+  getBooked(lecture,course,professor,userId){
+    API.getBookings()
+                        .then( (res) => {
+                          
+                        this.setState({res:res})
+                        console.log(res)
+                        data=lecture.date
+                        time=lecture.time
+                        time=time.split("~")
+                        inizio=time[0].split(":")
+                        fine=time[1].split(":")
+                        data=data.split("-")
+                        console.log(res)
+                        let b=true;
+                        if(res.some(r=>r.lectureId===lecture.lectureId)) b=false
+                        if(!lezion.some(l=>l.title===lecture.lectureId )){
+                            lezion[x]={
                             title:lecture.lectureId,
                             course:course.name,
-                            professor: professors.name+ " "+ professors.surname,
+                            professor: professor,
                             room: lecture.room,
                             mode:lecture.mode,
-                            booked: lecture.booked,     
+                            booked: b,
                             start:new Date(data[2],data[1]-1, data[0], inizio[0], inizio[1]), 
                             end: new Date(data[2],data[1]-1, data[0], fine[0], fine[1])
                             }
-                            
-                  x++;   
-            }
+                          }
+
+                            x++;   
+                          
+                      }
+                        
+                        )
+                        .catch( (err) => {
+                            if (err.status && err.status === 401)
+                                console.log(err);
+                        })
+  }
+
+  getProfessor(lecture,course,userId){
+  API.getUser(lecture.teacherId)
+        .then( (professors) => {
+            this.setState( { professors:professors || [] } );
+            this.getBooked(lecture,course,professors.name+ " " + professors.surname,userId);
+            
         })
         .catch( (err) => console.log(err) )
   }
+
   getAllLectures (userId) {
     API.getStudentCourses(userId)
     .then((courses) => {
     this.setState( { courses: courses || [] } );
-    courses.map( (c)=> this.getSingleLectures(c) );
-    
+    courses.map( (c)=> this.getSingleLectures(c,userId) );
     this.setState({ events: lezion });
     })
     .catch((errorObj) => {
@@ -78,17 +100,26 @@ class homePageCalendarStudent extends Component {
     return this.state.courses;  
   };
   
-  getSingleLectures (course) {
+  getSingleLectures (course,userId) {
     API.getLectures(course.courseId)
     .then((lessons) =>{
                       this.setState( { lessons: lessons || [] } );
-                      lessons.map((l)=>this.getProfessor(l,course))
+                      lessons.map((l)=>this.getProfessor(l,course,userId))
                       }
           )
     .catch((errorObj) => {
     console.log(errorObj);
     });
   }
+
+
+
+
+
+
+
+
+
 
    getEventStyle = (event, start, end, isSelected) => {
     let newStyle = {
