@@ -8,90 +8,66 @@ import API from '../../../api/API';
 moment.locale("en-GB");
 const localizer = momentLocalizer(moment)
 
-/*
-const lezioni=[{  //This will be changed with the function to get the lectures
-  title: 'CourseName',
-  professor: 'ProfessorName',
-  room: 'LectureRoom',
-  mode: "present",
-  booked: false,
-  start: new Date(2020, 11, 3, 10, 30), // 10.00 AM
-  end: new Date(2020, 11, 3, 14, 0), // 2.00 PM 
-  },
-  {  //This will be changed with the function to get the lectures
-    title: 'CourseName2',
-    professor: 'ProfessorName2',
-    room: 'LectureRoom2',
-    mode: "present",
-    booked: false,
-    start: new Date(2020, 11, 4, 10, 30), // 10.00 AM
-    end: new Date(2020, 11, 4, 14, 0), // 2.00 PM 
-    },
-    {  //This will be changed with the function to get the lectures
-      course: 'CourseName3',
-      professor: 'ProfessorName',
-      room: 'LectureRoom',
-      mode: "present",
-      booked: true,
-      start: new Date(2020, 11, 8, 16, 30), // 10.00 AM
-      end: new Date(2020, 11, 8, 18, 0), // 2.00 PM 
-      }
-];*/
 let data;
 let time;
 let inizio;
 let fine;
 var lezion=[];
-var prof=[];
 let x=0;
 
 class homePageCalendarStudent extends Component {
   componentDidMount(){
-    lezion=[]
+    lezion=[];
     x=0;
-    prof=[];
-    //this.getAllLectures(this.state.authObj)
-    lezion=[]
-    prof=[]
+    this.getAllLectures(this.state.authObj);
+    lezion=[];
     x=0; 
-    this.getAllLectures(this.state.authObj)
+    this.getAllLectures(this.state.authObj);
   }
   constructor(props){
     super(props);
-
-    this.state = {date: new Date(), first:true, authObj:this.props.authObj, courses:[] , lectures: [], events: []/*[
-    {  //This will be changed with the function to get the lectures
-    title: 'CourseName',
-    professor: 'ProfessorName',
-    room: 'LectureRoom',
-    mode: "present",
-    booked: false,
-    start: new Date(2020, 11, 3, 10, 30), // 10.00 AM
-    end: new Date(2020, 11, 3, 14, 0), // 2.00 PM 
-    }
-  ]*/
+    this.state = {
+      date: new Date(),
+      first:true,
+      authObj:this.props.authObj.authUser,
+      professors:[],
+      courses:[],
+      lectures:[],
+      events:[],
     };
   }
 
-  getProfessor(lecture){
+  getProfessor(lecture,course){
   API.getUser(lecture.teacherId)
         .then( (professors) => {
-            this.setState({
-              prof:professors.name || [],
+            this.setState( { professors:professors || [] } );
+            data=lecture.date
+            time=lecture.time
+            time=time.split("~")
+            inizio=time[0].split(":")
+            fine=time[1].split(":")
+            data=data.split("-")
+            if(!lezion.some(l=>l.title===lecture.lectureId )){
+                  lezion[x]={
+                            title:lecture.lectureId,
+                            course:course.name,
+                            professor: professors.name+ " "+ professors.surname,
+                            room: lecture.room,
+                            mode:lecture.mode,
+                            booked: lecture.booked,     
+                            start:new Date(data[2],data[1]-1, data[0], inizio[0], inizio[1]), 
+                            end: new Date(data[2],data[1]-1, data[0], fine[0], fine[1])
+                            }
+                  x++;   
             }
-            );
-            
         })
         .catch( (err) => console.log(err) )
   }
   getAllLectures (userId) {
     API.getStudentCourses(userId)
     .then((courses) => {
-    this.setState({
-    courses: courses || [],
-    }
-    );
-    courses.map( (c)=>{ this.getSingleLectures(c.courseId) } );
+    this.setState( { courses: courses || [] } );
+    courses.map( (c)=> this.getSingleLectures(c) );
     
     this.setState({ events: lezion });
     })
@@ -102,37 +78,15 @@ class homePageCalendarStudent extends Component {
   };
   
   getSingleLectures (course) {
-    API.getLectures(course)
+    API.getLectures(course.courseId)
     .then((lessons) =>{
-      this.setState( { lessons: lessons || []});
-      lessons.map((l)=>{
-          this.getProfessor(l);
-          data=l.date
-          time=l.time
-          time=time.split("~")
-          inizio=time[0].split(":")
-          fine=time[1].split(":")
-          data=data.split("-")
-          
-          if(!lezion.some(a=>a.title===l.lectureId))
-              lezion[x]={
-                          course:l.lectureId,
-                          professor: l.teacherId,
-                          room: l.room,
-                          mode:l.mode,
-                          booked: l.booked,     
-                          start:new Date(data[2],data[1]-1, data[0], inizio[0], inizio[1]), 
-                          end: new Date(data[2],data[1]-1, data[0], fine[0], fine[1])
-                          }
-                          x++;
-                      
-      }
-      )
-      }
-      )
-      .catch((errorObj) => {
-      console.log(errorObj);
-      });
+                      this.setState( { lessons: lessons || [] } );
+                      lessons.map((l)=>this.getProfessor(l,course))
+                      }
+          )
+    .catch((errorObj) => {
+    console.log(errorObj);
+    });
   }
 
    getEventStyle = (event, start, end, isSelected) => {
