@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="7" failures="0" errors="0" time="3.27">
+  <testsuite name="Testing correction of the rendering of LoginForm component" errors="0" failures="0" skipped="0" timestamp="2020-12-02T15:07:00" time="1.022" tests="1">
+    <testcase classname="Testing correction of the rendering of LoginForm component renders LoginForm component" name="Testing correction of the rendering of LoginForm component renders LoginForm component" time="0.037">
+    </testcase>
+  </testsuite>
+  <testsuite name="Testing" errors="0" failures="0" skipped="0" timestamp="2020-12-02T15:07:00" time="1.141" tests="2">
+    <testcase classname="Testing renders LoginForm component by role" name="Testing renders LoginForm component by role" time="0.132">
+    </testcase>
+    <testcase classname="App renders App component" name="App renders App component" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="App" errors="0" failures="0" skipped="0" timestamp="2020-12-02T15:07:01" time="0.238" tests="1">
+    <testcase classname="App renders App component" name="App renders App component" time="0.021">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2020-12-02T15:07:01" time="0.177" tests="1">
+    <testcase classname=" renders learn react link" name=" renders learn react link" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2020-12-02T15:07:00" time="1.594" tests="2">
+    <testcase classname=" Renders Calendar Legend Correctly" name=" Renders Calendar Legend Correctly" time="0.235">
+    </testcase>
+    <testcase classname=" Renders Calendar Correctly" name=" Renders Calendar Correctly" time="0.139">
+    </testcase>
+  </testsuite>
+</testsuites>

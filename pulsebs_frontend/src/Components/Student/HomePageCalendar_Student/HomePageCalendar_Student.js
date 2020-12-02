@@ -59,7 +59,7 @@ class homePageCalendarStudent extends Component {
   constructor(props){
     super(props);
 
-    this.state = {date: new Date(), first:true, authObj:this.props.authObj.authUser, courses:[] , lectures: [], events: []/*[
+    this.state = {date: new Date(), first:true, authObj:this.props.authObj, courses:[] , lectures: [], events: []/*[
     {  //This will be changed with the function to get the lectures
     title: 'CourseName',
     professor: 'ProfessorName',
