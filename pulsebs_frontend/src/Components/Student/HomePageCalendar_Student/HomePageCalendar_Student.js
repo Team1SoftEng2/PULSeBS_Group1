@@ -5,7 +5,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import CustomEvent from "./CustomEvent";
 import API from '../../../api/API';
 
-moment.locale("en-GB");
+// moment.locale("en-GB");
 const localizer = momentLocalizer(moment)
 
 let data;
@@ -19,10 +19,10 @@ class homePageCalendarStudent extends Component {
   componentDidMount(){
     lezion=[];
     x=0;
-    this.getAllLectures(this.state.authObj);
-    lezion=[];
-    x=0; 
-    this.getAllLectures(this.state.authObj);
+    this.getAllLectures(this.state.authObj.authUser);
+    // lezion=[];
+    // x=0; 
+    // this.getAllLectures(this.state.authObj.authUser);
   }
   constructor(props){
     super(props);
@@ -42,7 +42,7 @@ class homePageCalendarStudent extends Component {
     API.getBookings()
                         .then( (res) => {
                         this.setState({res:res})
-                        data=lecture.date
+                        data=moment(lecture.date, "DD-MM-YYYY HH:mm:ss").format("DD-MM-YYYY");
                         time=lecture.time
                         time=time.split("~")
                         inizio=time[0].split(":")

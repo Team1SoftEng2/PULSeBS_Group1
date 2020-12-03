@@ -149,7 +149,7 @@ function BookLecture(props) {
     return <tr>
         <td className='TableContent'>{props.course.name}</td>
         <td className='TableContent'>{date.format("DD-MM-YYYY")}</td>
-        <td className='TableContent'>{date.format("hh:mm")}</td>
+        <td className='TableContent'>{date.format("HH:mm")}</td>
         <td className='TableContent'>{(props.lecture.mode === "present") ? props.lecture.room : "Virtual Classroom"}</td>
         <td className='TableContent'>{professor}</td>
         <td className='TableContent'>{(props.lecture.mode === "present") ? bookedSeats + "/" + props.lecture.maxSeats : "∞"}</td>
