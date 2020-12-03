@@ -144,6 +144,7 @@ class homePageCalendarStudent extends Component {
         {//console.log(this.state.events)
         }
         <Calendar
+          style = {{height: 650}}
           format={"DD/MM/YYYY HH:mm"}
           localizer={localizer}
           culture='it'
