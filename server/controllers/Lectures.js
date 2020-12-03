@@ -53,7 +53,7 @@ module.exports.apiLecturesIdDELETE = async function apiLecturesIdDELETE(req, res
   if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
   // verify that I'm in time to delete it
   const now = moment();
-  let startTime = moment(lecture.date, 'dd-MM-YYYY HH:mm');
+  let startTime = moment(lecture.date, 'DD-MM-YYYY HH:mm');
   startTime = startTime.subtract(1, 'hours');
   // if I'm in time
   if (now.isBefore(startTime)) {
