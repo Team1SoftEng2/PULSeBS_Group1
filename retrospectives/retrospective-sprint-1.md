@@ -1,4 +1,4 @@
-RETROSPECTIVE (Team 1)
+RETROSPECTIVE 1 (Team 1)
 =====================================
 
 The retrospective should include _at least_ the following
@@ -81,8 +81,6 @@ sections:
 
 - Improvement goals for the next sprint and how to achieve them (technical tasks, team coordination, etc.)
 Better coordination in the team, uniform amount of hours of work between team members, self-assigned tasks have to be completed individually 
-
-> Propose one or two
 
 - One thing you are proud of as a Team!!
  We build better quality software than before
