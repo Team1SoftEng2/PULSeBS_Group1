@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row, Button, Accordion, Card} from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 import API from '../../../api/API';
-import moment from 'moment';
+//import moment from 'moment';
 
 export default function MyLecturesProfessor() {
 

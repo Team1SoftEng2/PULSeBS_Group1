@@ -95,7 +95,7 @@ class homePageCalendarStudent extends Component {
     console.log(errorObj);
     });
     return this.state.courses;  
-  };
+  }
   
   getSingleLectures (course,userId) {
     API.getLectures(course.courseId)

@@ -2,7 +2,6 @@ import React from 'react';
 import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import StudentHeader from './StudentHeader/StudentHeader';
 import HomePageCalendarStudent from './HomePageCalendar_Student/HomePageCalendar_Student';
-import MyLecturesStudent from './MyLectures_Student/MyLectures_Student';
 import BookSeat from './BookSeat/BookSeat';
 import TutorialStudent from './TutorialStudent/TutorialStudent';
 import './Student_Page.css';
