@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\App.test.js">
-    <testCase name="renders learn react link" duration="4"/>
+    <testCase name="renders learn react link" duration="3"/>
   </file>
   <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Professor\__test__\professor.test.js">
-    <testCase name="Testing correction of the rendering of LoginForm component renders LoginForm component" duration="48"/>
+    <testCase name="Testing correction of the rendering of LoginForm component renders LoginForm component" duration="46"/>
   </file>
   <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\__test__\components.test.js">
-    <testCase name="App renders App component" duration="58"/>
+    <testCase name="App renders App component" duration="51"/>
   </file>
   <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\HomePageCalendar_Student\__test__\HomePageCalendar_Student.test.js">
-    <testCase name="Renders Calendar Legend Correctly" duration="159">
+    <testCase name="Renders Calendar Legend Correctly" duration="162">
       <failure message="TypeError: Cannot read property &apos;authUser&apos; of undefined"><![CDATA[TypeError: Cannot read property 'authUser' of undefined
     at homePageCalendarStudent.componentDidMount (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\HomePageCalendar_Student\HomePageCalendar_Student.js:22:44)
     at commitLifeCycles (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:20663:24)
@@ -54,7 +54,7 @@
     at runTest (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
     at Object.worker (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
     </testCase>
-    <testCase name="Renders Calendar Buttons Correctly" duration="55">
+    <testCase name="Renders Calendar Buttons Correctly" duration="66">
       <failure message="TypeError: Cannot read property &apos;authUser&apos; of undefined"><![CDATA[TypeError: Cannot read property 'authUser' of undefined
     at homePageCalendarStudent.componentDidMount (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\HomePageCalendar_Student\HomePageCalendar_Student.js:22:44)
     at commitLifeCycles (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:20663:24)
@@ -100,9 +100,11 @@
     </testCase>
   </file>
   <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Login\__test__\loginForm.test.js">
-    <testCase name="Renders the Text" duration="37"/>
-    <testCase name="Renders the Email input field" duration="6"/>
+    <testCase name="Renders the Text" duration="36"/>
+    <testCase name="Renders the Email input field" duration="7"/>
     <testCase name="Renders the Password input field" duration="5"/>
-    <testCase name="Renders the Submit Button" duration="59"/>
+    <testCase name="Updates to Email input field" duration="8"/>
+    <testCase name="Renders the Submit Button" duration="63"/>
+    <testCase name="Updates to Password input field" duration="4"/>
   </file>
 </testExecutions>
