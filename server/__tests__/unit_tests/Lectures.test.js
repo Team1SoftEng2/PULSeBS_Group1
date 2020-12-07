@@ -183,6 +183,6 @@ test('delete a lecture by id', () => {
   Controller.apiLecturesIdDELETE(req, res).then(() => {
     const data = res._getJSONData();
     // expect.assertions(1);
-    expect(data).toEqual({"errors": [{"msg": "not in time", "param": "Server"}]});
+    expect(data).toEqual({'errors': [{'msg': 'not in time', 'param': 'Server'}]});
   });
 });

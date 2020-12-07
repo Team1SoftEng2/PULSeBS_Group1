@@ -6,7 +6,7 @@ const Course = require('../service/CourseService');
 
 module.exports.apiCoursesIdGET = function apiCoursesIdGET(req, res) {
   const courseId = req.params.id;
-  Course.getCourseById(courseId)
+  return Course.getCourseById(courseId)
       .then(function(response) {
         if (!response) {
           utils.writeJson(res, response, 404);
