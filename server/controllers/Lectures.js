@@ -27,15 +27,16 @@ module.exports.apiTeacherLecturesGET = async function apiTeacherLecturesGET(req,
   let err;
   // get all courses
   [err, courses] = await to(Courses.getCourseByTeacherID(user));
+  if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
   if (!courses) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'courses not found'}]}, 404);
   // get all lectures
   [err, lectures] = await to(Promise.all(courses.map(async (course) => {
     return await Lectures.getLectures(course.courseId);
   })));
-  // if no lecture is retrieved
-  if (!lectures) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lectures not found'}]}, 404);
   // if an error occours
   if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
+  // if no lecture is retrieved
+  if (!lectures) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lectures not found'}]}, 404);
   // if lectures are available
   else return utils.writeJson(res, lectures[0]);
 };
@@ -47,10 +48,10 @@ module.exports.apiLecturesIdDELETE = async function apiLecturesIdDELETE(req, res
   let notification;
   // verifies that the lecture actually exists and get the start date
   [err, lecture] = await to(Lectures.getLectureById(lectureId));
-  // if not exists
-  if (!lecture) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lecture not found'}]}, 404);
   // if an error occours
   if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
+  // if not exists
+  if (!lecture) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lecture not found'}]}, 404);
   // verify that I'm in time to delete it
   const now = moment();
   let startTime = moment(lecture.date, 'DD-MM-YYYY HH:mm');
