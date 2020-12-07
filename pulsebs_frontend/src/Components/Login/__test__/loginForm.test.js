@@ -5,7 +5,7 @@ import LoginForm from '../LoginForm/LoginForm';
 
 function handleId(str) {};
 function handlePassword(str) {};
-function loginPost() {};
+const loginPost = jest.fn();
 
 test('Renders the Text', () => {
   const renderResult = render(<LoginForm />);
@@ -47,6 +47,9 @@ test('Renders the Submit Button', () => {
   expect(submitButton).toBeInTheDocument();
 });
 
-/*test('Test Button Click', ()=>{
-
-});*/
+test('Test Button Click', ()=>{
+  const renderResult = render(<LoginForm />);
+  const submitButton = renderResult.getByRole('button');
+  fireEvent.click(submitButton);
+  expect(loginPost).toHaveBeenCalledTimes(1);
+});
