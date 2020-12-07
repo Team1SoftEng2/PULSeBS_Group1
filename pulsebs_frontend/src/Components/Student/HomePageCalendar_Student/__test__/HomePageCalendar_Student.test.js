@@ -1,17 +1,17 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import HomePageCalendarStudent from '../HomePageCalendar_Student';
 
 test('Renders Calendar Legend Correctly', () => {
-    render(<HomePageCalendarStudent />);
-    screen.findByText(/Booked lesson/);
-    screen.findByText(/Not Booked lesson/);
-    screen.findByText(/Online lesson/)
+    const renderResult = render(<HomePageCalendarStudent />);
+    expect(renderResult.getByText('Booked lesson')).toBeInTheDocument();
+    expect(renderResult.getByText('Not Booked lesson')).toBeInTheDocument();
+    expect(renderResult.getByText('Online lesson')).toBeInTheDocument();
 });
 
-test('Renders Calendar Correctly', () => {
-    render(<HomePageCalendarStudent />)
-    screen.findByText(/today/);
-    screen.findByText(/back/);
-    screen.findByText(/next/);
+test('Renders Calendar Buttons Correctly', () => {
+    const renderResult = render(<HomePageCalendarStudent />)
+    expect(renderResult.getByText('today')).toBeInTheDocument();
+    expect(renderResult.getByText('back')).toBeInTheDocument();
+    expect(renderResult.getByText('next')).toBeInTheDocument();
 });
