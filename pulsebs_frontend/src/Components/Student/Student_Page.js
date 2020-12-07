@@ -10,7 +10,7 @@ import './Student_Page.css';
 
 function studentPage(props){
     const authObj = props.authObj;
-    
+    console.log(authObj);
     if(authObj.userRole !== "student")
         return <Redirect to = "/"/>
     else 
@@ -20,7 +20,6 @@ function studentPage(props){
                 <StudentHeader/>
                 <Switch>
                     <Route path="/student" exact component={() => <HomePageCalendarStudent {...props}/>} />
-                    <Route path="/student/my_lectures" exact component={ () => <MyLecturesStudent {...props}/>} />
                     <Route path="/student/book_a_seat" exact component={ () => <BookSeat {...props}/>} />
                     <Route path="/student/tutorial" exact component={TutorialStudent} />
                 </Switch>

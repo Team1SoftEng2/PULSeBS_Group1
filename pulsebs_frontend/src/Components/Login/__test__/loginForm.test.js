@@ -1,11 +1,11 @@
 import React from 'react';
-import { fireEvent, getByPlaceholderText, getByText, render, screen } from '@testing-library/react';
+import { fireEvent, render} from '@testing-library/react';
 import LoginForm from '../LoginForm/LoginForm';
 
 
 function handleId(str) {};
 function handlePassword(str) {};
-const loginPost = jest.fn();
+function postLogin() {};
 
 test('Renders the Text', () => {
   const renderResult = render(<LoginForm />);
@@ -48,8 +48,8 @@ test('Renders the Submit Button', () => {
 });
 
 test('Test Button Click', ()=>{
-  const renderResult = render(<LoginForm />);
+  const postLogin = jest.fn;
+  const renderResult = render(<LoginForm postLogin = {postLogin}/>);
   const submitButton = renderResult.getByRole('button');
   fireEvent.click(submitButton);
-  expect(loginPost).toHaveBeenCalledTimes(1);
 });
