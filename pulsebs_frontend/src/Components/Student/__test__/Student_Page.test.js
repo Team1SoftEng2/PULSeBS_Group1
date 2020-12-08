@@ -3,6 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import StudentPage from '../Student_Page';
 
 const testAuthObj = { authUser: "s27001", authErr: undefined, userRole: "student" };
+const testAuthObjErr = { authUser: "s37001", authErr: undefined, userRole: "professor" };
 
 test('Renders Student Header Correctly', () => {
     const renderResult = render(<StudentPage authObj={testAuthObj} />);
@@ -11,6 +12,11 @@ test('Renders Student Header Correctly', () => {
     expect(renderResult.getByText('Book a seat')).toBeInTheDocument();
     expect(renderResult.getByText('Tutorial')).toBeInTheDocument();
     expect(renderResult.getByText('Logout')).toBeInTheDocument();
+});
+
+test('Check with Wrong Credentials', () => {
+    const renderResult = render(<StudentPage authObj={testAuthObjErr} />);
+    expect(renderResult.queryByText('= Booked lesson')).not.toBeInTheDocument();
 });
 
 test('Check Book a Seat', () => {

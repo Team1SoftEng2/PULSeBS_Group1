@@ -2,7 +2,6 @@ import React from 'react';
 import { fireEvent, render} from '@testing-library/react';
 import LoginForm from '../LoginForm/LoginForm';
 
-
 function handleId(str) {};
 function handlePassword(str) {};
 function postLogin() {};
@@ -27,7 +26,7 @@ test('Updates to Email input field', ()=> {
   expect(emailInputField.value).toBe(emailInput);
 });
 
-test('Renders the Password input field', async () => {
+test('Renders the Password input field', () => {
   const renderResult = render(<LoginForm />);
   const passwordInputField = renderResult.getByPlaceholderText('Password');
   expect(passwordInputField).toBeInTheDocument();
@@ -48,7 +47,6 @@ test('Renders the Submit Button', () => {
 });
 
 test('Test Button Click', ()=>{
-  const postLogin = jest.fn;
   const renderResult = render(<LoginForm postLogin = {postLogin}/>);
   const submitButton = renderResult.getByRole('button');
   fireEvent.click(submitButton);

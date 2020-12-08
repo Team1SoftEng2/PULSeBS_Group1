@@ -12,7 +12,7 @@ function bookingManagerPage (props) {
     //     return <Redirect to = "/"/>
     // else     
         return <div>
-            {authObj.authErr && <Redirect to = "/"/>}
+            <BrowserRouter>{authObj.authErr && <Redirect to = "/"/>}</BrowserRouter>
             <BrowserRouter>
                 <BookingManagerHeader username="UserName" />
                 <Switch>
