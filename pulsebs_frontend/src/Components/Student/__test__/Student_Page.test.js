@@ -26,7 +26,7 @@ test('Check Book a Seat', () => {
 
 });
 
-test('Check HomePage', () =>{
+test('Check HomePage', () => {
     const renderResult = render(<StudentPage authObj={testAuthObj} />);
     const studentHomePageButton = renderResult.getByText('HomePage');
     fireEvent.click(studentHomePageButton);
@@ -36,4 +36,17 @@ test('Check HomePage', () =>{
     expect(renderResult.getByText('Today')).toBeInTheDocument();
     expect(renderResult.getByText('Back')).toBeInTheDocument();
     expect(renderResult.getByText('Next')).toBeInTheDocument();
-})
+});
+
+test('Check Tutorial', () => {
+    const renderResult = render(<StudentPage authObj={testAuthObj} />);
+    const tutorialButton = renderResult.getByText('Tutorial');
+    fireEvent.click(tutorialButton);
+    expect(renderResult.getByText('This page will show the tutorial.')).toBeInTheDocument();
+});
+
+test('Check Logout', () => {
+    const renderResult = render(<StudentPage authObj={testAuthObj} />);
+    const logoutButton = renderResult.getByText('Logout');
+    fireEvent.click(logoutButton);
+});
