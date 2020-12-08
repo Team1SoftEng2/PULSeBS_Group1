@@ -25,7 +25,7 @@ function StudentPage(props){
                                 history.push('/');
                             else
                                 console.log(err);
-                        }), [history]
+                        }), [history, authObj.authUser]
     );
 
     useEffect( () => API.getBookings()
@@ -41,10 +41,12 @@ function StudentPage(props){
     );
     
     const getAllLectures = (coursesList) => {
+        let lecturesList = []
         coursesList.forEach( (course) => {
             API.getLectures(course.courseId)
                 .then( (res) => {
-                    setLectures(lectures.concat(res));
+                    lecturesList = lecturesList.concat(res);
+                    setLectures(lecturesList);
                 })
                 .catch( (err) => {
                     if (err.status && err.status === 401)
@@ -53,7 +55,6 @@ function StudentPage(props){
                         console.log(err);
                 });
         });
-        
     };                    
 
 
