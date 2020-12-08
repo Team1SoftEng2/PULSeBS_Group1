@@ -2,7 +2,11 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import ProfessorPage from '../Professor_Page';
 
-const testAuthObj = { authUser: "s37001", authErr: undefined, userRole: "professor" };
+const testAuthObj = { authUser: "t37001", authErr: undefined, userRole: "professor" };
+const testAuthObjErr = { authUser: "s27001", authErr: undefined, userRole: "student" };
+const testAuthObjErr2 = { authUser: "t37001", authErr: true, userRole: "student" };
+
+
 
 test('Renders Professor Header Correctly', () => {
   const renderResult = render(<ProfessorPage authObj={testAuthObj} />);
@@ -13,6 +17,16 @@ test('Renders Professor Header Correctly', () => {
   expect(renderResult.getByText('Statistics')).toBeInTheDocument();
   expect(renderResult.getByText('Tutorial')).toBeInTheDocument();
   expect(renderResult.getByText('Logout')).toBeInTheDocument();
+});
+
+test('Check Authentication Error', ()=>{
+  const renderResult = render(<ProfessorPage authObj={testAuthObjErr2} />);
+  expect(renderResult.queryByText('Here the professor will see a calendar with his/her lessons for the week')).not.toBeInTheDocument();
+});
+
+test('Check with Wrong Credentials', () => {
+  const renderResult = render(<ProfessorPage authObj={testAuthObjErr} />);
+  expect(renderResult.queryByText('Here the professor will see a calendar with his/her lessons for the week')).not.toBeInTheDocument();
 });
 
 test('Check Home Page', () => {

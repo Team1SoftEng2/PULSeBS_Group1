@@ -3,6 +3,8 @@ import { fireEvent, render } from '@testing-library/react';
 import SupportOfficerPage from '../SuppOfficer_Page';
 
 const testAuthObj = { authUser: "s37001", authErr: undefined, userRole: "professor" };
+const testAuthObjErr = { authUser: "s37001", authErr: true, userRole: "professor" };
+
 
 test('Renders Booking Manager Header Correctly', () => {
     const renderResult = render(<SupportOfficerPage authObj={testAuthObj} />);
@@ -12,6 +14,11 @@ test('Renders Booking Manager Header Correctly', () => {
     expect(renderResult.getByText('System Update')).toBeInTheDocument();
     expect(renderResult.getByText('Change Configuration')).toBeInTheDocument();
     expect(renderResult.getByText('Logout')).toBeInTheDocument();
+});
+
+test('Check Authentication Error', () => {
+    const renderResult = render(<SupportOfficerPage authObj={testAuthObjErr} />);
+    expect(renderResult.queryByText('Here the support officer will be able to exclude holidays from booking')).not.toBeInTheDocument();
 });
 
 test('Check Change Configuration',()=>{

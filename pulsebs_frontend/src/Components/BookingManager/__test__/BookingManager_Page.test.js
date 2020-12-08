@@ -3,6 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import BookingManagerPage from '../BookingManager_Page';
 
 const testAuthObj = { authUser: "s37001", authErr: undefined, userRole: "professor" };
+const testAuthObjErr = { authUser: "s37001", authErr: true, userRole: "professor" };
 
 test('Renders Booking Manager Header Correctly', () => {
     const renderResult = render(<BookingManagerPage authObj={testAuthObj} />);
@@ -11,6 +12,11 @@ test('Renders Booking Manager Header Correctly', () => {
     expect(renderResult.getByText('Monitor System Usage')).toBeInTheDocument();
     expect(renderResult.getByText('Contact Tracing')).toBeInTheDocument();
     expect(renderResult.getByText('Logout')).toBeInTheDocument();
+});
+
+test('Check Authentication Error', () => {
+    const renderResult = render(<BookingManagerPage authObj={testAuthObjErr} />);
+    expect(renderResult.queryByText('HomePageHere the booking manager can Monitor the sysyem usage.')).not.toBeInTheDocument();
 });
 
 test('Check Monitor System Usage',()=>{
