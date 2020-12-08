@@ -16,14 +16,6 @@ var lezion=[];
 let x=0;
 
 class homePageCalendarStudent extends Component {
-  componentDidMount(){
-    lezion=[];
-    x=0;
-    this.getAllLectures(this.state.authObj.authUser);
-    // lezion=[];
-    // x=0; 
-    // this.getAllLectures(this.state.authObj.authUser);
-  }
   constructor(props){
     super(props);
     this.state = {
@@ -31,11 +23,32 @@ class homePageCalendarStudent extends Component {
       first:true,
       authObj:this.props.authObj,
       professors:[],
-      courses:[],
-      lectures:[],
+      courses: this.props.courses,
+      lectures:this.props.lectures,
       events:[],
       res:false,
     };
+    // In props there are:
+    // - courses = courses attended by the student
+    // - bookings = student bookings (all courses)
+    // - lecutures = all student lectures (all courses) 
+  }
+
+  componentDidMount(){
+    lezion=[];
+    x=0;
+    this.getAllLectures(this.state.authObj.authUser);
+
+    let events = this.props.lectures.map( (l) => {
+      // for each lecture create an event for the calendar
+      // get date, start time and end time
+      // check if booked or not
+      // get courseName => see BookLecture in BookSeat.js
+      // get teacher => call API.getUser(teacherId) [async/await + check]
+      // create the event object
+    }); 
+    // set the state
+    // this.setState({'events': events}); 
   }
 
   getBooked(lecture,course,professor,userId){
@@ -85,16 +98,21 @@ class homePageCalendarStudent extends Component {
   }
 
   getAllLectures (userId) {
-    API.getStudentCourses(userId)
-    .then((courses) => {
+    let courses = this.props.courses;
     this.setState( { courses: courses || [] } );
-    courses.map( (c)=> this.getSingleLectures(c,userId) );
+    courses.map( (c) => this.getSingleLectures(c, userId));
     this.setState({ events: lezion });
-    })
-    .catch((errorObj) => {
-    console.log(errorObj);
-    });
-    return this.state.courses;  
+
+    // API.getStudentCourses(userId)
+    //   .then((courses) => {
+    //     this.setState( { courses: courses || [] } );
+    //     courses.map( (c)=> this.getSingleLectures(c,userId) );
+    //     this.setState({ events: lezion });
+    //   })
+    //   .catch((errorObj) => {
+    //     console.log(errorObj);
+    //   });
+    // return this.state.courses;  
   }
   
   getSingleLectures (course,userId) {
@@ -137,9 +155,9 @@ class homePageCalendarStudent extends Component {
     return (
       <div className="StudentCalendarContainer">
         <div className = "StudentCalendarLegend">
-        <div className = "LegendElement"><div class='box red'></div>= Booked lesson</div>
-        <div className = "LegendElement"><div class='box green'></div>= Not Booked lesson</div>
-        <div className = "LegendElement"><div class='box blue'></div>= Online lesson</div>
+        <div className = "LegendElement"><div className='box red'></div>= Booked lesson</div>
+        <div className = "LegendElement"><div className='box green'></div>= Not Booked lesson</div>
+        <div className = "LegendElement"><div className='box blue'></div>= Online lesson</div>
         </div>
         {//console.log(this.state.events)
         }
