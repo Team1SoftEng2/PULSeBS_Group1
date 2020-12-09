@@ -19,9 +19,14 @@
     padding-top: 50px;
 }
 
+button.enabled{
+    background-color: #F6F6F6;
+    color: #151A4F;
+    padding: 3px;
+}
+
 button.disabled{
     background-color: gray;
-    color: #151A4F;
 }
 
 button.disabled:hover{

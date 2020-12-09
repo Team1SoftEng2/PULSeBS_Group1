@@ -116,7 +116,10 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
                                 <Col className='HeaderText'>{lectureId}</Col>
                                 <Col className='HeaderText'>Date: {date}</Col>
                                 <Col className='HeaderText'>Time: {time}</Col>
-                                <Col className='HeaderText'>Mode: {mode}</Col>
+                                <Col className='HeaderText'>
+                                    <button className={(CheckTimeDiff(30, date)) ? 'disabled' : 'enabled'} onClick={() => {/*To be changed with the API */}}> {mode}
+                                    </button>
+                                </Col>
                                 <Col className='HeaderText'>Booked students: {bookings.length}</Col>
                                 <Col className='HeaderText'>Room: {room}</Col>
                                 <Col className='HeaderText'>
