@@ -15,7 +15,7 @@ module.exports.apiLecturesGET = async function apiLecturesGET(req, res) {
   let lectures;
   [err, lectures] = await to(Lectures.getLectures(courseId));
   if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
-  if (!lectures) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lecture not found'}]}, 404);
+  if (!lectures || lectures.length === 0) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lecture not found'}]}, 404);
   else return utils.writeJson(res, lectures);
 };
 
@@ -28,7 +28,7 @@ module.exports.apiTeacherLecturesGET = async function apiTeacherLecturesGET(req,
   // get all courses
   [err, courses] = await to(Courses.getCourseByTeacherID(user));
   if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
-  if (!courses) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'courses not found'}]}, 404);
+  if (!courses || courses.length === 0) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'courses not found'}]}, 404);
   // get all lectures
   [err, lectures] = await to(Promise.all(courses.map(async (course) => {
     return await Lectures.getLectures(course.courseId);
@@ -36,7 +36,7 @@ module.exports.apiTeacherLecturesGET = async function apiTeacherLecturesGET(req,
   // if an error occours
   if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
   // if no lecture is retrieved
-  if (!lectures) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lectures not found'}]}, 404);
+  if (!lectures || lectures[0].length === 0) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lectures not found'}]}, 404);
   // if lectures are available
   else return utils.writeJson(res, lectures[0]);
 };

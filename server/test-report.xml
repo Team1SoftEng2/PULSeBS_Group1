@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
+  <file path="/home/gabriele/Scrivania/PULSeBS_Group1/server/__tests__/unit_tests/Course.test.js">
+    <testCase name="get a course given his ID" duration="9"/>
+    <testCase name="get a course given a non existing ID" duration="1"/>
+    <testCase name="get a course given an ID but an error in the service occours" duration="1"/>
+    <testCase name="get courses given student ID" duration="2"/>
+    <testCase name="get courses given wrong student ID" duration="1"/>
+    <testCase name="get courses given student ID but simulate db error" duration="1"/>
+  </file>
+  <file path="/home/gabriele/Scrivania/PULSeBS_Group1/server/__tests__/unit_tests/Lectures.test.js">
+    <testCase name="get all lectures test" duration="6"/>
+    <testCase name="get all lectures test given a CourseID" duration="1"/>
+    <testCase name="get all lectures given a non existing courseId" duration="1"/>
+    <testCase name="get all lectures but an error occours in the db" duration="1"/>
+    <testCase name="get all lectures available to a teacher" duration="2"/>
+    <testCase name="get all lectures available to a teacher with no courses" duration="1"/>
+    <testCase name="get all lectures available to a teacher but an error occurs in getCourseByTeacherID" duration="0"/>
+    <testCase name="get all lectures available to a teacher but an error occurs in getLecture" duration="1"/>
+    <testCase name="get all lectures available to a teacher with a course with no lectures" duration="1"/>
+    <testCase name="delete a lecture by id" duration="5"/>
+  </file>
   <file path="/home/gabriele/Scrivania/PULSeBS_Group1/server/__tests__/unit_tests/service.test.js">
     <testCase name="AuthenticationService Test Testing getUserById" duration="3"/>
-    <testCase name="AuthenticationService Test Testing checkPassword" duration="116"/>
-    <testCase name="BookingsService Testing getBookings" duration="1"/>
-    <testCase name="BookingsService Testing apiBookingsPOST" duration="0"/>
+    <testCase name="AuthenticationService Test Testing checkPassword" duration="159"/>
+    <testCase name="BookingsService Testing getBookings" duration="0"/>
+    <testCase name="BookingsService Testing apiBookingsPOST" duration="1"/>
     <testCase name="BookingsService Testing apiBookingsDelete" duration="0"/>
     <testCase name="CourseService Test Testing getCourseById" duration="1"/>
     <testCase name="CourseService Test Testing getStudentCourses" duration="0"/>
-    <testCase name="CourseService Test Testing getCourseByTeacherID" duration="0"/>
+    <testCase name="CourseService Test Testing getCourseByTeacherID" duration="1"/>
     <testCase name="LecturesService Test getLectures" duration="0"/>
     <testCase name="LecturesService Test getLectureById" duration="0"/>
-    <testCase name="LecturesService Test deleteLectureById" duration="1"/>
-  </file>
-  <file path="/home/gabriele/Scrivania/PULSeBS_Group1/server/__tests__/unit_tests/Course.test.js">
-    <testCase name="get a course given his ID" duration="4"/>
-    <testCase name="get a course given a non existing ID" duration="0"/>
-    <testCase name="get a course given an ID but an error in the service occours" duration="1"/>
-    <testCase name="get courses given student ID" duration="1"/>
-    <testCase name="get courses given wrong student ID" duration="0"/>
-    <testCase name="get courses given student ID but simulate db error" duration="0"/>
-  </file>
-  <file path="/home/gabriele/Scrivania/PULSeBS_Group1/server/__tests__/unit_tests/Lectures.test.js">
-    <testCase name="get all lectures test" duration="1"/>
-    <testCase name="get all lectures available to a teacher" duration="1"/>
-    <testCase name="delete a lecture by id" duration="5"/>
+    <testCase name="LecturesService Test deleteLectureById" duration="0"/>
   </file>
 </testExecutions>

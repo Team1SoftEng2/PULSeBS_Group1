@@ -68,28 +68,47 @@ const courses = [
     teacherId: 't37003',
     name: 'Data Science',
   },
+  {
+    courseId: 'ML001',
+    teacherId: 't37004',
+    name: 'Machine Learning',
+  },
 ];
 
 // end of mockup data-------------------------------------------------------------------------
 // -------------------------------------------------------------------------------------------
 
+/* ============================================================================================
+                                    TESTS of apiLecturesGET
+=============================================================================================*/
 test('get all lectures test', () => {
-  const req1 = httpMocks.createRequest();
-  const req2 = httpMocks.createRequest({query: {courseId: 'IS001'}});
+  const req = httpMocks.createRequest();
   const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
 
   // ridefinisco la funzione che interagisce con il database
   Lectures.getLectures.mockImplementation(() => Promise.resolve(lectures));
 
   // calling function to be tested
-  Controller.apiLecturesGET(req1, res).then(() => {
-    // expect.assertions(1);
+  return Controller.apiLecturesGET(req, res).then(() => {
+    expect.assertions(1);
     const data = res._getJSONData();
     expect(data).toEqual(lectures);
   });
-  Controller.apiLecturesGET(req2, res).then(() => {
+});
+
+test('get all lectures test given a CourseID', () => {
+  const req = httpMocks.createRequest({query: {courseId: 'IS001'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectures.mockImplementation((courseId) => {
+    const result = lectures.filter((lecture) => lecture.courseId === courseId);
+    return Promise.resolve(result);
+  });
+
+  return Controller.apiLecturesGET(req, res).then(() => {
     const data = res._getJSONData();
-    // expect.assertions(1);
+    expect.assertions(1);
     expect(data).toEqual( [
       {
         lectureId: 'IS1003',
@@ -115,6 +134,41 @@ test('get all lectures test', () => {
   });
 });
 
+test('get all lectures given a non existing courseId', () => {
+  const req = httpMocks.createRequest({query: {courseId: 'IS005'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectures.mockImplementation((courseId) => {
+    const result = lectures.filter((lecture) => lecture.courseId === courseId);
+    return Promise.resolve(result);
+  });
+
+  return Controller.apiLecturesGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'lecture not found'}]});
+  });
+});
+
+test('get all lectures but an error occours in the db', () => {
+  const req = httpMocks.createRequest({query: {courseId: 'IS005'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectures.mockImplementation((courseId) => {
+    return Promise.reject('db error');
+  });
+
+  return Controller.apiLecturesGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'db error'}]});
+  });
+});
+/* ============================================================================================
+                                  TESTS of getCourseByTeacherID
+=============================================================================================*/
 
 test('get all lectures available to a teacher', () => {
   const req = httpMocks.createRequest({user: {user: 't37001'}});
@@ -136,9 +190,9 @@ test('get all lectures available to a teacher', () => {
   });
 
   // calling function to be tested
-  Controller.apiTeacherLecturesGET(req, res).then(() => {
+  return Controller.apiTeacherLecturesGET(req, res).then(() => {
     const data = res._getJSONData();
-    // expect.assertions(1);
+    expect.assertions(1);
     expect(data).toEqual([
       {
         lectureId: 'IS1003',
@@ -164,7 +218,109 @@ test('get all lectures available to a teacher', () => {
   });
 });
 
-// must do other cases
+test('get all lectures available to a teacher with no courses', () => {
+  const req = httpMocks.createRequest({user: {user: 't37009'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectures.mockImplementation((id) => {
+    const filteredLectures = lectures.filter((lecture)=> {
+      return id === lecture.courseId;
+    });
+    return Promise.resolve(filteredLectures);
+  });
+
+  Courses.getCourseByTeacherID.mockImplementation((id) => {
+    const filteredCourses = courses.filter((course) => {
+      return course.teacherId === id;
+    });
+    return Promise.resolve(filteredCourses);
+  });
+
+  // calling function to be tested
+  return Controller.apiTeacherLecturesGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'courses not found'}]});
+  });
+});
+
+test('get all lectures available to a teacher but an error occurs in getCourseByTeacherID', () => {
+  const req = httpMocks.createRequest({user: {user: 't37001'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectures.mockImplementation((id) => {
+    const filteredLectures = lectures.filter((lecture)=> {
+      return id === lecture.courseId;
+    });
+    return Promise.resolve(filteredLectures);
+  });
+
+  Courses.getCourseByTeacherID.mockImplementation((id) => Promise.reject('db error'));
+
+  // calling function to be tested
+  return Controller.apiTeacherLecturesGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'db error'}]});
+  });
+});
+
+test('get all lectures available to a teacher but an error occurs in getLecture', () => {
+  const req = httpMocks.createRequest({user: {user: 't37001'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectures.mockImplementation((id) => Promise.reject('db error'));
+
+  Courses.getCourseByTeacherID.mockImplementation((id) => {
+    const filteredCourses = courses.filter((course) => {
+      return course.teacherId === id;
+    });
+    return Promise.resolve(filteredCourses);
+  });
+
+  // calling function to be tested
+  return Controller.apiTeacherLecturesGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'db error'}]});
+  });
+});
+
+test('get all lectures available to a teacher with a course with no lectures', () => {
+  const req = httpMocks.createRequest({user: {user: 't37004'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectures.mockImplementation((id) => {
+    const filteredLectures = lectures.filter((lecture)=> {
+      return id === lecture.courseId;
+    });
+    return Promise.resolve(filteredLectures);
+  });
+
+  Courses.getCourseByTeacherID.mockImplementation((id) => {
+    const filteredCourses = courses.filter((course) => {
+      return course.teacherId === id;
+    });
+    return Promise.resolve(filteredCourses);
+  });
+
+  // calling function to be tested
+  return Controller.apiTeacherLecturesGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'lectures not found'}]});
+  });
+});
+
+
+/* ============================================================================================
+                                  TESTS of deleteLectureById
+=============================================================================================*/
+
 
 test('delete a lecture by id', () => {
   const req = httpMocks.createRequest({params: {id: 'IS1004'}});
