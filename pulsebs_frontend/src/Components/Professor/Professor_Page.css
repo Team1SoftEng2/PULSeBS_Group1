@@ -19,6 +19,16 @@
     padding-top: 50px;
 }
 
+button.disabled{
+    background-color: gray;
+    color: #151A4F;
+}
+
+button.disabled:hover{
+
+    cursor: not-allowed;
+}
+
 nav{
     background-color:#151A4F;
     text-decoration: none;

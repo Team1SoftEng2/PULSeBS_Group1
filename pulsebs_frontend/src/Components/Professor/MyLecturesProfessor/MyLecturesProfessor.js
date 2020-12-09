@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row, Button, Accordion, Card} from 'react-bootstrap';
+import { Col, Row, Button, Accordion, Card } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 import API from '../../../api/API';
 //import moment from 'moment';
@@ -16,8 +16,9 @@ export default function MyLecturesProfessor() {
                 setLectures(res);
             })
             .catch((err) => {
-                if (err.status && err.status === 401){
-                    history.push('/');}
+                if (err.status && err.status === 401) {
+                    history.push('/');
+                }
                 else
                     console.log(err);
             });
@@ -26,7 +27,7 @@ export default function MyLecturesProfessor() {
 
     return (
         <div id='MyLecturesProfessorContainer'>
-            <LectureList lectures={lectures} history={history} setLectures={setLectures}/>
+            <LectureList lectures={lectures} history={history} setLectures={setLectures} />
         </div>
     );
 }
@@ -41,7 +42,7 @@ function LectureList({ lectures, ...rest }) {
     );
 }
 
-function Lecture({lectureId, courseId, courseName, room, date, time, mode, history, setLectures, ...rest}) {
+function Lecture({ lectureId, courseId, room, date, time, mode, history, setLectures, ...rest }) {
 
     const [bookings, setBookings] = React.useState([]);
     const [errMsg, setErrMsg] = React.useState();
@@ -59,28 +60,49 @@ function Lecture({lectureId, courseId, courseName, room, date, time, mode, histo
             });
     }, [history, lectureId]);
 
+    function TransformDate(stringInput) {
+        const dateAndTimeSplit = stringInput.split(' ');
+        const dateElements = dateAndTimeSplit[0].split('-');
+        const hours = dateAndTimeSplit[1].substring(0, 2);
+        return new Date(dateElements[2], dateElements[1] - 1, dateElements[0], hours, '00');
+    }
+
+    function CheckTimeDiff(timeLimit, dateInput) {
+        const dateNow = new Date();
+        const dateCheck = TransformDate(dateInput);
+        if (dateNow >= dateCheck)
+            return true; //disable button
+        const dateDiff = Math.floor((dateCheck - dateNow) / (60 * 1000));
+        console.log(dateDiff);
+
+        if (dateDiff > timeLimit)
+            return false; //enable button
+        else
+            return true;
+    }
+
     const deleteLectureAndUpdate = (lectureID) => {
         API.deleteLectureById(lectureID)
-        .then((res) => {
-            API.getTeacherLectures()
-            .then((result) => {
-                setLectures(result);
+            .then((res) => {
+                API.getTeacherLectures()
+                    .then((result) => {
+                        setLectures(result);
+                    })
+                    .catch((err) => {
+                        if (err.status && err.status === 401)
+                            history.push('/');
+                        else
+                            console.log(err);
+                    });
             })
             .catch((err) => {
                 if (err.status && err.status === 401)
                     history.push('/');
-                else
-                    console.log(err);
-            });
-        })
-        .catch((err) => {
-            if (err.status && err.status === 401)
-                    history.push('/');
-                else{
+                else {
                     console.log(err.errors[0].msg);
                     setErrMsg(err.errors[0].msg);
                 }
-        });
+            });
     }
 
     return (
@@ -92,14 +114,17 @@ function Lecture({lectureId, courseId, courseName, room, date, time, mode, histo
                             <Row >
                                 <span className='HeaderText'>▼</span>
                                 <Col className='HeaderText'>{lectureId}</Col>
-                                <Col className='HeaderText'>{courseName}</Col>
                                 <Col className='HeaderText'>Date: {date}</Col>
                                 <Col className='HeaderText'>Time: {time}</Col>
                                 <Col className='HeaderText'>Mode: {mode}</Col>
                                 <Col className='HeaderText'>Booked students: {bookings.length}</Col>
                                 <Col className='HeaderText'>Room: {room}</Col>
+                                <Col className='HeaderText'>
+                                    <button className={(CheckTimeDiff(60, date)) ? 'disabled' : 'enabled'} onClick={() => deleteLectureAndUpdate(lectureId)}> Delete
+                                    </button>
+                                </Col>
                                 <Col lg={12}>
-                                    {errMsg? 
+                                    {errMsg ?
                                         <div>
                                             <p className='HeaderText'>{errMsg}</p>
                                             {/*<Button variant="danger" onClick={()=>setErrMsg()}>ok</Button>*/}
@@ -114,10 +139,6 @@ function Lecture({lectureId, courseId, courseName, room, date, time, mode, histo
                         </Card.Body>
                     </Accordion.Collapse>
                 </Card>
-                <Button 
-                    onClick={() => deleteLectureAndUpdate(lectureId) }>
-                    Delete
-                </Button>
             </Accordion>
         </Col>
     );
