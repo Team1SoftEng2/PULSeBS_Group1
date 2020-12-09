@@ -12,10 +12,10 @@ function professorPage (props) {
     const authObj = props.authObj
 
     if(authObj.userRole !== "professor")
-        return <Redirect to = "/"/>
+        return <BrowserRouter><Redirect to = "/"/></BrowserRouter>
     else 
         return <div>
-            {authObj.authErr && <Redirect to = "/"/>}
+            <BrowserRouter>{authObj.authErr && <Redirect to = "/"/>}</BrowserRouter>
             <BrowserRouter>
                 <ProfessorHeader username="UserName"/>
                 <Switch>

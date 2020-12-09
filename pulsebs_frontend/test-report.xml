@@ -1,20 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Professor/__test__/professor.test.js">
-    <testCase name="Testing correction of the rendering of LoginForm component renders LoginForm component" duration="36"/>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\App.test.js">
+    <testCase name="renders learn react link" duration="4"/>
   </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Login/__test__/login.test.js">
-    <testCase name="Testing renders LoginForm component by role" duration="119"/>
-    <testCase name="App renders App component" duration="12"/>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\__test__\components.test.js">
+    <testCase name="renders App component" duration="26"/>
   </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/App.test.js">
-    <testCase name="renders learn react link" duration="1"/>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Login\__test__\loginForm.test.js">
+    <testCase name="Renders the Text" duration="47"/>
+    <testCase name="Renders the Email input field" duration="8"/>
+    <testCase name="Updates to Email input field" duration="11"/>
+    <testCase name="Renders the Password input field" duration="5"/>
+    <testCase name="Updates to Password input field" duration="5"/>
+    <testCase name="Renders the Submit Button" duration="100"/>
+    <testCase name="Test Button Click" duration="25"/>
   </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/__test__/components.test.js">
-    <testCase name="App renders App component" duration="18"/>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\__test__\BookingManager_Page.test.js">
+    <testCase name="Renders Booking Manager Header Correctly" duration="61"/>
+    <testCase name="Check Authentication Error" duration="13"/>
+    <testCase name="Check Monitor System Usage" duration="15"/>
+    <testCase name="Check Contact Tracing" duration="13"/>
+    <testCase name="Check Home Page" duration="12"/>
+    <testCase name="Check Logout" duration="11"/>
   </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Student/HomePageCalendar_Student/__test__/HomePageCalendar_Student.test.js">
-    <testCase name="Renders Calendar Legend Correctly" duration="248"/>
-    <testCase name="Renders Calendar Correctly" duration="164"/>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Professor\__test__\Professor_Page.test.js">
+    <testCase name="Renders Professor Header Correctly" duration="50"/>
+    <testCase name="Check Authentication Error" duration="6"/>
+    <testCase name="Check with Wrong Credentials" duration="3"/>
+    <testCase name="Check Home Page" duration="13"/>
+    <testCase name="Check My Lectures" duration="42"/>
+    <testCase name="Check Register Attendance" duration="12"/>
+    <testCase name="Check Statistics" duration="13"/>
+    <testCase name="Check Tutorial" duration="13"/>
+    <testCase name="Check Logout" duration="14"/>
+  </file>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\__test__\Student_Page.test.js">
+    <testCase name="Renders Student Header Correctly" duration="51"/>
+    <testCase name="Check with Wrong Credentials" duration="6"/>
+    <testCase name="Check Book a Seat" duration="53"/>
+    <testCase name="Check HomePage" duration="200"/>
+    <testCase name="Check Tutorial" duration="78"/>
+    <testCase name="Check Logout" duration="6"/>
+  </file>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\SuppOfficer\__test__\SuppOfficer_Page.test.js">
+    <testCase name="Renders Booking Manager Header Correctly" duration="48"/>
+    <testCase name="Check Authentication Error" duration="10"/>
+    <testCase name="Check Change Configuration" duration="16"/>
+    <testCase name="Check System Update" duration="14"/>
+    <testCase name="Check System Setup" duration="9"/>
+    <testCase name="Check Home Page" duration="10"/>
+    <testCase name="Check Logout" duration="8"/>
   </file>
 </testExecutions>

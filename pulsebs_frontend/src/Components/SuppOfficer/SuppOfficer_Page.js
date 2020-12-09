@@ -13,7 +13,7 @@ function suppOfficerPage (props) {
     //     return <Redirect to = "/"/>
     // else     
         return <div>
-            {authObj.authErr && <Redirect to = "/"/>}
+            <BrowserRouter>{authObj.authErr && <Redirect to = "/"/>}</BrowserRouter>
             <BrowserRouter>
                 <SuppOfficerHeader username="UserName" />
                 <Switch>
