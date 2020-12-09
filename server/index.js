@@ -16,7 +16,6 @@ const bookingsController = require(path.join(__dirname, 'controllers/Bookings'))
 const courseController = require(path.join(__dirname, 'controllers/Course'));
 const lecturesController = require(path.join(__dirname, 'controllers/Lectures'));
 const authController = require(path.join(__dirname, 'controllers/Authentication'));
-const studentController = require(path.join(__dirname, 'controllers/Student'));
 
 // swaggerRouter configuration
 const options = {
@@ -33,7 +32,6 @@ var courseSchema = JSON.parse(fs.readFileSync(path.join('.', 'json_schemas', 'co
 var lectureSchema = JSON.parse(fs.readFileSync(path.join('.', 'json_schemas', 'lecture_schema.json')).toString());
 var bookingSchema = JSON.parse(fs.readFileSync(path.join('.', 'json_schemas', 'booking_schema.json')).toString());
 var validator = new Validator({ allErrors: true });
-//validator.ajv.addMetaSchema(require('ajv/lib/refs/json-schema-draft-07.json'));
 validator.ajv.addSchema([userSchema, courseSchema, lectureSchema, bookingSchema]);
 var validate = validator.validate;
 
@@ -45,9 +43,6 @@ app.use(cookieParser());
 
 // Public APIs here
 app.post('/api/login', authController.apiLoginPOST);
-app.post('/api/bookings', validate({body: bookingSchema}), bookingsController.apiBookingsPOST);
-// DELETE bookings
-app.delete('/api/bookings', bookingsController.apiBookingsDelete);
 
 // Authentication endpoint
 app.use(
@@ -61,14 +56,14 @@ app.use(
 // Authenticated APIs here
 app.post('/api/logout', authController.apiLogoutPOST);
 app.get('/api/courses/:id', courseController.apiCoursesIdGET);
-app.get('/api/students/:id', studentController.apiStudentsIdGET);
 app.delete('/api/lectures/:id', lecturesController.apiLecturesIdDELETE);
 app.get('/api/lectures', lecturesController.apiLecturesGET);
 app.get('/api/students/:id/courses', courseController.apiStudentsIdCoursesGET);
 app.get('/api/teachers/lectures', lecturesController.apiTeacherLecturesGET);
 app.get('/api/bookings', bookingsController.apiBookingsGET);
-
 app.get('/api/users/:id', authController.apiUserGET);
+app.post('/api/bookings', validate({body: bookingSchema}), bookingsController.apiBookingsPOST);
+app.delete('/api/bookings', bookingsController.apiBookingsDelete);
 
 // Error handlers for validation and authentication errors
 
