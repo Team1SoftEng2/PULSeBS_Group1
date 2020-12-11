@@ -10,7 +10,6 @@ import API from './api/API'
 
 function App() {
 
-
   const [authUser, setAuthUser] = useState(undefined)
   const [authErr, setAuthErr] = useState(undefined);
   const [userRole, setUserRole] = useState(undefined);
