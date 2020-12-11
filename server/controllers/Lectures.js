@@ -69,3 +69,34 @@ module.exports.apiLecturesIdDELETE = async function apiLecturesIdDELETE(req, res
     return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'not in time'}]}, 400);
   }
 };
+
+module.exports.apiOnlineLectureGET = async function apiOnlineLectureGET(req, res) {
+  const lectureId = req.params.id;
+  let err;
+  let lecture;
+  let notification;
+  // verifies that the lecture actually exists and get the start date
+  [err, lecture] = await to(Lectures.getLectureById(lectureId));
+  // if an error occours
+  if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
+  // if not exists
+  if (!lecture) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lecture not found'}]}, 404);
+  if (lecture.mode == 'online') return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lecture is already online'}]}, 403);
+  // verify that I'm in time to delete it
+  const now = moment();
+  let startTime = moment(lecture.date, 'DD-MM-YYYY HH:mm');
+  startTime = startTime.subtract(30, 'minutes');
+  // if I'm in time
+  if (now.isBefore(startTime)) {
+    // delete the lecture
+    [err, notification] = await to(Lectures.onlineLectureById(lectureId));
+    // if an error occours
+    if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
+    Notification.NotificationOpenLecture(lectureId);
+    // if all goes well
+    return utils.writeJson(res, notification);
+  } else {
+    // if I'm not in time
+    return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'not in time'}]}, 400);
+  }
+};

@@ -71,3 +71,19 @@ exports.deleteLectureById = function(lectureId) {
     });
   });
 };
+
+exports.onlineLectureById = function(lectureId) {
+  return new Promise((resolve, reject) => {
+    const sql = `
+      UPDATE Lecture
+      SET mode='online'
+      WHERE LectureID = ?`;
+    db.run(sql, [lectureId], (err) => { // IDK if I must add also db.close
+      if (err) {
+        resolve(err.message);
+      } else {
+        resolve('Successful');
+      }
+    });
+  });
+};

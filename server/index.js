@@ -57,6 +57,7 @@ app.use(
 app.post('/api/logout', authController.apiLogoutPOST);
 app.get('/api/courses/:id', courseController.apiCoursesIdGET);
 app.delete('/api/lectures/:id', lecturesController.apiLecturesIdDELETE);
+app.post('/api/lectures/:id', lecturesController.apiOnlineLectureGET);
 app.get('/api/lectures', lecturesController.apiLecturesGET);
 app.get('/api/students/:id/courses', courseController.apiStudentsIdCoursesGET);
 app.get('/api/teachers/lectures', lecturesController.apiTeacherLecturesGET);

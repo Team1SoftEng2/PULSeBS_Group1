@@ -167,6 +167,22 @@ async function cancelBooking(booking) {
     
     })
 }
+async function ChangeLecturemodeById(lectureId) {
+    return new Promise((resolve, reject) => {
+        fetch(baseURL + "/lectures/" + lectureId, {
+            method: 'POST'
+        }).then( (response) => {
+            if(response.ok) {
+                resolve("DONE");
+            } else {
+                // analyze the cause of error
+                response.json()
+                .then( (obj) => {reject(obj);} ) // error msg in the response body
+                .catch( (err) => {reject({ errors: [{ param: "Application", msg: "Cannot parse server response" }] }) }); // something else
+            }
+        }).catch( (err) => {reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); // connection errors
+    });
+}
 
-const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getLecturesDate, getUser, deleteLectureById,cancelBooking };
+const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getLecturesDate, getUser, deleteLectureById,cancelBooking,ChangeLecturemodeById };
 export default API;
