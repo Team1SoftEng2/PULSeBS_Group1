@@ -12,9 +12,47 @@ let data;
 let time;
 let inizio;
 let fine;
+let room;
+let mode;
 var lezion = [];
 let x = 0;
 
+async function getAllProfessors(props) {
+  const professors = await Promise.all(props.lectures.map(async (lecture) => await API.getUser(lecture.teacherId)));
+  return professors;
+}
+
+async function getAllData(props){
+  const professors=await getAllProfessors(props);
+  lezion=[];
+  x=0;
+  props.lectures.map( (l) => {
+    data = moment(l.date, "DD-MM-YYYY HH:mm:ss").format("DD-MM-YYYY");
+    time = l.time
+    time = time.split("~")
+    inizio = time[0].split(":")
+    fine = time[1].split(":")
+    data = data.split("-")
+    mode=props.lectures.filter(m=>m.mode===l.mode)[0].mode
+    room='Virtual Lesson'
+    if (mode==="present" ) room=props.lectures.filter(r=>r.lectureId===l.lectureId)[0].room;
+    let b=true
+    if(props.bookings.filter(b=>b.studentId===props.authObj.authUser).some(r=>r.lectureId===l.lectureId))b=false
+    let id=props.courses.filter(c=>c.courseId===l.courseId)[0].teacherId;
+    let p=professors.find(f=>f.userId===id);
+  lezion[x] = {
+    course : props.courses.filter(c=>c.courseId===l.courseId)[0].name,
+    professor:p.name + " " + p.surname,
+    room : room,
+    mode:mode,
+    booked: b,
+    start : new Date(data[2], data[1] - 1, data[0], inizio[0], inizio[1]),
+    end : new Date(data[2], data[1] - 1, data[0], fine[0], fine[1]),        
+  }
+  x++
+  });
+    
+}
 class homePageCalendarStudent extends Component {
   constructor(props){
     super(props);
@@ -22,109 +60,16 @@ class homePageCalendarStudent extends Component {
       date: new Date(),
       first:true,
       authObj:this.props.authObj,
-      professors:[],
       courses: this.props.courses,
       lectures:this.props.lectures,
       events:[],
+      professors:[],
       res:false,
     };
-    // In props there are:
-    // - courses = courses attended by the student
-    // - bookings = student bookings (all courses)
-    // - lecutures = all student lectures (all courses) 
   }
 
   componentDidMount(){
-    lezion=[];
-    x=0;
-    this.getAllLectures(this.state.authObj.authUser);
-
-    let events = this.props.lectures.map( (l) => {
-      // for each lecture create an event for the calendar
-      // get date, start time and end time
-      // check if booked or not
-      // get courseName => see BookLecture in BookSeat.js
-      // get teacher => call API.getUser(teacherId) [async/await + check]
-      // create the event object
-    }); 
-    // set the state
-    // this.setState({'events': events}); 
-  }
-
-  getBooked(lecture, course, professor, userId) {
-    API.getBookings()
-      .then((res) => {
-        this.setState({ res: res })
-        data = moment(lecture.date, "DD-MM-YYYY HH:mm:ss").format("DD-MM-YYYY");
-        time = lecture.time
-        time = time.split("~")
-        inizio = time[0].split(":")
-        fine = time[1].split(":")
-        data = data.split("-")
-        let b = true;
-        if (res.filter(s => s.studentId === userId).some(r => r.lectureId === lecture.lectureId)) b = false
-        if (!lezion.some(l => l.title === lecture.lectureId)) {
-          lezion[x] = {
-            title: lecture.lectureId,
-            course: course.name,
-            professor: professor,
-            room: lecture.room,
-            mode: lecture.mode,
-            booked: b, //true=not booked(green) false=booked(red)
-            start: new Date(data[2], data[1] - 1, data[0], inizio[0], inizio[1]),
-            end: new Date(data[2], data[1] - 1, data[0], fine[0], fine[1])
-          }
-        }
-
-        x++;
-
-      }
-
-      )
-      .catch((err) => {
-        if (err.status && err.status === 401)
-          console.log(err);
-      })
-  }
-
-  getProfessor(lecture, course, userId) {
-    API.getUser(lecture.teacherId)
-      .then((professors) => {
-        this.setState({ professors: professors || [] });
-        this.getBooked(lecture, course, professors.name + " " + professors.surname, userId);
-
-      })
-      .catch((err) => console.log(err))
-  }
-
-  getAllLectures (userId) {
-    let courses = this.props.courses;
-    this.setState( { courses: courses || [] } );
-    courses.map( (c) => this.getSingleLectures(c, userId));
-    this.setState({ events: lezion });
-
-    // API.getStudentCourses(userId)
-    //   .then((courses) => {
-    //     this.setState( { courses: courses || [] } );
-    //     courses.map( (c)=> this.getSingleLectures(c,userId) );
-    //     this.setState({ events: lezion });
-    //   })
-    //   .catch((errorObj) => {
-    //     console.log(errorObj);
-    //   });
-    // return this.state.courses;  
-  }
-
-  getSingleLectures(course, userId) {
-    API.getLectures(course.courseId)
-      .then((lessons) => {
-        this.setState({ lessons: lessons || [] });
-        lessons.map((l) => this.getProfessor(l, course, userId))
-      }
-      )
-      .catch((errorObj) => {
-        console.log(errorObj);
-      });
+    getAllData(this.props).then(()=>{this.setState({events:lezion})});
   }
 
   getEventStyle = (event, start, end, isSelected) => {
@@ -176,3 +121,4 @@ class homePageCalendarStudent extends Component {
 }
 
 export default homePageCalendarStudent;
+
