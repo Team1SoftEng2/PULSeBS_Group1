@@ -30,7 +30,7 @@ function StudentPage(props){
 
     useEffect( () => API.getBookings()
                         .then( (res) => {
-                            setBookings(res)
+                            setBookings(res);
                         })
                         .catch( (err) => {
                             if (err.status && err.status === 401)

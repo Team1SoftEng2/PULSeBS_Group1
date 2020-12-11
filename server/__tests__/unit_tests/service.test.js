@@ -2,6 +2,8 @@
 const dbMock = require('../../components/__mocks__/db');
 jest.setMock('../../components/db', dbMock);
 
+const sqlite = require('sqlite3').verbose();
+
 // Import modules
 const db = require('../../components/db');
 const Authentication = require('../../service/AuthenticationService');
@@ -33,6 +35,7 @@ afterAll( () => {
 
 
 describe('AuthenticationService Test', () => {
+    // lines to cover: 27-33
     const user = {
         'userId': 's00001',
         'name': 'John',
@@ -46,12 +49,20 @@ describe('AuthenticationService Test', () => {
             .then( (data) => {
                 expect.assertions(1);
                 expect(data).toEqual(user);
-            })
+            });
         Authentication.getUserById('s00002')
-            .catch( (data) => {
+            .then( (data) => {
                 expect.assertions(1);
                 expect(data).toBeUndefined;
             });
+        // missing test: DB doesn't work
+        // Authentication.getUserById('(DROP TABLE Student)')
+        //     .then()
+        //     .catch( (data) => {
+        //         expect.assertions(1);
+        //         expect(data).not.toBeUndefined;
+        //     });
+
     });
 
     test('Testing checkPassword', () => {
@@ -60,6 +71,7 @@ describe('AuthenticationService Test', () => {
 });
 
 describe('BookingsService', () => {
+    // lines to cover: 13-19,37,49
     test('Testing getBookings', () => {
         Bookings.getBookings()
             .then( (data) => {
@@ -72,6 +84,7 @@ describe('BookingsService', () => {
                 expect.assertions(1);
                 expect(data.length).toBe(1);
             });
+        // missing test: DB doesn't work
     });
     
     test('Testing apiBookingsPOST', () => {
@@ -80,6 +93,7 @@ describe('BookingsService', () => {
                 expect.assertions(1);
                 expect(data).toBeNull;
             });
+        // missing test: DB doesn't work
     });
     
     test('Testing apiBookingsDelete', () => {
@@ -87,11 +101,13 @@ describe('BookingsService', () => {
             .then((data) => {
                 expect.assertions(1);
                 expect(data).toBeNull;
-            })
+            });
+        // missing test: DB doesn't work
     });
 });
 
 describe('CourseService Test', () => {
+    // lines to cover: 11-21,31-36,47-52
     const course = {
         'courseId': '1',
         'teacherId': 't00001',
@@ -109,6 +125,7 @@ describe('CourseService Test', () => {
                 expect.assertions(1);
                 expect(data).toBeUndefined;
             });
+        // missing test: DB doesn't work
     });
 
     test('Testing getStudentCourses', () => {
@@ -129,6 +146,7 @@ describe('CourseService Test', () => {
 });
 
 describe('LecturesService Test', () => {
+    // lines to cover: 13-27,40-54,66-69
     const lecture = {
         'lectureId': '1',
         'courseId': '1',
