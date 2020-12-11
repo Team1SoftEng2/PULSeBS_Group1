@@ -24,7 +24,7 @@ const lectures = [
     lectureId: 'IS1003',
     courseId: 'IS001',
     teacherId: 't37001',
-    date: '20-11-2020 13:00',
+    date: '20-11-2021 13:00',
     time: '13:00~14:30',
     mode: 'present',
     room: 'Aula 1',
@@ -114,7 +114,7 @@ test('get all lectures test given a CourseID', () => {
         lectureId: 'IS1003',
         courseId: 'IS001',
         teacherId: 't37001',
-        date: '20-11-2020 13:00',
+        date: '20-11-2021 13:00',
         time: '13:00~14:30',
         mode: 'present',
         room: 'Aula 1',
@@ -198,7 +198,7 @@ test('get all lectures available to a teacher', () => {
         lectureId: 'IS1003',
         courseId: 'IS001',
         teacherId: 't37001',
-        date: '20-11-2020 13:00',
+        date: '20-11-2021 13:00',
         time: '13:00~14:30',
         mode: 'present',
         room: 'Aula 1',
@@ -322,7 +322,30 @@ test('get all lectures available to a teacher with a course with no lectures', (
 =============================================================================================*/
 
 
-test('delete a lecture by id', () => {
+test('delete a lecture by id and in time', () => {
+  // lecture IS1003 always in time because at end of 2021
+  const req = httpMocks.createRequest({params: {id: 'IS1003'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectureById.mockImplementation((id) => {
+    const filteredLectures = lectures.filter((lecture)=> {
+      return id === lecture.lectureId;
+    });
+    return Promise.resolve(filteredLectures[0]);
+  });
+
+  Lectures.deleteLectureById.mockImplementation(() => Promise.resolve({dbResponse: 'OK'}));
+
+  return Controller.apiLecturesIdDELETE(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({dbResponse: 'OK'});
+  });
+});
+
+test('delete a lecture by id and not in time', () => {
+  // lecture IS1003 always in time because at end of 2021
   const req = httpMocks.createRequest({params: {id: 'IS1004'}});
   const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
 
@@ -334,11 +357,72 @@ test('delete a lecture by id', () => {
     return Promise.resolve(filteredLectures[0]);
   });
 
-  Lectures.deleteLectureById.mockImplementation(() => Promise.resolve('OK'));
+  Lectures.deleteLectureById.mockImplementation(() => Promise.resolve({dbResponse: 'OK'}));
 
-  Controller.apiLecturesIdDELETE(req, res).then(() => {
+  return Controller.apiLecturesIdDELETE(req, res).then(() => {
     const data = res._getJSONData();
-    // expect.assertions(1);
-    expect(data).toEqual({'errors': [{'msg': 'not in time', 'param': 'Server'}]});
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'not in time'}]});
+  });
+});
+
+test('delete a non existing lecture', () => {
+  // lecture IS1003 always in time because at end of 2021
+  const req = httpMocks.createRequest({params: {id: 'IS1009'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectureById.mockImplementation((id) => {
+    const filteredLectures = lectures.filter((lecture)=> {
+      return id === lecture.lectureId;
+    });
+    return Promise.resolve(filteredLectures[0]);
+  });
+
+  Lectures.deleteLectureById.mockImplementation(() => Promise.resolve({dbResponse: 'OK'}));
+
+  return Controller.apiLecturesIdDELETE(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'lecture not found'}]});
+  });
+});
+
+test('delete lecture but an error occours in db when search for a lecture', () => {
+  // lecture IS1003 always in time because at end of 2021
+  const req = httpMocks.createRequest({params: {id: 'IS1004'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectureById.mockImplementation((id) => Promise.reject('some type of error'));
+
+  Lectures.deleteLectureById.mockImplementation(() => Promise.resolve({dbResponse: 'OK'}));
+
+  return Controller.apiLecturesIdDELETE(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'some type of error'}]});
+  });
+});
+
+test('delete a lecture but an error occours in db when deleting it', () => {
+  // lecture IS1003 always in time because at end of 2021
+  const req = httpMocks.createRequest({params: {id: 'IS1003'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectureById.mockImplementation((id) => {
+    const filteredLectures = lectures.filter((lecture)=> {
+      return id === lecture.lectureId;
+    });
+    return Promise.resolve(filteredLectures[0]);
+  });
+
+  Lectures.deleteLectureById.mockImplementation(() => Promise.reject('Some type of error'));
+
+  return Controller.apiLecturesIdDELETE(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'Some type of error'}]});
   });
 });
