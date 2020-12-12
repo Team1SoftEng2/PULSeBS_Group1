@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import CustomEvent from "./CustomEvent";
 import API from '../../../api/API';
 
 // moment.locale("en-GB");
@@ -53,6 +52,17 @@ async function getAllData(props){
   });
     
 }
+
+function CustomEvent(lecture) {
+  return (
+
+      <div>
+          <p><b>{lecture.event.course}</b><br/>{lecture.event.professor}</p>
+              {(lecture.event.mode === "present") ? lecture.event.room : "Virtual Classroom"}
+      </div>
+  );
+}
+
 class homePageCalendarStudent extends Component {
   constructor(props){
     super(props);

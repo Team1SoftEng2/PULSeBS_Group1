@@ -77,8 +77,7 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
 
         if (dateDiff > timeLimit)
             return false; //enable button
-        else
-            return true;
+        return true;
     }
 
     const deleteLectureAndUpdate = (lectureID) => {
@@ -140,7 +139,7 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
                                 <Col className='HeaderText'>Date: {date}</Col>
                                 <Col className='HeaderText'>Time: {time}</Col>
                                 <Col className='HeaderText'>
-                                    <button className={(CheckTimeDiff(30, date)) ? 'disabled' : 'enabled'} onClick={() =>changeLecturemode(lectureId) /*To be changed with the API */}> {mode}
+                                    <button className={(CheckTimeDiff(30, date)) ? 'disabled' : 'enabled'} onClick={() => changeLecturemode(lectureId) /*To be changed with the API */}> {mode}
                                     </button>
                                 </Col>
                                 <Col className='HeaderText'>Booked students: {bookings.length}</Col>
