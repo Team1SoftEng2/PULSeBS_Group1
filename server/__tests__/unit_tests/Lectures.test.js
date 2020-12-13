@@ -5,13 +5,21 @@ const to = require('await-to-js').default;
 const moment = require('moment');
 
 const Controller = require('../../controllers/Lectures');
+const Email = require('../../controllers/Email');
 
 const Lectures = require('../../service/LecturesService');
 const Courses = require('../../service/CourseService');
 
+
+jest.mock('../../controllers/Email');
+
 // wrappo il modulo service cosi da poter sostituire le sue funzioni con funzioni mockup
 jest.mock('../../service/LecturesService');
 jest.mock('../../service/CourseService');
+
+jest.mock('moment', () => {
+  return (...args) => jest.requireActual('moment')(...(args.length == 0 ? ['20-11-2020 13:00', 'DD-MM-YYYY HH:mm'] : args));
+});
 
 const httpMocks = require('node-mocks-http');
 
@@ -426,3 +434,77 @@ test('delete a lecture but an error occours in db when deleting it', () => {
     expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'Some type of error'}]});
   });
 });
+
+describe('online a lecture by id', () => {
+
+  const lectures = [
+    {
+      lectureId: 'IS1006',
+      courseId: 'IS001',
+      teacherId: 't37001',
+      date: '20-11-2020 13:30',
+      time: '13:30~14:30',
+      mode: 'present',
+      room: 'Aula 1',
+      maxSeats: 150,
+    },
+    {
+      lectureId: 'IS1007',
+      courseId: 'IS002',
+      teacherId: 't37002',
+      date: '20-11-2020 13:31',
+      time: '13:31~14:30',
+      mode: 'present',
+      room: 'Aula 1',
+      maxSeats: 150,
+    },
+  ];
+
+  let onlineFn;
+  let emailFn;
+
+  beforeAll(() => {
+    // ridefinisco la funzione che interagisce con il database
+  Lectures.getLectureById.mockImplementation((id) => {
+    const filteredLectures = lectures.filter((lecture)=> {
+      return id === lecture.lectureId;
+    });
+    return Promise.resolve(filteredLectures[0]);
+  });
+
+  onlineFn = Lectures.onlineLectureById.mockImplementation(() => Promise.resolve('OK'));
+
+  emailFn = Email.sendEmailByLectureId.mockImplementation(() => Promise.resolve('OK'));
+  })
+
+  beforeEach(() => {
+    onlineFn.mockClear();
+    emailFn.mockClear();
+  })
+
+  test('should return 200 status code', async () => {
+    const lectureId = 'IS1007';
+    const req = httpMocks.createRequest({params: {id: lectureId}});
+    const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+  
+    await Controller.apiOnlineLectureGET(req, res);
+
+    expect(res._getStatusCode()).toEqual(200);
+    expect(onlineFn).toBeCalledWith(lectureId);
+    expect(emailFn).toHaveBeenCalled();
+  });
+
+  test('should error when the lecture is less than 30 minutes away', async () => {
+    const req = httpMocks.createRequest({params: {id: 'IS1006'}});
+    const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+  
+    await Controller.apiOnlineLectureGET(req, res);
+    const data = res._getJSONData();
+    
+    expect(data).toEqual({'errors': [{'msg': 'not in time', 'param': 'Server'}]});
+    expect(onlineFn).not.toHaveBeenCalled();
+    expect(emailFn).not.toHaveBeenCalled();
+  });
+})
+
+
