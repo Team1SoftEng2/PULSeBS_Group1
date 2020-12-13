@@ -10,9 +10,13 @@ export default function MyLecturesProfessor() {
 
     const history = useHistory();
 
+    console.log("MyLecturesProfessor")
+
     React.useEffect(() => {
+        console.log("getTeacherLectures")
         API.getTeacherLectures()
             .then((res) => {
+                console.log("getTeacherLectures result :" + res)
                 setLectures(res);
             })
             .catch((err) => {
@@ -32,7 +36,7 @@ export default function MyLecturesProfessor() {
     );
 }
 
-function LectureList({ lectures, ...rest }) {
+export function LectureList({ lectures, ...rest }) {
     return (
         <div>
             {lectures.map((lecture, index) => (
@@ -77,8 +81,7 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
 
         if (dateDiff > timeLimit)
             return false; //enable button
-        else
-            return true;
+        return true;
     }
 
     const deleteLectureAndUpdate = (lectureID) => {
@@ -105,28 +108,19 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
             });
     }
 
-    const changeLecturemode = (lectureID) => {
-        API.ChangeLecturemodeById(lectureID)
-            .then((res) => {
-                API.getTeacherLectures()
-                    .then((result) => {
-                        setLectures(result);
-                    })
-                    .catch((err) => {
-                        if (err.status && err.status === 401)
-                            history.push('/');
-                        else
-                            console.log(err);
-                    });
-            })
-            .catch((err) => {
-                if (err.status && err.status === 401)
-                    history.push('/');
-                else {
-                    console.log(err.errors[0].msg);
-                    setErrMsg(err.errors[0].msg);
-                }
-            });
+    const changeLecturemode = async (lectureID) => {
+        try {
+            await API.ChangeLecturemodeById(lectureID);
+            const newLectures = await API.getTeacherLectures();
+            setLectures(newLectures);
+        } catch (err) {
+            if (err.status && err.status === 401)
+                history.push('/');
+            else {
+                console.log(err);
+                setErrMsg(err.errors[0].msg);
+            }
+        }
     }
     return (
         <Col>
@@ -140,7 +134,7 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
                                 <Col className='HeaderText'>Date: {date}</Col>
                                 <Col className='HeaderText'>Time: {time}</Col>
                                 <Col className='HeaderText'>
-                                    <button className={(CheckTimeDiff(30, date)) ? 'disabled' : 'enabled'} onClick={() =>changeLecturemode(lectureId) /*To be changed with the API */}> {mode}
+                                    <button className={(CheckTimeDiff(30, date)) ? 'disabled' : 'enabled'} onClick={() => changeLecturemode(lectureId) /*To be changed with the API */}> {mode}
                                     </button>
                                 </Col>
                                 <Col className='HeaderText'>Booked students: {bookings.length}</Col>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import ProfessorPage from '../Professor_Page';
 
 const testAuthObj = { authUser: "t37001", authErr: undefined, userRole: "professor" };
@@ -36,7 +36,7 @@ test('Check Home Page', () => {
   expect(renderResult.getByText('Here the professor will see a calendar with his/her lessons for the week')).toBeInTheDocument();
 });
 
-test('Check My Lectures', () => {
+test('Check My Lectures', async () => {
   const renderResult = render(<ProfessorPage authObj={testAuthObj} />);
   const professorLecturesButton = renderResult.getByText('My Lectures');
   fireEvent.click(professorLecturesButton);

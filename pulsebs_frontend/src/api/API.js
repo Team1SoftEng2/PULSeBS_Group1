@@ -157,31 +157,29 @@ async function cancelBooking(booking) {
             if (response.ok) {
                 resolve(null);
             } else {
-                // analyze the cause of error
                 response.json()
                 .then( (obj) => {reject(obj);})
                 .catch( (err) => { reject({errors: [{ param: "Application", msg: "Cannot parse server response" }]})}); //something else
             }
-        }).catch( (err) => {reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); // connection errors
+        }).catch( (err) => {reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); 
         
     
     })
 }
 async function ChangeLecturemodeById(lectureId) {
-    return new Promise((resolve, reject) => {
-        fetch(baseURL + "/lectures/" + lectureId, {
-            method: 'POST'
-        }).then( (response) => {
-            if(response.ok) {
-                resolve("DONE");
-            } else {
-                // analyze the cause of error
-                response.json()
-                .then( (obj) => {reject(obj);} ) // error msg in the response body
-                .catch( (err) => {reject({ errors: [{ param: "Application", msg: "Cannot parse server response" }] }) }); // something else
-            }
-        }).catch( (err) => {reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); // connection errors
+    const response = await fetch(baseURL + "/lectures/" + lectureId, {
+        method: 'POST'
     });
+
+    if(response.ok) {
+        return "DONE";
+    } else {
+        try {
+            throw await response.json();
+        } catch (err) {
+            throw { errors: [{ param: "Application", msg: "Cannot parse server response" }] };
+        }
+    }
 }
 
 const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getLecturesDate, getUser, deleteLectureById,cancelBooking,ChangeLecturemodeById };

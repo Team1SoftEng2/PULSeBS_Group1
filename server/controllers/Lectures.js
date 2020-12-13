@@ -3,7 +3,6 @@
 
 const to = require('await-to-js').default;
 const moment = require('moment');
-const timer = require('moment-timer');
 
 const utils = require('../utils/writer.js');
 const Lectures = require('../service/LecturesService');
@@ -95,8 +94,15 @@ module.exports.apiOnlineLectureGET = async function apiOnlineLectureGET(req, res
     [err, notification] = await to(Lectures.onlineLectureById(lectureId));
     // if an error occours
     if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
-    Notification.NotificationOpenLecture(lectureId);
-    // if all goes well
+    // Notification.NotificationOpenLecture(lectureId);
+
+    await Email.sendEmailByLectureId(lectureId, {
+      subject: 'lecturemode have changed',
+      text: 'present mode changed to online',
+      html: 'present mode changed to online'
+    });
+
+    // if all goes well ,notify everyone lecture mode changed
     return utils.writeJson(res, notification);
   } else {
     // if I'm not in time
