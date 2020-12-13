@@ -1,5 +1,7 @@
 // Use at least Nodemailer v4.1.0
 const nodemailer = require('nodemailer');
+const BookingsService = require("../service/BookingsService");
+const AuthenticationService = require("../service/AuthenticationService");
 /*
 // MESSAGE OBJECT TEMPLATE
 const message = {
@@ -14,7 +16,7 @@ To read messages sent --> go to https://ethereal.email/login
 and log using the credential below
 */
 
-module.exports.sendEmail = async (message) => {
+async function sendEmail(message) {
   if (
     message.hasOwnProperty('from') &&
     message.hasOwnProperty('to') &&
@@ -53,4 +55,29 @@ module.exports.sendEmail = async (message) => {
   } else {
     return Promise.reject('message incorrect');
   }
-};
+}
+
+async function sendEmailByUserId(userId, message) {
+  const user = await AuthenticationService.getUserById(userId);
+
+  await sendEmail({
+    from: 'keyshawn.borer47@ethereal.email',
+    to: user.email,
+    subject: message.subject,
+    text: message.text,
+    html: message.html
+  });
+}
+
+async function sendEmailByLectureId(lectureId, message) {
+  const bookings = await BookingsService.getBookings(lectureId);
+  for (const booking of bookings) {
+    await sendEmailByUserId(booking.studentId, message);
+  }
+}
+
+module.exports = {
+  sendEmail,
+  sendEmailByUserId,
+  sendEmailByLectureId
+}
