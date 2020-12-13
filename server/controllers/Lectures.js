@@ -3,11 +3,14 @@
 
 const to = require('await-to-js').default;
 const moment = require('moment');
+const timer = require('moment-timer');
+
 const utils = require('../utils/writer.js');
 const Lectures = require('../service/LecturesService');
-const Lecture = require('../components/lecture.js');
 const Courses = require('../service/CourseService');
-
+const Users = require('../service/AuthenticationService');
+const Bookings = require('../service/BookingsService');
+const Email = require('./Email');
 
 module.exports.apiLecturesGET = async function apiLecturesGET(req, res) {
   const courseId = req.query.courseId;
@@ -99,4 +102,27 @@ module.exports.apiOnlineLectureGET = async function apiOnlineLectureGET(req, res
     // if I'm not in time
     return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'not in time'}]}, 400);
   }
+};
+
+module.exports.deadlineNotification = async function () {
+  try {
+    const lectures = await Lectures.getLectures();
+    const now = moment();
+    return lectures.map( async (l) => {
+      const deadline = moment(l.date, 'DD-MM-YYYY HH:mm').subtract(1, 'hours');
+      if(!deadline.isBetween(now.subtract(5, 'minutes'), now)) return false; 
+      const teacher = await Users.getUserById(l.teacherId);
+      const bookings = await Bookings.getBookings(l.lectureId);
+      return Email.sendEmail({
+        from: 'Booking service',
+        to: teacher.email,
+        subject: 'Lecture Bookings',
+        text: 'Dear professor, the number of booked students for your upcoming lecture ' + l.lectureId + ' is ' + bookings.length,
+        html: '',
+      });
+    });
+  } catch (error) {
+    console.log(error);
+    return error;
+  };
 };

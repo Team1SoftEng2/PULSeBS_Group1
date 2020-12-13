@@ -8,51 +8,6 @@ import API from '../../../api/API';
 // moment.locale("en-GB");
 const localizer = momentLocalizer(moment)
 
-let data;
-let time;
-let inizio;
-let fine;
-let room;
-let mode;
-var lezion = [];
-let x = 0;
-
-async function getAllProfessors(props) {
-  const professors = await Promise.all(props.lectures.map(async (lecture) => await API.getUser(lecture.teacherId)));
-  return professors;
-}
-
-async function getAllData(props){
-  const professors=await getAllProfessors(props);
-  lezion=[];
-  x=0;
-  props.lectures.map( (l) => {
-    data = moment(l.date, "DD-MM-YYYY HH:mm:ss").format("DD-MM-YYYY");
-    time = l.time
-    time = time.split("~")
-    inizio = time[0].split(":")
-    fine = time[1].split(":")
-    data = data.split("-")
-    mode=props.lectures.filter(m=>m.mode===l.mode)[0].mode
-    room='Virtual Lesson'
-    if (mode==="present" ) room=props.lectures.filter(r=>r.lectureId===l.lectureId)[0].room;
-    let b=true
-    if(props.bookings.filter(b=>b.studentId===props.authObj.authUser).some(r=>r.lectureId===l.lectureId))b=false
-    let id=props.courses.filter(c=>c.courseId===l.courseId)[0].teacherId;
-    let p=professors.find(f=>f.userId===id);
-  lezion[x] = {
-    course : props.courses.filter(c=>c.courseId===l.courseId)[0].name,
-    professor:p.name + " " + p.surname,
-    room : room,
-    mode:mode,
-    booked: b,
-    start : new Date(data[2], data[1] - 1, data[0], inizio[0], inizio[1]),
-    end : new Date(data[2], data[1] - 1, data[0], fine[0], fine[1]),        
-  }
-  x++
-  });
-    
-}
 class homePageCalendarStudent extends Component {
   constructor(props){
     super(props);
@@ -69,8 +24,8 @@ class homePageCalendarStudent extends Component {
   }
 
   componentDidMount(){
-    getAllData(this.props).then(()=>{this.setState({events:lezion})});
-  }
+    this.getAllData();
+  };
 
   getEventStyle = (event, start, end, isSelected) => {
     let newStyle = {
@@ -85,6 +40,35 @@ class homePageCalendarStudent extends Component {
       style: newStyle
     };
   };
+
+  getAllProfessors = async () => {
+    const professors = await Promise.all(this.props.lectures.map(async (lecture) => await API.getUser(lecture.teacherId)));
+    return professors;
+  };
+  
+  getAllData = async () => {
+    const professors = await this.getAllProfessors();
+    let lezion = this.props.lectures.map( (l) => {
+      let data = moment(l.date, "DD-MM-YYYY HH:mm:ss").format("DD-MM-YYYY");
+      let time = l.time.split("~");
+      let inizio = time[0].split(":");
+      let fine = time[1].split(":");
+      data = data.split("-");
+      let booked = true;
+      if(this.props.bookings.filter(b => b.studentId === this.props.authObj.authUser).some(r => r.lectureId === l.lectureId)) booked = false;
+      let p = professors.find(f => f.userId === l.teacherId);
+      return {
+        course : this.props.courses.filter(c => c.courseId === l.courseId)[0].name,
+        professor: p.name + " " + p.surname,
+        room : (l.mode === "present") ? l.room : 'Virtual Classroom',
+        mode: l.mode,
+        booked: booked,
+        start : new Date(data[2], data[1] - 1, data[0], inizio[0], inizio[1]),
+        end : new Date(data[2], data[1] - 1, data[0], fine[0], fine[1]),        
+      }
+    });
+    this.setState({events: lezion});
+  }
 
   render() {
 

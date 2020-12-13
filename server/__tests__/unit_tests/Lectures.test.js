@@ -8,13 +8,16 @@ const Controller = require('../../controllers/Lectures');
 
 const Lectures = require('../../service/LecturesService');
 const Courses = require('../../service/CourseService');
+const Bookings = require('../../service/BookingsService');
+const Users = require('../../service/AuthenticationService');
 
 // wrappo il modulo service cosi da poter sostituire le sue funzioni con funzioni mockup
 jest.mock('../../service/LecturesService');
 jest.mock('../../service/CourseService');
+jest.mock('../../service/BookingsService');
+jest.mock('../../service/AuthenticationService');
 
 const httpMocks = require('node-mocks-http');
-
 
 // -----------------------------------------------------------------------------------------
 // mockup data------------------------------------------------------------------------------
@@ -426,3 +429,63 @@ test('delete a lecture but an error occours in db when deleting it', () => {
     expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'Some type of error'}]});
   });
 });
+
+describe('Testing deadlineNotification', () => {
+  // Defining mockup data
+  const user = {
+    'userId': 't37001',
+    'name': 'John',
+    'surname': 'Smith',
+    'email': 'john.smith@email.com',
+    'hash': '$2a$10$9un76S8o2Liw/pIx5dhmMen9Mv89KEH/Vq5aLkqWfUF.GWXFei8V.' 
+  };
+  const newLectures = [
+    {
+      lectureId: 'IS1003',
+      courseId: 'IS001',
+      teacherId: 't37001',
+      date: moment().subtract(1, 'hours'), // Old lecture => no email
+      time: '13:00~14:30',
+      mode: 'present',
+      room: 'Aula 1',
+      maxSeats: 150,
+    },
+    {
+      lectureId: 'IS1004',
+      courseId: 'IS001',
+      teacherId: 't37001',
+      date: moment().add(57, 'minutes'), // Deadline expired in last 5 minutes => email
+      time: '13:00~14:30',
+      mode: 'present',
+      room: 'Aula 1',
+      maxSeats: 150,
+    },
+    {
+      lectureId: 'IS1005',
+      courseId: 'IS002',
+      teacherId: 't37001',
+      date: moment().add(1, 'day'), // Future lecture => no email
+      time: '13:00~14:30',
+      mode: 'present',
+      room: 'Aula 1',
+      maxSeats: 150,
+    },
+  ];
+
+  test('test without errors', () => {
+    // Define mock implementation of the interaction with the DB
+    Lectures.getLectures.mockImplementation( () => { Promise.resolve(newLectures); } );
+    Users.getUserById.mockImplementation( (userId) => { Promise.resolve(user); } );
+    Bookings.getBookings.mockImplementation( (lectureId) => { Promise.resolve([]); } );
+
+    Controller.deadlineNotification().then( (data) => {
+      expect(data.length).toBe(3);
+      expect(data[0]).toBeFalsy();
+      expect(data[1]).toBeTruthy();
+      expect(data[2]).toBeFalsy();
+    });
+  });
+  
+});
+
+
