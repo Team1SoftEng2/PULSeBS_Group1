@@ -111,24 +111,27 @@ module.exports.apiOnlineLectureGET = async function apiOnlineLectureGET(req, res
 };
 
 module.exports.deadlineNotification = async function () {
-  try {
-    const lectures = await Lectures.getLectures();
-    const now = moment();
-    return lectures.map( async (l) => {
-      const deadline = moment(l.date, 'DD-MM-YYYY HH:mm').subtract(1, 'hours');
-      if(!deadline.isBetween(now.subtract(5, 'minutes'), now)) return false; 
-      const teacher = await Users.getUserById(l.teacherId);
-      const bookings = await Bookings.getBookings(l.lectureId);
-      return Email.sendEmail({
-        from: 'Booking service',
-        to: teacher.email,
-        subject: 'Lecture Bookings',
-        text: 'Dear professor, the number of booked students for your upcoming lecture ' + l.lectureId + ' is ' + bookings.length,
-        html: '',
-      });
-    });
-  } catch (error) {
-    console.log(error);
-    return error;
-  };
+  let [err, lectures] = await to(Lectures.getLectures());
+  if (err) return {err: 'Failed to communicate with the DB'};
+
+  let sent = await Promise.all(lectures.map( async (l) => {
+    const deadline = moment(l.date, 'DD-MM-YYYY HH:mm').subtract(1, 'hours');
+    if(!deadline.isBetween(moment().subtract(5, 'minutes'), moment())) return false; 
+
+    let [error, bookings] = await to(Bookings.getBookings(l.lectureId));
+    if(error) return false;
+    
+    let result;
+    let message = {
+      from: 'Booking service',
+      to: '',
+      subject: 'Lecture Bookings',
+      text: 'Dear professor, the number of booked students for your upcoming lecture ' + l.lectureId + ' is ' + bookings.length,
+      html: '',
+    };
+    [error, result] = await to(Email.sendEmailByUserId(l.teacherId, message));
+    if(error) return false;
+    else return true;
+  }));
+  return sent;
 };

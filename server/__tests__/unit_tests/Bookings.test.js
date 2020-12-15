@@ -2,11 +2,13 @@
 const Controller = require('../../controllers/Bookings');
 const BookingsService = require('../../service/BookingsService');
 const LecturesService = require('../../service/LecturesService');
+const Email = require('../../controllers/Email');
 const moment = require('moment');
 const httpMocks = require('node-mocks-http');
 
 jest.mock('../../service/BookingsService');
 jest.mock('../../service/LecturesService');
+jest.mock('../../controllers/Email');
 
 const bookings = [
   {studentId: 's27002', lectureId: 'CA3003'},
@@ -118,6 +120,7 @@ test('add a booking to a lecture', () => {
   });
 
   BookingsService.apiBookingsPOST.mockImplementation(() => Promise.resolve());
+  Email.sendEmailByUserId.mockImplementation((userId, message) => Promise.resolve());
 
   LecturesService.getLectureById.mockImplementation((lectureId) => {
     const filteredLectures = lectures.filter((lecture) => lecture.lectureId === lectureId);
@@ -143,6 +146,7 @@ test('add a booking to a lecture that does not exist', () => {
   });
 
   BookingsService.apiBookingsPOST.mockImplementation(() => Promise.resolve());
+  Email.sendEmailByUserId.mockImplementation((userId, message) => Promise.resolve());
 
   LecturesService.getLectureById.mockImplementation((lectureId) => {
     const filteredLectures = lectures.filter((lecture) => lecture.lectureId === lectureId);
@@ -168,6 +172,7 @@ test('add a booking to a lecture that is after the deadline', () => {
   });
 
   BookingsService.apiBookingsPOST.mockImplementation(() => Promise.resolve());
+  Email.sendEmailByUserId.mockImplementation((userId, message) => Promise.resolve());
 
   LecturesService.getLectureById.mockImplementation((lectureId) => {
     const filteredLectures = lectures.filter((lecture) => lecture.lectureId === lectureId);
@@ -193,6 +198,7 @@ test('add a booking to a lecture but an error in db occours when finding it', ()
   });
 
   BookingsService.apiBookingsPOST.mockImplementation(() => Promise.resolve());
+  Email.sendEmailByUserId.mockImplementation((userId, message) => Promise.resolve());
 
   LecturesService.getLectureById.mockImplementation((lectureId) => {
     return Promise.reject('some type of error');
@@ -217,6 +223,7 @@ test('add a booking to a lecture but an error in db occours when I try to save t
   });
 
   BookingsService.apiBookingsPOST.mockImplementation(() => Promise.reject('some type of error'));
+  Email.sendEmailByUserId.mockImplementation((userId, message) => Promise.resolve());
 
   LecturesService.getLectureById.mockImplementation((lectureId) => {
     const filteredLectures = lectures.filter((lecture) => lecture.lectureId === lectureId);
