@@ -158,8 +158,8 @@ async function ChangeLecturemodeById(lectureId) {
         return "DONE";
     } else {
         response.json()
-            .then( (obj) => {reject(obj);})
-            .catch( (err) => { reject({errors: [{ param: "Application", msg: "Cannot parse server response" }]})}); //something else
+            .then( (obj) => { throw obj; })
+            .catch( (err) => { throw {errors: [{ param: "Application", msg: "Cannot parse server response" }]}; }); //something else
     }
 }
 
