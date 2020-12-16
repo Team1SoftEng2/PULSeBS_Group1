@@ -16,9 +16,9 @@ function bookingManagerPage (props) {
             <BrowserRouter>
                 <BookingManagerHeader username="UserName" />
                 <Switch>
-                    <Route path="/booking_manager" exact component={MonitorUsage} />
-                    <Route path="/booking_manager/monitor_usage" exact component={MonitorUsage} />
-                    <Route path="/booking_manager/contact_tracing" exact component={ContactTracing} />
+                    <Route path="/booking_manager" component={MonitorUsage} />
+                    <Route path="/booking_manager/monitor_usage" component={MonitorUsage} />
+                    <Route path="/booking_manager/contact_tracing" component={ContactTracing} />
                 </Switch>
             </BrowserRouter>
         </div>;

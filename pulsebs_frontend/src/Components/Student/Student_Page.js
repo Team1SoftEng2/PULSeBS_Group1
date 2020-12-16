@@ -66,9 +66,9 @@ function StudentPage(props){
             <BrowserRouter>
                 <StudentHeader/>
                 <Switch>
-                    <Route path="/student" exact component={() => <HomePageCalendarStudent {...props} courses={courses} lectures={lectures} bookings={bookings}/>} />
-                    <Route path="/student/book_a_seat" exact component={ () => <BookSeat {...props} courses={courses} lectures={lectures} bookings={bookings}/>} />
-                    <Route path="/student/tutorial" exact component={TutorialStudent} />
+                    <Route path="/student" component={() => <HomePageCalendarStudent {...props} courses={courses} lectures={lectures} bookings={bookings}/>} />
+                    <Route path="/student/book_a_seat" component={ () => <BookSeat {...props} courses={courses} lectures={lectures} bookings={bookings}/>} />
+                    <Route path="/student/tutorial" component={TutorialStudent} />
                 </Switch>
             </BrowserRouter>
         </div>;

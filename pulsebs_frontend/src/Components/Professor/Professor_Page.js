@@ -19,11 +19,11 @@ function professorPage (props) {
             <BrowserRouter>
                 <ProfessorHeader username="UserName"/>
                 <Switch>
-                    <Route path="/professor" exact component={HomePageCalendarProfessor} />
-                    <Route path="/professor/my_lectures" exact component={MyLecturesProfessor} />
-                    <Route path="/professor/register_attendance" exact component={RegisterAttendance} />
-                    <Route path="/professor/statistics" exact component={Statistics} />
-                    <Route path="/professor/tutorial" exact component={TutorialProfessor} />
+                    <Route path="/professor" component={HomePageCalendarProfessor} />
+                    <Route path="/professor/my_lectures" component={MyLecturesProfessor} />
+                    <Route path="/professor/register_attendance" component={RegisterAttendance} />
+                    <Route path="/professor/statistics" component={Statistics} />
+                    <Route path="/professor/tutorial" component={TutorialProfessor} />
                 </Switch>
             </BrowserRouter>
         </div>;
