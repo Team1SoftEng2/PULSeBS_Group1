@@ -131,7 +131,7 @@ module.exports.deadlineNotification = async function () {
     };
     [error, result] = await to(Email.sendEmailByUserId(l.teacherId, message));
     if(error) return false;
-    else return true;
+    return true;
   }));
   return sent;
 };
