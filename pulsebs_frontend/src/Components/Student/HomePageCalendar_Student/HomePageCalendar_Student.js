@@ -65,9 +65,10 @@ class homePageCalendarStudent extends Component {
       data = data.split("-");
       let booked = true;
       if(this.props.bookings.filter(b => b.studentId === this.props.authObj.authUser).some(r => r.lectureId === l.lectureId)) booked = false;
-      let p = this.props.professors.find(f => f.userId === l.teacherId);
-      p=p.name + " " + p.surname;
-      console.log(this.props.professors)
+      console.log(this.props.professors);
+      let p = this.props.professors.filter( professor => professor.userId == l.teacherId)[0];
+      //let p = this.props.professors.find(f => f.userId === l.teacherId);
+      p = p.name + " " + p.surname;
       return {
         course : this.props.courses.filter(c => c.courseId === l.courseId)[0].name,
         professor : p,//"aaaa",

@@ -21,10 +21,9 @@ function StudentPage(props){
 
     useEffect( () => API.getStudentCourses(authObj.authUser)
                         .then( (res) => {
-                            getAllProfessors(res);
                             setCourses(res);
                             getAllLectures(res);
-                            
+                            // getAllProfessors(res);
                         })
                         .catch( (err) => {
                             if (err.status && err.status === 401)
@@ -48,7 +47,13 @@ function StudentPage(props){
     
     const getAllLectures = (coursesList) => {
         let lecturesList = [];
-        coursesList.forEach( (course) => {
+        let professorList = professors;
+        coursesList.forEach( async (course) => {
+            if(!professorList.filter((p) => p.teacherId === course.teacherId).length){
+                let professor = await API.getUser(course.teacherId);
+                professorList.push(professor);
+                setProfessors(professorList);
+            }
             API.getLectures(course.courseId)
                 .then( (res) => {
                     lecturesList = lecturesList.concat(res);
@@ -63,17 +68,17 @@ function StudentPage(props){
         });
     };
     
-    const getAllProfessors = (courseList) => {
-        let professorList = [];
-        courseList.forEach( (c) => {
-            if(!professorList.filter((p) => p.teacherId === c.teacherId).length){
-                API.getUser(c.teacherId).then((res) => {
-                    professorList.push(res);
-                    setProfessors(professorList);
-                });               
-            }
-        });
-    };
+    // const getAllProfessors = (courseList) => {
+    //     let professorList = professors;
+    //     courseList.forEach( (c) => {
+    //         if(!professorList.filter((p) => p.teacherId === c.teacherId).length){
+    //             API.getUser(c.teacherId).then((res) => {
+    //                 professorList.push(res);
+    //                 setProfessors(professorList);
+    //             });               
+    //         }
+    //     });
+    // };
 
     if(authObj.userRole !== "student")
         return <BrowserRouter><Redirect to = "/"/></BrowserRouter>
