@@ -334,7 +334,8 @@ test('delete a lecture by id and in time', () => {
   // lecture IS1003 always in time because at end of 2021
   const req = httpMocks.createRequest({params: {id: 'IS1003'}});
   const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
-
+  let emailFn;
+ 
   // ridefinisco la funzione che interagisce con il database
   Lectures.getLectureById.mockImplementation((id) => {
     const filteredLectures = lectures.filter((lecture)=> {
@@ -342,6 +343,8 @@ test('delete a lecture by id and in time', () => {
     });
     return Promise.resolve(filteredLectures[0]);
   });
+  emailFn = Email.sendEmailByLectureId.mockImplementation(() => Promise.resolve('OK'));
+
 
   Lectures.deleteLectureById.mockImplementation(() => Promise.resolve({dbResponse: 'OK'}));
 
@@ -434,6 +437,10 @@ test('delete a lecture but an error occours in db when deleting it', () => {
     expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'Some type of error'}]});
   });
 });
+
+/* ============================================================================================
+                                  TESTS of changelecturemode to online
+=============================================================================================*/
 
 describe('online a lecture by id', () => {
 
