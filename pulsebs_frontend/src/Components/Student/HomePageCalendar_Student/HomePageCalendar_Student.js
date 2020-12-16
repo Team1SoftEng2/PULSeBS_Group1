@@ -15,7 +15,7 @@ function CustomEvent(lecture) {
               {(lecture.event.mode === "present") ? lecture.event.room : "Virtual Classroom"}
       </div>
   );
-};
+}
 
 class homePageCalendarStudent extends Component {
   constructor(props){
@@ -34,7 +34,7 @@ class homePageCalendarStudent extends Component {
 
   componentDidMount(){
     this.getAllData();
-  };
+  }
 
   getEventStyle = (event, start, end, isSelected) => {
     let newStyle = {
