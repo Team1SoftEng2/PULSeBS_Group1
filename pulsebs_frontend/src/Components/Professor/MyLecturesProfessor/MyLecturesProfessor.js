@@ -16,7 +16,7 @@ export default function MyLecturesProfessor() {
         console.log("getTeacherLectures")
         API.getTeacherLectures()
             .then((res) => {
-                console.log("getTeacherLectures result :" + res)
+                //console.log("getTeacherLectures result :" + res)
                 setLectures(res);
             })
             .catch((err) => {

@@ -5,6 +5,7 @@ const to = require('await-to-js').default;
 const utils = require('../utils/writer.js');
 const Bookings = require('../service/BookingsService');
 const Lectures = require('../service/LecturesService');
+const Email = require('./Email');
 const moment = require('moment');
 
 module.exports.apiBookingsGET = async function apiBookingsGET(req, res) {
@@ -32,7 +33,17 @@ module.exports.apiBookingsPOST = async function apiBookingsPOST(req, res) {
     } else {
       [err, notification] = await to(Bookings.apiBookingsPOST(req.body));
       if (err) return utils.writeJson(res, {errors: [{'msg': err}]}, 500);
-      else return utils.writeJson(res, {'msg': 'Created'}, 201);
+      else {
+        // send email to the student
+        const message = {
+          subject: 'Booking confirmation',
+          text: 'Dear student, your booking for lecture ' + lectureId + ' is confirmed',
+          html: '',
+        };
+        [err, notification] = await to(Email.sendEmailByUserId(req.body.studentId, message));
+        if(err) console.log(err);
+        return utils.writeJson(res, {'msg': 'Created'}, 201);
+      }
     }
   }
 };

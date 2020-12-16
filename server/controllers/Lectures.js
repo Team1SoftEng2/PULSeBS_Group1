@@ -3,12 +3,13 @@
 
 const to = require('await-to-js').default;
 const moment = require('moment');
+
 const utils = require('../utils/writer.js');
 const Lectures = require('../service/LecturesService');
-const Lecture = require('../components/lecture.js');
 const Courses = require('../service/CourseService');
+const Users = require('../service/AuthenticationService');
+const Bookings = require('../service/BookingsService');
 const Email = require('./Email');
-
 
 module.exports.apiLecturesGET = async function apiLecturesGET(req, res) {
   const courseId = req.query.courseId;
@@ -112,4 +113,30 @@ module.exports.apiOnlineLectureGET = async function apiOnlineLectureGET(req, res
     // if I'm not in time
     return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'not in time'}]}, 400);
   }
+};
+
+module.exports.deadlineNotification = async function () {
+  let [err, lectures] = await to(Lectures.getLectures());
+  if (err) return {err: 'Failed to communicate with the DB'};
+
+  let sent = await Promise.all(lectures.map( async (l) => {
+    const deadline = moment(l.date, 'DD-MM-YYYY HH:mm').subtract(1, 'hours');
+    if(!deadline.isBetween(moment().subtract(5, 'minutes'), moment())) return false; 
+
+    let [error, bookings] = await to(Bookings.getBookings(l.lectureId));
+    if(error) return false;
+    
+    let result;
+    let message = {
+      from: 'Booking service',
+      to: '',
+      subject: 'Lecture Bookings',
+      text: 'Dear professor, the number of booked students for your upcoming lecture ' + l.lectureId + ' is ' + bookings.length,
+      html: '',
+    };
+    [error, result] = await to(Email.sendEmailByUserId(l.teacherId, message));
+    if(error) return false;
+    return true;
+  }));
+  return sent;
 };

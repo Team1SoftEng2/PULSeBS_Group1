@@ -9,20 +9,21 @@ const Email = require('../../controllers/Email');
 
 const Lectures = require('../../service/LecturesService');
 const Courses = require('../../service/CourseService');
-
+const Bookings = require('../../service/BookingsService');
 
 jest.mock('../../controllers/Email');
 
 // wrappo il modulo service cosi da poter sostituire le sue funzioni con funzioni mockup
 jest.mock('../../service/LecturesService');
 jest.mock('../../service/CourseService');
+jest.mock('../../service/BookingsService');
+jest.mock('../../controllers/Email');
 
 jest.mock('moment', () => {
   return (...args) => jest.requireActual('moment')(...(args.length == 0 ? ['20-11-2020 13:00', 'DD-MM-YYYY HH:mm'] : args));
 });
 
 const httpMocks = require('node-mocks-http');
-
 
 // -----------------------------------------------------------------------------------------
 // mockup data------------------------------------------------------------------------------
@@ -438,10 +439,96 @@ test('delete a lecture but an error occours in db when deleting it', () => {
   });
 });
 
+
+describe('Testing deadlineNotification', () => {
+  // Defining mockup data
+  // NOW = 20-11-2020 13:00
+  const newLectures = [ 
+    {
+      lectureId: 'IS1003',
+      courseId: 'IS001',
+      teacherId: 't37001',
+      date: '19-11-2020 13:00', // Old lecture => no email
+      time: '13:00~14:30',
+      mode: 'present',
+      room: 'Aula 1',
+      maxSeats: 150,
+    },
+    {
+      lectureId: 'IS1004',
+      courseId: 'IS001',
+      teacherId: 't37001',
+      date: '20-11-2020 13:58', // Deadline expired in last 5 minutes => email
+      time: '13:00~14:30',
+      mode: 'present',
+      room: 'Aula 1',
+      maxSeats: 150,
+    },
+    {
+      lectureId: 'IS1005',
+      courseId: 'IS002',
+      teacherId: 't37001',
+      date: '21-11-2020 13:00', // Future lecture => no email
+      time: '13:00~14:30',
+      mode: 'present',
+      room: 'Aula 1',
+      maxSeats: 150,
+    },
+  ];
+  
+  test('test without errors', () => {
+    // Define mock implementation of the interaction with the DB
+    Lectures.getLectures.mockImplementation( () => Promise.resolve(newLectures));
+    Bookings.getBookings.mockImplementation( (lectureId) => Promise.resolve([]));
+    Email.sendEmailByUserId.mockImplementation(() => Promise.resolve() );
+    
+    return Controller.deadlineNotification().then( (data) => { 
+      expect.assertions(4);
+      expect(data.length).toBe(3);
+      expect(data[0]).toBeFalsy();
+      expect(data[1]).toBeTruthy();
+      expect(data[2]).toBeFalsy(); 
+    });
+  });
+
+  test('test with email error', () => {
+    Lectures.getLectures.mockImplementation( () => Promise.resolve(newLectures));
+    Bookings.getBookings.mockImplementation( (lectureId) => Promise.resolve([]));
+    Email.sendEmailByUserId.mockImplementation(() => Promise.reject('email error') );
+
+    return Controller.deadlineNotification().then( (data) => {
+      expect.assertions(2);
+      expect(data.length).toBe(3);
+      expect(data[1]).toBeFalsy();
+    });
+  });
+
+  test('test with bookings error', () => {
+    Lectures.getLectures.mockImplementation( () => Promise.resolve(newLectures));
+    Bookings.getBookings.mockImplementation( (lectureId) => Promise.reject([]));
+    Email.sendEmailByUserId.mockImplementation(() => Promise.resolve() );
+
+    return Controller.deadlineNotification().then( (data) => {
+      expect.assertions(2);
+      expect(data.length).toBe(3);
+      expect(data[1]).toBeFalsy();
+    });
+  });
+  
+  test('test with lectures error', () => {
+    Lectures.getLectures.mockImplementation( () => Promise.reject([]));
+    Bookings.getBookings.mockImplementation( (lectureId) => Promise.resolve([]));
+    Email.sendEmailByUserId.mockImplementation(() => Promise.resolve() );
+
+    return Controller.deadlineNotification().then( (data) => {
+      expect.assertions(1);
+      expect(data.err).toEqual('Failed to communicate with the DB');
+    });
+  });
+});
 /* ============================================================================================
                                   TESTS of changelecturemode to online
 =============================================================================================*/
-
 describe('online a lecture by id', () => {
 
   const lectures = [
@@ -464,7 +551,7 @@ describe('online a lecture by id', () => {
       mode: 'present',
       room: 'Aula 1',
       maxSeats: 150,
-    },
+    }
   ];
 
   let onlineFn;
@@ -512,6 +599,6 @@ describe('online a lecture by id', () => {
     expect(onlineFn).not.toHaveBeenCalled();
     expect(emailFn).not.toHaveBeenCalled();
   });
-})
+});
 
 

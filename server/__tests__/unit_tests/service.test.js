@@ -55,14 +55,6 @@ describe('AuthenticationService Test', () => {
                 expect.assertions(1);
                 expect(data).toBeUndefined;
             });
-        // missing test: DB doesn't work
-        // Authentication.getUserById('(DROP TABLE Student)')
-        //     .then()
-        //     .catch( (data) => {
-        //         expect.assertions(1);
-        //         expect(data).not.toBeUndefined;
-        //     });
-
     });
 
     test('Testing checkPassword', () => {

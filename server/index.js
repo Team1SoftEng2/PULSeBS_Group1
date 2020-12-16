@@ -35,6 +35,11 @@ var validator = new Validator({ allErrors: true });
 validator.ajv.addSchema([userSchema, courseSchema, lectureSchema, bookingSchema]);
 var validate = validator.validate;
 
+// Set lectures timers
+setInterval( () => {
+  lecturesController.deadlineNotification();
+}, 300000);
+
 
 // Set authentication features
 const jwtSecret = '6xvL4xkAAbG49hcXf5GIYSvkDICiUAR6EdR5dLdwW7hMzUjjMUe9t6M5kSAYxsvX';

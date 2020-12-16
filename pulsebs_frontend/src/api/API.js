@@ -76,22 +76,6 @@ async function getLectures(courseId) {
     }
 }
 
-async function getLecturesDate(courseId,min,max) {
-    let url = "/lectures";
-    if(courseId){
-        const queryParams = "?courseId=" + courseId;
-        url += queryParams;
-    }
-    const response = await fetch(baseURL + url);
-    const lecturesJson = await response.json();
-    if(response.ok){
-        return lecturesJson.filter((l)=>(l.date>=min && l.date<=max));
-    } else {
-        let err = {status: response.status, errObj:lecturesJson};
-        throw err;  // An object with the error coming from the server
-    }
-}
-
 async function getBookings(lectureId) {
     let url = "/bookings";
     if(lectureId){
@@ -170,17 +154,14 @@ async function ChangeLecturemodeById(lectureId) {
     const response = await fetch(baseURL + "/lectures/" + lectureId, {
         method: 'POST'
     });
-
     if(response.ok) {
         return "DONE";
     } else {
-        try {
-            throw await response.json();
-        } catch (err) {
-            throw { errors: [{ param: "Application", msg: "Cannot parse server response" }] };
-        }
+        response.json()
+            .then( (obj) => { throw obj; })
+            .catch( (err) => { throw {errors: [{ param: "Application", msg: "Cannot parse server response" }]}; }); //something else
     }
 }
 
-const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getLecturesDate, getUser, deleteLectureById,cancelBooking,ChangeLecturemodeById };
+const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getUser, deleteLectureById, cancelBooking,ChangeLecturemodeById };
 export default API;
