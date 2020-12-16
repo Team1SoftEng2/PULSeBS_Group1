@@ -59,6 +59,11 @@ module.exports.apiLecturesIdDELETE = async function apiLecturesIdDELETE(req, res
   startTime = startTime.subtract(1, 'hours');
   // if I'm in time
   if (now.isBefore(startTime)) {
+      Email.sendEmailByLectureId(lectureId, {
+      subject: 'lecture has deleted',
+      text: 'Dear student, your booking for lecture '+lectureId+' has deleted',
+      html: 'Dear student, your booking for lecture '+lectureId+' has deleted'
+    });
     // delete the lecture
     [err, notification] = await to(Lectures.deleteLectureById(lectureId));
     // if an error occours
@@ -83,13 +88,13 @@ module.exports.apiOnlineLectureGET = async function apiOnlineLectureGET(req, res
   // if not exists
   if (!lecture) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lecture not found'}]}, 404);
   if (lecture.mode == 'online') return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'lecture is already online'}]}, 403);
-  // verify that I'm in time to delete it
+  // verify that I'm in time to modify its mode
   const now = moment();
   let startTime = moment(lecture.date, 'DD-MM-YYYY HH:mm');
   startTime = startTime.subtract(30, 'minutes');
   // if I'm in time
   if (now.isBefore(startTime)) {
-    // delete the lecture
+    // change the lecturemode
     [err, notification] = await to(Lectures.onlineLectureById(lectureId));
     // if an error occours
     if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
@@ -97,8 +102,8 @@ module.exports.apiOnlineLectureGET = async function apiOnlineLectureGET(req, res
 
     await Email.sendEmailByLectureId(lectureId, {
       subject: 'lecturemode have changed',
-      text: 'present mode changed to online',
-      html: 'present mode changed to online'
+      text: 'Dear student, your booking for lecture '+lectureId+' present mode changed to online',
+      html: 'Dear student, your booking for lecture '+lectureId+' present mode changed to online'
     });
 
     // if all goes well ,notify everyone lecture mode changed
