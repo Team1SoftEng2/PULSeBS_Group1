@@ -1,91 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/__tests__/API.test.js">
-    <testCase name="test getUser no errors" duration="4"/>
-    <testCase name="test getUser error" duration="0"/>
-    <testCase name="test login no errors" duration="1"/>
-    <testCase name="test login response not ok, json ok" duration="0"/>
-    <testCase name="test login response not ok, json null" duration="2"/>
-    <testCase name="test login fetch rejected" duration="0"/>
+  <file path="D:\Desktop\se2\setest\PULSeBS_Group1\pulsebs_frontend\src\App.test.js">
+    <testCase name="renders learn react link" duration="3"/>
+  </file>
+  <file path="D:\Desktop\se2\setest\PULSeBS_Group1\pulsebs_frontend\src\Components\SuppOfficer\__test__\SuppOfficer_Page.test.js">
+    <testCase name="Renders Booking Manager Header Correctly" duration="89"/>
+    <testCase name="Check Authentication Error" duration="23"/>
+    <testCase name="Check Change Configuration" duration="28"/>
+    <testCase name="Check System Update" duration="20"/>
+    <testCase name="Check System Setup" duration="18"/>
+    <testCase name="Check Home Page" duration="17"/>
+    <testCase name="Check Logout" duration="17"/>
+  </file>
+  <file path="D:\Desktop\se2\setest\PULSeBS_Group1\pulsebs_frontend\src\Components\Login\__test__\loginForm.test.js">
+    <testCase name="Renders the Text" duration="70"/>
+    <testCase name="Renders the Email input field" duration="11"/>
+    <testCase name="Updates to Email input field" duration="16"/>
+    <testCase name="Renders the Password input field" duration="9"/>
+    <testCase name="Updates to Password input field" duration="18"/>
+    <testCase name="Renders the Submit Button" duration="105"/>
+    <testCase name="Test Button Click" duration="66"/>
+  </file>
+  <file path="D:\Desktop\se2\setest\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\__test__\BookingManager_Page.test.js">
+    <testCase name="Renders Booking Manager Header Correctly" duration="26"/>
+    <testCase name="Check Authentication Error" duration="20"/>
+    <testCase name="Check Monitor System Usage" duration="21"/>
+    <testCase name="Check Contact Tracing" duration="19"/>
+    <testCase name="Check Home Page" duration="14"/>
+    <testCase name="Check Logout" duration="17"/>
+  </file>
+  <file path="D:\Desktop\se2\setest\PULSeBS_Group1\pulsebs_frontend\src\Components\__test__\components.test.js">
+    <testCase name="renders App component" duration="20"/>
+  </file>
+  <file path="D:\Desktop\se2\setest\PULSeBS_Group1\pulsebs_frontend\src\__tests__\User.test.js">
+    <testCase name="User constructor" duration="15"/>
+  </file>
+  <file path="D:\Desktop\se2\setest\PULSeBS_Group1\pulsebs_frontend\src\__tests__\API.test.js">
+    <testCase name="test getUser no errors" duration="8"/>
+    <testCase name="test getUser error" duration="2"/>
+    <testCase name="test login no errors" duration="2"/>
+    <testCase name="test login response not ok, json ok" duration="1"/>
+    <testCase name="test login response not ok, json null" duration="4"/>
+    <testCase name="test login fetch rejected" duration="1"/>
     <testCase name="test getStudentCourses no errors" duration="1"/>
     <testCase name="test getStudentCourses error" duration="1"/>
-    <testCase name="test getTeacherLectures no errors" duration="3"/>
+    <testCase name="test getTeacherLectures no errors" duration="1"/>
     <testCase name="test getTeacherLectures error" duration="2"/>
-    <testCase name="test getLectures no errors" duration="0"/>
+    <testCase name="test getLectures no errors" duration="1"/>
     <testCase name="test getLectures error" duration="1"/>
     <testCase name="test getBookings no errors" duration="1"/>
-    <testCase name="test getBookings error" duration="0"/>
+    <testCase name="test getBookings error" duration="1"/>
     <testCase name="test addBooking no errors" duration="1"/>
     <testCase name="test addBooking response not ok, json ok" duration="1"/>
-    <testCase name="test addBooking response not ok, json null" duration="0"/>
+    <testCase name="test addBooking response not ok, json null" duration="1"/>
     <testCase name="test addBooking fetch rejected" duration="1"/>
-    <testCase name="test deleteLectureById no errors" duration="0"/>
-    <testCase name="test deleteLectureById response not ok, json ok" duration="0"/>
+    <testCase name="test deleteLectureById no errors" duration="1"/>
+    <testCase name="test deleteLectureById response not ok, json ok" duration="1"/>
     <testCase name="test deleteLectureById response not ok, json null" duration="1"/>
-    <testCase name="test deleteLectureById fetch rejected" duration="0"/>
+    <testCase name="test deleteLectureById fetch rejected" duration="1"/>
     <testCase name="test cancelBooking no errors" duration="1"/>
-    <testCase name="test cancelBooking response not ok, json ok" duration="0"/>
+    <testCase name="test cancelBooking response not ok, json ok" duration="1"/>
     <testCase name="test cancelBooking response not ok, json null" duration="1"/>
     <testCase name="test cancelBooking fetch rejected" duration="0"/>
-    <testCase name="test ChangeLecturemodeById no errors" duration="0"/>
-    <testCase name="test ChangeLecturemodeById response not ok, json ok" duration="1"/>
-    <testCase name="test ChangeLecturemodeById response not ok, json null" duration="0"/>
+    <testCase name="test ChangeLecturemodeById no errors" duration="1"/>
+    <testCase name="test ChangeLecturemodeById response not ok, json ok" duration="0"/>
+    <testCase name="test ChangeLecturemodeById response not ok, json null" duration="1"/>
   </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Professor/__test__/Professor_Page.test.js">
-    <testCase name="Renders Professor Header Correctly" duration="47"/>
+  <file path="D:\Desktop\se2\setest\PULSeBS_Group1\pulsebs_frontend\src\Components\Professor\MyLecturesProfessor\__test__\MyLecturesProfessor.test.js">
+    <testCase name="LectureList" duration="193"/>
+  </file>
+  <file path="D:\Desktop\se2\setest\PULSeBS_Group1\pulsebs_frontend\src\Components\Professor\__test__\Professor_Page.test.js">
+    <testCase name="Renders Professor Header Correctly" duration="57"/>
     <testCase name="Check Authentication Error" duration="7"/>
-    <testCase name="Check with Wrong Credentials" duration="3"/>
-    <testCase name="Check Home Page" duration="16"/>
-    <testCase name="Check My Lectures" duration="39"/>
+    <testCase name="Check with Wrong Credentials" duration="4"/>
+    <testCase name="Check Home Page" duration="20"/>
+    <testCase name="Check My Lectures" duration="52"/>
     <testCase name="Check Register Attendance" duration="18"/>
-    <testCase name="Check Statistics" duration="11"/>
-    <testCase name="Check Tutorial" duration="11"/>
+    <testCase name="Check Statistics" duration="17"/>
+    <testCase name="Check Tutorial" duration="17"/>
     <testCase name="Check Logout" duration="13"/>
   </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Professor/MyLecturesProfessor/__test__/MyLecturesProfessor.test.js">
-    <testCase name="LectureList" duration="213"/>
-  </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Login/__test__/loginForm.test.js">
-    <testCase name="Renders the Text" duration="12"/>
-    <testCase name="Renders the Email input field" duration="4"/>
-    <testCase name="Updates to Email input field" duration="5"/>
-    <testCase name="Renders the Password input field" duration="4"/>
-    <testCase name="Updates to Password input field" duration="5"/>
-    <testCase name="Renders the Submit Button" duration="70"/>
-    <testCase name="Test Button Click" duration="27"/>
-  </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Student/__test__/Student_Page.test.js">
-    <testCase name="Renders Student Header Correctly" duration="86"/>
-    <testCase name="Check with Wrong Credentials" duration="10"/>
-    <testCase name="Check Book a Seat" duration="28"/>
-    <testCase name="Check HomePage" duration="266"/>
-    <testCase name="Check Tutorial" duration="105"/>
+  <file path="D:\Desktop\se2\setest\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\__test__\Student_Page.test.js">
+    <testCase name="Renders Student Header Correctly" duration="88"/>
+    <testCase name="Check with Wrong Credentials" duration="9"/>
+    <testCase name="Check Book a Seat" duration="27"/>
+    <testCase name="Check HomePage" duration="232"/>
+    <testCase name="Check Tutorial" duration="83"/>
     <testCase name="Check Logout" duration="11"/>
-  </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/SuppOfficer/__test__/SuppOfficer_Page.test.js">
-    <testCase name="Renders Booking Manager Header Correctly" duration="18"/>
-    <testCase name="Check Authentication Error" duration="12"/>
-    <testCase name="Check Change Configuration" duration="12"/>
-    <testCase name="Check System Update" duration="12"/>
-    <testCase name="Check System Setup" duration="16"/>
-    <testCase name="Check Home Page" duration="10"/>
-    <testCase name="Check Logout" duration="19"/>
-  </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/BookingManager/__test__/BookingManager_Page.test.js">
-    <testCase name="Renders Booking Manager Header Correctly" duration="16"/>
-    <testCase name="Check Authentication Error" duration="7"/>
-    <testCase name="Check Monitor System Usage" duration="15"/>
-    <testCase name="Check Contact Tracing" duration="10"/>
-    <testCase name="Check Home Page" duration="10"/>
-    <testCase name="Check Logout" duration="11"/>
-  </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/__test__/components.test.js">
-    <testCase name="renders App component" duration="8"/>
-  </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/App.test.js">
-    <testCase name="renders learn react link" duration="1"/>
-  </file>
-  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/__tests__/User.test.js">
-    <testCase name="User constructor" duration="1"/>
   </file>
 </testExecutions>

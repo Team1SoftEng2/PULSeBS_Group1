@@ -31,10 +31,11 @@ function BookSeat(props) {
 
 function BookLecture(props) {
     const [booked, setBooked] = useState(props.lectureBookings.filter((b) =>  b.studentId == props.authObj.authUser).length);
-    const [professor, setProfessor] = useState();
+    //const [professor, setProfessor] = useState();
     const [bookedSeats, setBookedSeats] = useState(props.lectureBookings.length);
 
     const courseName = props.courses.filter( c => c.courseId === props.lecture.courseId )[0].name;
+    const professor = props.professors.find(p => p.userId === props.lecture.teacherId);
 
     const handleClick = () => {
         if(!booked){
@@ -46,6 +47,7 @@ function BookLecture(props) {
                     .then( () => {
                         setBooked(true);
                         setBookedSeats(bookedSeats + 1);
+                        props.triggerAPI();
                     })
                     .catch( (err) => console.log(err) );
         } else {
@@ -57,15 +59,15 @@ function BookLecture(props) {
             .then(() => {
                 setBooked(false);
                 setBookedSeats(bookedSeats - 1);});
-
+                props.triggerAPI();
         }
     }
 
-    useEffect( () => API.getUser(props.lecture.teacherId)
-                        .then( (res) => {
-                            setProfessor(res.name + " " + res.surname);
-                        })
-                        .catch( (err) => console.log(err) ), []);
+    // useEffect( () => API.getUser(props.lecture.teacherId)
+    //                     .then( (res) => {
+    //                         setProfessor(res.name + " " + res.surname);
+    //                     })
+    //                     .catch( (err) => console.log(err) ), []);
 
     const date = moment(props.lecture.date, "DD-MM-YYYY HH:mm:ss");
     
@@ -74,7 +76,7 @@ function BookLecture(props) {
         <td className='TableContent'>{date.format("DD-MM-YYYY")}</td>
         <td className='TableContent'>{date.format("HH:mm")}</td>
         <td className='TableContent'>{(props.lecture.mode === "present") ? props.lecture.room : "Virtual Classroom"}</td>
-        <td className='TableContent'>{professor}</td>
+        <td className='TableContent'>{professor.name + " " + professor.surname}</td>
         <td className='TableContent'>{(props.lecture.mode === "present") ? bookedSeats + "/" + props.lecture.maxSeats : "∞"}</td>
         <td className='TableContent'>
             <button className= {((props.lecture.mode === "present")? ((booked) ? "Not_Book" : "Book"): "Online")}

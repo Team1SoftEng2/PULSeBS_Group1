@@ -529,6 +529,8 @@ describe('Testing deadlineNotification', () => {
 /* ============================================================================================
                                   TESTS of changelecturemode to online
 =============================================================================================*/
+
+
 describe('online a lecture by id', () => {
 
   const lectures = [
