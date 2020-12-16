@@ -66,9 +66,11 @@ class homePageCalendarStudent extends Component {
       let booked = true;
       if(this.props.bookings.filter(b => b.studentId === this.props.authObj.authUser).some(r => r.lectureId === l.lectureId)) booked = false;
       let p = this.props.professors.find(f => f.userId === l.teacherId);
+      p=p.name + " " + p.surname;
+      console.log(this.props.professors)
       return {
         course : this.props.courses.filter(c => c.courseId === l.courseId)[0].name,
-        professor: p.name + " " + p.surname,
+        professor : p,//"aaaa",
         room : (l.mode === "present") ? l.room : 'Virtual Classroom',
         mode: l.mode,
         booked: booked,

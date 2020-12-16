@@ -21,9 +21,10 @@ function StudentPage(props){
 
     useEffect( () => API.getStudentCourses(authObj.authUser)
                         .then( (res) => {
+                            getAllProfessors(res);
                             setCourses(res);
                             getAllLectures(res);
-                            getAllProfessors(res);
+                            
                         })
                         .catch( (err) => {
                             if (err.status && err.status === 401)
