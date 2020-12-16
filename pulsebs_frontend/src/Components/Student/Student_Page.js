@@ -14,11 +14,16 @@ function StudentPage(props){
     let [courses, setCourses] = useState([]);
     let [bookings, setBookings] = useState([]);
     let [lectures, setLectures] = useState([]);
+    let [update, setUpdate] = useState(false);
+    let [professors, setProfessors] = useState([]);
+
+    const triggerAPI = () => setUpdate(!update);
 
     useEffect( () => API.getStudentCourses(authObj.authUser)
                         .then( (res) => {
                             setCourses(res);
                             getAllLectures(res);
+                            getAllProfessors(res);
                         })
                         .catch( (err) => {
                             if (err.status && err.status === 401)
@@ -37,11 +42,11 @@ function StudentPage(props){
                                 history.push('/');
                             else
                                 console.log(err);
-                        }), [history]
+                        }), [history, update]
     );
     
     const getAllLectures = (coursesList) => {
-        let lecturesList = []
+        let lecturesList = [];
         coursesList.forEach( (course) => {
             API.getLectures(course.courseId)
                 .then( (res) => {
@@ -55,8 +60,19 @@ function StudentPage(props){
                         console.log(err);
                 });
         });
-    };                    
-
+    };
+    
+    const getAllProfessors = (courseList) => {
+        let professorList = [];
+        courseList.forEach( (c) => {
+            if(!professorList.filter((p) => p.teacherId === c.teacherId).length){
+                API.getUser(c.teacherId).then((res) => {
+                    professorList.push(res);
+                    setProfessors(professorList);
+                });               
+            }
+        });
+    };
 
     if(authObj.userRole !== "student")
         return <BrowserRouter><Redirect to = "/"/></BrowserRouter>
@@ -66,8 +82,8 @@ function StudentPage(props){
             <BrowserRouter>
                 <StudentHeader/>
                 <Switch>
-                    <Route path="/student" exact component={() => <HomePageCalendarStudent {...props} courses={courses} lectures={lectures} bookings={bookings}/>} />
-                    <Route path="/student/book_a_seat" exact component={ () => <BookSeat {...props} courses={courses} lectures={lectures} bookings={bookings}/>} />
+                    <Route path="/student" exact component={() => <HomePageCalendarStudent {...props} courses={courses} lectures={lectures} bookings={bookings} professors={professors}/>} />
+                    <Route path="/student/book_a_seat" exact component={ () => <BookSeat {...props} courses={courses} lectures={lectures} bookings={bookings} professors={professors} triggerAPI={triggerAPI}/>} />
                     <Route path="/student/tutorial" exact component={TutorialStudent} />
                 </Switch>
             </BrowserRouter>

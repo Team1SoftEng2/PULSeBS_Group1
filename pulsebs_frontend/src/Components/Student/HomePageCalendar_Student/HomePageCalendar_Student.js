@@ -50,13 +50,13 @@ class homePageCalendarStudent extends Component {
     };
   };
 
-  getAllProfessors = async () => {
-    const professors = await Promise.all(this.props.lectures.map(async (lecture) => await API.getUser(lecture.teacherId)));
-    return professors;
-  };
+  // getAllProfessors = async () => {
+  //   const professors = await Promise.all(this.props.lectures.map(async (lecture) => await API.getUser(lecture.teacherId)));
+  //   return professors;
+  // };
   
   getAllData = async () => {
-    const professors = await this.getAllProfessors();
+    // const professors = await this.getAllProfessors();
     let lezion = this.props.lectures.map( (l) => {
       let data = moment(l.date, "DD-MM-YYYY HH:mm:ss").format("DD-MM-YYYY");
       let time = l.time.split("~");
@@ -65,7 +65,7 @@ class homePageCalendarStudent extends Component {
       data = data.split("-");
       let booked = true;
       if(this.props.bookings.filter(b => b.studentId === this.props.authObj.authUser).some(r => r.lectureId === l.lectureId)) booked = false;
-      let p = professors.find(f => f.userId === l.teacherId);
+      let p = this.props.professors.find(f => f.userId === l.teacherId);
       return {
         course : this.props.courses.filter(c => c.courseId === l.courseId)[0].name,
         professor: p.name + " " + p.surname,
