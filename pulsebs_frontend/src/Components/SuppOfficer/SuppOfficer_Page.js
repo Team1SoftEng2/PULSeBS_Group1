@@ -17,10 +17,10 @@ function suppOfficerPage (props) {
             <BrowserRouter>
                 <SuppOfficerHeader username="UserName" />
                 <Switch>
-                    <Route path="/support_officer" component={SystemConfigure} />
-                    <Route path="/support_officer/setup" component={SystemSetup} />
-                    <Route path="/support_officer/update" component={SystemUpdate} />
-                    <Route path="/support_officer/configure" component={SystemConfigure} />
+                    <Route path="/support_officer" exact component={SystemConfigure} />
+                    <Route path="/support_officer/setup" exact component={SystemSetup} />
+                    <Route path="/support_officer/update" exact component={SystemUpdate} />
+                    <Route path="/support_officer/configure" exact component={SystemConfigure} />
                 </Switch>
             </BrowserRouter>
         </div>;
