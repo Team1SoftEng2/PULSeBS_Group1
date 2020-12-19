@@ -29,40 +29,40 @@ sections:
 
 | Story  | # Tasks | Points | Hours est. | Hours actual |
 |--------|---------|--------|------------|--------------|
-| _#0_   |    9    |   -    |   14h5     |   6h15       |
-| _#1_   |    2    |   5    |   4h       |   2h         |
-| _#2_   |    2    |   5    |   3h       |   2h         |
-| _#3_   |    1    |   3    |   2h       |   0h         |
-| _#4_   |    3    |   5    |   4h30     |   10h35      |
-| _#6_   |    2    |   8    |   10h      |   17h55      |
-| _#8_   |    2    |   5    |   18h30    |   9h30       |
-| _#9_   |    4    |   3    |   8h       |   12h5       |   
+| _#0_   |    7    |   -    |   33h42    |   31h57      |
+| _#1_   |    2    |   5    |   1h30     |   1h30       |
+| _#2_   |    2    |   5    |   3h       |   3h45       |
+| _#3_   |    1    |   3    |   1h       |   1h         |
+| _#4_   |    3    |   5    |   3h30     |   5h         |
+| _#6_   |    2    |   8    |   7h       |   7h         |
+| _#8_   |    2    |   5    |            |              |
+| _#9_   |    4    |   3    |   10h30    |   10h45      |   
 
 > place technical tasks corresponding to story `#0` and leave out story points (not applicable in this case)
 
 - Hours per task (average, standard deviation): average 2h 13m, standard deviation 2h
 
-- Total task estimation error ratio: sum of total hours estimation / sum of total hours spent from previous table: 1.06
+- Total task estimation error ratio: sum of total hours estimation / sum of total hours spent from previous table: 0.98
   
 ## QUALITY MEASURES [TO BE COMPLETED]
 
 - Unit Testing:
-  - Total hours estimated:  16h
-  - Total hours spent: 13h
-  - Nr of automated unit test cases:  8 for now
-  - Coverage (if available): 19.6% 
+  - Total hours estimated:  1h+10h+1h+2h+2h40+
+  - Total hours spent: 1h15+10h5+1h30+2h5+2h20+
+  - Nr of automated unit test cases:  
+  - Coverage (if available): 59.9%
 - E2E testing:
-  - Total hours estimated: 4h 
-  - Total hours spent: 4h20
+  - Total hours estimated: 4hb30 
+  - Total hours spent: 4h30
 - Code review 
   - Total hours estimated: 2h
   - Total hours spent: 2h
 - Technical Debt management:
   - Total hours estimated: 30m 
-  - Total hours spent: 5m
+  - Total hours spent: 12m
   - Hours estimated for remediation by SonarQube: 30m
-  - Hours spent on remediation: 5m 
-  - debt ratio (as reported by SonarQube under "Measures-Maintainability"): 0.0%
+  - Hours spent on remediation: 12m 
+  - debt ratio (as reported by SonarQube under "Measures-Maintainability"): 0.1%
   - rating for each quality characteristic reported in SonarQube under "Measures" (namely reliability, security, maintainability ):
 
   Reliability -> A
