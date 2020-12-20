@@ -8,7 +8,7 @@ sections:
 - [quality measures](#quality-measures)
 - [general assessment](#assessment)
 
-## PROCESS MEASURES [TO BE COMPLETED]
+## PROCESS MEASURES 
 
 ### Macro statistics
 
@@ -35,24 +35,24 @@ sections:
 | _#3_   |    1    |   3    |   1h       |   1h         |
 | _#4_   |    3    |   5    |   3h30     |   5h         |
 | _#6_   |    2    |   8    |   7h       |   7h         |
-| _#8_   |    2    |   5    |            |              |
+| _#8_   |    2    |   5    |   45m      |   45m        |
 | _#9_   |    4    |   3    |   10h30    |   10h45      |   
 
 > place technical tasks corresponding to story `#0` and leave out story points (not applicable in this case)
 
-- Hours per task (average, standard deviation): average 2h 13m, standard deviation 2h
+- Hours per task (average, standard deviation): average 2h 56m, standard deviation 2h 41m
 
 - Total task estimation error ratio: sum of total hours estimation / sum of total hours spent from previous table: 0.98
   
-## QUALITY MEASURES [TO BE COMPLETED]
+## QUALITY MEASURES 
 
 - Unit Testing:
-  - Total hours estimated:  1h+10h+1h+2h+2h40+
-  - Total hours spent: 1h15+10h5+1h30+2h5+2h20+
+  - Total hours estimated:  17h
+  - Total hours spent: 17h 40m
   - Nr of automated unit test cases:  
   - Coverage (if available): 59.9%
 - E2E testing:
-  - Total hours estimated: 4hb30 
+  - Total hours estimated: 4h30 
   - Total hours spent: 4h30
 - Code review 
   - Total hours estimated: 2h
