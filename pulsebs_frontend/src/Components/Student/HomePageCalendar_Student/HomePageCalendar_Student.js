@@ -5,34 +5,40 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import API from '../../../api/API';
 
 // moment.locale("en-GB");
-const localizer = momentLocalizer(moment);
+const localizer = momentLocalizer(moment, {
+  week: {
+      dow: 1,
+      doy: 1,
+  },
+});
 
 function CustomEvent(lecture) {
   return (
 
-      <div>
-          <p><b>{lecture.event.course}</b><br/>{lecture.event.professor}</p>
-              {(lecture.event.mode === "present") ? lecture.event.room : "Virtual Classroom"}
-      </div>
+    <div>
+      <p><b>{lecture.event.course}</b><br />{lecture.event.professor}</p>
+      {(lecture.event.mode === "present") ? lecture.event.room : "Virtual Classroom"}
+    </div>
   );
 }
 
 class homePageCalendarStudent extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
+      view: 'week',
       date: new Date(),
-      first:true,
-      authObj:this.props.authObj,
+      first: true,
+      authObj: this.props.authObj,
       courses: this.props.courses,
-      lectures:this.props.lectures,
-      events:[],
-      professors:[],
-      res:false,
+      lectures: this.props.lectures,
+      events: [],
+      professors: [],
+      res: false,
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getAllData();
   }
 
@@ -54,32 +60,32 @@ class homePageCalendarStudent extends Component {
   //   const professors = await Promise.all(this.props.lectures.map(async (lecture) => await API.getUser(lecture.teacherId)));
   //   return professors;
   // };
-  
+
   getAllData = async () => {
     // const professors = await this.getAllProfessors();
-    let lezion = this.props.lectures.map( (l) => {
+    let lezion = this.props.lectures.map((l) => {
       let data = moment(l.date, "DD-MM-YYYY HH:mm:ss").format("DD-MM-YYYY");
       let time = l.time.split("~");
       let inizio = time[0].split(":");
       let fine = time[1].split(":");
       data = data.split("-");
       let booked = true;
-      if(this.props.bookings.filter(b => b.studentId === this.props.authObj.authUser).some(r => r.lectureId === l.lectureId)) booked = false;
+      if (this.props.bookings.filter(b => b.studentId === this.props.authObj.authUser).some(r => r.lectureId === l.lectureId)) booked = false;
       console.log(this.props.professors);
-      let p = this.props.professors.filter( professor => professor.userId == l.teacherId)[0];
+      let p = this.props.professors.filter(professor => professor.userId == l.teacherId)[0];
       //let p = this.props.professors.find(f => f.userId === l.teacherId);
       p = p.name + " " + p.surname;
       return {
-        course : this.props.courses.filter(c => c.courseId === l.courseId)[0].name,
-        professor : p,//"aaaa",
-        room : (l.mode === "present") ? l.room : 'Virtual Classroom',
+        course: this.props.courses.filter(c => c.courseId === l.courseId)[0].name,
+        professor: p,//"aaaa",
+        room: (l.mode === "present") ? l.room : 'Virtual Classroom',
         mode: l.mode,
         booked: booked,
-        start : new Date(data[2], data[1] - 1, data[0], inizio[0], inizio[1]),
-        end : new Date(data[2], data[1] - 1, data[0], fine[0], fine[1]),        
+        start: new Date(data[2], data[1] - 1, data[0], inizio[0], inizio[1]),
+        end: new Date(data[2], data[1] - 1, data[0], fine[0], fine[1]),
       }
     });
-    this.setState({events: lezion});
+    this.setState({ events: lezion });
   }
 
   render() {
@@ -101,9 +107,9 @@ class homePageCalendarStudent extends Component {
           toolbar={true}
           events={this.state.events}
           step={30}
-          views={['work_week']}
-          view='work_week'
-          onView={() => { }}
+          views={['week', 'month']}
+          view={this.state.view}
+          onView={view => this.setState({ view })}
           min={new Date(2020, 0, 1, 8, 0)} // 8.00 am
           max={new Date(2020, 0, 1, 19, 30)} //19.30 pm
           date={this.state.date}
