@@ -69,6 +69,7 @@ app.get('/api/teachers/lectures', lecturesController.apiTeacherLecturesGET);
 app.get('/api/bookings', bookingsController.apiBookingsGET);
 app.get('/api/users/:id', authController.apiUserGET);
 app.post('/api/bookings', validate({body: bookingSchema}), bookingsController.apiBookingsPOST);
+app.post('/api/bookings/waitingLists', validate({body: bookingSchema}), bookingsController.apiBookingToWaitingListPOST);
 app.delete('/api/bookings', bookingsController.apiBookingsDelete);
 
 // Error handlers for validation and authentication errors

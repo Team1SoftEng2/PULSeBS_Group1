@@ -39,7 +39,7 @@ function BookLecture(props) {
 
     const handleClick = () => {
         if(!booked){
-            if(props.lecture.mode === "present" && bookedSeats < props.lecture.maxSeats)
+            if(props.lecture.mode === "present" && bookedSeats < props.lecture.maxSeats) {
                 API.addBooking({
                     studentId: props.authObj.authUser,
                     lectureId: props.lecture.lectureId
@@ -50,6 +50,17 @@ function BookLecture(props) {
                         props.triggerAPI();
                     })
                     .catch( (err) => console.log(err) );
+            }
+            if(props.lecture.mode === "present" && bookedSeats === props.lecture.maxSeats) {
+                // put student in waiting list
+                API.apiBookingToWaitingListPOST({
+                    studentId: props.authObj.authUser,
+                    lectureId: props.lecture.lectureId
+                    })
+                    // modifies button in "waiting" and set lecture in waiting list
+                    .then(() => {console.log('in waiting listtttttttttttttt')})
+                    .catch((err) => console.log(err) );
+            }
         } else {
             API.cancelBooking({
                 studentId: props.authObj.authUser,

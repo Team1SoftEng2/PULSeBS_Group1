@@ -41,17 +41,42 @@ module.exports.apiBookingsPOST = async function apiBookingsPOST(req, res) {
           html: '',
         };
         [err, notification] = await to(Email.sendEmailByUserId(req.body.studentId, message));
-        if(err) console.log(err);
+        if (err) console.log(err);
         return utils.writeJson(res, {'msg': 'Created'}, 201);
       }
     }
   }
 };
+
+// TO BE TESTED ================================================================================
+
 // booking delete
 module.exports.apiBookingsDelete = async function apiBookingsDelete(req, res) {
   let err;
-  let notification;
-  [err, notification] = await to(Bookings.apiBookingsDelete(req.body));
+  let booking;
+  [err] = await to(Bookings.apiBookingsDelete(req.body));
   if (err) return utils.writeJson(res, {errors: [{'msg': err}]}, 502);
-  else return utils.writeJson(res, {'msg': 'Delete'}, 202);
+  [err, booking] = await to(Bookings.getFirstBookingInWaitingList(req.body.lectureId));
+  console.log(booking);
+  if (booking || booking.length !== 0) {
+    // add booking to bookings and then remove it from waitinglist
+    [err] = await to(Bookings.apiBookingsPOST(booking));
+    if (!err) Bookings.bookingWaitingListDELETE(booking);
+  }
+  return utils.writeJson(res, {'msg': 'Deleted'}, 202);
+};
+
+module.exports.apiBookingToWaitingListPOST = async function apiBookingToWaitingListPOST(req, res) {
+  let err;
+  let notification;
+  [err, notification] = await to(Bookings.getBookingInWaitingList(req.body));
+  if (err) return utils.writeJson(res, {errors: [{'msg': err}]}, 502);
+  if (!notification || notification.length === 0 ) {
+    [err, notification] = await to(Bookings.bookingWaitingListPOST(req.body));
+
+    if (err) return utils.writeJson(res, {errors: [{'msg': err}]}, 502);
+    return utils.writeJson(res, {'msg': 'Added to waiting List'}, 201);
+  } else {
+    return utils.writeJson(res, {errors: [{'msg': 'already in waiting list for that lecture'}]}, 502);
+  }
 };

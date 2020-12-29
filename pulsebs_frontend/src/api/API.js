@@ -113,6 +113,27 @@ async function addBooking(booking) {
     });
 }
 
+async function apiBookingToWaitingListPOST(booking) {
+    return new Promise((resolve, reject) => {
+        fetch(baseURL + "/bookings/waitingLists", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(booking),
+        }).then( (response) => {
+            if(response.ok) {
+                resolve(null);
+            } else {
+                // analyze the cause of error
+                response.json()
+                    .then( (obj) => {reject(obj);} ) // error msg in the response body
+                    .catch( (err) => {reject({ errors: [{ param: "Application", msg: "Cannot parse server response" }] }) }); // something else
+            }
+        }).catch( (err) => {reject({ errors: [{ param: "Server", msg: "Cannot communicate" }] }) }); // connection errors
+    });
+}
+
 async function deleteLectureById(lectureId) {
     return new Promise((resolve, reject) => {
         fetch(baseURL + "/lectures/" + lectureId, {
@@ -163,5 +184,5 @@ async function ChangeLecturemodeById(lectureId) {
     }
 }
 
-const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getUser, deleteLectureById, cancelBooking,ChangeLecturemodeById };
+const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getUser, deleteLectureById, cancelBooking, ChangeLecturemodeById, apiBookingToWaitingListPOST };
 export default API;
