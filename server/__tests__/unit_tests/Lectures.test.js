@@ -348,6 +348,7 @@ test('delete a lecture by id and in time', () => {
 
 
   Lectures.deleteLectureById.mockImplementation(() => Promise.resolve({dbResponse: 'OK'}));
+  Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
 
   return Controller.apiLecturesIdDELETE(req, res).then(() => {
     const data = res._getJSONData();
@@ -370,6 +371,7 @@ test('delete a lecture by id and not in time', () => {
   });
 
   Lectures.deleteLectureById.mockImplementation(() => Promise.resolve({dbResponse: 'OK'}));
+  Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
 
   return Controller.apiLecturesIdDELETE(req, res).then(() => {
     const data = res._getJSONData();
@@ -392,6 +394,7 @@ test('delete a non existing lecture', () => {
   });
 
   Lectures.deleteLectureById.mockImplementation(() => Promise.resolve({dbResponse: 'OK'}));
+  Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
 
   return Controller.apiLecturesIdDELETE(req, res).then(() => {
     const data = res._getJSONData();
@@ -409,7 +412,8 @@ test('delete lecture but an error occours in db when search for a lecture', () =
   Lectures.getLectureById.mockImplementation((id) => Promise.reject('some type of error'));
 
   Lectures.deleteLectureById.mockImplementation(() => Promise.resolve({dbResponse: 'OK'}));
-
+  Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
+  
   return Controller.apiLecturesIdDELETE(req, res).then(() => {
     const data = res._getJSONData();
     expect.assertions(1);
@@ -431,6 +435,7 @@ test('delete a lecture but an error occours in db when deleting it', () => {
   });
 
   Lectures.deleteLectureById.mockImplementation(() => Promise.reject('Some type of error'));
+  Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
 
   return Controller.apiLecturesIdDELETE(req, res).then(() => {
     const data = res._getJSONData();
@@ -481,7 +486,8 @@ describe('Testing deadlineNotification', () => {
     Lectures.getLectures.mockImplementation( () => Promise.resolve(newLectures));
     Bookings.getBookings.mockImplementation( (lectureId) => Promise.resolve([]));
     Email.sendEmailByUserId.mockImplementation(() => Promise.resolve() );
-    
+    Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
+
     return Controller.deadlineNotification().then( (data) => { 
       expect.assertions(4);
       expect(data.length).toBe(3);
@@ -495,6 +501,7 @@ describe('Testing deadlineNotification', () => {
     Lectures.getLectures.mockImplementation( () => Promise.resolve(newLectures));
     Bookings.getBookings.mockImplementation( (lectureId) => Promise.resolve([]));
     Email.sendEmailByUserId.mockImplementation(() => Promise.reject('email error') );
+    Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
 
     return Controller.deadlineNotification().then( (data) => {
       expect.assertions(2);
@@ -507,6 +514,7 @@ describe('Testing deadlineNotification', () => {
     Lectures.getLectures.mockImplementation( () => Promise.resolve(newLectures));
     Bookings.getBookings.mockImplementation( (lectureId) => Promise.reject([]));
     Email.sendEmailByUserId.mockImplementation(() => Promise.resolve() );
+    Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
 
     return Controller.deadlineNotification().then( (data) => {
       expect.assertions(2);
@@ -519,12 +527,27 @@ describe('Testing deadlineNotification', () => {
     Lectures.getLectures.mockImplementation( () => Promise.reject([]));
     Bookings.getBookings.mockImplementation( (lectureId) => Promise.resolve([]));
     Email.sendEmailByUserId.mockImplementation(() => Promise.resolve() );
+    Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
 
     return Controller.deadlineNotification().then( (data) => {
       expect.assertions(1);
       expect(data.err).toEqual('Failed to communicate with the DB');
     });
   });
+
+  test('test with courses error', () => {
+    Lectures.getLectures.mockImplementation( () => Promise.resolve(newLectures));
+    Bookings.getBookings.mockImplementation( (lectureId) => Promise.resolve([]));
+    Email.sendEmailByUserId.mockImplementation(() => Promise.resolve() );
+    Courses.getCourseById.mockImplementation((courseId) => Promise.reject('courses error'));
+
+    return Controller.deadlineNotification().then( (data) => {
+      expect.assertions(2);
+      expect(data.length).toBe(3);
+      expect(data[1]).toBeFalsy();
+    })
+
+  })
 });
 /* ============================================================================================
                                   TESTS of changelecturemode to online
@@ -583,6 +606,8 @@ describe('online a lecture by id', () => {
     const req = httpMocks.createRequest({params: {id: lectureId}});
     const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
   
+    Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
+
     await Controller.apiOnlineLectureGET(req, res);
 
     expect(res._getStatusCode()).toEqual(200);
@@ -594,6 +619,8 @@ describe('online a lecture by id', () => {
     const req = httpMocks.createRequest({params: {id: 'IS1006'}});
     const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
   
+    Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
+
     await Controller.apiOnlineLectureGET(req, res);
     const data = res._getJSONData();
     

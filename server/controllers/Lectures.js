@@ -60,10 +60,14 @@ module.exports.apiLecturesIdDELETE = async function apiLecturesIdDELETE(req, res
   startTime = startTime.subtract(1, 'hours');
   // if I'm in time
   if (now.isBefore(startTime)) {
-      Email.sendEmailByLectureId(lectureId, {
-      subject: 'lecture has deleted',
-      text: 'Dear student, your booking for lecture '+lectureId+' has deleted',
-      html: 'Dear student, your booking for lecture '+lectureId+' has deleted'
+    let course;
+    [err, course] = await to(Courses.getCourseById(lecture.courseId));
+    if (err) return utils.writeJson(res, {errors: [{'msg': err}]}, 500);
+    
+    Email.sendEmailByLectureId(lectureId, {
+      subject: 'Lecture cancelled',
+      text: 'Dear student, ' + course.name + 'lecture of ' + lecture.date + ' was cancelled',
+      html: ''
     });
     // delete the lecture
     [err, notification] = await to(Lectures.deleteLectureById(lectureId));
@@ -101,10 +105,14 @@ module.exports.apiOnlineLectureGET = async function apiOnlineLectureGET(req, res
     if (err) return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
     // Notification.NotificationOpenLecture(lectureId);
 
+    let course;
+    [err, course] = await to(Courses.getCourseById(lecture.courseId));
+    if (err) return utils.writeJson(res, {errors: [{'msg': err}]}, 500);
+
     await Email.sendEmailByLectureId(lectureId, {
-      subject: 'lecturemode have changed',
-      text: 'Dear student, your booking for lecture '+lectureId+' present mode changed to online',
-      html: 'Dear student, your booking for lecture '+lectureId+' present mode changed to online'
+      subject: 'Lecture mode changed to online',
+      text: 'Dear student, the' + course.name + 'lecture of ' + lecture.date + 'will be held online insted of in classroom',
+      html: '',
     });
 
     // if all goes well ,notify everyone lecture mode changed
@@ -125,18 +133,23 @@ module.exports.deadlineNotification = async function () {
 
     let [error, bookings] = await to(Bookings.getBookings(l.lectureId));
     if(error) return false;
+
+    let course;
+    [error, course] = await to(Courses.getCourseById(l.courseId));
+    if (error) return false;
     
     let result;
     let message = {
       from: 'Booking service',
       to: '',
       subject: 'Lecture Bookings',
-      text: 'Dear professor, the number of booked students for your upcoming lecture ' + l.lectureId + ' is ' + bookings.length,
+      text: 'Dear professor, the number of booked students for your upcoming lecture of' + course.name + ' is ' + bookings.length,
       html: '',
     };
     [error, result] = await to(Email.sendEmailByUserId(l.teacherId, message));
     if(error) return false;
     return true;
+
   }));
   return sent;
 };
