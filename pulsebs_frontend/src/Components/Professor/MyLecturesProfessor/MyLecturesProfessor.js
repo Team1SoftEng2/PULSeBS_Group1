@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import { Col, Row, Button, Accordion, Card } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 import API from '../../../api/API';
@@ -7,13 +7,12 @@ import API from '../../../api/API';
 export default function MyLecturesProfessor() {
 
     const [lectures, setLectures] = React.useState([]);
-
     const history = useHistory();
 
-    console.log("MyLecturesProfessor")
+    //console.log("MyLecturesProfessor")
 
     React.useEffect(() => {
-        console.log("getTeacherLectures")
+        //console.log("getTeacherLectures")
         API.getTeacherLectures()
             .then((res) => {
                 //console.log("getTeacherLectures result :" + res)
@@ -27,8 +26,6 @@ export default function MyLecturesProfessor() {
                     console.log(err);
             });
     }, [history]);
-
-
     return (
         <div id='MyLecturesProfessorContainer'>
             <LectureList lectures={lectures} history={history} setLectures={setLectures} />
@@ -48,6 +45,7 @@ export function LectureList({ lectures, ...rest }) {
 
 function Lecture({ lectureId, courseId, room, date, time, mode, history, setLectures, ...rest }) {
 
+    const [course, setCourse] = React.useState();
     const [bookings, setBookings] = React.useState([]);
     const [errMsg, setErrMsg] = React.useState();
 
@@ -64,6 +62,19 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
             });
     }, [history, lectureId]);
 
+    React.useEffect(() => {
+        API.getCourseById(courseId)
+            .then((res) => {
+                setCourse(res);
+            })
+            .catch((err) => {
+                if (err.status && err.status === 401)
+                    history.push('/');
+                else
+                    console.log(err);
+            });
+    }, [history, courseId]);
+
     function TransformDate(stringInput) {
         const dateAndTimeSplit = stringInput.split(' ');
         const dateElements = dateAndTimeSplit[0].split('-');
@@ -77,7 +88,7 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
         if (dateNow >= dateCheck)
             return true; //disable button
         const dateDiff = Math.floor((dateCheck - dateNow) / (60 * 1000));
-        console.log(dateDiff);
+        //console.log(dateDiff);
 
         if (dateDiff > timeLimit)
             return false; //enable button
@@ -130,7 +141,7 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
                         <Accordion.Toggle lg={10} as={Button} variant="link" eventKey="0">
                             <Row >
                                 <span className='HeaderText'>▼</span>
-                                <Col className='HeaderText'>{lectureId}</Col>
+                                <Col className='HeaderText'>{ course?.name }</Col>
                                 <Col className='HeaderText'>Date: {date}</Col>
                                 <Col className='HeaderText'>Time: {time}</Col>
                                 <Col className='HeaderText'>

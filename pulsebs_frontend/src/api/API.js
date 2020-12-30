@@ -47,7 +47,18 @@ async function getStudentCourses(studentId) {
         throw err;  // An object with the error coming from the server
     }
 }
-
+async function getCourseById(courseId) {
+    let url = "/courses/" + courseId;
+    const response = await fetch(baseURL + url);
+    const coursesJson = await response.json();
+    //console.log(coursesJson);
+    if(response.ok){
+        return coursesJson;
+    } else {
+        let err = {status: response.status, errObj:coursesJson};
+        throw err;  // An object with the error coming from the server
+    }
+}
 async function getTeacherLectures() {
     let url = "/teachers/lectures";
     const response = await fetch(baseURL + url);
@@ -196,5 +207,5 @@ async function ChangeLecturemodeById(lectureId) {
     }
 }
 
-const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getUser, deleteLectureById, cancelBooking, ChangeLecturemodeById, apiBookingToWaitingListPOST, getBookingsInWaitingList };
+const API = { getCourseById,getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getUser, deleteLectureById, cancelBooking, ChangeLecturemodeById, apiBookingToWaitingListPOST, getBookingsInWaitingList };
 export default API;
