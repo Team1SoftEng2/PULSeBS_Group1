@@ -5,6 +5,7 @@ const to = require('await-to-js').default;
 const utils = require('../utils/writer.js');
 const Bookings = require('../service/BookingsService');
 const Lectures = require('../service/LecturesService');
+const Booking = require('../components/booking');
 const Email = require('./Email');
 const moment = require('moment');
 
@@ -57,8 +58,7 @@ module.exports.apiBookingsDelete = async function apiBookingsDelete(req, res) {
   [err] = await to(Bookings.apiBookingsDelete(req.body));
   if (err) return utils.writeJson(res, {errors: [{'msg': err}]}, 502);
   [err, booking] = await to(Bookings.getFirstBookingInWaitingList(req.body.lectureId));
-  console.log(booking);
-  if (booking || booking.length !== 0) {
+  if (!booking || booking.length !== 0) {
     // add booking to bookings and then remove it from waitinglist
     [err] = await to(Bookings.apiBookingsPOST(booking));
     if (!err) Bookings.bookingWaitingListDELETE(booking);
@@ -79,4 +79,14 @@ module.exports.apiBookingToWaitingListPOST = async function apiBookingToWaitingL
   } else {
     return utils.writeJson(res, {errors: [{'msg': 'already in waiting list for that lecture'}]}, 502);
   }
+};
+
+module.exports.apiBookingsWaitingListGET = async function apiBookingsWaitingListGET(req, res) {
+  const studentId = req.user && req.user.user;
+  let err;
+  let results;
+  [err, results] = await to(Bookings.getBookingsInWaitingList(studentId));
+  if (err) return utils.writeJson(res, {errors: [{'msg': err}]}, 502);
+  if (!results || results.length === 0) return utils.writeJson(res, {errors: [{'msg': 'empty waiting list'}]}, 404);
+  return utils.writeJson(res, results);
 };

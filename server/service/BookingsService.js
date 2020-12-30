@@ -75,6 +75,25 @@ exports.getBookingInWaitingList = function(booking) {
   });
 };
 
+exports.getBookingsInWaitingList = function(studentId) {
+  return new Promise((resolve, reject) => {
+    const sql = `SELECT * FROM BookingWaitingList 
+                WHERE StudentID = ?`;
+    db.all(sql, [studentId], (err, rows) => {
+      if (err) {
+        reject(err);
+      } else {
+        if (!rows || rows.length === 0) {
+          resolve(null);
+        } else {
+          const bookings = rows.map((row) => new Booking(row.StudentID, row.LectureID));
+          resolve(bookings);
+        }
+      }
+    });
+  });
+};
+
 exports.bookingWaitingListPOST = function(body) {
   return new Promise((resolve, reject) => {
     const sql = 'INSERT INTO BookingWaitingList (StudentID, LectureID) VALUES (?, ?)';

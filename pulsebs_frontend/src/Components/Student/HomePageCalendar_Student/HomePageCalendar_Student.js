@@ -43,15 +43,42 @@ class homePageCalendarStudent extends Component {
   }
 
   getEventStyle = (event, start, end, isSelected) => {
-    let newStyle = {
-      backgroundColor: (event.mode === "present") ? (event.booked ? "#179873" : "#E3170A") : "#B9E6FF",
-      color: (event.mode === "present") ? '#F6F6F6' : "black",
-      borderRadius: "5px",
-      border: "none"
-    };
+    let newStyle;
+    if(event.mode === "present") {
+      if(event.booked) {
+        newStyle = {
+          backgroundColor: "#179873",
+          color: '#F6F6F6',
+          borderRadius: "5px",
+          border: "none"
+        }
+      }
+      if(event.waiting) {
+        newStyle = {
+          backgroundColor: "#E3850A",
+          color: '#F6F6F6',
+          borderRadius: "5px",
+          border: "none"
+        }
+      } else {
+          newStyle = {
+            backgroundColor: "#E3170A",
+            color: '#F6F6F6',
+            borderRadius: "5px",
+            border: "none"
+          }
+        }
+    } else {
+      newStyle = {
+        backgroundColor: "#B9E6FF",
+        color: "black",
+        borderRadius: "5px",
+        border: "none"
+      }
+    }
 
     return {
-      className: "CustomEventContainer " + (event.mode === "present") ? (event.booked ? "Booked" : "Unbooked") : "Online",
+      className: "CustomEventContainer " + (event.mode === "present") ? (event.booked ? "Booked" : (event.waiting? "Waiting" : "Unbooked")) : "Online",
       style: newStyle
     };
   };
@@ -70,8 +97,12 @@ class homePageCalendarStudent extends Component {
       let fine = time[1].split(":");
       data = data.split("-");
       let booked = true;
+      let waiting = true;
+
       if (this.props.bookings.filter(b => b.studentId === this.props.authObj.authUser).some(r => r.lectureId === l.lectureId)) booked = false;
-      console.log(this.props.professors);
+      const waitingList = this.props.waitingBookings.filter(booking => booking.lectureId === l.lectureId);
+      if(!waitingList || waitingList.length === 0)  waiting = false;
+
       let p = this.props.professors.filter(professor => professor.userId == l.teacherId)[0];
       //let p = this.props.professors.find(f => f.userId === l.teacherId);
       p = p.name + " " + p.surname;
@@ -81,6 +112,7 @@ class homePageCalendarStudent extends Component {
         room: (l.mode === "present") ? l.room : 'Virtual Classroom',
         mode: l.mode,
         booked: booked,
+        waiting: waiting,
         start: new Date(data[2], data[1] - 1, data[0], inizio[0], inizio[1]),
         end: new Date(data[2], data[1] - 1, data[0], fine[0], fine[1]),
       }
@@ -94,6 +126,7 @@ class homePageCalendarStudent extends Component {
       <div className="StudentCalendarContainer">
         <div className="StudentCalendarLegend">
           <div className="LegendElement"><div class='box red'></div>= Booked lesson</div>
+          <div className="LegendElement"><div class='box orange'></div>= In waiting list</div>
           <div className="LegendElement"><div class='box green'></div>= Not Booked lesson</div>
           <div className="LegendElement"><div class='box blue'></div>= Online lesson</div>
         </div>

@@ -70,6 +70,7 @@ app.get('/api/bookings', bookingsController.apiBookingsGET);
 app.get('/api/users/:id', authController.apiUserGET);
 app.post('/api/bookings', validate({body: bookingSchema}), bookingsController.apiBookingsPOST);
 app.post('/api/bookings/waitingLists', validate({body: bookingSchema}), bookingsController.apiBookingToWaitingListPOST);
+app.get('/api/bookings/waitingLists', bookingsController.apiBookingsWaitingListGET);
 app.delete('/api/bookings', bookingsController.apiBookingsDelete);
 
 // Error handlers for validation and authentication errors

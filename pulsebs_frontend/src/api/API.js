@@ -134,6 +134,18 @@ async function apiBookingToWaitingListPOST(booking) {
     });
 }
 
+async function getBookingsInWaitingList() {
+    let url = "/bookings/waitingLists";
+    const response = await fetch(baseURL + url);
+    const bookignJson = await response.json();
+    if(response.ok){
+        return bookignJson;
+    } else {
+        let err = {status: response.status, errObj:bookignJson};
+        throw err;  // An object with the error coming from the server
+    }
+}
+
 async function deleteLectureById(lectureId) {
     return new Promise((resolve, reject) => {
         fetch(baseURL + "/lectures/" + lectureId, {
@@ -184,5 +196,5 @@ async function ChangeLecturemodeById(lectureId) {
     }
 }
 
-const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getUser, deleteLectureById, cancelBooking, ChangeLecturemodeById, apiBookingToWaitingListPOST };
+const API = { getTeacherLectures, getLectures, getStudentCourses, getBookings, login, addBooking, getUser, deleteLectureById, cancelBooking, ChangeLecturemodeById, apiBookingToWaitingListPOST, getBookingsInWaitingList };
 export default API;
