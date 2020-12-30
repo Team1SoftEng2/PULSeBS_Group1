@@ -2,12 +2,14 @@
 const Controller = require('../../controllers/Bookings');
 const BookingsService = require('../../service/BookingsService');
 const LecturesService = require('../../service/LecturesService');
+const Courses = require('../../service/CourseService');
 const Email = require('../../controllers/Email');
 const moment = require('moment');
 const httpMocks = require('node-mocks-http');
 
 jest.mock('../../service/BookingsService');
 jest.mock('../../service/LecturesService');
+jest.mock('../../service/CourseService');
 jest.mock('../../controllers/Email');
 
 const bookings = [
@@ -127,6 +129,8 @@ test('add a booking to a lecture', () => {
     return Promise.resolve(filteredLectures);
   });
 
+  Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
+
   return Controller.apiBookingsPOST(req, res)
       .then(() => {
         const data = res._getJSONData();
@@ -152,6 +156,8 @@ test('add a booking to a lecture that does not exist', () => {
     const filteredLectures = lectures.filter((lecture) => lecture.lectureId === lectureId);
     return Promise.resolve(filteredLectures[0]);
   });
+
+  Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
 
   return Controller.apiBookingsPOST(req, res)
       .then(() => {
@@ -179,6 +185,8 @@ test('add a booking to a lecture that is after the deadline', () => {
     return Promise.resolve(filteredLectures[0]);
   });
 
+  Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
+
   return Controller.apiBookingsPOST(req, res)
       .then(() => {
         const data = res._getJSONData();
@@ -203,6 +211,8 @@ test('add a booking to a lecture but an error in db occours when finding it', ()
   LecturesService.getLectureById.mockImplementation((lectureId) => {
     return Promise.reject('some type of error');
   });
+
+  Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
 
   return Controller.apiBookingsPOST(req, res)
       .then(() => {
@@ -229,6 +239,8 @@ test('add a booking to a lecture but an error in db occours when I try to save t
     const filteredLectures = lectures.filter((lecture) => lecture.lectureId === lectureId);
     return Promise.resolve(filteredLectures[0]);
   });
+
+  Courses.getCourseById.mockImplementation((courseId) => Promise.resolve({ name: 'courseName' }));
 
   return Controller.apiBookingsPOST(req, res)
       .then(() => {
