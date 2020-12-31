@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import API from '../../../api/API';
 
 // moment.locale("en-GB");
 const localizer = momentLocalizer(moment, {
@@ -53,7 +52,7 @@ class homePageCalendarStudent extends Component {
           border: "none"
         }
       }
-      if(event.waiting) {
+      else if(event.waiting) {
         newStyle = {
           backgroundColor: "#E3850A",
           color: '#F6F6F6',
@@ -61,13 +60,13 @@ class homePageCalendarStudent extends Component {
           border: "none"
         }
       } else {
-          newStyle = {
-            backgroundColor: "#E3170A",
-            color: '#F6F6F6',
-            borderRadius: "5px",
-            border: "none"
-          }
+        newStyle = {
+          backgroundColor: "#E3170A",
+          color: '#F6F6F6',
+          borderRadius: "5px",
+          border: "none"
         }
+      }
     } else {
       newStyle = {
         backgroundColor: "#B9E6FF",

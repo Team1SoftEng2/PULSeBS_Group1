@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Table, Col, InputGroup } from 'react-bootstrap';
 import API from '../../../api/API';
 import moment from 'moment';

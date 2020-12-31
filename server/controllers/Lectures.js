@@ -138,7 +138,6 @@ module.exports.deadlineNotification = async function () {
     [error, course] = await to(Courses.getCourseById(l.courseId));
     if (error) return false;
     
-    let result;
     let message = {
       from: 'Booking service',
       to: '',
@@ -146,7 +145,7 @@ module.exports.deadlineNotification = async function () {
       text: 'Dear professor, the number of booked students for your upcoming lecture of' + course.name + ' is ' + bookings.length,
       html: '',
     };
-    [error, result] = await to(Email.sendEmailByUserId(l.teacherId, message));
+    [error] = await to(Email.sendEmailByUserId(l.teacherId, message));
     if(error) return false;
     return true;
 

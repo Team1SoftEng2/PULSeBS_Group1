@@ -18,7 +18,10 @@ function App() {
     // NB!!! PUT HERE REGEX INSTEAD OF SWITCH !!!
     switch (user.userId.charAt(0)) {
           case "s":
-            setUserRole("student");
+            if(user.userId.charAt(1) === "o")
+              setUserRole("support_officer");
+            else
+              setUserRole("student");
             break;
           case "t":
             setUserRole("professor");

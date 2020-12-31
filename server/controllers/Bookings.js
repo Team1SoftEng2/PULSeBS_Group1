@@ -32,7 +32,7 @@ module.exports.apiBookingsPOST = async function apiBookingsPOST(req, res) {
     if (moment().isAfter(deadline)) {
       return utils.writeJson(res, {'msg': 'Unprocessable Entity'}, 422);
     } else {
-      [err, notification] = await to(Bookings.apiBookingsPOST(req.body));
+      [err] = await to(Bookings.apiBookingsPOST(req.body));
       if (err) return utils.writeJson(res, {errors: [{'msg': err}]}, 500);
       else {
         // send email to the student
@@ -45,7 +45,7 @@ module.exports.apiBookingsPOST = async function apiBookingsPOST(req, res) {
           text: 'Dear student, your booking for' + course.name + 'lecture of ' + lecture.date  + ' is confirmed',
           html: '',
         };
-        [err, notification] = await to(Email.sendEmailByUserId(req.body.studentId, message));
+        [err] = await to(Email.sendEmailByUserId(req.body.studentId, message));
         if (err) console.log(err);
         return utils.writeJson(res, {'msg': 'Created'}, 201);
       }
@@ -76,7 +76,7 @@ module.exports.apiBookingToWaitingListPOST = async function apiBookingToWaitingL
   [err, notification] = await to(Bookings.getBookingInWaitingList(req.body));
   if (err) return utils.writeJson(res, {errors: [{'msg': err}]}, 502);
   if (!notification || notification.length === 0 ) {
-    [err, notification] = await to(Bookings.bookingWaitingListPOST(req.body));
+    [err] = await to(Bookings.bookingWaitingListPOST(req.body));
 
     if (err) return utils.writeJson(res, {errors: [{'msg': err}]}, 502);
     return utils.writeJson(res, {'msg': 'Added to waiting List'}, 201);

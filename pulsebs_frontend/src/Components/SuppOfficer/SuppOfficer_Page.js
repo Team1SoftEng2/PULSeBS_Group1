@@ -9,9 +9,9 @@ import './SuppOfficer_Page.css';
 function suppOfficerPage (props) {
     const authObj = props.authObj
 
-    // if(authObj.userRole !== "professor")
-    //     return <Redirect to = "/"/>
-    // else     
+    if(authObj.userRole !== "support_officer")
+        return <BrowserRouter><Redirect to = "/"/></BrowserRouter>
+    else     
         return <div>
             <BrowserRouter>{authObj.authErr && <Redirect to = "/"/>}</BrowserRouter>
             <BrowserRouter>
