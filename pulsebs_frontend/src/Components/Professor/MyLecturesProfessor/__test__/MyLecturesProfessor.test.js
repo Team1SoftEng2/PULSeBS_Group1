@@ -13,8 +13,13 @@ test("LectureList", () => {
         mode: 'present'
     }];
     const renderResult = render(<LectureList lectures={lectures} history={null} setLectures={() => null} />);
-    expect(renderResult.getByText('IS1010')).toBeInTheDocument();
+    expect(renderResult.getByText('IS001')).toBeInTheDocument();
+    expect(renderResult.getByText('Date: 12-12-2020 8:30')).toBeInTheDocument();
+    expect(renderResult.getByText('Time: 8:30~10:00')).toBeInTheDocument();
+    expect(renderResult.getByText('present')).toBeInTheDocument();
+    expect(renderResult.getByText('Delete')).toBeInTheDocument();
     const modeButton = renderResult.getByText('present');
     fireEvent.click(modeButton);
-    
+    const deleteButton = renderResult.getByText('Delete');
+    fireEvent.click(deleteButton);
 })

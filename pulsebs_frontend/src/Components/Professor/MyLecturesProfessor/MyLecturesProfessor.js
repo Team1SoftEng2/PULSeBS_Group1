@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Row, Button, Accordion, Card } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 import API from '../../../api/API';
@@ -6,12 +6,12 @@ import API from '../../../api/API';
 
 export default function MyLecturesProfessor() {
 
-    const [lectures, setLectures] = React.useState([]);
+    const [lectures, setLectures] = useState([]);
     const history = useHistory();
 
     //console.log("MyLecturesProfessor")
 
-    React.useEffect(() => {
+    useEffect(() => {
         //console.log("getTeacherLectures")
         API.getTeacherLectures()
             .then((res) => {
@@ -45,11 +45,11 @@ export function LectureList({ lectures, ...rest }) {
 
 function Lecture({ lectureId, courseId, room, date, time, mode, history, setLectures, ...rest }) {
 
-    const [course, setCourse] = React.useState();
-    const [bookings, setBookings] = React.useState([]);
-    const [errMsg, setErrMsg] = React.useState();
+    const [course, setCourse] = useState();
+    const [bookings, setBookings] = useState([]);
+    const [errMsg, setErrMsg] = useState();
 
-    React.useEffect(() => {
+    useEffect(() => {
         API.getBookings(lectureId)
             .then((res) => {
                 setBookings(res);
@@ -62,7 +62,7 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
             });
     }, [history, lectureId]);
 
-    React.useEffect(() => {
+    useEffect(() => {
         API.getCourseById(courseId)
             .then((res) => {
                 setCourse(res);
@@ -141,7 +141,7 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
                         <Accordion.Toggle lg={10} as={Button} variant="link" eventKey="0">
                             <Row >
                                 <span className='HeaderText'>▼</span>
-                                <Col className='HeaderText'>{ course?.name }</Col>
+                                <Col className='HeaderText'>{(course === undefined)? courseId : course.name}</Col>
                                 <Col className='HeaderText'>Date: {date}</Col>
                                 <Col className='HeaderText'>Time: {time}</Col>
                                 <Col className='HeaderText'>

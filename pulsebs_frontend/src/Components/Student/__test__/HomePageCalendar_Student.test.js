@@ -20,3 +20,23 @@ test('Renders the HomePage Calendar with events for the student Correctly', () =
     expect(renderResult.getByText('19:00')).toBeInTheDocument();
     expect(renderResult.queryByText('Test Lecture Online')).not.toBeInTheDocument();
 });
+
+test('Renders the HomePage Calendar with events for the student Correctly', () => {
+    const renderResult = render(<HomePageCalendarStudent courses={testCourses} lectures={testLectures} bookings={testBookings} authObj={testAuthObj} />);
+    expect(renderResult.getByText('08:00')).toBeInTheDocument();
+    expect(renderResult.getByText('19:00')).toBeInTheDocument();
+    expect(renderResult.queryByText('Test Lecture Online')).not.toBeInTheDocument();
+});
+
+test('Check view change', () => {
+    const renderResult = render(<HomePageCalendarStudent courses={testCourses} lectures={testLectures} bookings={testBookings} authObj={testAuthObj} />);
+    const weekViewButton = renderResult.getByText('Week');
+    const monthViewButton = renderResult.getByText('Month');
+    fireEvent.click(monthViewButton);
+    expect(renderResult.queryByText('08:00')).not.toBeInTheDocument();
+    expect(renderResult.queryByText('19:00')).not.toBeInTheDocument();
+    fireEvent.click(weekViewButton);
+    expect(renderResult.getByText('08:00')).toBeInTheDocument();
+    expect(renderResult.getByText('19:00')).toBeInTheDocument();
+
+});

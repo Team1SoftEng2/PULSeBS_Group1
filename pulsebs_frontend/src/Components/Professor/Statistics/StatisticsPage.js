@@ -18,7 +18,7 @@ class statisticsPage extends Component {
                     <Picklist
                         onChange={course => this.setState({ course })}
                         value={this.state.course}
-                        label="Select a Course">
+                        label="Select Course">
                         <Option name="option 1" label="Course1" />
                         <Option name="option 2" label="Course2" />
                         <Option name="option 3" label="Course3" />
@@ -28,7 +28,7 @@ class statisticsPage extends Component {
                             value={this.state.date}
                             minDate={new Date(2019, 0, 1)}
                             maxDate={new Date(2025, 11, 31)}
-                            label="Select a date"
+                            label="Select Date"
                             onChange={value => this.setState({ date: value })}
                             locale='en-GB'
                         />

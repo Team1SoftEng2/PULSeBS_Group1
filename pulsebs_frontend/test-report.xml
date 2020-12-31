@@ -1,33 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Login\__test__\loginForm.test.js">
-    <testCase name="Renders the Text" duration="51"/>
-    <testCase name="Renders the Email input field" duration="9"/>
-    <testCase name="Updates to Email input field" duration="11"/>
-    <testCase name="Renders the Password input field" duration="7"/>
-    <testCase name="Updates to Password input field" duration="7"/>
-    <testCase name="Renders the Submit Button" duration="103"/>
-    <testCase name="Test Button Click" duration="34"/>
-  </file>
-  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\__test__\BookingManager_Page.test.js">
-    <testCase name="Renders Booking Manager Header Correctly" duration="69"/>
-    <testCase name="Check Authentication Error" duration="22"/>
-    <testCase name="Check Monitor System Usage" duration="22"/>
-    <testCase name="Check Contact Tracing" duration="15"/>
-    <testCase name="Check Home Page" duration="16"/>
-    <testCase name="Check Logout" duration="17"/>
-  </file>
   <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\SuppOfficer\__test__\SuppOfficer_Page.test.js">
-    <testCase name="Renders Booking Manager Header Correctly" duration="82"/>
-    <testCase name="Check Authentication Error" duration="19"/>
-    <testCase name="Check Change Configuration" duration="31"/>
-    <testCase name="Check System Update" duration="18"/>
-    <testCase name="Check System Setup" duration="20"/>
-    <testCase name="Check Home Page" duration="16"/>
-    <testCase name="Check Logout" duration="12"/>
+    <testCase name="Renders Booking Manager Header Correctly" duration="154"/>
+    <testCase name="Check Authentication Error" duration="23"/>
+    <testCase name="Check Change Configuration" duration="36"/>
+    <testCase name="Check System Update" duration="24"/>
+    <testCase name="Check System Setup" duration="40"/>
+    <testCase name="Check Home Page" duration="41"/>
+    <testCase name="Check Logout" duration="19"/>
   </file>
   <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\__test__\BookSeat.test.js">
-    <testCase name="Renders BookSeat Correctly" duration="125">
+    <testCase name="Renders BookSeat Correctly" duration="203">
       <failure message="TypeError: Cannot read property &apos;find&apos; of undefined"><![CDATA[TypeError: Cannot read property 'find' of undefined
     at BookLecture (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\BookSeat\BookSeat.js:38:40)
     at renderWithHooks (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:14985:18)
@@ -72,7 +55,7 @@
     at runTest (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
     at Object.worker (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
     </testCase>
-    <testCase name="Does not book full lesson" duration="13">
+    <testCase name="Does not book full lesson" duration="22">
       <failure message="TypeError: Cannot read property &apos;find&apos; of undefined"><![CDATA[TypeError: Cannot read property 'find' of undefined
     at BookLecture (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\BookSeat\BookSeat.js:38:40)
     at renderWithHooks (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:14985:18)
@@ -118,66 +101,91 @@
     at Object.worker (C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
     </testCase>
   </file>
-  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\App.test.js">
-    <testCase name="renders learn react link" duration="1"/>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Login\__test__\loginForm.test.js">
+    <testCase name="Renders the Text" duration="29"/>
+    <testCase name="Renders the Email input field" duration="36"/>
+    <testCase name="Updates to Email input field" duration="21"/>
+    <testCase name="Renders the Password input field" duration="12"/>
+    <testCase name="Updates to Password input field" duration="12"/>
+    <testCase name="Renders the Submit Button" duration="136"/>
+    <testCase name="Test Button Click" duration="44"/>
+  </file>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\__test__\HomePageCalendar_Student.test.js">
+    <testCase name="Renders the HomePage Calendar with events for the student Correctly" duration="632"/>
+    <testCase name="Renders the HomePage Calendar with events for the student Correctly" duration="337"/>
+    <testCase name="Check view change" duration="700"/>
   </file>
   <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\__tests__\API.test.js">
-    <testCase name="test getUser no errors" duration="5"/>
+    <testCase name="test getUser no errors" duration="8"/>
     <testCase name="test getUser error" duration="1"/>
-    <testCase name="test login no errors" duration="2"/>
+    <testCase name="test login no errors" duration="9"/>
     <testCase name="test login response not ok, json ok" duration="1"/>
-    <testCase name="test login response not ok, json null" duration="2"/>
+    <testCase name="test login response not ok, json null" duration="5"/>
     <testCase name="test login fetch rejected" duration="1"/>
-    <testCase name="test getStudentCourses no errors" duration="1"/>
-    <testCase name="test getStudentCourses error" duration="1"/>
+    <testCase name="test getStudentCourses no errors" duration="2"/>
+    <testCase name="test getStudentCourses error" duration="2"/>
     <testCase name="test getTeacherLectures no errors" duration="1"/>
-    <testCase name="test getTeacherLectures error" duration="2"/>
-    <testCase name="test getLectures no errors" duration="1"/>
+    <testCase name="test getTeacherLectures error" duration="3"/>
+    <testCase name="test getLectures no errors" duration="2"/>
     <testCase name="test getLectures error" duration="1"/>
-    <testCase name="test getBookings no errors" duration="1"/>
+    <testCase name="test getBookings no errors" duration="2"/>
     <testCase name="test getBookings error" duration="1"/>
-    <testCase name="test addBooking no errors" duration="1"/>
-    <testCase name="test addBooking response not ok, json ok" duration="1"/>
-    <testCase name="test addBooking response not ok, json null" duration="1"/>
-    <testCase name="test addBooking fetch rejected" duration="0"/>
-    <testCase name="test deleteLectureById no errors" duration="0"/>
-    <testCase name="test deleteLectureById response not ok, json ok" duration="0"/>
+    <testCase name="test addBooking no errors" duration="2"/>
+    <testCase name="test addBooking response not ok, json ok" duration="2"/>
+    <testCase name="test addBooking response not ok, json null" duration="2"/>
+    <testCase name="test addBooking fetch rejected" duration="1"/>
+    <testCase name="test deleteLectureById no errors" duration="1"/>
+    <testCase name="test deleteLectureById response not ok, json ok" duration="1"/>
     <testCase name="test deleteLectureById response not ok, json null" duration="1"/>
     <testCase name="test deleteLectureById fetch rejected" duration="1"/>
     <testCase name="test cancelBooking no errors" duration="1"/>
     <testCase name="test cancelBooking response not ok, json ok" duration="1"/>
     <testCase name="test cancelBooking response not ok, json null" duration="1"/>
     <testCase name="test cancelBooking fetch rejected" duration="1"/>
-    <testCase name="test ChangeLecturemodeById no errors" duration="0"/>
-    <testCase name="test ChangeLecturemodeById response not ok, json ok" duration="0"/>
+    <testCase name="test ChangeLecturemodeById no errors" duration="1"/>
+    <testCase name="test ChangeLecturemodeById response not ok, json ok" duration="1"/>
     <testCase name="test ChangeLecturemodeById response not ok, json null" duration="1"/>
   </file>
-  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Professor\__test__\Professor_Page.test.js">
-    <testCase name="Renders Professor Header Correctly" duration="91"/>
-    <testCase name="Check Authentication Error" duration="16"/>
-    <testCase name="Check with Wrong Credentials" duration="6"/>
-    <testCase name="Check Home Page" duration="31"/>
-    <testCase name="Check My Lectures" duration="63"/>
-    <testCase name="Check Register Attendance" duration="25"/>
-    <testCase name="Check Statistics" duration="16"/>
-    <testCase name="Check Tutorial" duration="18"/>
-    <testCase name="Check Logout" duration="16"/>
-  </file>
-  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\__tests__\User.test.js">
-    <testCase name="User constructor" duration="1"/>
-  </file>
-  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Professor\MyLecturesProfessor\__test__\MyLecturesProfessor.test.js">
-    <testCase name="LectureList" duration="126"/>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\__test__\BookingManager_Page.test.js">
+    <testCase name="Renders Booking Manager Header Correctly" duration="82"/>
+    <testCase name="Check Authentication Error" duration="34"/>
+    <testCase name="Check Monitor System Usage" duration="37"/>
+    <testCase name="Check Contact Tracing" duration="32"/>
+    <testCase name="Check Home Page" duration="30"/>
+    <testCase name="Check Logout" duration="32"/>
   </file>
   <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\__test__\Student_Page.test.js">
-    <testCase name="Renders Student Header Correctly" duration="106"/>
-    <testCase name="Check with Wrong Credentials" duration="14"/>
-    <testCase name="Check Book a Seat" duration="34"/>
-    <testCase name="Check HomePage" duration="219"/>
-    <testCase name="Check Tutorial" duration="95"/>
-    <testCase name="Check Logout" duration="9"/>
+    <testCase name="Renders Student Header Correctly" duration="213"/>
+    <testCase name="Check with Wrong Credentials" duration="18"/>
+    <testCase name="Check Book a Seat" duration="88"/>
+    <testCase name="Check HomePage" duration="712"/>
+    <testCase name="Check Tutorial" duration="253"/>
+    <testCase name="Check Logout" duration="28"/>
   </file>
-  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\__test__\HomePageCalendar_Student.test.js">
-    <testCase name="Renders the HomePage Calendar with events for the student Correctly" duration="182"/>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\__test__\components.test.js">
+    <testCase name="renders App component" duration="20"/>
+  </file>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\App.test.js">
+    <testCase name="renders learn react link" duration="0"/>
+  </file>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Professor\MyLecturesProfessor\__test__\MyLecturesProfessor.test.js">
+    <testCase name="LectureList" duration="439"/>
+  </file>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\__tests__\User.test.js">
+    <testCase name="User constructor" duration="2"/>
+  </file>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Professor\__test__\StatisticsPage.test.js">
+    <testCase name="Check if Statistics render correctly" duration="340"/>
+  </file>
+  <file path="C:\Users\eleon\Desktop\PULSeBS_Group1\pulsebs_frontend\src\Components\Professor\__test__\Professor_Page.test.js">
+    <testCase name="Renders Professor Header Correctly" duration="39"/>
+    <testCase name="Check Authentication Error" duration="6"/>
+    <testCase name="Check with Wrong Credentials" duration="3"/>
+    <testCase name="Check Home Page" duration="15"/>
+    <testCase name="Check My Lectures" duration="53"/>
+    <testCase name="Check Register Attendance" duration="18"/>
+    <testCase name="Check Statistics" duration="258"/>
+    <testCase name="Check Tutorial" duration="134"/>
+    <testCase name="Check Logout" duration="12"/>
   </file>
 </testExecutions>

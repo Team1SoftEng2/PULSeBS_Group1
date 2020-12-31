@@ -42,6 +42,8 @@ test('Check HomePage', () => {
     expect(renderResult.getByText('Today')).toBeInTheDocument();
     expect(renderResult.getByText('Back')).toBeInTheDocument();
     expect(renderResult.getByText('Next')).toBeInTheDocument();
+    expect(renderResult.getByText('Week')).toBeInTheDocument();
+    expect(renderResult.getByText('Month')).toBeInTheDocument();
 });
 
 test('Check Tutorial', () => {

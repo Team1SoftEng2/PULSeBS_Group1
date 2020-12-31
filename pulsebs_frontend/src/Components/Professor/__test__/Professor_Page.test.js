@@ -54,7 +54,7 @@ test('Check Statistics', () => {
   const renderResult = render(<ProfessorPage authObj={testAuthObj} />);
   const statisticsButton = renderResult.getByText('Statistics');
   fireEvent.click(statisticsButton);
-  expect(renderResult.getByText('Here the professor will be able to check the statistics')).toBeInTheDocument();
+  expect(renderResult.getByText('Select Course')).toBeInTheDocument();
 });
 
 test('Check Tutorial', () => {
