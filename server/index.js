@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const jwt = require('express-jwt');
 const fs = require('fs');
 const {Validator, ValidationError} = require('express-json-validator-middleware');
+const multer = require('multer');
 
 const oas3Tools = require('oas3-tools');
 const serverPort = 8080;
@@ -16,6 +17,7 @@ const bookingsController = require(path.join(__dirname, 'controllers/Bookings'))
 const courseController = require(path.join(__dirname, 'controllers/Course'));
 const lecturesController = require(path.join(__dirname, 'controllers/Lectures'));
 const authController = require(path.join(__dirname, 'controllers/Authentication'));
+const parserController = require(path.join(__dirname, 'controllers/Parser'));
 
 // swaggerRouter configuration
 const options = {
@@ -40,6 +42,25 @@ setInterval( () => {
   lecturesController.deadlineNotification();
 }, 300000);
 
+// Set multer
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, __dirname + "/uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+
+const upoloadCSV = multer({
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if(file.mimetype.includes('csv'))
+      cb(null, true);
+    else
+      cb('Allowed only CSV files', false);
+  }
+}).single('file');
 
 // Set authentication features
 const jwtSecret = '6xvL4xkAAbG49hcXf5GIYSvkDICiUAR6EdR5dLdwW7hMzUjjMUe9t6M5kSAYxsvX';
@@ -48,6 +69,7 @@ app.use(cookieParser());
 
 // Public APIs here
 app.post('/api/login', authController.apiLoginPOST);
+app.post('/api/students/upload', upoloadCSV, parserController.parseStudentCSV);
 
 // Authentication endpoint
 app.use(
@@ -74,7 +96,6 @@ app.get('/api/bookings/waitingLists', bookingsController.apiBookingsWaitingListG
 app.delete('/api/bookings', bookingsController.apiBookingsDelete);
 
 // Error handlers for validation and authentication errors
-
 app.use(function(err, req, res, next) {
   if (err instanceof ValidationError) {
     res.status(400).send(err);
@@ -86,6 +107,8 @@ app.use(function(err, req, res, next) {
     res.status(401).json(authErrorObj);
   } else next(err);
 });
+
+// parserController.readCSV('./controllers/Students.csv');
 
 // Initialize the Swagger middleware
 http.createServer(app).listen(serverPort, function() {

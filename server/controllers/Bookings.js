@@ -23,7 +23,6 @@ module.exports.apiBookingsPOST = async function apiBookingsPOST(req, res) {
   const lectureId = req.body.lectureId;
   let err;
   let lecture;
-  let notification;
   [err, lecture] = await to(Lectures.getLectureById(lectureId));
   if (err) return utils.writeJson(res, {errors: [{'msg': err}]}, 500);
   if (!lecture || lecture.length === 0) return utils.writeJson(res, {errors: [{'msg': 'lecture not found'}]}, 404);

@@ -58,7 +58,10 @@ function BookLecture(props) {
                     lectureId: props.lecture.lectureId
                     })
                     // modifies button in "waiting" and set lecture in waiting list
-                    .then(() => {console.log('in waiting listtttttttttttttt')})
+                    .then(() => {
+                        console.log('in waiting listtttttttttttttt');
+                        props.triggerAPI();
+                    })
                     .catch((err) => console.log(err) );
             }
         } else {

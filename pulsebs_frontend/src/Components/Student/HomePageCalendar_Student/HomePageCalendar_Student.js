@@ -46,13 +46,12 @@ class homePageCalendarStudent extends Component {
     if(event.mode === "present") {
       if(event.booked) {
         newStyle = {
-          backgroundColor: "#179873",
+          backgroundColor: "#E3170A",
           color: '#F6F6F6',
           borderRadius: "5px",
           border: "none"
         }
-      }
-      else if(event.waiting) {
+      } else if(event.waiting) {
         newStyle = {
           backgroundColor: "#E3850A",
           color: '#F6F6F6',
@@ -61,7 +60,7 @@ class homePageCalendarStudent extends Component {
         }
       } else {
         newStyle = {
-          backgroundColor: "#E3170A",
+          backgroundColor: "#179873",
           color: '#F6F6F6',
           borderRadius: "5px",
           border: "none"
@@ -95,10 +94,10 @@ class homePageCalendarStudent extends Component {
       let inizio = time[0].split(":");
       let fine = time[1].split(":");
       data = data.split("-");
-      let booked = true;
+      let booked = false;
       let waiting = true;
 
-      if (this.props.bookings.filter(b => b.studentId === this.props.authObj.authUser).some(r => r.lectureId === l.lectureId)) booked = false;
+      if (this.props.bookings.filter(b => b.studentId === this.props.authObj.authUser).some(r => r.lectureId === l.lectureId)) booked = true;
       const waitingList = this.props.waitingBookings.filter(booking => booking.lectureId === l.lectureId);
       if(!waitingList || waitingList.length === 0)  waiting = false;
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row, Button, Accordion, Card } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 import API from '../../../api/API';
-//import moment from 'moment';
+import moment from 'moment';
 
 export default function MyLecturesProfessor() {
 
@@ -133,6 +133,9 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
             }
         }
     }
+
+    const newDate = moment(date, "DD-MM-YYYY HH:mm:ss");
+
     return (
         <Col>
             <Accordion defaultActiveKey="1">
@@ -142,7 +145,7 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
                             <Row >
                                 <span className='HeaderText'>▼</span>
                                 <Col className='HeaderText'>{(course === undefined)? courseId : course.name}</Col>
-                                <Col className='HeaderText'>Date: {date}</Col>
+                                <Col className='HeaderText'>Date: {newDate.format('DD-MM-YYYY')}</Col>
                                 <Col className='HeaderText'>Time: {time}</Col>
                                 <Col className='HeaderText'>
                                     <button className={(CheckTimeDiff(30, date)) ? 'disabled' : 'enabled'} onClick={() => changeLecturemode(lectureId) /*To be changed with the API */}> {mode}
