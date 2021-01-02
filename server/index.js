@@ -90,7 +90,6 @@ app.get('/api/lectures', lecturesController.apiLecturesGET);
 app.get('/api/students/:id/courses', courseController.apiStudentsIdCoursesGET);
 app.get('/api/teachers/lectures', lecturesController.apiTeacherLecturesGET);
 app.get('/api/teachers/courses', courseController.apiTeacherCoursesGET);
-
 app.get('/api/bookings', bookingsController.apiBookingsGET);
 app.get('/api/users/:id', authController.apiUserGET);
 app.post('/api/bookings', validate({body: bookingSchema}), bookingsController.apiBookingsPOST);
