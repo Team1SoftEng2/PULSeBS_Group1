@@ -219,10 +219,36 @@ async function getDelLecturesList ({ courseId = '', time = ''}) {
     return await fetch(baseURL + "/getDelectedLectures" + str).then(res => res.json());
 }
 
+async function getTeacherCourses () {
+    let url = "/teachers/courses";
+    const response = await fetch(baseURL + url);
+    const coursesJson = await response.json();
+    if (response.ok) {
+        return coursesJson;
+    } else {
+        let err = { status: response.status, errObj: coursesJson };
+        throw err;  // An object with the error coming from the server
+    }
+}
+
+async function getCourseBookings (courseID) {
+    let url = `/courses/lecturesWithBookingNumber/${courseID}`;
+    const response = await fetch(baseURL + url);
+    const coursesJson = await response.json();
+    if (response.ok) {
+        return coursesJson;
+    } else {
+        let err = { status: response.status, errObj: coursesJson };
+        throw err;  // An object with the error coming from the server
+    }
+}
+
 
 const API = {
     getCourseById,
+    getTeacherCourses,
     getTeacherLectures,
+    getCourseBookings,
     getLectures, getStudentCourses,
     getBookings, login, addBooking, getUser, deleteLectureById,
     cancelBooking, ChangeLecturemodeById, apiBookingToWaitingListPOST,
@@ -231,4 +257,5 @@ const API = {
     getDelLecturesList,
 
 };
+
 export default API;
