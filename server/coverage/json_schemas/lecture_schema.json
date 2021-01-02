@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id" : "lecture_schema.json",
+    "title": "Lecture",
+    "description": "JSON Schema for Lecture objects",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "$schema": {
+            "type": "string",
+            "description": "path to the JSON Schema to use for the validation of the JSOn file describing the lecture"
+        },
+        "lectureId": { "type": "string" },
+        "courseId": { "type": "string" },
+        "teacherId": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "time": { "type": "string", "format": "time"},
+        "mode": { "type": "string" },
+        "room": { "type": "string" },
+        "maxSeats": { "type": "integer" }
+    },
+    "required": ["lectureId", "courseId", "teacherId", "date", "time", "mode"]
+}

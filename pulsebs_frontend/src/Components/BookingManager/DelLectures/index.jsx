@@ -32,7 +32,7 @@ export default function Index() {
   return (
     <>
       <div className={style["div-wrap"]}>
-        <h1>Deleted Lectures List</h1>
+        <h1>Lectures List</h1>
 
         <Form>
           <Row>
@@ -69,6 +69,8 @@ export default function Index() {
               <tr>
                 <th>#</th>
                 <th>Course Name</th>
+                <th>LectureID</th>
+                <th>Teacher Name</th>
                 <th>Date</th>
                 <th>Time</th>
                 <th>Mode</th>
@@ -79,8 +81,10 @@ export default function Index() {
               {list.map((it, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
+                  <td>{it.LectureID}</td>
                   <td>{it.courseName}</td>
-                  <td>{it.Date}</td>
+                  <td>{it.Surname + " " + it.Name}</td>
+                  <td>{it.Date.split(" ")[0]}</td>
                   <td>{it.Time}</td>
                   <td>{it.mode}</td>
                   <td>{it.place || "-"}</td>
