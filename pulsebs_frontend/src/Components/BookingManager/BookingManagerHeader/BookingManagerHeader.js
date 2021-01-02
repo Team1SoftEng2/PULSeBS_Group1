@@ -7,9 +7,9 @@ function bookingManagerHeader() {
             <nav className="navbar navbar-dark ">
                 <span className='navbar-brand'><h2>Lecture Booking</h2></span>
                 <Link to="/booking_manager" style={{ textDecoration: 'none' }}><div className="nav-link">HomePage</div></Link>
-                <Link to="/booking_manager/monitor_usage" style={{ textDecoration: 'none' }}><div className="nav-link">Monitor System Usage</div></Link>
+                {/* <Link to="/booking_manager/monitor_usage" style={{ textDecoration: 'none' }}><div className="nav-link">Monitor System Usage</div></Link> */}
                 <Link to="/booking_manager/bookings" style={{ textDecoration: 'none' }}><div className="nav-link">Booking</div></Link>
-                <Link to="/booking_manager/lectures" style={{ textDecoration: 'none' }}><div className="nav-link">Lectures</div></Link>
+                <Link to="/booking_manager/lectures" style={{ textDecoration: 'none' }}><div className="nav-link">Deleted Lectures</div></Link>
                 <Link to="/booking_manager/attendance" style={{ textDecoration: 'none' }}><div className="nav-link">Attendance</div></Link>
                 <Link to="/booking_manager/contact_tracing" style={{ textDecoration: 'none' }}><div className="nav-link">Contact Tracing</div></Link>
                 <a href="/" style={{ textDecoration: 'none' }}><div className="nav-link">Logout</div ></a>

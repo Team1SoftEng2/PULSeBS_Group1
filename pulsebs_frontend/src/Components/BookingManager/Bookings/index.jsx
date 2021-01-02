@@ -84,8 +84,8 @@ export default function Index() {
                   <td>{index + 1}</td>
                   <td>{it.courseName}</td>
                   <td>{it.LectureID}</td>
-                  <td>{it.Surname + " " + it.Name}</td>
                   <td>{it.tSurname + " " + it.tName}</td>
+                  <td>{it.Surname + " " + it.Name}</td>
                   <td>{it.Date.split(" ")[0]}</td>
                   <td>{it.Time}</td>
                   <td>{it.mode}</td>
