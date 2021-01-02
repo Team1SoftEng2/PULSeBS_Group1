@@ -1,10 +1,16 @@
 /* eslint-disable max-len */
+const to = require('await-to-js').default;
 const httpMocks = require('node-mocks-http');
 const CourseService = require('../../service/CourseService');
 const CourseController = require('../../controllers/Course');
 const Course = require('../../components/course');
 
+const Lectures = require('../../service/LecturesService');
+const Bookings = require('../../service/BookingsService');
+
+jest.mock('../../service/LecturesService');
 jest.mock('../../service/CourseService');
+jest.mock('../../service/BookingsService');
 
 const courses = [
   {
@@ -22,6 +28,13 @@ const courses = [
     teacherId: 't37003',
     name: 'Computer Architectures',
   },
+];
+
+const bookings = [
+  {studentId: 's27002', lectureId: 'IS1004'},
+  {studentId: 's27001', lectureId: 'IS1005'},
+  {studentId: 's27001', lectureId: 'IS1004'},
+  {studentId: 's27001', lectureId: 'CA3001'},
 ];
 
 const students = [
@@ -60,6 +73,38 @@ const courseAttendances = [
   },
 ];
 
+const lectures = [
+  {
+    lectureId: 'IS1003',
+    courseId: 'IS001',
+    teacherId: 't37001',
+    date: '20-11-2021 13:00',
+    time: '13:00~14:30',
+    mode: 'present',
+    room: 'Aula 1',
+    maxSeats: 150,
+  },
+  {
+    lectureId: 'IS1004',
+    courseId: 'IS001',
+    teacherId: 't37001',
+    date: '20-11-2020 13:00',
+    time: '13:00~14:30',
+    mode: 'present',
+    room: 'Aula 1',
+    maxSeats: 150,
+  },
+  {
+    lectureId: 'IS1005',
+    courseId: 'IS002',
+    teacherId: 't37002',
+    date: '20-11-2020 13:00',
+    time: '13:00~14:30',
+    mode: 'present',
+    room: 'Aula 1',
+    maxSeats: 150,
+  },
+];
 /* =======================================================================================
                               TESTS FOR apiCoursesIdGET
 =========================================================================================*/
@@ -181,4 +226,51 @@ test('get courses given student ID but simulate db error', () => {
         expect.assertions(1);
         expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'db problem'}]});
       });
+});
+
+/* ============================================================================================
+                                  TESTS of apiCourseLecturesWithBookingsGET
+=============================================================================================*/
+test('get lectures with bookings number given teacherId and CourseID', () => {
+  // lecture IS1003 always in time because at end of 2021
+  const req = httpMocks.createRequest({params: {courseId: 'IS001'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  Lectures.getLectures.mockImplementation((courseId) => {
+    const filteredLectures = lectures.filter((lecture) => lecture.courseId === courseId);
+    return Promise.resolve(filteredLectures);
+  });
+  Bookings.getBookings.mockImplementation( (lectureId) => {
+    const filteredBookings = bookings.filter((booking) => booking.lectureId === lectureId);
+    return Promise.resolve(filteredBookings);
+  });
+  
+  return CourseController.apiCourseLecturesWithBookingsGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual([
+      {
+        lectureId: 'IS1003',
+        courseId: 'IS001',
+        teacherId: 't37001',
+        date: '20-11-2021 13:00',
+        time: '13:00~14:30',
+        mode: 'present',
+        room: 'Aula 1',
+        maxSeats: 150,
+        bookingsNumber: 0,
+      },
+      {
+        lectureId: 'IS1004',
+        courseId: 'IS001',
+        teacherId: 't37001',
+        date: '20-11-2020 13:00',
+        time: '13:00~14:30',
+        mode: 'present',
+        room: 'Aula 1',
+        maxSeats: 150,
+        bookingsNumber: 2,
+      },
+    ]);
+  });
 });
