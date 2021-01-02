@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function professorHeader() {
+function professorHeader () {
     return (
         <div className="ProfessorHeader">
             <nav className="navbar navbar-dark ">

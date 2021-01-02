@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter, Switch, Redirect} from 'react-router-dom';
+import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import ProfessorHeader from './ProfessorHeader/ProfessorHeader';
 import HomePageCalendarProfessor from './HomePageCalendarProfessor/HomePageCalendarProfessor';
 import MyLecturesProfessor from './MyLecturesProfessor/MyLecturesProfessor';
@@ -10,14 +10,14 @@ import './Professor_Page.css';
 
 function ProfessorPage (props) {
     const authObj = props.authObj;
-    
-    if(authObj.userRole !== "professor")
-        return <BrowserRouter><Redirect to = "/"/></BrowserRouter>
-    else 
+
+    if (authObj.userRole !== "professor")
+        return <BrowserRouter><Redirect to="/" /></BrowserRouter>
+    else
         return <div>
-            <BrowserRouter>{authObj.authErr && <Redirect to = "/"/>}</BrowserRouter>
+            <BrowserRouter>{authObj.authErr && <Redirect to="/" />}</BrowserRouter>
             <BrowserRouter>
-                <ProfessorHeader username="UserName"/>
+                <ProfessorHeader username="UserName" />
                 <Switch>
                     <Route path="/professor" exact component={HomePageCalendarProfessor} />
                     <Route path="/professor/my_lectures" exact component={MyLecturesProfessor} />
@@ -27,7 +27,7 @@ function ProfessorPage (props) {
                 </Switch>
             </BrowserRouter>
         </div>;
-    
+
 }
 
 export default ProfessorPage;

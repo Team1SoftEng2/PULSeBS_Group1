@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import API from '../../../api/API';
 import moment from 'moment';
 
-export default function MyLecturesProfessor() {
+export default function MyLecturesProfessor () {
 
     const [lectures, setLectures] = useState([]);
     const history = useHistory();
@@ -33,7 +33,7 @@ export default function MyLecturesProfessor() {
     );
 }
 
-export function LectureList({ lectures, ...rest }) {
+export function LectureList ({ lectures, ...rest }) {
     return (
         <div>
             {lectures.map((lecture, index) => (
@@ -43,7 +43,7 @@ export function LectureList({ lectures, ...rest }) {
     );
 }
 
-function Lecture({ lectureId, courseId, room, date, time, mode, history, setLectures, ...rest }) {
+function Lecture ({ lectureId, courseId, room, date, time, mode, history, setLectures, ...rest }) {
 
     const [course, setCourse] = useState();
     const [bookings, setBookings] = useState([]);
@@ -75,14 +75,14 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
             });
     }, [history, courseId]);
 
-    function TransformDate(stringInput) {
+    function TransformDate (stringInput) {
         const dateAndTimeSplit = stringInput.split(' ');
         const dateElements = dateAndTimeSplit[0].split('-');
         const hours = dateAndTimeSplit[1].substring(0, 2);
         return new Date(dateElements[2], dateElements[1] - 1, dateElements[0], hours, '00');
     }
 
-    function CheckTimeDiff(timeLimit, dateInput) {
+    function CheckTimeDiff (timeLimit, dateInput) {
         const dateNow = new Date();
         const dateCheck = TransformDate(dateInput);
         if (dateNow >= dateCheck)
@@ -144,7 +144,7 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
                         <Accordion.Toggle lg={10} as={Button} variant="link" eventKey="0">
                             <Row >
                                 <span className='HeaderText'>▼</span>
-                                <Col className='HeaderText'>{(course === undefined)? courseId : course.name}</Col>
+                                <Col className='HeaderText'>{(course === undefined) ? courseId : course.name}</Col>
                                 <Col className='HeaderText'>Date: {newDate.format('DD-MM-YYYY')}</Col>
                                 <Col className='HeaderText'>Time: {time}</Col>
                                 <Col className='HeaderText'>
@@ -178,7 +178,7 @@ function Lecture({ lectureId, courseId, room, date, time, mode, history, setLect
     );
 }
 
-function BookingList({ lectureId, bookings, ...rest }) {
+function BookingList ({ lectureId, bookings, ...rest }) {
 
     return (
         <Col>
@@ -189,7 +189,7 @@ function BookingList({ lectureId, bookings, ...rest }) {
     );
 }
 
-function Booking({ studentId, studentName, studentSurname, ...rest }) {
+function Booking ({ studentId, studentName, studentSurname, ...rest }) {
     return (
         <p>{studentId} {studentName} {studentSurname}</p>
     );

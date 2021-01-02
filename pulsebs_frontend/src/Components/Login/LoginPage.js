@@ -18,8 +18,8 @@ export default function LoginPage(props) {
 
     const authObj = props.authObj;
 
-    const [id, setId] = React.useState("");
-    const [password, setPassword] = React.useState("");
+    const [id, setId] = React.useState("bm57001");
+    const [password, setPassword] = React.useState("test");
 
     const postLogin = () => {
         authObj.login(id, password);

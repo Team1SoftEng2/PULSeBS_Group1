@@ -1,0 +1,363 @@
+openapi: 3.0.1
+info:
+  title: Pandemic University Lecture Seat Booking System (PULSeBS)
+  description: A system that allow students to book a seat for in presence lectures
+  termsOfService: http://swagger.io/terms/
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- url: /
+tags:
+- name: authentication
+  description: log in/log out operations
+- name: bookings
+  description: Actions on bookings
+- name: student
+  description: Actions on student
+- name: lectures
+  description: Actions on lectures
+- name: course
+  description: Action on coruse
+paths:
+  /api/login:
+    post:
+      tags:
+      - authentication
+      description: Log in
+      operationId: apiLoginPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                id:
+                  type: string
+                  format: id
+                password:
+                  type: string
+                  minLength: 6
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        "401":
+          description: Unauthorized
+        "404":
+          description: Not Found
+      x-swagger-router-controller: Authentication
+  /api/logout:
+    post:
+      tags:
+      - authentication
+      description: Log Out
+      operationId: apiLogoutPOST
+      parameters: []
+      responses:
+        "200":
+          description: OK
+      x-swagger-router-controller: Authentication
+  /api/bookings:
+    get:
+      tags:
+      - bookings
+      description: Get a filtered list of bookings
+      operationId: apiBookingsGET
+      parameters:
+      - name: lectureId
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bookings'
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+      x-swagger-router-controller: Bookings
+    post:
+      tags:
+      - bookings
+      description: Book a place for an in-presence lecture
+      operationId: apiBookingsPOST
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/booking'
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+      x-swagger-router-controller: Bookings
+  /api/bookings/{lectureId}:
+    delete:
+      tags:
+        - bookings
+      description: Delete a booking given its key by query parameters
+      parameters:
+        - name: lectureId
+          schema:
+            type: string
+          in: path
+          required: true
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+  /api/students/{id}:
+    get:
+      tags:
+      - student
+      description: Get info about a student
+      operationId: apiStudentsIdGET
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/user'
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+      x-swagger-router-controller: Student
+  /api/students/{id}/courses:
+    parameters:
+      - name: id
+        schema:
+          type: integer
+        in: path
+        required: true
+    get:
+      tags:
+        - courses
+      description: Get list of courses the student is enrolled in
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/courses'
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal Server Error
+  /api/courses/{id}:
+    get:
+      tags:
+      - course
+      description: Get info about a course
+      operationId: apiCoursesIdGET
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/course'
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+      x-swagger-router-controller: Course
+  /api/lectures:
+    get:
+      tags:
+      - lectures
+      description: Get a filtered list of lectures
+      operationId: apiLecturesGET
+      parameters:
+      - name: courseId
+        in: query
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lectures'
+        "401":
+          description: Unauthorized
+        "500":
+          description: Internal Server Error
+      x-swagger-router-controller: Lectures
+  /api/lectures/{id}:
+    delete:
+      tags:
+        - lectures
+      description: Delete a lecture up 1h before its scheduled time
+      parameters:
+        - name: id
+          schema:
+            type: string
+          in: path
+          required: true
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+components:
+  schemas:
+    user:
+      required:
+      - email
+      - name
+      - surname
+      - userId
+      type: object
+      properties:
+        userId:
+          type: integer
+        name:
+          type: string
+        surname:
+          type: string
+        email:
+          type: string
+          format: email
+        hash:
+          type: string
+      example:
+        surname: surname
+        name: name
+        userId: 0
+        email: ""
+        hash: hash
+    users:
+      type: array
+      items:
+        $ref: '#/components/schemas/user'
+    course:
+      required:
+      - courseId
+      - name
+      - teacherId
+      type: object
+      properties:
+        courseId:
+          type: string
+        teacherId:
+          type: integer
+        name:
+          type: string
+      example:
+        teacherId: 0
+        name: name
+        courseId: courseId
+    courses:
+      type: array
+      items:
+        $ref: '#/components/schemas/course'
+    lecture:
+      required:
+      - courseId
+      - date
+      - lectureId
+      - mode
+      - teacherId
+      - time
+      type: object
+      properties:
+        lectureId:
+          type: integer
+        courseId:
+          type: string
+        teacherId:
+          type: integer
+        date:
+          type: string
+          format: date
+        time:
+          type: string
+          format: time
+        mode:
+          type: string
+        room:
+          type: string
+        maxSeats:
+          type: integer
+      example:
+        date: 2000-01-23
+        mode: mode
+        teacherId: 6
+        maxSeats: 1
+        time: time
+        courseId: courseId
+        room: room
+        lectureId: 0
+    lectures:
+      type: array
+      items:
+        $ref: '#/components/schemas/lecture'
+    booking:
+      required:
+      - studentId, lectureId
+      type: object
+      properties:
+        studentId:
+          type: integer
+        lectureId:
+          type: integer
+      example:
+        studentId: 0
+        lectureId: 6
+    bookings:
+      type: array
+      items:
+        $ref: '#/components/schemas/booking'
