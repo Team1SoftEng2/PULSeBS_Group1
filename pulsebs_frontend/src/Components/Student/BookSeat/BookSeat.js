@@ -21,7 +21,8 @@ function BookSeat(props) {
                         {props.lectures.map( (lecture) => <BookLecture {...props} 
                                                             key={lecture.lectureId}
                                                             lecture={lecture} 
-                                                            lectureBookings={props.bookings.filter((b) => b.lectureId == lecture.lectureId)}/>)}
+                                                            lectureBookings={props.bookings.filter((b) => b.lectureId == lecture.lectureId)}
+                                                            waiting={props.waitingBookings.filter((bookingW) => bookingW.lectureId === lecture.lectureId).length}/>)}
                     </tbody>
                 </Table>
             </InputGroup>
@@ -59,7 +60,6 @@ function BookLecture(props) {
                     })
                     // modifies button in "waiting" and set lecture in waiting list
                     .then(() => {
-                        console.log('in waiting listtttttttttttttt');
                         props.triggerAPI();
                     })
                     .catch((err) => console.log(err) );
@@ -93,9 +93,9 @@ function BookLecture(props) {
         <td className='TableContent'>{professor.name + " " + professor.surname}</td>
         <td className='TableContent'>{(props.lecture.mode === "present") ? bookedSeats + "/" + props.lecture.maxSeats : "∞"}</td>
         <td className='TableContent'>
-            <button className= {((props.lecture.mode === "present")? ((booked) ? "Not_Book" : "Book"): "Online")}
+            <button className= {((props.lecture.mode === "present")? ((booked) ? "Not_Book" : ((props.waiting)? "Waiting":"Book")): "Online")}
                     onClick={() => handleClick() }>
-                {(props.lecture.mode === "present")?(booked ? "Unbook" : "Book"): "Online"}
+                {(props.lecture.mode === "present")?(booked ? "Unbook" : ((props.waiting)? "Waiting":"Book")): "Online"}
             </button>
         </td>
     </tr>

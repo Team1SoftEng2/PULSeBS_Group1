@@ -84,6 +84,13 @@ const courses = [
   },
 ];
 
+const bookings = [
+  {studentId: 's27002', lectureId: 'CA3003'},
+  {studentId: 's27001', lectureId: 'CA3002'},
+  {studentId: 's27001', lectureId: 'CA3008'},
+  {studentId: 's27001', lectureId: 'CA3001'},
+];
+
 // end of mockup data-------------------------------------------------------------------------
 // -------------------------------------------------------------------------------------------
 

@@ -136,6 +136,11 @@ button.Book{
     background-color: #179873;
 }
 
+button.Waiting{
+    background-color: #e3850a;
+    ;
+}
+
 button.Online{
     background-color: #B9E6FF;
 }

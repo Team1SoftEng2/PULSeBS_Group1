@@ -84,12 +84,14 @@ app.use(
 // Authenticated APIs here
 app.post('/api/logout', authController.apiLogoutPOST);
 app.get('/api/courses/:id', courseController.apiCoursesIdGET);
+app.get('/api/courses/lecturesWithBookingNumber/:courseId', courseController.apiCourseLecturesWithBookingsGET);
 app.delete('/api/lectures/:id', lecturesController.apiLecturesIdDELETE);
 app.post('/api/lectures/:id', lecturesController.apiOnlineLectureGET);
 app.get('/api/lectures', lecturesController.apiLecturesGET);
 app.get('/api/getDelectedLectures', lecturesController.apiDelectedLecturesListGET);
 app.get('/api/students/:id/courses', courseController.apiStudentsIdCoursesGET);
 app.get('/api/teachers/lectures', lecturesController.apiTeacherLecturesGET);
+app.get('/api/teachers/courses', courseController.apiTeacherCoursesGET);
 app.get('/api/bookings', bookingsController.apiBookingsGET);
 app.get('/api/getBooks', bookingsController.apiBooksListGET);
 app.get('/api/users/:id', authController.apiUserGET);
