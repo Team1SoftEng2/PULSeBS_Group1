@@ -42,3 +42,12 @@ exports.checkPassword = function(user, password) {
   console.log('DONE');
   return bcrypt.compareSync(password, user.hash);
 };
+
+
+module.exports.addStudent = function(student) {
+  return new Promise((resolve, reject) => {
+    const sql = 'INSERT INTO Student (StudentID, Name, Surname, emailAddress, password) VALUES (?, ?, ?, ?, ?)';
+    db.run(sql, [student.userId, student.name, student.surname, student.email, '$2b$10$q10dHb3rJZEJ09maxOKloe268lB9zoU239J3MlS8PiWF.x5DbCsWq'],
+        (err) => { err ? reject(err) : resolve(null); });
+  });
+}
