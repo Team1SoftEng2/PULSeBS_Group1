@@ -9,47 +9,72 @@ import API from '../../../api/API';
 
 const StatisticsPage = (props) => {
 
-    /*state = {
-        course: { name: 'option 1', label: 'Course1' },
-        date: new Date(),
-    };*/
     let history = useHistory();
-    let [course, setCourse] = useState([]);
-    let [date, setDate] = useState([]);
+    let [course, setCourse] = useState({ name: props.courses[0].courseId, label: props.courses[0].name });
+    let [date, setDate] = useState(new Date());
     let [bookings, setBookings] = useState([]);
 
 
     useEffect(() => {
-        setCourse({ name: props.courses[0].courseId, label: props.courses[0].name });
-        setDate(new Date());
         getBookings();
-    }, []);
+    }, [history, course]);
 
-    async function getBookings(){
-                API.getCourseBookings(course.name)
-                .then((res)=> {
-                    setBookings(res);
-                    console.log('siamo qui!');
-                    console.log(res);
-                })
-                .catch( (err) => {
-                    if (err.status && err.status === 401)
-                      history.push('/');
-                    else
-                      console.log(err);
-                });
+
+
+    async function getBookings() {
+        API.getCourseBookings(course.name)
+            .then((res) => {
+                setBookings(res);
+                console.log(res);
+            })
+            .catch((err) => {
+                if (err.status && err.status === 401)
+                    history.push('/');
+                else
+                    console.log(err);
+            });
     };
+
+    function getDaily(lookupdate) {
+        let check = moment(lookupdate, 'DD-MM-YYYY');
+        return bookings.filter(lecture => moment(lecture.date, 'DD-MM-YYYY').isSame(check))
+            .reduce((acc, lecture) => acc + lecture.bookingsNumber, 0);
+    };
+
+    function getWeekly(lookupdate) {
+        let weeklyBookings = bookings.filter(lecture => lookupdate.getFullYear() === moment(lecture.date, 'DD-MM-YYYY').toDate().getFullYear())
+            .filter(lecture => moment(lookupdate).isoWeek() === moment(lecture.date, 'DD-MM-YYYY').isoWeek())
+            .reduce((acc, lecture) => acc + lecture.bookingsNumber, 0);
+        if (weeklyBookings === 0) return weeklyBookings;
+        let weeklyLectures = bookings.filter(lecture => lookupdate.getFullYear() === moment(lecture.date, 'DD-MM-YYYY').toDate().getFullYear())
+            .filter(lecture => moment(lookupdate).isoWeek() === moment(lecture.date, 'DD-MM-YYYY').isoWeek())
+            .reduce((acc) => acc + 1, 0);
+        if (weeklyLectures === 0) return weeklyLectures;
+        return weeklyBookings / weeklyLectures;
+
+    };
+
+    function getMonthly(month, year) {
+        let monthlyBookings = bookings.filter(lecture => year === moment(lecture.date, 'DD-MM-YYYY').toDate().getFullYear())
+            .filter(lecture => month === moment(lecture.date, 'DD-MM-YYYY').toDate().getMonth())
+            .reduce((acc, lecture) => acc + lecture.bookingsNumber, 0);
+        if (monthlyBookings === 0) return monthlyBookings;
+        let monthlyLectures = bookings.filter(lecture => year === moment(lecture.date, 'DD-MM-YYYY').toDate().getFullYear())
+            .filter(lecture => month === moment(lecture.date, 'DD-MM-YYYY').toDate().getMonth())
+            .reduce((acc) => acc + 1, 0);
+        if (monthlyLectures === 0) return monthlyLectures;
+        return monthlyBookings / monthlyLectures;
+    };
+
 
     return (
         <div id='StatisticsProfessorContainer'>
             <div className='StatisticsInputContainer'>
                 <Picklist
-                    onChange={course => this.setState({ course })}
+                    onChange={c => setCourse({ name: c.name, label: c.label })}
                     value={course}
                     label="Select Course">
-                    <Option name= {course.courseId} label={course.name} />
-                    <Option name="option 2" label="Course2" />
-                    <Option name="option 3" label="Course3" />
+                    {props.courses.map((c) => <Option name={c.courseId} label={c.name} />)}
                 </Picklist>
                 <div>
                     <DatePicker
@@ -66,6 +91,7 @@ const StatisticsPage = (props) => {
                 <div>Daily Bookings</div>
                 <VictoryChart domainPadding={{ x: 20 }}>
                     <VictoryBar
+                        domain={{ y: [0, 5] }}
                         style={{
                             data: {
                                 stroke: "#151A4F",
@@ -73,13 +99,13 @@ const StatisticsPage = (props) => {
                             },
                         }}
                         data={[
-                            { x: moment(date).subtract(3, 'days').toDate(), y: 1 },
-                            { x: moment(date).subtract(2, 'days').toDate(), y: 2 },
-                            { x: moment(date).subtract(1, 'days').toDate(), y: 3 },
-                            { x: moment(date).toDate(), y: 4 },
-                            { x: moment(date).add(1, 'days').toDate(), y: 5 },
-                            { x: moment(date).add(2, 'days').toDate(), y: 6 },
-                            { x: moment(date).add(3, 'days').toDate(), y: 7 }
+                            { x: moment(date).subtract(3, 'days').toDate(), y: getDaily(moment(date).subtract(3, 'days').toDate()) },
+                            { x: moment(date).subtract(2, 'days').toDate(), y: getDaily(moment(date).subtract(2, 'days').toDate()) },
+                            { x: moment(date).subtract(1, 'days').toDate(), y: getDaily(moment(date).subtract(1, 'days').toDate()) },
+                            { x: moment(date).toDate(), y: getDaily(moment(date).toDate()) },
+                            { x: moment(date).add(1, 'days').toDate(), y: getDaily(moment(date).add(1, 'days').toDate()) },
+                            { x: moment(date).add(2, 'days').toDate(), y: getDaily(moment(date).add(2, 'days').toDate()) },
+                            { x: moment(date).add(3, 'days').toDate(), y: getDaily(moment(date).add(3, 'days').toDate()) }
                         ]}
                     />
                 </VictoryChart>
@@ -88,16 +114,20 @@ const StatisticsPage = (props) => {
                 <div className='ProfessorChartContainer'>
                     <div>Weekly Bookings (average)</div>
                     <VictoryChart domainPadding={{ x: 20 }}>
+
                         <VictoryLine
+                            domain={{ y: [0, 5] }}
+                            labels={({ datum }) => (datum.y !== 0)? datum.y.toFixed(2): null}
                             style={{
                                 data: { stroke: "#151A4F" },
                                 parent: { border: "1px solid #ccc" }
                             }}
                             data={[
-                                { x: 'Week1', y: 2 },
-                                { x: 'Week2', y: 3 },
-                                { x: 'Week3', y: 5 },
-                                { x: 'Week4', y: 4 }
+                                { x: 'Week' + moment(date).subtract(2, 'weeks').isoWeek(), y: getWeekly(moment(date).subtract(2, 'weeks').toDate()) },
+                                { x: 'Week' + moment(date).subtract(1, 'weeks').isoWeek(), y: getWeekly(moment(date).subtract(1, 'weeks').toDate()) },
+                                { x: 'Week' + moment(date).isoWeek(), y: getWeekly(moment(date).toDate()) },
+                                { x: 'Week' + moment(date).add(1, 'weeks').isoWeek(), y: getWeekly(moment(date).add(1, 'weeks').toDate()) },
+                                { x: 'Week' + moment(date).add(2, 'weeks').isoWeek(), y: getWeekly(moment(date).add(2, 'weeks').toDate()) }
                             ]}
                         />
                     </VictoryChart>
@@ -106,22 +136,25 @@ const StatisticsPage = (props) => {
                     <div>Monthly Bookings (average)</div>
                     <VictoryChart domainPadding={{ x: 20 }}>
                         <VictoryLine
+                            domain={{ y: [0, 5] }}
+                            labels={({ datum }) => (datum.y !== 0)? datum.y.toFixed(2): null}
                             style={{
                                 data: { stroke: "#151A4F" },
                                 parent: { border: "1px solid #ccc" }
                             }}
                             data={[
-                                { x: 'Jan', y: 2 },
-                                { x: 'Feb', y: 3 },
-                                { x: 'Mar', y: 5 },
-                                { x: 'Apr', y: 4 },
-                                { x: 'Jun', y: 15 },
-                                { x: 'Jul', y: 2 },
-                                { x: 'Aug', y: 3 },
-                                { x: 'Sep', y: 5 },
-                                { x: 'Oct', y: 4 },
-                                { x: 'Nov', y: 15 },
-                                { x: 'Dec', y: 2 },
+                                { x: 'Jan', y: getMonthly(0, moment(date).toDate().getFullYear()) },
+                                { x: 'Feb', y: getMonthly(1, moment(date).toDate().getFullYear()) },
+                                { x: 'Mar', y: getMonthly(2, moment(date).toDate().getFullYear()) },
+                                { x: 'Apr', y: getMonthly(3, moment(date).toDate().getFullYear()) },
+                                { x: 'May', y: getMonthly(4, moment(date).toDate().getFullYear()) },
+                                { x: 'Jun', y: getMonthly(5, moment(date).toDate().getFullYear()) },
+                                { x: 'Jul', y: getMonthly(6, moment(date).toDate().getFullYear()) },
+                                { x: 'Aug', y: getMonthly(7, moment(date).toDate().getFullYear()) },
+                                { x: 'Sep', y: getMonthly(8, moment(date).toDate().getFullYear()) },
+                                { x: 'Oct', y: getMonthly(9, moment(date).toDate().getFullYear()) },
+                                { x: 'Nov', y: getMonthly(10, moment(date).toDate().getFullYear())},
+                                { x: 'Dec', y: getMonthly(11, moment(date).toDate().getFullYear())},
                             ]}
                         />
                     </VictoryChart>
