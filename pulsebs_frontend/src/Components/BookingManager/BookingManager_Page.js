@@ -4,6 +4,7 @@ import BookingManagerHeader from './BookingManagerHeader/BookingManagerHeader';
 import ContactTracing from './ContactTracing/ContactTracing';
 import MonitorUsage from './MonitorUsage/MonitorUsage';
 import Bookings from './Bookings';
+import Attendance from './Attendance';
 import DelLectures from './DelLectures';
 import './BookingManager_Page.css';
 
@@ -23,7 +24,7 @@ function bookingManagerPage (props) {
                     <Route path="/booking_manager/contact_tracing" exact component={ContactTracing} />
                     <Route path="/booking_manager/bookings" exact component={Bookings} />
                     <Route path="/booking_manager/lectures" exact component={DelLectures} />
-                    <Route path="/booking_manager/attendance" exact component={Bookings} />
+                    <Route path="/booking_manager/attendance" exact component={Attendance} />
                 </Switch>
             </BrowserRouter>
         </div>;

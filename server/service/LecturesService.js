@@ -4,7 +4,7 @@
 const db = require('../components/db');
 const Lecture = require('../components/lecture');
 
-
+//@li to test
 exports.getLecturesDelectList = function(courseId, time) {
   return new Promise((resolve, reject) => {
     let sql = `SELECT   L.*,
@@ -34,6 +34,8 @@ exports.getLecturesDelectList = function(courseId, time) {
     });
   });
 };
+
+
 
 exports.getLectures = function(courseId) {
   return new Promise((resolve, reject) => {

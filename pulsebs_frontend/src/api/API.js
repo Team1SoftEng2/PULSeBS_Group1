@@ -208,10 +208,15 @@ async function ChangeLecturemodeById (lectureId) {
     }
 }
 
-
+//@li to list
 async function getBooksList ({ courseId = '', time = ''}) {
     var str = '?courseId=' + courseId + '&time=' + time;
     return await fetch(baseURL + "/getBooks" + str).then(res => res.json());
+}
+
+async function getLecturesAttendance ({ courseId = '', time = ''}) {
+    var str = '?courseId=' + courseId + '&time=' + time;
+    return await fetch(baseURL + "/getBooks" + str,{method: 'POST'}).then(res => res.json());
 }
 
 async function getDelLecturesList ({ courseId = '', time = ''}) {
@@ -228,6 +233,7 @@ const API = {
     cancelBooking, ChangeLecturemodeById, apiBookingToWaitingListPOST,
     getBookingsInWaitingList,
     getBooksList,
+    getLecturesAttendance,
     getDelLecturesList,
 
 };

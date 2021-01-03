@@ -5,7 +5,102 @@
 const db = require('../components/db');
 const Booking = require('../components/booking');
 
+//@li to test
+exports.getLecturesAttendance =  (courseId, time) => {
+  return new Promise((resolve, reject) => {
+    let sql = `SELECT 
+    L.CourseID,
+    L.LectureID,
+    L.TeacherID,
+    L.Date,
+    L.Time,
+    L.mode,
+    L.place,
+    L.LectureID,
+    S.Surname,
+    S.Name,
+    S.StudentID,
+    C.courseName,
+    T.Surname as tSurname,
+    T.Name as tName
+FROM    LectureAttendance LA,
+    Lecture L,
+    Student S,
+    Teacher T,
+    Course C
+WHERE   LA.StudentId = S.StudentID AND 
+    LA.LectureId = L.LectureId AND 
+    T.TeacherID = L.TeacherID AND
+    L.CourseID = C.CourseID `;;
+    if (courseId) {
+      sql = sql + ` AND C.CourseID = ?`;
+    }
+    if (time) {
+      sql = sql + ` AND L.Date LIKE '%${time}%'`;
+    }
+    const querArr = courseId ? [courseId] : [];
 
+    db.all(sql, querArr, (err, rows) => {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        console.log('rows -> :', rows);
+        resolve(rows);
+      }
+    });
+  });
+};
+    /*let sql = `SELECT 
+                
+                L.CourseID,
+                L.LectureID,
+                L.TeacherID,
+                L.Date,
+                L.Time,
+                L.mode,
+                L.place,
+                
+                S.Surname,
+                S.Name,
+                S.StudentID,
+                C.courseName,
+                T.Surname as tSurname,
+                T.Name as tName
+        FROM    Booking B,
+                CourseAttendance CA
+                Lecture L,
+                Student S,
+                Teacher T,
+                Course C
+        WHERE   CA.CourseID = L.CourseID AND
+                CA.StudentId = B.StudentId AND
+                B.StudentId = S.StudentID AND 
+                B.LectureId = L.LectureId AND 
+                T.TeacherID = L.TeacherID AND
+                L.CourseID = C.CourseID
+                `;
+    if (courseId) {
+      sql = sql + ` AND C.CourseID = ?`;
+    }
+    if (time) {
+      sql = sql + ` AND L.Date LIKE '%${time}%'`;
+    }
+    const querArr = courseId ? [courseId] : [];
+
+    db.all(sql, querArr, (err, rows) => {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        console.log('rows -> :', rows);
+        resolve(rows);
+      }
+    });
+  });
+};*/
+
+//@li to test
 exports.getBooksList = (courseId, time) => {
   return new Promise((resolve, reject) => {
     let sql = `SELECT 
@@ -31,7 +126,7 @@ exports.getBooksList = (courseId, time) => {
         WHERE   B.StudentId = S.StudentID AND 
                 B.LectureId = L.LectureId AND 
                 T.TeacherID = L.TeacherID AND
-                L.CourseID = C.CourseID `;
+                L.CourseID = C.CourseID `;;
     if (courseId) {
       sql = sql + ` AND C.CourseID = ?`;
     }

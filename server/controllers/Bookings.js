@@ -9,7 +9,7 @@ const Courses = require('../service/CourseService');
 const Email = require('./Email');
 const moment = require('moment');
 
-
+//@li
 module.exports.apiBooksListGET = async (req, res) => {
   const [err, bookings] = await to(Bookings.getBooksList(req.query.courseId, req.query.time));
   if (err) {
@@ -18,6 +18,16 @@ module.exports.apiBooksListGET = async (req, res) => {
   return utils.writeJson(res, bookings);
 };
 
+module.exports.apiBooksAttendanceGET = async (req, res) => {
+  const [err, bookings] = await to(Bookings.getLecturesAttendance(req.query.courseId, req.query.time));
+
+  if (err) {
+    return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
+    
+  }
+
+  return utils.writeJson(res, bookings);
+};
 
 module.exports.apiBookingsGET = async function apiBookingsGET(req, res) {
   const lectureId = req.query.lectureId;

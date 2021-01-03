@@ -93,7 +93,8 @@ app.get('/api/students/:id/courses', courseController.apiStudentsIdCoursesGET);
 app.get('/api/teachers/lectures', lecturesController.apiTeacherLecturesGET);
 app.get('/api/teachers/courses', courseController.apiTeacherCoursesGET);
 app.get('/api/bookings', bookingsController.apiBookingsGET);
-app.get('/api/getBooks', bookingsController.apiBooksListGET);
+app.get('/api/getBooks', bookingsController.apiBooksListGET);//LI
+app.post('/api/getBooks', bookingsController.apiBooksAttendanceGET);//LI
 app.get('/api/users/:id', authController.apiUserGET);
 app.post('/api/bookings', validate({body: bookingSchema}), bookingsController.apiBookingsPOST);
 app.post('/api/bookings/waitingLists', validate({body: bookingSchema}), bookingsController.apiBookingToWaitingListPOST);
