@@ -31,7 +31,7 @@ FROM    LectureAttendance LA,
 WHERE   LA.StudentId = S.StudentID AND 
     LA.LectureId = L.LectureId AND 
     T.TeacherID = L.TeacherID AND
-    L.CourseID = C.CourseID `;;
+    L.CourseID = C.CourseID `;
     if (courseId) {
       sql = sql + ` AND C.CourseID = ?`;
     }
@@ -126,7 +126,7 @@ exports.getBooksList = (courseId, time) => {
         WHERE   B.StudentId = S.StudentID AND 
                 B.LectureId = L.LectureId AND 
                 T.TeacherID = L.TeacherID AND
-                L.CourseID = C.CourseID `;;
+                L.CourseID = C.CourseID `;
     if (courseId) {
       sql = sql + ` AND C.CourseID = ?`;
     }

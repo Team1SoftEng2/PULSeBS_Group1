@@ -33,13 +33,13 @@ const StatisticsPage = (props) => {
                 else
                     console.log(err);
             });
-    };
+    }
 
     function getDaily(lookupdate) {
         let check = moment(lookupdate, 'DD-MM-YYYY');
         return bookings.filter(lecture => moment(lecture.date, 'DD-MM-YYYY').isSame(check))
             .reduce((acc, lecture) => acc + lecture.bookingsNumber, 0);
-    };
+    }
 
     function getWeekly(lookupdate) {
         let weeklyBookings = bookings.filter(lecture => lookupdate.getFullYear() === moment(lecture.date, 'DD-MM-YYYY').toDate().getFullYear())
@@ -52,7 +52,7 @@ const StatisticsPage = (props) => {
         if (weeklyLectures === 0) return weeklyLectures;
         return weeklyBookings / weeklyLectures;
 
-    };
+    }
 
     function getMonthly(month, year) {
         let monthlyBookings = bookings.filter(lecture => year === moment(lecture.date, 'DD-MM-YYYY').toDate().getFullYear())
@@ -64,7 +64,7 @@ const StatisticsPage = (props) => {
             .reduce((acc) => acc + 1, 0);
         if (monthlyLectures === 0) return monthlyLectures;
         return monthlyBookings / monthlyLectures;
-    };
+    }
 
 
     return (
