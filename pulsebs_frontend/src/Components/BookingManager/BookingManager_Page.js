@@ -3,9 +3,9 @@ import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom';
 import BookingManagerHeader from './BookingManagerHeader/BookingManagerHeader';
 import ContactTracing from './ContactTracing/ContactTracing';
 import MonitorUsage from './MonitorUsage/MonitorUsage';
-import Bookings from './Bookings';
-import Attendance from './Attendance';
-import DelLectures from './DelLectures';
+import Bookings from './Bookings/Bookings';
+import Attendance from './Attendance/Attendance';
+import DelLectures from './DelLectures/DelLectures';
 import './BookingManager_Page.css';
 
 function bookingManagerPage (props) {

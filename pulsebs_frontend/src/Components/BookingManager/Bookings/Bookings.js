@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { Form, Row, Col, Table } from "react-bootstrap";
+import { Form, Row, Col } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 import API from "../../../api/API";
-import style from "./../Bookings/style.module.css";
+import style from "./style.module.css";
+import Ltable from "./Ltable";
 
-export default function Index() {
+
+
+export default function Bookings() {
+  const loc = useLocation();
+  const locs = loc.pathname.split("/")
+  const lastName = locs[locs.length - 1];
   const [query, setQuery] = useState({});
 
-  const [list, setList] = useState([]);
+  const [myList, setMyList] = useState([]);
   useEffect(() => {
-    getList();
+    getListData();
     return () => {};
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
-  async function getList() {
-    const res = await API.getDelLecturesList(query);
-    console.log("res -> :", res);
-    setList(res);
+  async function getListData() {
+    const res = await API.getBooksList(query);
+    setMyList(res);
   }
 
   function itemChange(val, type) {
@@ -32,8 +37,7 @@ export default function Index() {
   return (
     <>
       <div className={style["div-wrap"]}>
-        <h1>Deleted Lectures List</h1>
-
+        <h1>{lastName}</h1>
         <Form>
           <Row>
             <Col>
@@ -52,7 +56,7 @@ export default function Index() {
               </Form.Control>
             </Col>
             <Col>
-              Month-Year :{" "}
+              Month-Year : {" "}
               <Form.Control
                 className={style["cos"]}
                 type="month"
@@ -64,34 +68,7 @@ export default function Index() {
           </Row>
         </Form>
         <div className={style["tabe"]}>
-          <Table striped bordered hover size="sm">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Course Name</th>
-                <th>LectureID</th>
-                <th>Teacher Name</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Mode</th>
-                <th>Place</th>
-              </tr>
-            </thead>
-            <tbody>
-              {list.map((it, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{it.courseName}</td>
-                  <td>{it.LectureID}</td>
-                  <td>{it.Surname + " " + it.Name}</td>
-                  <td>{it.Date.split(" ")[0]}</td>
-                  <td>{it.Time}</td>
-                  <td>{it.mode}</td>
-                  <td>{it.place || "-"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          <Ltable list={myList}></Ltable>
         </div>
       </div>
     </>

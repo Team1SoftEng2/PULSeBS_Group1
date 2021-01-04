@@ -3,10 +3,10 @@ import { Form, Row, Col} from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import API from "../../../api/API";
 import style from "./../Bookings/style.module.css";
-import Ltable from "./../Bookings/Ltable";
+import Ltable from "../Bookings/Ltable";
 
 
-export default function Index() {
+export default function Attendance() {
   const loc = useLocation();
   const lastName = loc.pathname.split("/")[loc.pathname.split("/").length - 1];
   const [query, setQuery] = useState({});
