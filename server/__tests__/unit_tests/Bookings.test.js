@@ -286,3 +286,66 @@ test('delete a booking given studentId and LectureId', () => {
         );
       });
 });
+
+
+
+//li
+test('get all booking list', () => {
+  const req = httpMocks.createRequest();
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+ 
+  BookingsService.getBooksList.mockImplementation(() => Promise.resolve(bookings));
+
+  // calling function to be tested
+  return Controller.apiBooksListGET(req, res).then(() => {
+    expect.assertions(1);
+    const data = res._getJSONData();
+    expect(data).toEqual(bookings);
+  });
+});
+
+test('do not get all booking list', () => {
+  const req = httpMocks.createRequest();
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+ 
+  BookingsService.getBooksList.mockImplementation(() => Promise.reject('some type of error'));
+
+  // calling function to be tested
+  return Controller.apiBooksListGET(req, res).then(() => {
+    expect.assertions(1);
+    const data = res._getJSONData();
+    expect(data).toEqual{errors: [{'msg': 'some type of error'}]};
+  });
+});
+
+test('get all attendance list', () => {
+  const req = httpMocks.createRequest();
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+ 
+  BookingsService.getLecturesAttendance.mockImplementation(() => Promise.resolve(bookings));
+
+  // calling function to be tested
+  return Controller.apiBooksAttendanceGET(req, res).then(() => {
+    expect.assertions(1);
+    const data = res._getJSONData();
+    expect(data).toEqual(bookings);
+  });
+});
+
+test('do not get all attendance list', () => {
+  const req = httpMocks.createRequest();
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+ 
+  BookingsService.getLecturesAttendance.mockImplementation(() => Promise.reject('some type of error'));
+
+  // calling function to be tested
+  return Controller.apiBooksAttendanceGET(req, res).then(() => {
+    expect.assertions(1);
+    const data = res._getJSONData();
+    expect(data).toEqual{errors: [{'msg': 'some type of error'}]};
+  });
+});

@@ -635,6 +635,25 @@ describe('online a lecture by id', () => {
     expect(onlineFn).not.toHaveBeenCalled();
     expect(emailFn).not.toHaveBeenCalled();
   });
+
+
+
+  //li
+  test('get all deleted lectures list', () => {
+    const req = httpMocks.createRequest();
+    const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+  
+   
+    Lectures.getLecturesDelectList.mockImplementation(() => Promise.resolve(lectures));
+  
+    // calling function to be tested
+    return Controller.apiDelectedLecturesListGET(req, res).then(() => {
+      expect.assertions(1);
+      const data = res._getJSONData();
+      expect(data).toEqual(lectures);
+    });
+  });
+
 });
 
 

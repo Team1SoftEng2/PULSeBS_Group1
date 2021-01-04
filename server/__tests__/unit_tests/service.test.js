@@ -19,7 +19,9 @@ beforeAll( () => {
         db.run("INSERT INTO Lecture(LectureID, CourseID, TeacherID, Date, Time, mode, place, maxSeats) VALUES('1', '1', 't00001', 'date', 'time', 'online', null, null), ('2', '1', 't00001', 'date', 'time', 'present', 'Aula 2', 30), ('3', '1', 't00001', 'date', 'time', 'present', 'Aula 2', 30)");
         db.run("INSERT INTO Booking(StudentID, LectureID) VALUES ('s00001', '1'), ('s00001', '2')");
         db.run("INSERT INTO CourseAttendance(StudentID, CourseID) VALUES ('s00001', '1')")
-    });
+        db.run("INSERT INTO LectureAttendance(StudentID, LectureID) VALUES ('s00001', '1'), ('s00001', '2')");
+        db.run("INSERT INTO LectureDeleted(LectureID, CourseID, TeacherID, Date, Time, mode, place, maxSeats) VALUES('1', '1', 't00001', 'date', 'time', 'online', null, null), ('2', '1', 't00001', 'date', 'time', 'present', 'Aula 2', 30), ('3', '1', 't00001', 'date', 'time', 'present', 'Aula 2', 30)")
+});
 });
 
 afterAll( () => {
@@ -30,6 +32,8 @@ afterAll( () => {
         db.run("DELETE FROM Course");
         db.run("DELETE FROM Teacher");
         db.run("DELETE FROM Student");
+        db.run("DELETE FROM LectureAttendance");
+        db.run("DELETE FROM LectureDeleted");
     });
 });
 
@@ -96,6 +100,32 @@ describe('BookingsService', () => {
             });
         // missing test: DB doesn't work
     });
+
+    //li
+    test('getLecturesAttendance', () => {
+        try {  
+            Bookings.getLecturesAttendance({'courseId':'1','date': 'date'}).then((data) => {
+            expect.assertions(1);
+            expect(data).toBe('successfull');
+        });
+        }
+        catch (err) {
+        expect(err).toBe('fail');
+      }
+    });
+
+    test('getBooksList', () => {
+        try {  
+            Bookings.getBooksList({'courseId':'1','date': 'date'}).then((data) => {
+            expect.assertions(1);
+            expect(data).toBe('successfull');
+        });
+        }
+        catch (err) {
+        expect(err).toBe('fail');
+      }
+    });
+
 });
 
 describe('CourseService Test', () => {
@@ -147,6 +177,27 @@ describe('LecturesService Test', () => {
         'time': 'time',
         'mode': 'online'
     }
+    const teacher = {
+        'teacherId':'t00001',
+        'name':'John',
+        'surname': 'Smith', 
+        'emailAddress':'john.smith@email.com', 
+        'hash':'$2a$10$9un76S8o2Liw/pIx5dhmMen9Mv89KEH/Vq5aLkqWfUF.GWXFei8V.',
+
+    }
+    const course = {
+        'courseId': '1',
+        'teacherId': 't00001',
+        'name': 'C1' 
+    }
+    const lecturedeleted = {
+        'lectureId': '1',
+        'courseId': '1',
+        'teacherId': 't00001',
+        'date': 'date',
+        'time': 'time',
+        'mode': 'online'
+    }
 
     test('getLectures', () => {
         Lectures.getLectures()
@@ -176,4 +227,20 @@ describe('LecturesService Test', () => {
                 expect(data).toBe('Successful');
             })
     });
+
+
+//LI
+
+test('getLecturesDelectList', () => {
+    try {  
+        Lectures.getLecturesDelectList({'courseId':'1','date': 'date'}).then((data) => {
+        expect.assertions(1);
+        expect(data).toBe('successfull');
+    });
+    }
+    catch (err) {
+    expect(err).toBe('fail');
+  }
+});
+
 });
