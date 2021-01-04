@@ -12,7 +12,7 @@ function bookingManagerPage (props) {
     const authObj = props.authObj
 
     if (authObj.userRole !== "booking_manager")
-    return <BrowserRouter><Redirect to = "/"/></BrowserRouter>
+        return <BrowserRouter><Redirect to = "/"/></BrowserRouter>
     else
         return <div>
             <BrowserRouter>{authObj.authErr && <Redirect to="/" />}</BrowserRouter>
