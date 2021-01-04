@@ -26,7 +26,6 @@ const StatisticsPage = (props) => {
         API.getCourseBookings(course.name)
             .then((res) => {
                 setBookings(res);
-                console.log(res);
             })
             .catch((err) => {
                 if (err.status && err.status === 401)
