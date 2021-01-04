@@ -14,7 +14,7 @@ test("LectureList", () => {
     }];
     const renderResult = render(<LectureList lectures={lectures} history={null} setLectures={() => null} />);
     expect(renderResult.getByText('IS001')).toBeInTheDocument();
-    expect(renderResult.getByText('Date: 12-12-2020 8:30')).toBeInTheDocument();
+    expect(renderResult.getByText('Date: 12-12-2020')).toBeInTheDocument();
     expect(renderResult.getByText('Time: 8:30~10:00')).toBeInTheDocument();
     expect(renderResult.getByText('present')).toBeInTheDocument();
     expect(renderResult.getByText('Delete')).toBeInTheDocument();

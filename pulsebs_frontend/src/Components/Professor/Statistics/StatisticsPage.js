@@ -10,7 +10,8 @@ import API from '../../../api/API';
 const StatisticsPage = (props) => {
 
     let history = useHistory();
-    let [course, setCourse] = useState({ name: props.courses[0].courseId, label: props.courses[0].name });
+    let [course, setCourse] = useState({ name: (props.courses[0] === undefined)? 'None' : props.courses[0].courseId,
+    label: (props.courses[0] === undefined)? 'No Courses' : props.courses[0].name });
     let [date, setDate] = useState(new Date());
     let [bookings, setBookings] = useState([]);
 

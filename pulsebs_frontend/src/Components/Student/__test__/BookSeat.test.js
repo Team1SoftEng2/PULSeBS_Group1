@@ -13,9 +13,11 @@ time: "8:30~11:00"},
 {courseId: "TEST3", date: "15-11-2021 8:30", lectureId: "TST3", maxSeats: 15, mode: "online", room: "Aula 3", teacherId: "t37003",
 time: "8:30~11:00"}];
 const testBookings = [{ studentId: "s27001", lectureId: "TST1" }];
+const testWaitingBookings = [{ studentId: "s27001", lectureId: "TST3" }];
+const testProfessors= [{ teacherId: "t37003", name: "John", surname: "Smith" }];
 
 test('Renders BookSeat Correctly', () => {
-    const renderResult = render(<BookSeat courses={testCourses} lectures={testLectures} bookings={testBookings} authObj={testAuthObj} />);
+    const renderResult = render(<BookSeat professors={testProfessors} courses={testCourses} lectures={testLectures} bookings={testBookings} authObj={testAuthObj} waitingBookings ={testWaitingBookings} />);
     expect(renderResult.getByText('Test Lecture Bookable')).toBeInTheDocument();
     expect(renderResult.getByText('Test Lecture Unbookable')).toBeInTheDocument();
     expect(renderResult.getByText('Test Lecture Online')).toBeInTheDocument();
