@@ -3,21 +3,25 @@ import { Form, Row, Col, Table } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import API from "../../../api/API";
 import style from "./style.module.css";
+import Ltable from "./Ltable";
 
-export default function Index() {
+
+
+export default function IndexMyBooks() {
   const loc = useLocation();
-  const lastName = loc.pathname.split("/")[loc.pathname.split("/").length - 1];
+  const locs = loc.pathname.split("/")
+  const lastName = locs[locs.length - 1];
   const [query, setQuery] = useState({});
 
-  const [list, setList] = useState([]);
+  const [myList, setMyList] = useState([]);
   useEffect(() => {
-    getList();
+    getListData();
     return () => {};
   }, [query]);
 
-  async function getList() {
+  async function getListData() {
     const res = await API.getBooksList(query);
-    setList(res);
+    setMyList(res);
   }
 
   function itemChange(val, type) {
@@ -52,7 +56,7 @@ export default function Index() {
               </Form.Control>
             </Col>
             <Col>
-              Month-Year :{" "}
+              Month-Year : {" "}
               <Form.Control
                 className={style["cos"]}
                 type="month"
@@ -64,36 +68,7 @@ export default function Index() {
           </Row>
         </Form>
         <div className={style["tabe"]}>
-          <Table striped bordered hover size="sm">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Course Name</th>
-                <th>LectureID</th>
-                <th>Teacher Name</th>
-                <th>Student Name</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Mode</th>
-                <th>Place</th>
-              </tr>
-            </thead>
-            <tbody>
-              {list.map((it, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{it.courseName}</td>
-                  <td>{it.LectureID}</td>
-                  <td>{it.tSurname + " " + it.tName}</td>
-                  <td>{it.Surname + " " + it.Name}</td>
-                  <td>{it.Date.split(" ")[0]}</td>
-                  <td>{it.Time}</td>
-                  <td>{it.mode}</td>
-                  <td>{it.place}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+          <Ltable list={myList}></Ltable>
         </div>
       </div>
     </>

@@ -3,6 +3,8 @@ import { Form, Row, Col, Table } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import API from "../../../api/API";
 import style from "./../Bookings/style.module.css";
+import Ltable from "./../Bookings/Ltable";
+
 
 export default function Index() {
   const loc = useLocation();
@@ -37,7 +39,7 @@ export default function Index() {
         <Form>
           <Row>
             <Col>
-              Courses :{" "}
+              Courses Name : &nbsp;
               <Form.Control
                 as="select"
                 className={style["cos"]}
@@ -52,7 +54,7 @@ export default function Index() {
               </Form.Control>
             </Col>
             <Col>
-              Month-Year :{" "}
+              Month-Year : &nbsp;
               <Form.Control
                 className={style["cos"]}
                 type="month"
@@ -64,41 +66,14 @@ export default function Index() {
           </Row>
         </Form>
         <div className={style["tabe"]}>
-          <Table striped bordered hover size="sm">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Course Name</th>
-                <th>LectureID</th>
-                <th>Teacher Name</th>
-                <th>Student Name</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Mode</th>
-                <th>Place</th>
-              </tr>
-            </thead>
-            <tbody>
-              {list.map((it, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{it.courseName}</td>
-                  <td>{it.LectureID}</td>
-                  <td>{it.tSurname + " " + it.tName}</td>
-                  <td>{it.Surname + " " + it.Name}</td>
-                  <td>{it.Date.split(" ")[0]}</td>
-                  <td>{it.Time}</td>
-                  <td>{it.mode}</td>
-                  <td>{it.place}</td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
+            <Ltable list={list}></Ltable>
         </div>
       </div>
     </>
   );
 }
+
+
 
 /*import React, { useEffect, useState } from "react";
 import { Form, Row, Col, Table } from "react-bootstrap";
