@@ -5,7 +5,7 @@ import ContactTracing from './ContactTracing/ContactTracing';
 import MonitorUsage from './MonitorUsage/MonitorUsage';
 import Bookings from './Bookings/Bookings';
 import Attendance from './Attendance/Attendance';
-import DelLectures from './DelLectures/DelLectures';
+import DelLectures from './DeleteLectures/DeleteLectures';
 import './BookingManager_Page.css';
 
 function bookingManagerPage (props) {

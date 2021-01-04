@@ -4,7 +4,7 @@ import BookingManagerPage from '../BookingManager_Page';
 import BookingManagerHeader from '../BookingManagerHeader/BookingManagerHeader';
 import ContactTracing from '../ContactTracing/ContactTracing';
 import Bookings from '../Bookings/Bookings';
-import DelLectures from '../DelLectures/DelLectures';
+import DelLectures from '../DeleteLectures/DeleteLectures';
 import MonitorUsage from '../MonitorUsage/MonitorUsage';
 import Attendance from '../Attendance/Attendance';
 
