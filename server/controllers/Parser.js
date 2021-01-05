@@ -129,8 +129,8 @@ module.exports.parseScheduleCSV = async function (req, res) {
     fs.unlinkSync(path);
 
     Promise.allSettled(data.map( (row) => createLectures(row) ))
-        .then((result) => {
-            let lectures = result.filter( r => r.status === 'fulfilled' ).map( r => r.value ).flat();
+        .then((res) => {
+            let lectures = res.filter( r => r.status === 'fulfilled' ).map( r => r.value ).flat();
             //Insert the students into the DB
             Promise.allSettled(lectures.map((lecture) => Lectures.addLecture(lecture)))
                 .then((result) => {
@@ -157,7 +157,7 @@ async function createLectures(schedule) {
     date.add(startingTime[1], 'm');
 
     // Retrieve teacher id
-    [err, course] = await to(Courses.getCourseById(schedule.Code));
+    let [err, course] = await to(Courses.getCourseById(schedule.Code));
     if(err) throw err; 
     
     // Create all the lectures
