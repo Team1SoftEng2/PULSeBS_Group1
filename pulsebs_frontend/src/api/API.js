@@ -248,6 +248,21 @@ async function getCourseBookings (courseID) {
     }
 }
 
+async function uploadCSV(file){
+    console.log(file);
+    let url=baseURL+`/students/upload`;
+    let csv= new FormData();
+    csv.append('file',file);
+    const response = await fetch(url,{method:'POST',body:csv});
+    console.log(url);
+    console.log(csv);
+    console.log(response);
+    if (response.ok) {
+        console.log("MAGARI");
+    } else {
+        console.log("NADAAAAA");
+    }
+}
 
 const API = {
     getCourseById,
@@ -261,7 +276,7 @@ const API = {
     getBooksList,
     getLecturesAttendance,
     getDelLecturesList,
-
+    uploadCSV,
 };
 
 export default API;
