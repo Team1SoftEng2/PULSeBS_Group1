@@ -54,3 +54,19 @@ exports.getCourseByTeacherID = function(teacherId) {
     });
   });
 };
+
+module.exports.addCourse = function(course) {
+  return new Promise((resolve, reject) => {
+    const sql = 'INSERT INTO Course (CourseID, TeacherID, courseName) VALUES (?, ?, ?)';
+    db.run(sql, [course.courseId, course.teacherId, course.name],
+        (err) => { err ? reject(err) : resolve(null); });
+  });
+};
+
+module.exports.addCourseAttendance = function(courseId, studentId) {
+  return new Promise((resolve, reject) => {
+    const sql = 'INSERT INTO CourseAttendance (StudentID, CourseID) VALUES (?, ?)';
+    db.run(sql, [studentId, courseId],
+        (err) => { err ? reject(err) : resolve(null); });
+  });
+};

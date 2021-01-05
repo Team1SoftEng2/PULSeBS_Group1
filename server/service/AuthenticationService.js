@@ -43,11 +43,18 @@ exports.checkPassword = function(user, password) {
   return bcrypt.compareSync(password, user.hash);
 };
 
-
 module.exports.addStudent = function(student) {
   return new Promise((resolve, reject) => {
     const sql = 'INSERT INTO Student (StudentID, Name, Surname, emailAddress, password) VALUES (?, ?, ?, ?, ?)';
     db.run(sql, [student.userId, student.name, student.surname, student.email, '$2b$10$q10dHb3rJZEJ09maxOKloe268lB9zoU239J3MlS8PiWF.x5DbCsWq'],
+        (err) => { err ? reject(err) : resolve(null); });
+  });
+}
+
+module.exports.addTeacher = function(teacher) {
+  return new Promise((resolve, reject) => {
+    const sql = 'INSERT INTO Teacher (TeacherID, Name, Surname, emailAddress, password) VALUES (?, ?, ?, ?, ?)';
+    db.run(sql, [teacher.userId, teacher.name, teacher.surname, teacher.email, '$2b$10$q10dHb3rJZEJ09maxOKloe268lB9zoU239J3MlS8PiWF.x5DbCsWq'],
         (err) => { err ? reject(err) : resolve(null); });
   });
 }

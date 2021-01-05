@@ -121,3 +121,11 @@ exports.onlineLectureById = function(lectureId) {
     });
   });
 };
+
+module.exports.addLecture = function(lecture) {
+  return new Promise((resolve, reject) => {
+    const sql = 'INSERT INTO Lecture (LectureID, CourseID, TeacherID, Date, Time, mode, place, maxSeats) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    db.run(sql, [lecture.lectureId, lecture.courseId, lecture.teacherId, lecture.date, lecture.time, lecture.mode, lecture.room, lecture.maxSeats],
+        (err) => { err ? reject(err) : resolve(null); });
+  });
+};
