@@ -1,3 +1,4 @@
+/* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable max-len */
 const to = require('await-to-js').default;
 const httpMocks = require('node-mocks-http');
@@ -231,7 +232,7 @@ test('get courses given student ID but simulate db error', () => {
 /* ============================================================================================
                                   TESTS of apiCourseLecturesWithBookingsGET
 =============================================================================================*/
-test('get lectures with bookings number given teacherId and CourseID', () => {
+test('get lectures with bookings number given CourseID', () => {
   // lecture IS1003 always in time because at end of 2021
   const req = httpMocks.createRequest({params: {courseId: 'IS001'}});
   const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
@@ -272,5 +273,125 @@ test('get lectures with bookings number given teacherId and CourseID', () => {
         bookingsNumber: 2,
       },
     ]);
+  });
+});
+
+test('get lectures with bookings number given CourseID but an error in geLectures occours', () => {
+  // lecture IS1003 always in time because at end of 2021
+  const req = httpMocks.createRequest({params: {courseId: 'IS001'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  Lectures.getLectures.mockImplementation((courseId) => {
+    return Promise.reject('some type of error');
+  });
+  Bookings.getBookings.mockImplementation( (lectureId) => {
+    const filteredBookings = bookings.filter((booking) => booking.lectureId === lectureId);
+    return Promise.resolve(filteredBookings);
+  });
+  
+  return CourseController.apiCourseLecturesWithBookingsGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'msg': 'some type of error'}]});
+  });
+});
+
+test('get lectures with bookings number given and CourseID but no lectures are found', () => {
+  // lecture IS1003 always in time because at end of 2021
+  const req = httpMocks.createRequest({params: {courseId: 'IS008'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  Lectures.getLectures.mockImplementation((courseId) => {
+    const filteredLectures = lectures.filter((lecture) => lecture.courseId === courseId);
+    return Promise.resolve(filteredLectures);
+  });
+  Bookings.getBookings.mockImplementation( (lectureId) => {
+    const filteredBookings = bookings.filter((booking) => booking.lectureId === lectureId);
+    return Promise.resolve(filteredBookings);
+  });
+  
+  return CourseController.apiCourseLecturesWithBookingsGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'msg': 'lectures not found for this course'}]});
+  });
+});
+
+test('get lectures with bookings number given CourseID but an error occours in getBookings', () => {
+  // lecture IS1003 always in time because at end of 2021
+  const req = httpMocks.createRequest({params: {courseId: 'IS001'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  Lectures.getLectures.mockImplementation((courseId) => {
+    const filteredLectures = lectures.filter((lecture) => lecture.courseId === courseId);
+    return Promise.resolve(filteredLectures);
+  });
+  Bookings.getBookings.mockImplementation( (lectureId) => {
+    return Promise.reject('some type of error');
+  });
+  
+  return CourseController.apiCourseLecturesWithBookingsGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'msg': 'some type of error'}]});
+  });
+});
+
+/* ============================================================================================
+                                  TESTS of apiTeacherCoursesGET
+=============================================================================================*/
+test('get courses by teacherID', () => {
+  // lecture IS1003 always in time because at end of 2021
+  const req = httpMocks.createRequest({user: {user: 't37001'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  CourseService.getCourseByTeacherID.mockImplementation((teacherId) => {
+    const filteredCourses = courses.filter((course) => course.teacherId === teacherId);
+    return Promise.resolve(filteredCourses);
+  });
+  
+  return CourseController.apiTeacherCoursesGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual([
+      {
+        courseId: 'IS001',
+        teacherId: 't37001',
+        name: 'Information System',
+      },
+    ]);
+  });
+});
+
+test('get courses by teacherID but an error occours in getCourseByTeacherID', () => {
+  // lecture IS1003 always in time because at end of 2021
+  const req = httpMocks.createRequest({user: {user: 't37001'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  CourseService.getCourseByTeacherID.mockImplementation((teacherId) => {
+    return Promise.reject('some type of error');
+  });
+  
+  return CourseController.apiTeacherCoursesGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'some type of error'}]});
+  });
+});
+
+test('get courses by teacherID but no course is found', () => {
+  // lecture IS1003 always in time because at end of 2021
+  const req = httpMocks.createRequest({user: {user: 't37008'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  CourseService.getCourseByTeacherID.mockImplementation((teacherId) => {
+    const filteredCourses = courses.filter((course) => course.teacherId === teacherId);
+    return Promise.resolve(filteredCourses);
+  });
+  
+  return CourseController.apiTeacherCoursesGET(req, res).then(() => {
+    const data = res._getJSONData();
+    expect.assertions(1);
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'courses not present for this professor'}]});
   });
 });
