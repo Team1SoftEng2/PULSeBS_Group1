@@ -72,8 +72,6 @@ module.exports.apiBookingsPOST = async function apiBookingsPOST(req, res) {
   }
 };
 
-// TO BE TESTED ================================================================================
-
 // booking delete
 module.exports.apiBookingsDelete = async function apiBookingsDelete(req, res) {
   let err;

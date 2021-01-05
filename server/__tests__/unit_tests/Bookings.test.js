@@ -1,3 +1,4 @@
+/* eslint-disable prefer-promise-reject-errors */
 /* eslint-disable max-len */
 const Controller = require('../../controllers/Bookings');
 const BookingsService = require('../../service/BookingsService');
@@ -260,18 +261,22 @@ test('delete a booking given studentId and LectureId', () => {
   const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
 
   BookingsService.apiBookingsDelete.mockImplementation((body) => Promise.resolve());
+  BookingsService.getFirstBookingInWaitingList.mockImplementation((lectureId) => {
+    const filteredBookings = bookings.filter((booking) => booking.lectureId === lectureId);
+    return Promise.resolve(filteredBookings);
+  });
 
   return Controller.apiBookingsDelete(req, res)
       .then(() => {
         const data = res._getJSONData();
         expect.assertions(1);
         expect(data).toEqual(
-            {'msg': 'Delete'},
+            {'msg': 'Deleted'},
         );
       });
 });
 
-test('delete a booking given studentId and LectureId', () => {
+test('delete a booking given studentId and LectureId but an error in apiBookingsDelete occours', () => {
   const req = httpMocks.createRequest({body: {studentId: 's27002', lectureId: 'CA3003'}});
   const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
 
@@ -284,6 +289,151 @@ test('delete a booking given studentId and LectureId', () => {
         expect(data).toEqual(
             {errors: [{'msg': 'some type of error'}]},
         );
+      });
+});
+
+test('delete a booking given studentId and LectureId and remove a booking from waitinglist', () => {
+  const req = httpMocks.createRequest({body: {studentId: 's27002', lectureId: 'CA3003'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  BookingsService.apiBookingsDelete.mockImplementation((body) => Promise.resolve());
+  BookingsService.getFirstBookingInWaitingList.mockImplementation((lectureId) => {
+    return Promise.resolve([]);
+  });
+
+  return Controller.apiBookingsDelete(req, res)
+      .then(() => {
+        const data = res._getJSONData();
+        expect.assertions(1);
+        expect(data).toEqual(
+            {'msg': 'Deleted'},
+        );
+      });
+});
+
+/* ============================================================================
+                        TEST apiBookingToWaitingListPOST
+============================================================================*/
+test('try to add a booking to the waiting list but alredy present', () => {
+  const req = httpMocks.createRequest({body: {studentId: 's27002', lectureId: 'CA3003'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  BookingsService.getBookingInWaitingList.mockImplementation(({studentId, lectureId}) => {
+    const filteredBookings = bookings.filter((booking) => booking.lectureId === lectureId && booking.studentId === studentId);
+    return Promise.resolve(filteredBookings);
+  });
+  BookingsService.bookingWaitingListPOST.mockImplementation(() => Promise.resolve());
+
+  return Controller.apiBookingToWaitingListPOST(req, res)
+      .then(() => {
+        const data = res._getJSONData();
+        expect.assertions(1);
+        expect(data).toEqual({errors: [{'msg': 'already in waiting list for that lecture'}]});
+      });
+});
+
+test('add a booking to the waiting list', () => {
+  const req = httpMocks.createRequest({body: {studentId: 's27002', lectureId: 'CA3008'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  BookingsService.getBookingInWaitingList.mockImplementation(({studentId, lectureId}) => {
+    const filteredBookings = bookings.filter((booking) => booking.lectureId === lectureId && booking.studentId === studentId);
+    return Promise.resolve(filteredBookings);
+  });
+  BookingsService.bookingWaitingListPOST.mockImplementation(() => Promise.resolve());
+
+  return Controller.apiBookingToWaitingListPOST(req, res)
+      .then(() => {
+        const data = res._getJSONData();
+        expect.assertions(1);
+        expect(data).toEqual({'msg': 'Added to waiting List'});
+      });
+});
+
+test('try to add a booking to the waiting list but an error in getBookingInWaitingList occours ', () => {
+  const req = httpMocks.createRequest({body: {studentId: 's27002', lectureId: 'CA3008'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  BookingsService.getBookingInWaitingList.mockImplementation(({studentId, lectureId}) => {
+    return Promise.reject('some type of error');
+  });
+  BookingsService.bookingWaitingListPOST.mockImplementation(() => Promise.resolve());
+
+  return Controller.apiBookingToWaitingListPOST(req, res)
+      .then(() => {
+        const data = res._getJSONData();
+        expect.assertions(1);
+        expect(data).toEqual({errors: [{'msg': 'some type of error'}]});
+      });
+});
+
+test('add a booking to the waiting list but an error occours in bookingWaitingListPOST ', () => {
+  const req = httpMocks.createRequest({body: {studentId: 's27002', lectureId: 'CA3008'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  BookingsService.getBookingInWaitingList.mockImplementation(({studentId, lectureId}) => {
+    const filteredBookings = bookings.filter((booking) => booking.lectureId === lectureId && booking.studentId === studentId);
+    return Promise.resolve(filteredBookings);
+  });
+  BookingsService.bookingWaitingListPOST.mockImplementation(() => Promise.reject('some type of error'));
+
+  return Controller.apiBookingToWaitingListPOST(req, res)
+      .then(() => {
+        const data = res._getJSONData();
+        expect.assertions(1);
+        expect(data).toEqual({errors: [{'msg': 'some type of error'}]});
+      });
+});
+
+/* ============================================================================
+                        TEST apiBookingsWaitingListGET
+============================================================================*/
+test('get bookings in waiting list by studentId', () => {
+  const req = httpMocks.createRequest({user: {user: 's27002'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  BookingsService.getBookingsInWaitingList.mockImplementation((studentId) => {
+    const filteredBookings = bookings.filter((booking) => booking.studentId === studentId);
+    return Promise.resolve(filteredBookings);
+  });
+
+  return Controller.apiBookingsWaitingListGET(req, res)
+      .then(() => {
+        const data = res._getJSONData();
+        expect.assertions(1);
+        expect(data).toEqual([{studentId: 's27002', lectureId: 'CA3003'}]);
+      });
+});
+
+test('get bookings in waiting list by studentId but an error in getBookingsInWaitingList occours', () => {
+  const req = httpMocks.createRequest({user: {user: 's27002'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  BookingsService.getBookingsInWaitingList.mockImplementation((studentId) => {
+    return Promise.reject('some type of error');
+  });
+
+  return Controller.apiBookingsWaitingListGET(req, res)
+      .then(() => {
+        const data = res._getJSONData();
+        expect.assertions(1);
+        expect(data).toEqual({errors: [{'msg': 'some type of error'}]});
+      });
+});
+
+test('get bookings in waiting list by studentId but no booking is found', () => {
+  const req = httpMocks.createRequest({user: {user: 's27002'}});
+  const res = httpMocks.createResponse({eventEmitter: require('events').EventEmitter});
+
+  BookingsService.getBookingsInWaitingList.mockImplementation((studentId) => {
+    return Promise.resolve([]);
+  });
+
+  return Controller.apiBookingsWaitingListGET(req, res)
+      .then(() => {
+        const data = res._getJSONData();
+        expect.assertions(1);
+        expect(data).toEqual( {errors: [{'msg': 'empty waiting list'}]});
       });
 });
 
@@ -316,7 +466,7 @@ test('do not get all booking list', () => {
   return Controller.apiBooksListGET(req, res).then(() => {
     expect.assertions(1);
     const data = res._getJSONData();
-    expect(data).toEqual{errors: [{'msg': 'some type of error'}]};
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'some type of error'}]});
   });
 });
 
@@ -346,6 +496,6 @@ test('do not get all attendance list', () => {
   return Controller.apiBooksAttendanceGET(req, res).then(() => {
     expect.assertions(1);
     const data = res._getJSONData();
-    expect(data).toEqual{errors: [{'msg': 'some type of error'}]};
+    expect(data).toEqual({errors: [{'param': 'Server', 'msg': 'some type of error'}]});
   });
 });

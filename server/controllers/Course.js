@@ -34,8 +34,6 @@ module.exports.apiStudentsIdCoursesGET = async function(req, res) {
   else return utils.writeJson(res, courses);
 };
 
-// to be tested ===============================================================================================================================================
-
 module.exports.apiTeacherCoursesGET = async function(req, res) {
   const teacherId = req.user && req.user.user;
   let err;
