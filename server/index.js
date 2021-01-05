@@ -54,7 +54,7 @@ const storage = multer.diskStorage({
 
 const upoloadCSV = multer({
   storage: storage,
-  limits: { fileSize: 10000000 },
+  limits: { fileSize: 8000000 },
   fileFilter: (req, file, cb) => {
     if (file.mimetype.includes('csv')) {
       cb(null, true);
