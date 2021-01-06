@@ -248,9 +248,9 @@ async function getCourseBookings (courseID) {
     }
 }
 
-async function uploadCSV(file){
+async function uploadCSV(file,type){
     console.log(file);
-    let url=baseURL+`/students/upload`;
+    let url=baseURL+`/`+type+`/upload`;
     let csv= new FormData();
     csv.append('file',file);
     const response = await fetch(url,{method:'POST',body:csv});

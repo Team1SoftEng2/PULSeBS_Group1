@@ -2,10 +2,14 @@ input[type="file"] {
     display: none;
 }
 .custom-file-upload {
-    border: 1px solid rgb(13, 16, 199);
+    border: 1px solid rgb(199, 199, 226);
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer;
+    top: 2;
+    background-color: #111b8a;
+    color:#F6F6F6;
+    width:150px;
 }
 
 .file-preview {
