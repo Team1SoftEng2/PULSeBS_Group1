@@ -29,3 +29,4 @@ server/coverage/lcov-report/utils/writer.js.html
 server/coverage/lcov-report/controllers/Course.js.html
 server/coverage/lcov-report/controllers/Email.js.html
 server/coverage/lcov-report/controllers/Bookings.js.html
+server/coverage/lcov-report/controllers/Parser.js.html
