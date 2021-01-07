@@ -188,11 +188,13 @@ class systemSetup extends Component{
             .then((res)=>{
                 //s=res;
                 if(res.status===422)
-                this.setState({Student:null,correct:2})
-                else if(res.status===201)
-                this.setState({Student:null,correct:1})
-                else if(res.status===500)
-                this.setState({Student:null,correct:3})
+                    this.setState({Student:null,correct:2})
+                else
+                    if(res.status===201)
+                        this.setState({Student:null,correct:1})
+                else
+                    if(res.status===500)
+                        this.setState({Student:null,correct:3})
             })
             .catch((err) => {
                 if (err.status && err.status === 401) {
@@ -204,11 +206,13 @@ class systemSetup extends Component{
             .then((res)=>{
                 //p=res;
                 if(res.status===422)
-                this.setState({Professor:null,correct:2})
-                else if(res.status===201)
-                this.setState({Professor:null,correct:1})
-                else if(res.status===500)
-                this.setState({Student:null,correct:3})
+                    this.setState({Professor:null,correct:2})
+                else
+                    if(res.status===201)
+                        this.setState({Professor:null,correct:1})
+                else
+                    if(res.status===500)
+                        this.setState({Student:null,correct:3})
             })
             .catch((err) => {
                 if (err.status && err.status === 401) {
@@ -220,11 +224,13 @@ class systemSetup extends Component{
             .then((res)=>{
                 //c=res;
                 if(res.status===422)
-                this.setState({Courses:null,correct:2})
-                else if(res.status===201)
-                this.setState({Courses:null,correct:1})
-                else if(res.status===500)
-                this.setState({Student:null,correct:3})
+                    this.setState({Courses:null,correct:2})
+                else
+                    if(res.status===201)
+                        this.setState({Courses:null,correct:1})
+                else
+                    if(res.status===500)
+                        this.setState({Student:null,correct:3})
             })
             .catch((err) => {
                 if (err.status && err.status === 401) {
@@ -236,11 +242,13 @@ class systemSetup extends Component{
             .then((res)=>{
                 //e=res;
                 if(res.status===422)
-                this.setState({Enrollment:null,correct:2})
-                else if(res.status===201)
-                this.setState({Enrollment:null,correct:1})
-                else if(res.status===500)
-                this.setState({Student:null,correct:3})
+                    this.setState({Enrollment:null,correct:2})
+                else
+                    if(res.status===201)
+                        this.setState({Enrollment:null,correct:1})
+                else
+                    if(res.status===500)
+                        this.setState({Student:null,correct:3})
             })
             .catch((err) => {
                 if (err.status && err.status === 401) {
@@ -253,9 +261,10 @@ class systemSetup extends Component{
                 //sc=res;
                 console.log(res);
                 if(res.status===422)
-                this.setState({Schedule:null,correct:2})
-                else if(res.status===201)
-                this.setState({Schedule:null,correct:1})
+                    this.setState({Schedule:null,correct:2})
+                else
+                    if(res.status===201)
+                        this.setState({Schedule:null,correct:1})
             })
             .catch((err) => {
                 if (err.status && err.status === 401) {
