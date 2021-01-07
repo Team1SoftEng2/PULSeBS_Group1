@@ -249,18 +249,24 @@ async function getCourseBookings (courseID) {
 }
 
 async function uploadCSV(file,type){
-    console.log(file);
+    
     let url=baseURL+`/`+type+`/upload`;
     let csv= new FormData();
     csv.append('file',file);
     const response = await fetch(url,{method:'POST',body:csv});
-    console.log(url);
-    console.log(csv);
-    console.log(response);
     if (response.ok) {
         console.log("MAGARI");
-    } else {
+        return response;
+    }
+    else if(response.status===500){
+        console.log("GIA' CARICATI");
+        return response;
+    } 
+    else {
         console.log("NADAAAAA");
+        response.json()
+            .then((obj) => { throw obj; })
+            .catch((err) => { throw { errors: [{ param: "Application", msg: "Cannot parse server response" }] }; });
     }
 }
 
