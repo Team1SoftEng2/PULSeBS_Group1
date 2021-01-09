@@ -184,100 +184,105 @@ class systemSetup extends Component{
             this.state.Enrollment.name!==null &&
             this.state.Schedule.name!==null && 
             this.state.fileSelected===5){
+
             API.uploadCSV(this.state.Student,"students")
             .then((res)=>{
-                //s=res;
-                if(res.status===422)
+                /*if(res.status===422)
                     this.setState({Student:null,correct:2})
                 else
                     if(res.status===201)
                         this.setState({Student:null,correct:1})
                 else
                     if(res.status===500)
-                        this.setState({Student:null,correct:3})
-            })
-            .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-            })
+                        this.setState({Student:null,correct:3})*/
             
-            API.uploadCSV(this.state.Professor,"teachers")
-            .then((res)=>{
-                //p=res;
-                if(res.status===422)
-                    this.setState({Professor:null,correct:2})
-                else
-                    if(res.status===201)
-                        this.setState({Professor:null,correct:1})
-                else
-                    if(res.status===500)
-                        this.setState({Student:null,correct:3})
-            })
-            .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-            });
+                API.uploadCSV(this.state.Professor,"teachers")
+                .then((res)=>{
+                    /*if(res.status===422)
+                        this.setState({Professor:null,correct:2})
+                    else
+                        if(res.status===201)
+                            this.setState({Professor:null,correct:1})
+                    else
+                        if(res.status===500)
+                            this.setState({Student:null,correct:3})*/
+                
+                    API.uploadCSV(this.state.Courses,"courses")
+                    .then((res)=>{
+                        /*if(res.status===422)
+                            this.setState({Courses:null,correct:2})
+                        else
+                            if(res.status===201)
+                                this.setState({Courses:null,correct:1})
+                        else
+                            if(res.status===500)
+                                this.setState({Student:null,correct:3})*/
+                        
+                        API.uploadCSV(this.state.Enrollment,"courses/attendance")
+                        .then((res)=>{
+                            //e=res;
+                            /*if(res.status===422)
+                                this.setState({Enrollment:null,correct:2})
+                            else
+                                if(res.status===201)
+                                    this.setState({Enrollment:null,correct:1})
+                            else
+                                if(res.status===500)
+                                    this.setState({Student:null,correct:3})*/
+                        
 
-            API.uploadCSV(this.state.Courses,"courses")
-            .then((res)=>{
-                //c=res;
-                if(res.status===422)
-                    this.setState({Courses:null,correct:2})
-                else
-                    if(res.status===201)
-                        this.setState({Courses:null,correct:1})
-                else
-                    if(res.status===500)
-                        this.setState({Student:null,correct:3})
-            })
-            .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-            });
+                            API.uploadCSV(this.state.Schedule,"lectures")
+                            .then((res)=>{
+                                console.log(res);
+                                if(res.status===422)
+                                    this.setState({correct:2})
+                                else
+                                    if(res.status===201)
+                                        this.setState({correct:1})
+                                else
+                                    if(res.status===500)
+                                        this.setState({correct:3})
 
-            API.uploadCSV(this.state.Enrollment,"courses/attendance")
-            .then((res)=>{
-                //e=res;
-                if(res.status===422)
-                    this.setState({Enrollment:null,correct:2})
-                else
-                    if(res.status===201)
-                        this.setState({Enrollment:null,correct:1})
-                else
-                    if(res.status===500)
-                        this.setState({Student:null,correct:3})
-            })
-            .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-            });
+                                this.setState({fileSelected:0,
+                                                Student:null,
+                                                Professor:null,
+                                                Enrollment:null,
+                                                Schedule:null,
+                                                Courses:null,
+                                });
+                            })
+                            .catch((err) => {
+                                if (err.status && err.status === 401) {
+                                    console.log(err);
+                                }
+                            });
+                        })
+                        .catch((err) => {
+                            if (err.status && err.status === 401) {
+                                console.log(err);
+                            }
+                        });
+                    })
+                    .catch((err) => {
+                        if (err.status && err.status === 401) {
+                            console.log(err);
+                        }
+                    });
 
-            API.uploadCSV(this.state.Schedule,"lectures")
-            .then((res)=>{
-                //sc=res;
-                console.log(res);
-                if(res.status===422)
-                    this.setState({Schedule:null,correct:2})
-                else
-                    if(res.status===201)
-                        this.setState({Schedule:null,correct:1})
-            })
-            .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-            });
-            this.setState({fileSelected:0,
-                            Students:null,
-                            Professor:null,
-                            Enrollment:null,
-                            Schedule:null,
-                            Courses:null,
+                    })
+                .catch((err) => {
+                    if (err.status && err.status === 401) {
+                        console.log(err);
+                    }
                 });
+
+            })
+            .catch((err) => {
+                if (err.status && err.status === 401) {
+                    console.log(err);
+                }
+            })
+                
         }
         
     }
@@ -285,6 +290,7 @@ class systemSetup extends Component{
         return (
             <div>
                 <h3 className="mt-2">Select and Upload your file here</h3>
+                <h6 className="mt-2"> Remember: press 'Upload' after the 5 'x.csv' are selected</h6>
                 <Container>
                 <Alert show={this.state.show} variant="primary">
                     <Alert.Link href="#">
@@ -386,9 +392,9 @@ class systemSetup extends Component{
                                  
                     </div>
                 </Container>
-                <button type="button" class="btn-success" 
+                <button type="button" class="button"
                         disabled={this.state.fileSelected!==5} 
-                        onClick={this.onClickHandler}>Upload {this.state.file?.name}</button> 
+                        onClick={this.onClickHandler}>Upload</button> 
 
                 <Alert show={this.state.correct===1} variant="success">
                     <Alert.Link href="#">
