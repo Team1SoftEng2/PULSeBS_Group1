@@ -25,53 +25,53 @@ class systemSetup extends Component{
         switch(event.target.files[0].name){
             case "Students.csv":
                 if(this.state.Student===null)
-                this.setState({
-                        Student: event.target.files[0],
-                        loaded: 0,
-                        fileSelected :this.state.fileSelected+1,
-                        show:false,
-                        correct:0,
-                    });
+                    this.setState({
+                            Student: event.target.files[0],
+                            loaded: 0,
+                            fileSelected :this.state.fileSelected+1,
+                            show:false,
+                            correct:0,
+                        });
             break;
             case 'Professors.csv':
                 if(this.state.Professor===null)
-                this.setState({
-                        Professor: event.target.files[0],
-                        loaded: 0,
-                        fileSelected :this.state.fileSelected+1,
-                        show:false,
-                        correct:0,
-                    });
+                    this.setState({
+                            Professor: event.target.files[0],
+                            loaded: 0,
+                            fileSelected :this.state.fileSelected+1,
+                            show:false,
+                            correct:0,
+                        });
             break;
             case 'Courses.csv':
                 if(this.state.Courses===null)
-                this.setState({
-                        Courses: event.target.files[0],
-                        loaded: 0,
-                        fileSelected :this.state.fileSelected+1,
-                        show:false,
-                        correct:0,
-                    });
+                    this.setState({
+                            Courses: event.target.files[0],
+                            loaded: 0,
+                            fileSelected :this.state.fileSelected+1,
+                            show:false,
+                            correct:0,
+                        });
             break;
             case 'Enrollment.csv':
                 if(this.state.Enrollment===null)
-                this.setState({
-                        Enrollment: event.target.files[0],
-                        loaded: 0,
-                        fileSelected :this.state.fileSelected+1,
-                        show:false,
-                        correct:0,
-                    });
+                    this.setState({
+                            Enrollment: event.target.files[0],
+                            loaded: 0,
+                            fileSelected :this.state.fileSelected+1,
+                            show:false,
+                            correct:0,
+                        });
             break;
             case 'Schedule.csv':
                 if(this.state.Schedule===null)
-                this.setState({
-                        Schedule: event.target.files[0],
-                        loaded: 0,
-                        fileSelected :this.state.fileSelected+1,
-                        show:false,
-                        correct:0,
-                    });
+                    this.setState({
+                            Schedule: event.target.files[0],
+                            loaded: 0,
+                            fileSelected :this.state.fileSelected+1,
+                            show:false,
+                            correct:0,
+                        });
             break;
             default:
                 this.setState({show:true,
