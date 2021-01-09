@@ -24,6 +24,7 @@ class systemSetup extends Component{
     onChangeHandler=event=>{
         switch(event.target.files[0].name){
             case "Students.csv":
+                if(this.state.Student===null)
                 this.setState({
                         Student: event.target.files[0],
                         loaded: 0,
@@ -33,6 +34,7 @@ class systemSetup extends Component{
                     });
             break;
             case 'Professors.csv':
+                if(this.state.Professor===null)
                 this.setState({
                         Professor: event.target.files[0],
                         loaded: 0,
@@ -42,6 +44,7 @@ class systemSetup extends Component{
                     });
             break;
             case 'Courses.csv':
+                if(this.state.Courses===null)
                 this.setState({
                         Courses: event.target.files[0],
                         loaded: 0,
@@ -51,6 +54,7 @@ class systemSetup extends Component{
                     });
             break;
             case 'Enrollment.csv':
+                if(this.state.Enrollment===null)
                 this.setState({
                         Enrollment: event.target.files[0],
                         loaded: 0,
@@ -60,6 +64,7 @@ class systemSetup extends Component{
                     });
             break;
             case 'Schedule.csv':
+                if(this.state.Schedule===null)
                 this.setState({
                         Schedule: event.target.files[0],
                         loaded: 0,
@@ -186,7 +191,7 @@ class systemSetup extends Component{
             this.state.fileSelected===5){
 
             API.uploadCSV(this.state.Student,"students")
-            .then((res)=>{
+            .then(()=>{
                 /*if(res.status===422)
                     this.setState({Student:null,correct:2})
                 else
@@ -197,7 +202,7 @@ class systemSetup extends Component{
                         this.setState({Student:null,correct:3})*/
             
                 API.uploadCSV(this.state.Professor,"teachers")
-                .then((res)=>{
+                .then(()=>{
                     /*if(res.status===422)
                         this.setState({Professor:null,correct:2})
                     else
@@ -208,7 +213,7 @@ class systemSetup extends Component{
                             this.setState({Student:null,correct:3})*/
                 
                     API.uploadCSV(this.state.Courses,"courses")
-                    .then((res)=>{
+                    .then(()=>{
                         /*if(res.status===422)
                             this.setState({Courses:null,correct:2})
                         else
@@ -219,7 +224,7 @@ class systemSetup extends Component{
                                 this.setState({Student:null,correct:3})*/
                         
                         API.uploadCSV(this.state.Enrollment,"courses/attendance")
-                        .then((res)=>{
+                        .then(()=>{
                             //e=res;
                             /*if(res.status===422)
                                 this.setState({Enrollment:null,correct:2})
