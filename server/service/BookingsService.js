@@ -9,6 +9,9 @@ const Booking = require('../components/booking');
 exports.getLecturesAttendance =  (courseId, time) => {
   return new Promise((resolve, reject) => {
     let sql = `SELECT 
+    S.StudentID,
+    S.Surname,
+    S.Name,
     L.CourseID,
     L.LectureID,
     L.TeacherID,
@@ -17,19 +20,18 @@ exports.getLecturesAttendance =  (courseId, time) => {
     L.mode,
     L.place,
     L.LectureID,
-    S.Surname,
-    S.Name,
-    S.StudentID,
     C.courseName,
     T.Surname as tSurname,
     T.Name as tName
-FROM    LectureAttendance LA,
-    Lecture L,
+FROM    
+    LectureAttendance LA,
     Student S,
+    Lecture L,
     Teacher T,
     Course C
-WHERE   LA.StudentId = S.StudentID AND 
+WHERE   
     LA.LectureId = L.LectureId AND 
+    LA.StudentId = S.StudentID AND 
     T.TeacherID = L.TeacherID AND
     L.CourseID = C.CourseID `;
     if (courseId) {
@@ -38,9 +40,9 @@ WHERE   LA.StudentId = S.StudentID AND
     if (time) {
       sql = sql + ` AND L.Date LIKE '%${time}%'`;
     }
-    const querArr = courseId ? [courseId] : [];
+    const querArr1 = courseId ? [courseId] : [];
 
-    db.all(sql, querArr, (err, rows) => {
+    db.all(sql, querArr1, (err, rows) => {
       if (err) {
         console.log(err);
         reject(err);
