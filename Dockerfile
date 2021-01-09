@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
 RUN apt update
-RUN snap install node --classic
+RUN apt-get install -y nodejs
 RUN apt-get install -y npm 
 
 COPY . /app
