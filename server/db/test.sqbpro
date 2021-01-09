@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="D:/Desktop/se2/PULSeBS_Group1/PULSeBS_Group1/server/db/test.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="150"/><column_width id="3" width="4126"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,7:mainBooking"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE &quot;LectureDeleted&quot; (
+	&quot;LectureID&quot;	TEXT NOT NULL,
+	&quot;CourseID&quot;	TEXT NOT NULL,
+	&quot;TeacherID&quot;	TEXT NOT NULL,
+	&quot;Date&quot;	TEXT NOT NULL,
+	&quot;Time&quot;	TEXT NOT NULL,
+	&quot;mode&quot;	TEXT NOT NULL,
+	&quot;place&quot;	TEXT,
+	&quot;maxSeats&quot;	INTEGER,
+	&quot;ID&quot;	INTEGER NOT NULL DEFAULT 0,
+	FOREIGN KEY(&quot;CourseID&quot;) REFERENCES &quot;Course&quot;(&quot;CourseID&quot;) ON DELETE CASCADE,
+	FOREIGN KEY(&quot;TeacherID&quot;) REFERENCES &quot;Teacher&quot;(&quot;TeacherID&quot;) ON DELETE CASCADE,
+	PRIMARY KEY(&quot;ID&quot; AUTOINCREMENT)
+)</sql><current_tab id="0"/></tab_sql></sqlb_project>
