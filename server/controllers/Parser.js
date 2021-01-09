@@ -1,151 +1,31 @@
-const csv = require('neat-csv'); 
-const to = require('await-to-js').default;
-const utils = require('../utils/writer.js');
-const moment = require('moment');
 const fs = require('fs');
+const csv = require('csv-parser');
+const moment = require('moment');
+const to = require('await-to-js').default;
 
-const User = require('../components/user')
-const Users = require('../service/AuthenticationService');
-
-const Course = require('../components/course');
+const Lecture = require('../components/lecture');
 const Courses = require('../service/CourseService');
-
-const Lecture = require('../components/lecture'); 
-const Lectures = require('../service/LecturesService');
 
 const START_DATE = moment('01-10-2020', 'DD-MM-YYYY');
 const END_DATE = moment('31-01-2021', 'DD-MM-YYYY');
 
-module.exports.parseStudentsCSV = async function (req, res) {
-    let path = req.file.path;
-    let file = fs.readFileSync(path);
-    //console.log(file);
-    // Coverting from CSV to JSON
-    let [err, data] = await to(csv(file));
-    if(err) {
-        fs.unlinkSync(path);
-        return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
-    }
-    fs.unlinkSync(path);
+module.exports.CSVtoJSON = function parseCSV(path){
+    return new Promise ((resolve, reject) => {
+        let data = [];
+        fs.createReadStream(path)
+            .pipe(csv())
+            .on('data', (row) => data.push(row))
+            .on('end', () => {
+                fs.unlinkSync(path);
+                resolve(data)
+            }).on('error', (err) => {
+                fs.unlinkSync(path);
+                reject(err)
+            });
+    });
+}
 
-    // Insert the students into the DB
-    return Promise.allSettled(data.map((row) => Users.addStudent(new User('s' + row.Id, row.Name, row.Surname, row.OfficialEmail))))
-        .then((result) => {
-            let fulfilled = result.filter( (r) => r.status === 'fulfilled');
-            if(fulfilled.length === 0)
-                // if no student added to the DB returns error
-                utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'No student added'}]}, 422);
-            else
-                // if at least one student added to the DB returns the number of added students
-                utils.writeJson(res, {added: fulfilled.length}, 201);
-        });
-};
-
-module.exports.parseTeachersCSV = async function (req, res) {
-    let path = req.file.path;
-    let file = fs.readFileSync(path);
-    
-    // Coverting from CSV to JSON
-    let [err, data] = await to(csv(file));
-    if(err) {
-        fs.unlinkSync(path);
-        return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
-    }
-    fs.unlinkSync(path);
-
-    // Insert the students into the DB
-    return Promise.allSettled(data.map((row) => Users.addTeacher(new User(row.Number, row.GivenName, row.Surname, row.OfficialEmail))))
-        .then((result) => {
-            let fulfilled = result.filter( (r) => r.status === 'fulfilled');
-            if(fulfilled.length === 0)
-                // if no student added to the DB returns error
-                utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'No teacher added'}]}, 422);
-            else
-                // if at least one student added to the DB returns the number of added students
-                utils.writeJson(res, {added: fulfilled.length}, 201);
-        });
-};
-
-module.exports.parseCoursesCSV = async function (req, res) {
-    let path = req.file.path;
-    let file = fs.readFileSync(path);
-    
-    // Coverting from CSV to JSON
-    let [err, data] = await to(csv(file));
-    if(err) {
-        fs.unlinkSync(path);
-        return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
-    }
-    fs.unlinkSync(path);
-
-    // Insert the students into the DB
-    return Promise.allSettled(data.map((row) => Courses.addCourse(new Course(row.Code, row.Teacher, row.Course))))
-        .then((result) => {
-            let fulfilled = result.filter( (r) => r.status === 'fulfilled');
-            if(fulfilled.length === 0)
-                // if no student added to the DB returns error
-                utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'No course added'}]}, 422);
-            else
-                // if at least one student added to the DB returns the number of added students
-                utils.writeJson(res, {added: fulfilled.length}, 201);
-        });
-};
-
-module.exports.parseEnrollmentCSV = async function (req, res) {
-    let path = req.file.path;
-    let file = fs.readFileSync(path);
-    
-    // Coverting from CSV to JSON
-    let [err, data] = await to(csv(file));
-    if(err) {
-        fs.unlinkSync(path);
-        return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
-    }
-    fs.unlinkSync(path);
-
-    // Insert the students into the DB
-    return Promise.allSettled(data.map((row) => Courses.addCourseAttendance(row.Code, 's' + row.Student)))
-        .then((result) => {
-            let fulfilled = result.filter( (r) => r.status === 'fulfilled');
-            if(fulfilled.length === 0)
-                // if no student added to the DB returns error
-                utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'No enrollment added'}]}, 422);
-            else
-                // if at least one student added to the DB returns the number of added students
-                utils.writeJson(res, {added: fulfilled.length}, 201);
-        });
-};
-
-module.exports.parseScheduleCSV = async function (req, res) {
-    let path = req.file.path;
-    let file = fs.readFileSync(path);
-    
-    // Coverting from CSV to JSON
-    let [err, data] = await to(csv(file));
-    if(err) {
-        fs.unlinkSync(path);
-        return utils.writeJson(res, {errors: [{'param': 'Server', 'msg': err}]}, 500);
-    }
-    fs.unlinkSync(path);
-
-    return Promise.allSettled(data.map( (row) => createLectures(row) ))
-        .then((result) => {
-            let lectures = result.filter( r => r.status === 'fulfilled' ).map( r => r.value ).flat();
-            //Insert the students into the DB
-            Promise.allSettled(lectures.map((lecture) => Lectures.addLecture(lecture)))
-                .then((result2) => {
-                    let fulfilled = result2.filter( (r) => r.status === 'fulfilled');
-                    if(fulfilled.length === 0)
-                        // if no student added to the DB returns error
-                        utils.writeJson(res, {errors: [{'param': 'Server', 'msg': 'No lecture added'}]}, 422);
-                    else
-                        // if at least one student added to the DB returns the number of added students
-                        utils.writeJson(res, {added: fulfilled.length}, 201);
-             });
-        }); 
-};
-
-async function createLectures(schedule) {
+module.exports.createLectures = async function createLectures(schedule) {
     // Find the first day of lecture
     let date = moment(START_DATE);
     while(date.format('ddd') !== schedule.Day) date.add(1, 'd');
