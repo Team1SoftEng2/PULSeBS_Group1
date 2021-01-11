@@ -17,7 +17,7 @@ FROM node:12
 COPY ./server /server
 RUN cd /server && npm install
 
-COPY ./pulsebs-frontend /client
+COPY ./pulsebs_frontend /client
 RUN cd /client && npm install
 
 EXPOSE 3000 8081
