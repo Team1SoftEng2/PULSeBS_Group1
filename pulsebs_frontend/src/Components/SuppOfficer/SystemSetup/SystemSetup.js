@@ -24,49 +24,54 @@ class systemSetup extends Component{
     onChangeHandler=event=>{
         switch(event.target.files[0].name){
             case "Students.csv":
-                this.setState({
-                        Student: event.target.files[0],
-                        loaded: 0,
-                        fileSelected :this.state.fileSelected+1,
-                        show:false,
-                        correct:0,
-                    });
+                if(this.state.Student===null)
+                    this.setState({
+                            Student: event.target.files[0],
+                            loaded: 0,
+                            fileSelected :this.state.fileSelected+1,
+                            show:false,
+                            correct:0,
+                        });
             break;
             case 'Professors.csv':
-                this.setState({
-                        Professor: event.target.files[0],
-                        loaded: 0,
-                        fileSelected :this.state.fileSelected+1,
-                        show:false,
-                        correct:0,
-                    });
+                if(this.state.Professor===null)
+                    this.setState({
+                            Professor: event.target.files[0],
+                            loaded: 0,
+                            fileSelected :this.state.fileSelected+1,
+                            show:false,
+                            correct:0,
+                        });
             break;
             case 'Courses.csv':
-                this.setState({
-                        Courses: event.target.files[0],
-                        loaded: 0,
-                        fileSelected :this.state.fileSelected+1,
-                        show:false,
-                        correct:0,
-                    });
+                if(this.state.Courses===null)
+                    this.setState({
+                            Courses: event.target.files[0],
+                            loaded: 0,
+                            fileSelected :this.state.fileSelected+1,
+                            show:false,
+                            correct:0,
+                        });
             break;
             case 'Enrollment.csv':
-                this.setState({
-                        Enrollment: event.target.files[0],
-                        loaded: 0,
-                        fileSelected :this.state.fileSelected+1,
-                        show:false,
-                        correct:0,
-                    });
+                if(this.state.Enrollment===null)
+                    this.setState({
+                            Enrollment: event.target.files[0],
+                            loaded: 0,
+                            fileSelected :this.state.fileSelected+1,
+                            show:false,
+                            correct:0,
+                        });
             break;
             case 'Schedule.csv':
-                this.setState({
-                        Schedule: event.target.files[0],
-                        loaded: 0,
-                        fileSelected :this.state.fileSelected+1,
-                        show:false,
-                        correct:0,
-                    });
+                if(this.state.Schedule===null)
+                    this.setState({
+                            Schedule: event.target.files[0],
+                            loaded: 0,
+                            fileSelected :this.state.fileSelected+1,
+                            show:false,
+                            correct:0,
+                        });
             break;
             default:
                 this.setState({show:true,
@@ -75,209 +80,73 @@ class systemSetup extends Component{
         }
     }
     onClickHandler =() => {
-        //let s,p,c,e,sc;
-        //const data = new FormData()
-        
-        //this.setState({fileSelected:0})
-        /*f=this.state.file;
-        console.log(f);
-        switch(f.name){
-            case "Students.csv":
-                console.log("QUA");
-                API.uploadCSV(f,"students")
-                .then((res)=>{
-                //s=res;
-                if(res.status==500)
-                this.setState({file:null,correct:2})
-                else
-                this.setState({file:null,correct:1})
-                })
-                .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-                })
-                break;
-            case "Professors.csv":
-                API.uploadCSV(f,"teachers")
-                .then((res)=>{
-                //s=res;
-                if(res.status==500)
-                this.setState({file:null,correct:2})
-                else
-                this.setState({file:null,correct:1})
-                })
-                .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-                })
-                break;
-            case "Courses.csv":
-                API.uploadCSV(f,"courses")
-                .then((res)=>{
-                //s=res;
-                if(res.status==500)
-                this.setState({file:null,correct:2})
-                else
-                this.setState({file:null,correct:1})
-                })
-                .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-                })
-                break;
-            case "Enrollment.csv":
-                API.uploadCSV(f,"courses/attendance")
-                .then((res)=>{
-                //s=res;
-                if(res.status==500)
-                this.setState({file:null,correct:2})
-                else
-                this.setState({file:null,correct:1})
-                })
-                .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-                })
-                break;
-            case "Schedule.csv":
-                API.uploadCSV(f,"lectures")
-                .then((res)=>{
-                //s=res;
-                if(res.status==500)
-                this.setState({file:null,correct:2})
-                else
-                this.setState({file:null,correct:1})
-                })
-                .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-                })
-                break;
-        }
-        */
-          /*                                                                          
-        if(this.state.file!=null){
-            API.uploadCSV(this.state.file,"courses")
-            .then((res)=>{
-                //s=res;
-                if(res.status==500)
-                this.setState({file:null,correct:2})
-                else
-                this.setState({file:null,correct:1})
-            })
-            .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-            })
-        }
-        */
-        
         if(this.state.Student.name!==null && 
             this.state.Professor.name!==null &&
             this.state.Courses.name!==null &&
             this.state.Enrollment.name!==null &&
             this.state.Schedule.name!==null && 
             this.state.fileSelected===5){
+
             API.uploadCSV(this.state.Student,"students")
-            .then((res)=>{
-                //s=res;
-                if(res.status===422)
-                    this.setState({Student:null,correct:2})
-                else
-                    if(res.status===201)
-                        this.setState({Student:null,correct:1})
-                else
-                    if(res.status===500)
-                        this.setState({Student:null,correct:3})
-            })
-            .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-            })
-            
-            API.uploadCSV(this.state.Professor,"teachers")
-            .then((res)=>{
-                //p=res;
-                if(res.status===422)
-                    this.setState({Professor:null,correct:2})
-                else
-                    if(res.status===201)
-                        this.setState({Professor:null,correct:1})
-                else
-                    if(res.status===500)
-                        this.setState({Student:null,correct:3})
-            })
-            .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-            });
+            .then(()=>{
+                API.uploadCSV(this.state.Professor,"teachers")
+                .then(()=>{
+                    API.uploadCSV(this.state.Courses,"courses")
+                    .then(()=>{
+                        API.uploadCSV(this.state.Enrollment,"courses/attendance")
+                        .then(()=>{
+                            API.uploadCSV(this.state.Schedule,"lectures")
+                            .then((res)=>{
+                                console.log(res);
+                                if(res.status===422)
+                                    this.setState({correct:2})
+                                else
+                                    if(res.status===201)
+                                        this.setState({correct:1})
+                                else
+                                    if(res.status===500)
+                                        this.setState({correct:3})
 
-            API.uploadCSV(this.state.Courses,"courses")
-            .then((res)=>{
-                //c=res;
-                if(res.status===422)
-                    this.setState({Courses:null,correct:2})
-                else
-                    if(res.status===201)
-                        this.setState({Courses:null,correct:1})
-                else
-                    if(res.status===500)
-                        this.setState({Student:null,correct:3})
-            })
-            .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-            });
+                                this.setState({fileSelected:0,
+                                                Student:null,
+                                                Professor:null,
+                                                Enrollment:null,
+                                                Schedule:null,
+                                                Courses:null,
+                                });
+                            })
+                            .catch((err) => {
+                                if (err.status && err.status === 401) {
+                                    console.log(err);
+                                }
+                            });
+                        })
+                        .catch((err) => {
+                            if (err.status && err.status === 401) {
+                                console.log(err);
+                            }
+                        });
+                    })
+                    .catch((err) => {
+                        if (err.status && err.status === 401) {
+                            console.log(err);
+                        }
+                    });
 
-            API.uploadCSV(this.state.Enrollment,"courses/attendance")
-            .then((res)=>{
-                //e=res;
-                if(res.status===422)
-                    this.setState({Enrollment:null,correct:2})
-                else
-                    if(res.status===201)
-                        this.setState({Enrollment:null,correct:1})
-                else
-                    if(res.status===500)
-                        this.setState({Student:null,correct:3})
-            })
-            .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-            });
-
-            API.uploadCSV(this.state.Schedule,"lectures")
-            .then((res)=>{
-                //sc=res;
-                console.log(res);
-                if(res.status===422)
-                    this.setState({Schedule:null,correct:2})
-                else
-                    if(res.status===201)
-                        this.setState({Schedule:null,correct:1})
-            })
-            .catch((err) => {
-                if (err.status && err.status === 401) {
-                    console.log(err);
-                }
-            });
-            this.setState({fileSelected:0,
-                            Students:null,
-                            Professor:null,
-                            Enrollment:null,
-                            Schedule:null,
-                            Courses:null,
+                    })
+                .catch((err) => {
+                    if (err.status && err.status === 401) {
+                        console.log(err);
+                    }
                 });
+
+            })
+            .catch((err) => {
+                if (err.status && err.status === 401) {
+                    console.log(err);
+                }
+            })
+                
         }
         
     }
@@ -285,26 +154,28 @@ class systemSetup extends Component{
         return (
             <div>
                 <h3 className="mt-2">Select and Upload your file here</h3>
+                <h6 className="mt-2"> Remember: press 'Upload' after the 5 'x.csv' are selected</h6>
                 <Container>
                 <Alert show={this.state.show} variant="primary">
-                    <Alert.Link href="#">
+                    <b>
                         File not correct. Please select another file
-                    </Alert.Link>
+                    </b>
                 </Alert>
                     <div>
                         <br></br>
                         <Row>
                         <Col md={4}></Col>
-                            <Col>
-                            <label className="custom-file-upload">
-                            <input type="file" onChange={this.onChangeHandler}/> 
+                            <Col md={3}>
+                            <label className={this.state.Student===null ? "custom-file-upload" : "custom-file-selected"}>
+                            <input type="file" 
+                                disabled={this.state.Student!==null} onChange={this.onChangeHandler} />
                                 Students  
                             </label>
                             </Col>
                             <Col>
                                 <h4>
                                     <font color="green">
-                                        {this.state.Student?.name}
+                                        {this.state.Student? this.state.Student.name : ""}
                                     </font>
                                 </h4>
                             </Col>
@@ -313,9 +184,9 @@ class systemSetup extends Component{
                    
                         <Row>
                             <Col md={4}></Col>
-                            <Col>
-                                <label className="custom-file-upload">
-                                <input type="file" onChange={this.onChangeHandler}/> 
+                            <Col md={3}>
+                            <label className={this.state.Professor===null ? "custom-file-upload" : "custom-file-selected"}>
+                                <input type="file" disabled={this.state.Professor!==null} onChange={this.onChangeHandler}/> 
                                 <i className="fa fa-cloud-upload" />
                                     Professors  
                                 </label>
@@ -323,7 +194,7 @@ class systemSetup extends Component{
                                 <Col>
                                     <h4>
                                         <font color="green">
-                                        {this.state.Professor?.name}
+                                        {this.state.Professor? this.state.Professor.name : ""}
                                         </font>
                                     </h4>
                             </Col>
@@ -331,9 +202,9 @@ class systemSetup extends Component{
                         </Row>
                         <Row>
                             <Col md={4}></Col>
-                            <Col>
-                            <label className="custom-file-upload">
-                            <input type="file" onChange={this.onChangeHandler}/> 
+                            <Col md={3}>
+                            <label className={this.state.Courses===null ? "custom-file-upload" : "custom-file-selected"}>
+                            <input type="file" disabled={this.state.Courses!==null} onChange={this.onChangeHandler}/> 
                             <i className="fa fa-cloud-upload" />
                                 Courses  
                             </label>
@@ -341,7 +212,7 @@ class systemSetup extends Component{
                             <Col>
                                 <h4>
                                     <font color="green">
-                                        {this.state.Courses?.name}
+                                    {this.state.Courses? this.state.Courses.name : ""}
                                     </font>
                                 </h4>
                             </Col>
@@ -349,9 +220,9 @@ class systemSetup extends Component{
                             </Row>
                         <Row>
                             <Col md={4}></Col>
-                            <Col>
-                            <label className="custom-file-upload">
-                            <input type="file" onChange={this.onChangeHandler}/> 
+                            <Col md={3}>
+                            <label className={this.state.Enrollment===null ? "custom-file-upload" : "custom-file-selected"}>
+                            <input type="file" disabled={this.state.Enrollment!==null} onChange={this.onChangeHandler}/> 
                             <i className="fa fa-cloud-upload" />
                                 Enrollment  
                         </label>
@@ -359,7 +230,7 @@ class systemSetup extends Component{
                         <Col>
                             <h4>
                                 <font color="green">
-                                    {this.state.Enrollment?.name}
+                                    {this.state.Enrollment? this.state.Enrollment.name : ""}
                                 </font>
                             </h4>
                             </Col>
@@ -367,9 +238,9 @@ class systemSetup extends Component{
                         </Row>
                         <Row>
                         <Col md={4}></Col>
-                            <Col>
-                            <label className="custom-file-upload">
-                            <input type="file" onChange={this.onChangeHandler}/> 
+                            <Col md={3}>
+                            <label className={this.state.Schedule===null ? "custom-file-upload" : "custom-file-selected"}>
+                            <input type="file" disabled={this.state.Schedule!==null} onChange={this.onChangeHandler}/> 
                             <i className="fa fa-cloud-upload" />
                                 Schedule  
                             </label>
@@ -377,7 +248,7 @@ class systemSetup extends Component{
                             <Col>
                                 <h4>
                                     <font color="green">
-                                        {this.state.Schedule?.name}
+                                        {this.state.Schedule? this.state.Schedule.name : ""}
                                     </font>
                                 </h4>
                             </Col>
@@ -386,24 +257,24 @@ class systemSetup extends Component{
                                  
                     </div>
                 </Container>
-                <button type="button" class="btn-success" 
+                <button type="button" class="button"
                         disabled={this.state.fileSelected!==5} 
-                        onClick={this.onClickHandler}>Upload {this.state.file?.name}</button> 
+                        onClick={this.onClickHandler}>Upload</button> 
 
                 <Alert show={this.state.correct===1} variant="success">
-                    <Alert.Link href="#">
+                    <b>
                     FILE UPLOADED CORRECTLY
-                    </Alert.Link>
+                    </b>
                 </Alert>
                 <Alert show={this.state.correct===2} variant="warning">
-                    <Alert.Link href="#">
+                    <b>
                     FILE ALREADY UPLOADED 
-                    </Alert.Link>
+                    </b>
                 </Alert>
-                <Alert show={this.state.correct===3} variant="warning">
-                    <Alert.Link href="#">
+                <Alert show={this.state.correct===3} disabled variant="warning">
+                    <b>
                     INTERNAL SERVER ERROR 
-                    </Alert.Link>
+                    </b>
                 </Alert>
 
             </div>

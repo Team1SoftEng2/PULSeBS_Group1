@@ -19,15 +19,15 @@ beforeAll( () => {
         db.run("INSERT INTO Lecture(LectureID, CourseID, TeacherID, Date, Time, mode, place, maxSeats) VALUES('1', '1', 't00001', 'date', 'time', 'online', null, null), ('2', '1', 't00001', 'date', 'time', 'present', 'Aula 2', 30), ('3', '1', 't00001', 'date', 'time', 'present', 'Aula 2', 30)");
         db.run("INSERT INTO Booking(StudentID, LectureID) VALUES ('s00001', '1'), ('s00001', '2')");
         db.run("INSERT INTO CourseAttendance(StudentID, CourseID) VALUES ('s00001', '1')")
-        // db.run("INSERT INTO LectureAttendance(StudentID, LectureID) VALUES ('s00001', '1'), ('s00001', '2')");
-        // db.run("INSERT INTO LectureDeleted(LectureID, CourseID, TeacherID, Date, Time, mode, place, maxSeats) VALUES('1', '1', 't00001', 'date', 'time', 'online', null, null), ('2', '1', 't00001', 'date', 'time', 'present', 'Aula 2', 30), ('3', '1', 't00001', 'date', 'time', 'present', 'Aula 2', 30)")
-});
+        db.run("INSERT INTO LectureAttendance(StudentID, LectureID) VALUES ('s00001', '1'), ('s00001', '2')");
+        db.run("INSERT INTO LectureDeleted(LectureID, CourseID, TeacherID, Date, Time, mode, place, maxSeats) VALUES('1', '1', 't00001', 'date', 'time', 'online', null, null), ('2', '1', 't00001', 'date', 'time', 'present', 'Aula 2', 30), ('3', '1', 't00001', 'date', 'time', 'present', 'Aula 2', 30)")
+    });
 });
 
 afterAll( () => {
     db.serialize( () => { 
-        // db.run("DELETE FROM LectureAttendance");
-        // db.run("DELETE FROM LectureDeleted");
+        db.run("DELETE FROM LectureAttendance");
+        db.run("DELETE FROM LectureDeleted");
         db.run("DELETE FROM CourseAttendance");
         db.run("DELETE FROM Booking");
         db.run("DELETE FROM Lecture");
@@ -102,6 +102,7 @@ describe('BookingsService', () => {
         // missing test: DB doesn't work
     });
 
+<<<<<<< HEAD
      //li
      test('getLecturesAttendance', () => {
          try {  
@@ -126,6 +127,34 @@ describe('BookingsService', () => {
          expect(err).toBe('fail');
        }
      });
+=======
+    // //li
+    test('getLecturesAttendance', () => {
+        try {  
+            Bookings.getLecturesAttendance(1, 'date').then((data) => {
+            expect.assertions(1);
+            expect(data.length).toBe(2);
+        });
+        }
+        catch (err) {
+        expect(err).toBe('fail');
+      }
+    });
+
+    test('getBooksList', () => {
+        try {  
+            Bookings.getBooksList(1, 'date'
+                //{'courseId':'1','date': 'date'}
+                ).then((data) => {
+            expect.assertions(1);
+            expect(data.length).toBe(2);
+        });
+        }
+        catch (err) {
+        expect(err).toBe('fail');
+      }
+    });
+>>>>>>> 0e35311ebd141235f733387602bd8451717bacd9
 
 });
 
@@ -232,6 +261,7 @@ describe('LecturesService Test', () => {
 
 //LI
 
+<<<<<<< HEAD
      test('getLecturesDelectList', () => {
          try {  
              Lectures.getLecturesDelectList({'courseId':'1','date': 'date'}).then((data) => {
@@ -243,5 +273,18 @@ describe('LecturesService Test', () => {
              expect(err).toBe('fail');
          }
      });
+=======
+    test('getLecturesDelectList', () => {
+        try {  
+            Lectures.getLecturesDelectList(1, 'date').then((data) => {
+                expect.assertions(1);
+                expect(data.length).toBe(3);
+            });
+        }
+        catch (err) {
+            expect(err).toBe('fail');
+        }
+    });
+>>>>>>> 0e35311ebd141235f733387602bd8451717bacd9
 
 });

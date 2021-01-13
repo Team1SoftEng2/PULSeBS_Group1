@@ -17,7 +17,7 @@ const bookingsController = require(path.join(__dirname, 'controllers/Bookings'))
 const courseController = require(path.join(__dirname, 'controllers/Course'));
 const lecturesController = require(path.join(__dirname, 'controllers/Lectures'));
 const authController = require(path.join(__dirname, 'controllers/Authentication'));
-const parserController = require(path.join(__dirname, 'controllers/Parser'));
+const uploadsController = require(path.join(__dirname, 'controllers/Uploads'));
 
 // swaggerRouter configuration
 const options = {
@@ -71,11 +71,11 @@ app.use(cookieParser());
 
 // Public APIs here
 app.post('/api/login', authController.apiLoginPOST);
-app.post('/api/students/upload', upoloadCSV, parserController.parseStudentsCSV);
-app.post('/api/teachers/upload', upoloadCSV, parserController.parseTeachersCSV);
-app.post('/api/courses/upload', upoloadCSV, parserController.parseCoursesCSV);
-app.post('/api/courses/attendance/upload', upoloadCSV, parserController.parseEnrollmentCSV);
-app.post('/api/lectures/upload', upoloadCSV, parserController.parseScheduleCSV);
+app.post('/api/students/upload', upoloadCSV, uploadsController.parseStudentsCSV);
+app.post('/api/teachers/upload', upoloadCSV, uploadsController.parseTeachersCSV);
+app.post('/api/courses/upload', upoloadCSV, uploadsController.parseCoursesCSV);
+app.post('/api/courses/attendance/upload', upoloadCSV, uploadsController.parseEnrollmentCSV);
+app.post('/api/lectures/upload', upoloadCSV, uploadsController.parseScheduleCSV);
 
 // Authentication endpoint
 app.use(

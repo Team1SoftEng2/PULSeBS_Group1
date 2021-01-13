@@ -1,13 +1,12 @@
-FROM ubuntu:20.04
+FROM node:12
 
-RUN apt update
-RUN apt-get install -y nodejs
-RUN apt-get install -y npm 
+COPY ./server /server
+RUN cd /server && npm install
 
-COPY . /app
+COPY ./pulsebs_frontend /client
+RUN cd /client && npm install
 
-EXPOSE 3000 8080
+EXPOSE 3000 8081
 
-WORKDIR /app
-
-CMD ["/bin/bash", "/app/start.sh"]
+# Run the app (both client and server)
+CMD npm start --prefix ./server & npm start --prefix ./client
