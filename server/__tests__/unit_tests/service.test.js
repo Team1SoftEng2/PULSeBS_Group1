@@ -102,30 +102,30 @@ describe('BookingsService', () => {
         // missing test: DB doesn't work
     });
 
-    // //li
-    // test('getLecturesAttendance', () => {
-    //     try {  
-    //         Bookings.getLecturesAttendance({'courseId':'1','date': 'date'}).then((data) => {
-    //         expect.assertions(1);
-    //         expect(data).toBe('successfull');
-    //     });
-    //     }
-    //     catch (err) {
-    //     expect(err).toBe('fail');
-    //   }
-    // });
+     //li
+     test('getLecturesAttendance', () => {
+         try {  
+             Bookings.getLecturesAttendance({'courseId':'1','date': 'date'}).then((data) => {
+             expect.assertions(1);
+             expect(data).toBe('successfull');
+         });
+         }
+         catch (err) {
+         expect(err).toBe('fail');
+       }
+     });
 
-    // test('getBooksList', () => {
-    //     try {  
-    //         Bookings.getBooksList({'courseId':'1','date': 'date'}).then((data) => {
-    //         expect.assertions(1);
-    //         expect(data).toBe('successfull');
-    //     });
-    //     }
-    //     catch (err) {
-    //     expect(err).toBe('fail');
-    //   }
-    // });
+     test('getBooksList', () => {
+         try {  
+             Bookings.getBooksList({'courseId':'1','date': 'date'}).then((data) => {
+             expect.assertions(1);
+             expect(data).toBe('successfull');
+         });
+         }
+         catch (err) {
+         expect(err).toBe('fail');
+       }
+     });
 
 });
 
@@ -232,16 +232,16 @@ describe('LecturesService Test', () => {
 
 //LI
 
-    // test('getLecturesDelectList', () => {
-    //     try {  
-    //         Lectures.getLecturesDelectList({'courseId':'1','date': 'date'}).then((data) => {
-    //             expect.assertions(1);
-    //             expect(data).toBe('successfull');
-    //         });
-    //     }
-    //     catch (err) {
-    //         expect(err).toBe('fail');
-    //     }
-    // });
+     test('getLecturesDelectList', () => {
+         try {  
+             Lectures.getLecturesDelectList({'courseId':'1','date': 'date'}).then((data) => {
+                 expect.assertions(1);
+                 expect(data).toBe('successfull');
+             });
+         }
+         catch (err) {
+             expect(err).toBe('fail');
+         }
+     });
 
 });
