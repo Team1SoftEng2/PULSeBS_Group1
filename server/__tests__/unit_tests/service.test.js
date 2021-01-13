@@ -102,32 +102,6 @@ describe('BookingsService', () => {
         // missing test: DB doesn't work
     });
 
-<<<<<<< HEAD
-     //li
-     test('getLecturesAttendance', () => {
-         try {  
-             Bookings.getLecturesAttendance({'courseId':'1','date': 'date'}).then((data) => {
-             expect.assertions(1);
-             expect(data).toBe('successfull');
-         });
-         }
-         catch (err) {
-         expect(err).toBe('fail');
-       }
-     });
-
-     test('getBooksList', () => {
-         try {  
-             Bookings.getBooksList({'courseId':'1','date': 'date'}).then((data) => {
-             expect.assertions(1);
-             expect(data).toBe('successfull');
-         });
-         }
-         catch (err) {
-         expect(err).toBe('fail');
-       }
-     });
-=======
     // //li
     test('getLecturesAttendance', () => {
         try {  
@@ -154,7 +128,6 @@ describe('BookingsService', () => {
         expect(err).toBe('fail');
       }
     });
->>>>>>> 0e35311ebd141235f733387602bd8451717bacd9
 
 });
 
@@ -261,19 +234,6 @@ describe('LecturesService Test', () => {
 
 //LI
 
-<<<<<<< HEAD
-     test('getLecturesDelectList', () => {
-         try {  
-             Lectures.getLecturesDelectList({'courseId':'1','date': 'date'}).then((data) => {
-                 expect.assertions(1);
-                 expect(data).toBe('successfull');
-             });
-         }
-         catch (err) {
-             expect(err).toBe('fail');
-         }
-     });
-=======
     test('getLecturesDelectList', () => {
         try {  
             Lectures.getLecturesDelectList(1, 'date').then((data) => {
@@ -285,6 +245,5 @@ describe('LecturesService Test', () => {
             expect(err).toBe('fail');
         }
     });
->>>>>>> 0e35311ebd141235f733387602bd8451717bacd9
 
 });
