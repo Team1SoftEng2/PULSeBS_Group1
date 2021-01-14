@@ -1,5 +1,5 @@
 TN:
-SF:src\App.js
+SF:src/App.js
 FN:11,App
 FN:17,(anonymous_1)
 FN:37,(anonymous_2)
@@ -60,7 +60,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:src\index.js
+SF:src/index.js
 FNF:0
 FNH:0
 DA:8,0
@@ -71,7 +71,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\reportWebVitals.js
+SF:src/reportWebVitals.js
 FN:1,(anonymous_0)
 FN:3,(anonymous_1)
 FNF:2
@@ -96,7 +96,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:src\Components\BookingManager\BookingManager_Page.js
+SF:src/Components/BookingManager/BookingManager_Page.js
 FN:11,bookingManagerPage
 FNF:1
 FNH:1
@@ -115,7 +115,7 @@ BRF:4
 BRH:1
 end_of_record
 TN:
-SF:src\Components\BookingManager\Attendance\Attendance.js
+SF:src/Components/BookingManager/Attendance/Attendance.js
 FN:9,Attendance
 FN:15,(anonymous_1)
 FN:17,(anonymous_2)
@@ -155,7 +155,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:src\Components\BookingManager\BookingManagerHeader\BookingManagerHeader.js
+SF:src/Components/BookingManager/BookingManagerHeader/BookingManagerHeader.js
 FN:4,bookingManagerHeader
 FNF:1
 FNH:1
@@ -167,7 +167,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\BookingManager\Bookings\Bookings.js
+SF:src/Components/BookingManager/Bookings/Bookings.js
 FN:10,Bookings
 FN:17,(anonymous_1)
 FN:19,(anonymous_2)
@@ -208,7 +208,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:src\Components\BookingManager\Bookings\Ltable.jsx
+SF:src/Components/BookingManager/Bookings/Ltable.jsx
 FN:3,Ltable
 FN:20,(anonymous_1)
 FNF:2
@@ -223,7 +223,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\BookingManager\ContactTracing\ContactTracing.js
+SF:src/Components/BookingManager/ContactTracing/ContactTracing.js
 FN:3,contactTracing
 FNF:1
 FNH:1
@@ -235,7 +235,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\BookingManager\DeleteLectures\DeleteLectures.js
+SF:src/Components/BookingManager/DeleteLectures/DeleteLectures.js
 FN:6,DeleteLectures
 FN:10,(anonymous_1)
 FN:12,(anonymous_2)
@@ -279,7 +279,7 @@ BRF:4
 BRH:1
 end_of_record
 TN:
-SF:src\Components\BookingManager\MonitorUsage\MonitorUsage.js
+SF:src/Components/BookingManager/MonitorUsage/MonitorUsage.js
 FN:3,monitorUsage
 FNF:1
 FNH:1
@@ -291,7 +291,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\Login\LoginPage.js
+SF:src/Components/Login/LoginPage.js
 FN:8,LoginPage
 FN:24,(anonymous_1)
 FN:28,(anonymous_2)
@@ -325,7 +325,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:src\Components\Login\LoginForm\LoginForm.js
+SF:src/Components/Login/LoginForm/LoginForm.js
 FN:3,LoginForm
 FN:14,(anonymous_1)
 FN:23,(anonymous_2)
@@ -346,7 +346,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\Professor\Professor_Page.js
+SF:src/Components/Professor/Professor_Page.js
 FN:13,ProfessorPage
 FN:18,(anonymous_1)
 FN:19,(anonymous_2)
@@ -386,7 +386,7 @@ BRF:8
 BRH:3
 end_of_record
 TN:
-SF:src\Components\Professor\HomePageCalendarProfessor\HomePageCalendarProfessor.js
+SF:src/Components/Professor/HomePageCalendarProfessor/HomePageCalendarProfessor.js
 FN:3,homePageCalendarProfessor
 FNF:1
 FNH:1
@@ -398,7 +398,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\Professor\MyLecturesProfessor\MyLecturesProfessor.js
+SF:src/Components/Professor/MyLecturesProfessor/MyLecturesProfessor.js
 FN:7,MyLecturesProfessor
 FN:14,(anonymous_1)
 FN:17,(anonymous_2)
@@ -560,7 +560,7 @@ BRF:36
 BRH:6
 end_of_record
 TN:
-SF:src\Components\Professor\ProfessorHeader\ProfessorHeader.js
+SF:src/Components/Professor/ProfessorHeader/ProfessorHeader.js
 FN:4,professorHeader
 FNF:1
 FNH:1
@@ -572,7 +572,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\Professor\Register_Attendance\Register_Attendance.js
+SF:src/Components/Professor/Register_Attendance/Register_Attendance.js
 FN:3,registerAttendance
 FNF:1
 FNH:1
@@ -584,7 +584,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\Professor\Statistics\StatisticsPage.js
+SF:src/Components/Professor/Statistics/StatisticsPage.js
 FN:10,(anonymous_0)
 FN:19,(anonymous_1)
 FN:25,getBookings
@@ -706,7 +706,7 @@ BRF:20
 BRH:8
 end_of_record
 TN:
-SF:src\Components\Professor\TutorialProfessor\TutorialProfessor.js
+SF:src/Components/Professor/TutorialProfessor/TutorialProfessor.js
 FN:3,tutorialProfessor
 FNF:1
 FNH:1
@@ -718,7 +718,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\Student\Student_Page.js
+SF:src/Components/Student/Student_Page.js
 FN:11,StudentPage
 FN:21,(anonymous_1)
 FN:23,(anonymous_2)
@@ -820,7 +820,7 @@ BRF:18
 BRH:3
 end_of_record
 TN:
-SF:src\Components\Student\BookSeat\BookSeat.js
+SF:src/Components/Student/BookSeat/BookSeat.js
 FN:6,BookSeat
 FN:21,(anonymous_1)
 FN:24,(anonymous_2)
@@ -915,7 +915,7 @@ BRF:26
 BRH:2
 end_of_record
 TN:
-SF:src\Components\Student\HomePageCalendar_Student\HomePageCalendar_Student.js
+SF:src/Components/Student/HomePageCalendar_Student/HomePageCalendar_Student.js
 FN:14,CustomEvent
 FN:25,(anonymous_1)
 FN:40,(anonymous_2)
@@ -1008,7 +1008,7 @@ BRF:22
 BRH:1
 end_of_record
 TN:
-SF:src\Components\Student\StudentHeader\StudentHeader.js
+SF:src/Components/Student/StudentHeader/StudentHeader.js
 FN:4,studentHeader
 FNF:1
 FNH:1
@@ -1020,7 +1020,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\Student\TutorialStudent\TutorialStudent.js
+SF:src/Components/Student/TutorialStudent/TutorialStudent.js
 FN:3,tutorialStudent
 FNF:1
 FNH:1
@@ -1032,7 +1032,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\SuppOfficer\SuppOfficer_Page.js
+SF:src/Components/SuppOfficer/SuppOfficer_Page.js
 FN:9,suppOfficerPage
 FNF:1
 FNH:1
@@ -1051,7 +1051,7 @@ BRF:4
 BRH:1
 end_of_record
 TN:
-SF:src\Components\SuppOfficer\SuppOfficerHeader\SuppOfficerHeader.js
+SF:src/Components/SuppOfficer/SuppOfficerHeader/SuppOfficerHeader.js
 FN:4,suppOfficerHeader
 FNF:1
 FNH:1
@@ -1063,7 +1063,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\SuppOfficer\SystemConfigure\SystemConfigure.js
+SF:src/Components/SuppOfficer/SystemConfigure/SystemConfigure.js
 FN:3,systemConfigure
 FNF:1
 FNH:1
@@ -1075,7 +1075,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\Components\SuppOfficer\SystemSetup\SystemSetup.js
+SF:src/Components/SuppOfficer/SystemSetup/SystemSetup.js
 FN:8,(anonymous_0)
 FN:24,(anonymous_1)
 FN:83,(anonymous_2)
@@ -1231,7 +1231,7 @@ BRF:70
 BRH:10
 end_of_record
 TN:
-SF:src\Components\SuppOfficer\SystemUpdate\SystemUpdate.js
+SF:src/Components/SuppOfficer/SystemUpdate/SystemUpdate.js
 FN:3,systemUpdate
 FNF:1
 FNH:1
@@ -1243,7 +1243,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src\api\API.js
+SF:src/api/API.js
 FN:4,getUser
 FN:16,login
 FN:17,(anonymous_2)
@@ -1538,7 +1538,7 @@ BRF:44
 BRH:29
 end_of_record
 TN:
-SF:src\api\User.js
+SF:src/api/User.js
 FN:2,(anonymous_0)
 FNF:1
 FNH:1

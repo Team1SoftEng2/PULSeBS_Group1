@@ -1,5 +1,5 @@
 TN:
-SF:components\booking.js
+SF:components/booking.js
 FN:3,(anonymous_0)
 FNF:1
 FNH:1
@@ -13,7 +13,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:components\course.js
+SF:components/course.js
 FN:3,(anonymous_0)
 FNF:1
 FNH:1
@@ -28,7 +28,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:components\db.js
+SF:components/db.js
 FN:9,(anonymous_0)
 FN:16,(anonymous_1)
 FNF:2
@@ -57,7 +57,7 @@ BRF:4
 BRH:2
 end_of_record
 TN:
-SF:components\lecture.js
+SF:components/lecture.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:1
@@ -83,7 +83,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:components\user.js
+SF:components/user.js
 FN:3,(anonymous_0)
 FNF:1
 FNH:1
@@ -103,7 +103,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:controllers\Bookings.js
+SF:controllers/Bookings.js
 FN:13,(anonymous_0)
 FN:21,(anonymous_1)
 FN:32,apiBookingsGET
@@ -235,7 +235,7 @@ BRF:48
 BRH:45
 end_of_record
 TN:
-SF:controllers\Course.js
+SF:controllers/Course.js
 FN:11,apiCoursesIdGET
 FN:24,(anonymous_1)
 FN:37,(anonymous_2)
@@ -320,7 +320,7 @@ BRF:30
 BRH:30
 end_of_record
 TN:
-SF:controllers\Email.js
+SF:controllers/Email.js
 FN:19,sendEmail
 FN:40,(anonymous_1)
 FN:41,(anonymous_2)
@@ -367,7 +367,7 @@ BRF:9
 BRH:8
 end_of_record
 TN:
-SF:controllers\Lectures.js
+SF:controllers/Lectures.js
 FN:14,(anonymous_0)
 FN:22,apiLecturesGET
 FN:32,apiTeacherLecturesGET
@@ -523,7 +523,7 @@ BRF:54
 BRH:47
 end_of_record
 TN:
-SF:controllers\Parser.js
+SF:controllers/Parser.js
 FN:12,parseCSV
 FN:13,(anonymous_1)
 FN:17,(anonymous_2)
@@ -579,7 +579,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:controllers\Uploads.js
+SF:controllers/Uploads.js
 FN:14,(anonymous_0)
 FN:22,(anonymous_1)
 FN:25,(anonymous_2)
@@ -717,7 +717,7 @@ BRF:32
 BRH:26
 end_of_record
 TN:
-SF:service\AuthenticationService.js
+SF:service/AuthenticationService.js
 FN:7,(anonymous_0)
 FN:8,(anonymous_1)
 FN:25,(anonymous_2)
@@ -785,7 +785,7 @@ BRF:10
 BRH:4
 end_of_record
 TN:
-SF:service\BookingsService.js
+SF:service/BookingsService.js
 FN:9,(anonymous_0)
 FN:10,(anonymous_1)
 FN:45,(anonymous_2)
@@ -993,7 +993,7 @@ BRF:46
 BRH:8
 end_of_record
 TN:
-SF:service\CourseService.js
+SF:service/CourseService.js
 FN:7,(anonymous_0)
 FN:8,(anonymous_1)
 FN:10,(anonymous_2)
@@ -1089,7 +1089,7 @@ BRF:12
 BRH:0
 end_of_record
 TN:
-SF:service\LecturesService.js
+SF:service/LecturesService.js
 FN:8,(anonymous_0)
 FN:9,(anonymous_1)
 FN:27,(anonymous_2)
@@ -1210,7 +1210,7 @@ BRF:20
 BRH:5
 end_of_record
 TN:
-SF:utils\writer.js
+SF:utils/writer.js
 FN:1,(anonymous_0)
 FN:6,(anonymous_1)
 FN:10,(anonymous_2)

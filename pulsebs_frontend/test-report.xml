@@ -1,392 +1,149 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\__test__\BookingManager_Page.test.js">
-    <testCase name="Renders Booking Manager Header Correctly" duration="245">
-      <failure message="Error: Invariant failed: You should not use &lt;Link&gt; outside a &lt;Router&gt;"><![CDATA[Error: Invariant failed: You should not use <Link> outside a <Router>
-    at invariant (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\tiny-invariant\dist\tiny-invariant.cjs.js:13:11)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-router-dom\modules\Link.js:88:11
-    at updateContextConsumer (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:18747:19)
-    at beginWork (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:19114:14)
-    at HTMLUnknownElement.callCallback (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:3945:14)
-    at HTMLUnknownElement.callTheUserObjectsOperation (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\generated\EventListener.js:26:30)
-    at innerInvokeEventListeners (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:318:25)
-    at invokeEventListeners (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:274:3)
-    at HTMLUnknownElementImpl._dispatch (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:221:9)
-    at HTMLUnknownElementImpl.dispatchEvent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:94:17)
-    at HTMLUnknownElement.dispatchEvent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:231:34)
-    at Object.invokeGuardedCallbackDev (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:3994:16)
-    at invokeGuardedCallback (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:4056:31)
-    at beginWork$1 (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:23964:7)
-    at performUnitOfWork (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22779:12)
-    at workLoopSync (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22707:5)
-    at renderRootSync (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22670:7)
-    at performSyncWorkOnRoot (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22293:18)
-    at scheduleUpdateOnFiber (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:21881:7)
-    at updateContainer (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:25482:3)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26021:7
-    at unbatchedUpdates (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22431:12)
-    at legacyRenderSubtreeIntoContainer (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26020:5)
-    at Object.render (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26103:10)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\react\dist\pure.js:99:25
-    at batchedUpdates$1 (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22380:12)
-    at act (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom-test-utils.development.js:1042:14)
-    at render (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\react\dist\pure.js:95:26)
-    at Object.<anonymous> (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\__test__\BookingManager_Page.test.js:15:26)
-    at Promise.then.completed (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:276:28)
-    at new Promise (<anonymous>)
-    at callAsyncCircusFn (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:216:10)
-    at _callCircusTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:212:40)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at _runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:149:3)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:63:9)
-    at run (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:25:3)
-    at runAndTransformResultsToJestFormat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
-    at jestAdapter (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
-    at runTestInternal (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:380:16)
-    at runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
-    at Object.worker (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
-    </testCase>
-    <testCase name="Check Authentication Error" duration="61"/>
-    <testCase name="Check Booking" duration="24">
-      <failure message="TestingLibraryElementError: Unable to find an element with the text: #. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible."><![CDATA[TestingLibraryElementError: Unable to find an element with the text: #. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
-
-<body>
-  <div />
-</body>
-    at Object.getElementError (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\config.js:37:19)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:90:38
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:62:17
-    at getByText (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:106:19)
-    at Object.<anonymous> (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\__test__\BookingManager_Page.test.js:33:25)
-    at Promise.then.completed (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:276:28)
-    at new Promise (<anonymous>)
-    at callAsyncCircusFn (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:216:10)
-    at _callCircusTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:212:40)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at _runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:149:3)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:63:9)
-    at run (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:25:3)
-    at runAndTransformResultsToJestFormat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
-    at jestAdapter (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
-    at runTestInternal (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:380:16)
-    at runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
-    at Object.worker (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
-    </testCase>
-    <testCase name="Check Attendance" duration="68">
-      <failure message="TypeError: Cannot read property &apos;location&apos; of undefined"><![CDATA[TypeError: Cannot read property 'location' of undefined
-    at useLocation (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-router\modules\hooks.js:29:10)
-    at Attendance (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\Attendance\Attendance.js:10:15)
-    at renderWithHooks (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:14985:18)
-    at mountIndeterminateComponent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:17811:13)
-    at beginWork (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:19049:16)
-    at HTMLUnknownElement.callCallback (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:3945:14)
-    at HTMLUnknownElement.callTheUserObjectsOperation (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\generated\EventListener.js:26:30)
-    at innerInvokeEventListeners (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:318:25)
-    at invokeEventListeners (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:274:3)
-    at HTMLUnknownElementImpl._dispatch (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:221:9)
-    at HTMLUnknownElementImpl.dispatchEvent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:94:17)
-    at HTMLUnknownElement.dispatchEvent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:231:34)
-    at Object.invokeGuardedCallbackDev (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:3994:16)
-    at invokeGuardedCallback (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:4056:31)
-    at beginWork$1 (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:23964:7)
-    at performUnitOfWork (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22779:12)
-    at workLoopSync (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22707:5)
-    at renderRootSync (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22670:7)
-    at performSyncWorkOnRoot (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22293:18)
-    at scheduleUpdateOnFiber (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:21881:7)
-    at updateContainer (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:25482:3)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26021:7
-    at unbatchedUpdates (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22431:12)
-    at legacyRenderSubtreeIntoContainer (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26020:5)
-    at Object.render (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26103:10)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\react\dist\pure.js:99:25
-    at batchedUpdates$1 (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22380:12)
-    at act (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom-test-utils.development.js:1042:14)
-    at render (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\react\dist\pure.js:95:26)
-    at Object.<anonymous> (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\__test__\BookingManager_Page.test.js:45:26)
-    at Promise.then.completed (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:276:28)
-    at new Promise (<anonymous>)
-    at callAsyncCircusFn (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:216:10)
-    at _callCircusTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:212:40)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at _runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:149:3)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:63:9)
-    at run (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:25:3)
-    at runAndTransformResultsToJestFormat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
-    at jestAdapter (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
-    at runTestInternal (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:380:16)
-    at runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
-    at Object.worker (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
-    </testCase>
-    <testCase name="Check Deleted Lectures" duration="196">
-      <failure message="TestingLibraryElementError: Unable to find an element with the text: Student Name. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible."><![CDATA[TestingLibraryElementError: Unable to find an element with the text: Student Name. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
-
-<body>
-  <div>
-    <div
-      class="div-wrap"
-    >
-      <h1>
-        Deleted Lectures List
-      </h1>
-      <form
-        class=""
-      >
-        <div
-          class="row"
-        >
-          <div
-            class="col"
-          >
-            Courses :
-             
-            <select
-              class="cos form-control"
-              placeholder="Courses name"
-            >
-              <option
-                selected=""
-                value=""
-              >
-                please select
-              </option>
-              <option
-                value="IS001"
-              >
-                Information System
-              </option>
-              <option
-                value="SE001"
-              >
-                Software Engineering
-              </option>
-              <option
-                value="CA001"
-              >
-                Computer Architectures
-              </option>
-            </select>
-          </div>
-          <div
-            class="col"
-          >
-            Month-Year :
-             
-            <input
-              class="cos form-control"
-              name="dob"
-              placeholder="Date of Birth"
-              type="month"
-            />
-          </div>
-        </div>
-      </form>
-      <div
-        class="tabe"
-      >
-        <table
-          class="table table-sm table-striped table-bordered table-hover"
-        >
-          <thead>
-            <tr>
-              <th>
-                #
-              </th>
-              <th>
-                Course Name
-              </th>
-              <th>
-                LectureID
-              </th>
-              <th>
-                Teacher Name
-              </th>
-              <th>
-                Date
-              </th>
-              <th>
-                Time
-              </th>
-              <th>
-                Mode
-              </th>
-              <th>
-                Place
-              </th>
-            </tr>
-          </thead>
-          <tbody />
-        </table>
-      </div>
-    </div>
-  </div>
-</body>
-    at Object.getElementError (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\config.js:37:19)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:90:38
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:62:17
-    at getByText (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:106:19)
-    at Object.<anonymous> (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\__test__\BookingManager_Page.test.js:63:25)
-    at Promise.then.completed (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:276:28)
-    at new Promise (<anonymous>)
-    at callAsyncCircusFn (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:216:10)
-    at _callCircusTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:212:40)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at _runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:149:3)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:63:9)
-    at run (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:25:3)
-    at runAndTransformResultsToJestFormat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
-    at jestAdapter (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
-    at runTestInternal (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:380:16)
-    at runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
-    at Object.worker (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
-    </testCase>
-    <testCase name="Check Monitor System Usage" duration="9"/>
-    <testCase name="Check Contact Tracing" duration="11"/>
-  </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\__test__\BookSeat.test.js">
-    <testCase name="Renders BookSeat Correctly" duration="332">
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Student/__test__/BookSeat.test.js">
+    <testCase name="Renders BookSeat Correctly" duration="110">
       <failure message="TypeError: Cannot read property &apos;name&apos; of undefined"><![CDATA[TypeError: Cannot read property 'name' of undefined
-    at BookLecture (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\BookSeat\BookSeat.js:93:49)
-    at renderWithHooks (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:14985:18)
-    at mountIndeterminateComponent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:17811:13)
-    at beginWork (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:19049:16)
-    at HTMLUnknownElement.callCallback (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:3945:14)
-    at HTMLUnknownElement.callTheUserObjectsOperation (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\generated\EventListener.js:26:30)
-    at innerInvokeEventListeners (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:318:25)
-    at invokeEventListeners (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:274:3)
-    at HTMLUnknownElementImpl._dispatch (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:221:9)
-    at HTMLUnknownElementImpl.dispatchEvent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:94:17)
-    at HTMLUnknownElement.dispatchEvent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:231:34)
-    at Object.invokeGuardedCallbackDev (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:3994:16)
-    at invokeGuardedCallback (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:4056:31)
-    at beginWork$1 (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:23964:7)
-    at performUnitOfWork (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22779:12)
-    at workLoopSync (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22707:5)
-    at renderRootSync (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22670:7)
-    at performSyncWorkOnRoot (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22293:18)
-    at scheduleUpdateOnFiber (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:21881:7)
-    at updateContainer (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:25482:3)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26021:7
-    at unbatchedUpdates (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22431:12)
-    at legacyRenderSubtreeIntoContainer (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26020:5)
-    at Object.render (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26103:10)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\react\dist\pure.js:99:25
-    at batchedUpdates$1 (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22380:12)
-    at act (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom-test-utils.development.js:1042:14)
-    at render (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\react\dist\pure.js:95:26)
-    at Object.<anonymous> (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\__test__\BookSeat.test.js:20:26)
-    at Promise.then.completed (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:276:28)
+    at BookLecture (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Student/BookSeat/BookSeat.js:93:49)
+    at renderWithHooks (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+    at mountIndeterminateComponent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:17811:13)
+    at beginWork (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:19049:16)
+    at HTMLUnknownElement.callCallback (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+    at innerInvokeEventListeners (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:318:25)
+    at invokeEventListeners (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+    at HTMLUnknownElementImpl._dispatch (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+    at HTMLUnknownElementImpl.dispatchEvent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+    at HTMLUnknownElement.dispatchEvent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+    at Object.invokeGuardedCallbackDev (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+    at invokeGuardedCallback (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+    at beginWork$1 (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:23964:7)
+    at performUnitOfWork (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22779:12)
+    at workLoopSync (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+    at renderRootSync (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22670:7)
+    at performSyncWorkOnRoot (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22293:18)
+    at scheduleUpdateOnFiber (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+    at updateContainer (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26021:7
+    at unbatchedUpdates (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+    at legacyRenderSubtreeIntoContainer (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+    at Object.render (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/react/dist/pure.js:99:25
+    at batchedUpdates$1 (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+    at act (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+    at render (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/react/dist/pure.js:95:26)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Student/__test__/BookSeat.test.js:20:26)
+    at Promise.then.completed (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:276:28)
     at new Promise (<anonymous>)
-    at callAsyncCircusFn (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:216:10)
-    at _callCircusTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:212:40)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at _runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:149:3)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:63:9)
-    at run (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:25:3)
-    at runAndTransformResultsToJestFormat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
-    at jestAdapter (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
-    at runTestInternal (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:380:16)
-    at runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
-    at Object.worker (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
+    at callAsyncCircusFn (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:216:10)
+    at _callCircusTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at _runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:149:3)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:63:9)
+    at run (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:176:21)
+    at jestAdapter (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:109:19)
+    at runTestInternal (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:472:34)
+    at Object.worker (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/testWorker.js:133:12)]]></failure>
     </testCase>
-    <testCase name="Does not book full lesson" duration="26">
+    <testCase name="Does not book full lesson" duration="15">
       <failure message="TypeError: Cannot read property &apos;filter&apos; of undefined"><![CDATA[TypeError: Cannot read property 'filter' of undefined
-    at map (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\BookSeat\BookSeat.js:25:92)
+    at map (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Student/BookSeat/BookSeat.js:25:92)
     at Array.map (<anonymous>)
-    at BookSeat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\BookSeat\BookSeat.js:21:41)
-    at renderWithHooks (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:14985:18)
-    at mountIndeterminateComponent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:17811:13)
-    at beginWork (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:19049:16)
-    at HTMLUnknownElement.callCallback (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:3945:14)
-    at HTMLUnknownElement.callTheUserObjectsOperation (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\generated\EventListener.js:26:30)
-    at innerInvokeEventListeners (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:318:25)
-    at invokeEventListeners (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:274:3)
-    at HTMLUnknownElementImpl._dispatch (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:221:9)
-    at HTMLUnknownElementImpl.dispatchEvent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:94:17)
-    at HTMLUnknownElement.dispatchEvent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:231:34)
-    at Object.invokeGuardedCallbackDev (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:3994:16)
-    at invokeGuardedCallback (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:4056:31)
-    at beginWork$1 (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:23964:7)
-    at performUnitOfWork (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22779:12)
-    at workLoopSync (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22707:5)
-    at renderRootSync (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22670:7)
-    at performSyncWorkOnRoot (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22293:18)
-    at scheduleUpdateOnFiber (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:21881:7)
-    at updateContainer (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:25482:3)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26021:7
-    at unbatchedUpdates (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22431:12)
-    at legacyRenderSubtreeIntoContainer (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26020:5)
-    at Object.render (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26103:10)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\react\dist\pure.js:99:25
-    at batchedUpdates$1 (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22380:12)
-    at act (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom-test-utils.development.js:1042:14)
-    at render (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\react\dist\pure.js:95:26)
-    at Object.<anonymous> (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\__test__\BookSeat.test.js:31:26)
-    at Promise.then.completed (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:276:28)
+    at BookSeat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Student/BookSeat/BookSeat.js:21:41)
+    at renderWithHooks (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+    at mountIndeterminateComponent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:17811:13)
+    at beginWork (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:19049:16)
+    at HTMLUnknownElement.callCallback (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+    at innerInvokeEventListeners (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:318:25)
+    at invokeEventListeners (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+    at HTMLUnknownElementImpl._dispatch (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+    at HTMLUnknownElementImpl.dispatchEvent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+    at HTMLUnknownElement.dispatchEvent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+    at Object.invokeGuardedCallbackDev (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+    at invokeGuardedCallback (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+    at beginWork$1 (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:23964:7)
+    at performUnitOfWork (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22779:12)
+    at workLoopSync (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+    at renderRootSync (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22670:7)
+    at performSyncWorkOnRoot (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22293:18)
+    at scheduleUpdateOnFiber (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+    at updateContainer (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26021:7
+    at unbatchedUpdates (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+    at legacyRenderSubtreeIntoContainer (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+    at Object.render (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/react/dist/pure.js:99:25
+    at batchedUpdates$1 (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+    at act (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+    at render (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/react/dist/pure.js:95:26)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Student/__test__/BookSeat.test.js:31:26)
+    at Promise.then.completed (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:276:28)
     at new Promise (<anonymous>)
-    at callAsyncCircusFn (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:216:10)
-    at _callCircusTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:212:40)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at _runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:149:3)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:63:9)
-    at run (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:25:3)
-    at runAndTransformResultsToJestFormat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
-    at jestAdapter (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
-    at runTestInternal (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:380:16)
-    at runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
-    at Object.worker (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
+    at callAsyncCircusFn (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:216:10)
+    at _callCircusTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at _runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:149:3)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:63:9)
+    at run (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:176:21)
+    at jestAdapter (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:109:19)
+    at runTestInternal (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:472:34)
+    at Object.worker (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/testWorker.js:133:12)]]></failure>
     </testCase>
   </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\SuppOfficer\__test__\SuppOfficer_Page.test.js">
-    <testCase name="Renders Booking Manager Header Correctly" duration="346">
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/SuppOfficer/__test__/SuppOfficer_Page.test.js">
+    <testCase name="Renders Booking Manager Header Correctly" duration="139">
       <failure message="Error: Invariant failed: You should not use &lt;Link&gt; outside a &lt;Router&gt;"><![CDATA[Error: Invariant failed: You should not use <Link> outside a <Router>
-    at invariant (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\tiny-invariant\dist\tiny-invariant.cjs.js:13:11)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-router-dom\modules\Link.js:88:11
-    at updateContextConsumer (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:18747:19)
-    at beginWork (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:19114:14)
-    at HTMLUnknownElement.callCallback (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:3945:14)
-    at HTMLUnknownElement.callTheUserObjectsOperation (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\generated\EventListener.js:26:30)
-    at innerInvokeEventListeners (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:318:25)
-    at invokeEventListeners (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:274:3)
-    at HTMLUnknownElementImpl._dispatch (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:221:9)
-    at HTMLUnknownElementImpl.dispatchEvent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\events\EventTarget-impl.js:94:17)
-    at HTMLUnknownElement.dispatchEvent (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jsdom\lib\jsdom\living\generated\EventTarget.js:231:34)
-    at Object.invokeGuardedCallbackDev (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:3994:16)
-    at invokeGuardedCallback (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:4056:31)
-    at beginWork$1 (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:23964:7)
-    at performUnitOfWork (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22779:12)
-    at workLoopSync (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22707:5)
-    at renderRootSync (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22670:7)
-    at performSyncWorkOnRoot (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22293:18)
-    at scheduleUpdateOnFiber (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:21881:7)
-    at updateContainer (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:25482:3)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26021:7
-    at unbatchedUpdates (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22431:12)
-    at legacyRenderSubtreeIntoContainer (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26020:5)
-    at Object.render (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:26103:10)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\react\dist\pure.js:99:25
-    at batchedUpdates$1 (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom.development.js:22380:12)
-    at act (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\react-dom\cjs\react-dom-test-utils.development.js:1042:14)
-    at render (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\react\dist\pure.js:95:26)
-    at Object.<anonymous> (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\SuppOfficer\__test__\SuppOfficer_Page.test.js:14:26)
-    at Promise.then.completed (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:276:28)
+    at invariant (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/tiny-invariant/dist/tiny-invariant.cjs.js:13:11)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-router-dom/modules/Link.js:88:11
+    at updateContextConsumer (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:18747:19)
+    at beginWork (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:19114:14)
+    at HTMLUnknownElement.callCallback (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+    at innerInvokeEventListeners (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:318:25)
+    at invokeEventListeners (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+    at HTMLUnknownElementImpl._dispatch (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+    at HTMLUnknownElementImpl.dispatchEvent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+    at HTMLUnknownElement.dispatchEvent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+    at Object.invokeGuardedCallbackDev (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+    at invokeGuardedCallback (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+    at beginWork$1 (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:23964:7)
+    at performUnitOfWork (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22779:12)
+    at workLoopSync (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+    at renderRootSync (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22670:7)
+    at performSyncWorkOnRoot (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22293:18)
+    at scheduleUpdateOnFiber (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+    at updateContainer (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26021:7
+    at unbatchedUpdates (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+    at legacyRenderSubtreeIntoContainer (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+    at Object.render (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/react/dist/pure.js:99:25
+    at batchedUpdates$1 (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+    at act (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+    at render (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/react/dist/pure.js:95:26)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/SuppOfficer/__test__/SuppOfficer_Page.test.js:14:26)
+    at Promise.then.completed (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:276:28)
     at new Promise (<anonymous>)
-    at callAsyncCircusFn (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:216:10)
-    at _callCircusTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:212:40)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at _runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:149:3)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:63:9)
-    at run (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:25:3)
-    at runAndTransformResultsToJestFormat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
-    at jestAdapter (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
-    at runTestInternal (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:380:16)
-    at runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
-    at Object.worker (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
+    at callAsyncCircusFn (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:216:10)
+    at _callCircusTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at _runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:149:3)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:63:9)
+    at run (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:176:21)
+    at jestAdapter (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:109:19)
+    at runTestInternal (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:472:34)
+    at Object.worker (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/testWorker.js:133:12)]]></failure>
     </testCase>
-    <testCase name="Check Authentication Error" duration="99"/>
-    <testCase name="Check Change Configuration" duration="8"/>
-    <testCase name="Check System Update" duration="44"/>
-    <testCase name="Check System Setup" duration="239">
+    <testCase name="Check Authentication Error" duration="53"/>
+    <testCase name="Check Change Configuration" duration="26"/>
+    <testCase name="Check System Update" duration="15"/>
+    <testCase name="Check System Setup" duration="71">
       <failure message="TestingLibraryElementError: Unable to find an element with the text: Here the Support Officer will setup the system, uploading courses, students and professors. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible."><![CDATA[TestingLibraryElementError: Unable to find an element with the text: Here the Support Officer will setup the system, uploading courses, students and professors. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
 
 <body>
@@ -596,36 +353,271 @@
     </div>
   </div>
 </body>
-    at Object.getElementError (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\config.js:37:19)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:90:38
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:62:17
-    at getByText (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:106:19)
-    at Object.<anonymous> (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\SuppOfficer\__test__\SuppOfficer_Page.test.js:40:25)
-    at Promise.then.completed (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:276:28)
+    at Object.getElementError (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/config.js:37:19)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+    at getByText (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:106:19)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/SuppOfficer/__test__/SuppOfficer_Page.test.js:40:25)
+    at Promise.then.completed (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:276:28)
     at new Promise (<anonymous>)
-    at callAsyncCircusFn (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:216:10)
-    at _callCircusTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:212:40)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at _runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:149:3)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:63:9)
-    at run (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:25:3)
-    at runAndTransformResultsToJestFormat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
-    at jestAdapter (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
-    at runTestInternal (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:380:16)
-    at runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
-    at Object.worker (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
+    at callAsyncCircusFn (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:216:10)
+    at _callCircusTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at _runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:149:3)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:63:9)
+    at run (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:176:21)
+    at jestAdapter (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:109:19)
+    at runTestInternal (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:472:34)
+    at Object.worker (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/testWorker.js:133:12)]]></failure>
     </testCase>
   </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\__test__\Student_Page.test.js">
-    <testCase name="Renders Student Header Correctly" duration="270"/>
-    <testCase name="Check with Wrong Credentials" duration="26"/>
-    <testCase name="Check Book a Seat" duration="147"/>
-    <testCase name="Check HomePage" duration="1150"/>
-    <testCase name="Check Tutorial" duration="352"/>
-    <testCase name="Check Logout" duration="22"/>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/BookingManager/__test__/BookingManager_Page.test.js">
+    <testCase name="Renders Booking Manager Header Correctly" duration="138">
+      <failure message="Error: Invariant failed: You should not use &lt;Link&gt; outside a &lt;Router&gt;"><![CDATA[Error: Invariant failed: You should not use <Link> outside a <Router>
+    at invariant (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/tiny-invariant/dist/tiny-invariant.cjs.js:13:11)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-router-dom/modules/Link.js:88:11
+    at updateContextConsumer (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:18747:19)
+    at beginWork (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:19114:14)
+    at HTMLUnknownElement.callCallback (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+    at innerInvokeEventListeners (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:318:25)
+    at invokeEventListeners (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+    at HTMLUnknownElementImpl._dispatch (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+    at HTMLUnknownElementImpl.dispatchEvent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+    at HTMLUnknownElement.dispatchEvent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+    at Object.invokeGuardedCallbackDev (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+    at invokeGuardedCallback (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+    at beginWork$1 (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:23964:7)
+    at performUnitOfWork (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22779:12)
+    at workLoopSync (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+    at renderRootSync (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22670:7)
+    at performSyncWorkOnRoot (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22293:18)
+    at scheduleUpdateOnFiber (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+    at updateContainer (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26021:7
+    at unbatchedUpdates (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+    at legacyRenderSubtreeIntoContainer (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+    at Object.render (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/react/dist/pure.js:99:25
+    at batchedUpdates$1 (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+    at act (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+    at render (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/react/dist/pure.js:95:26)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/BookingManager/__test__/BookingManager_Page.test.js:15:26)
+    at Promise.then.completed (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:276:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:216:10)
+    at _callCircusTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at _runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:149:3)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:63:9)
+    at run (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:176:21)
+    at jestAdapter (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:109:19)
+    at runTestInternal (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:472:34)
+    at Object.worker (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/testWorker.js:133:12)]]></failure>
+    </testCase>
+    <testCase name="Check Authentication Error" duration="64"/>
+    <testCase name="Check Booking" duration="10">
+      <failure message="TestingLibraryElementError: Unable to find an element with the text: #. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible."><![CDATA[TestingLibraryElementError: Unable to find an element with the text: #. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+<body>
+  <div />
+</body>
+    at Object.getElementError (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/config.js:37:19)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+    at getByText (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:106:19)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/BookingManager/__test__/BookingManager_Page.test.js:33:25)
+    at Promise.then.completed (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:276:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:216:10)
+    at _callCircusTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at _runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:149:3)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:63:9)
+    at run (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:176:21)
+    at jestAdapter (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:109:19)
+    at runTestInternal (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:472:34)
+    at Object.worker (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/testWorker.js:133:12)]]></failure>
+    </testCase>
+    <testCase name="Check Attendance" duration="64">
+      <failure message="TypeError: Cannot read property &apos;location&apos; of undefined"><![CDATA[TypeError: Cannot read property 'location' of undefined
+    at useLocation (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-router/modules/hooks.js:29:10)
+    at Attendance (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/BookingManager/Attendance/Attendance.js:10:15)
+    at renderWithHooks (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:14985:18)
+    at mountIndeterminateComponent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:17811:13)
+    at beginWork (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:19049:16)
+    at HTMLUnknownElement.callCallback (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:3945:14)
+    at HTMLUnknownElement.callTheUserObjectsOperation (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+    at innerInvokeEventListeners (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:318:25)
+    at invokeEventListeners (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+    at HTMLUnknownElementImpl._dispatch (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+    at HTMLUnknownElementImpl.dispatchEvent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+    at HTMLUnknownElement.dispatchEvent (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+    at Object.invokeGuardedCallbackDev (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:3994:16)
+    at invokeGuardedCallback (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:4056:31)
+    at beginWork$1 (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:23964:7)
+    at performUnitOfWork (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22779:12)
+    at workLoopSync (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22707:5)
+    at renderRootSync (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22670:7)
+    at performSyncWorkOnRoot (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22293:18)
+    at scheduleUpdateOnFiber (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:21881:7)
+    at updateContainer (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:25482:3)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26021:7
+    at unbatchedUpdates (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22431:12)
+    at legacyRenderSubtreeIntoContainer (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26020:5)
+    at Object.render (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:26103:10)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/react/dist/pure.js:99:25
+    at batchedUpdates$1 (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom.development.js:22380:12)
+    at act (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/react-dom/cjs/react-dom-test-utils.development.js:1042:14)
+    at render (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/react/dist/pure.js:95:26)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/BookingManager/__test__/BookingManager_Page.test.js:45:26)
+    at Promise.then.completed (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:276:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:216:10)
+    at _callCircusTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at _runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:149:3)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:63:9)
+    at run (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:176:21)
+    at jestAdapter (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:109:19)
+    at runTestInternal (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:472:34)
+    at Object.worker (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/testWorker.js:133:12)]]></failure>
+    </testCase>
+    <testCase name="Check Deleted Lectures" duration="88">
+      <failure message="TestingLibraryElementError: Unable to find an element with the text: Student Name. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible."><![CDATA[TestingLibraryElementError: Unable to find an element with the text: Student Name. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+<body>
+  <div>
+    <div
+      class="div-wrap"
+    >
+      <h1>
+        Deleted Lectures List
+      </h1>
+      <form
+        class=""
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="col"
+          >
+            Courses :
+             
+            <select
+              class="cos form-control"
+              placeholder="Courses name"
+            >
+              <option
+                selected=""
+                value=""
+              >
+                please select
+              </option>
+              <option
+                value="IS001"
+              >
+                Information System
+              </option>
+              <option
+                value="SE001"
+              >
+                Software Engineering
+              </option>
+              <option
+                value="CA001"
+              >
+                Computer Architectures
+              </option>
+            </select>
+          </div>
+          <div
+            class="col"
+          >
+            Date :
+             
+            <input
+              class="cos form-control"
+              name="dob"
+              placeholder="Date of Birth"
+              type="date"
+            />
+          </div>
+        </div>
+      </form>
+      <div
+        class="tabe"
+      >
+        <table
+          class="table table-sm table-striped table-bordered table-hover"
+        >
+          <thead>
+            <tr>
+              <th>
+                #
+              </th>
+              <th>
+                Course Name
+              </th>
+              <th>
+                LectureID
+              </th>
+              <th>
+                Teacher Name
+              </th>
+              <th>
+                Date
+              </th>
+              <th>
+                Time
+              </th>
+              <th>
+                Mode
+              </th>
+              <th>
+                Place
+              </th>
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+    at Object.getElementError (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/config.js:37:19)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:90:38
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:62:17
+    at getByText (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:106:19)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/BookingManager/__test__/BookingManager_Page.test.js:63:25)
+    at Promise.then.completed (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:276:28)
+    at new Promise (<anonymous>)
+    at callAsyncCircusFn (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:216:10)
+    at _callCircusTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at _runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:149:3)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:63:9)
+    at run (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:176:21)
+    at jestAdapter (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:109:19)
+    at runTestInternal (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:472:34)
+    at Object.worker (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/testWorker.js:133:12)]]></failure>
+    </testCase>
+    <testCase name="Check Monitor System Usage" duration="4"/>
+    <testCase name="Check Contact Tracing" duration="2"/>
   </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\SuppOfficer\__test__\SystemSetup.test.js">
-    <testCase name="Button test" duration="126">
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/SuppOfficer/__test__/SystemSetup.test.js">
+    <testCase name="Button test" duration="62">
       <failure message="TestingLibraryElementError: Found multiple elements with the text: Select and Upload your file here"><![CDATA[TestingLibraryElementError: Found multiple elements with the text: Select and Upload your file here
 
 Here are the matching elements:
@@ -1056,159 +1048,167 @@ Here are the matching elements:
     </div>
   </div>
 </body>
-    at Object.getElementError (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\config.js:37:19)
-    at getElementError (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:25:35)
-    at getMultipleElementsFoundError (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:29:10)
-    at C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:66:13
-    at getByText (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\@testing-library\dom\dist\query-helpers.js:106:19)
-    at Object.<anonymous> (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\SuppOfficer\__test__\SystemSetup.test.js:9:25)
-    at Promise.then.completed (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:276:28)
+    at Object.getElementError (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/config.js:37:19)
+    at getElementError (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:25:35)
+    at getMultipleElementsFoundError (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:29:10)
+    at /Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:66:13
+    at getByText (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/@testing-library/dom/dist/query-helpers.js:106:19)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/SuppOfficer/__test__/SystemSetup.test.js:9:25)
+    at Promise.then.completed (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:276:28)
     at new Promise (<anonymous>)
-    at callAsyncCircusFn (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:216:10)
-    at _callCircusTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:212:40)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at _runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:149:3)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:63:9)
-    at run (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:25:3)
-    at runAndTransformResultsToJestFormat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
-    at jestAdapter (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
-    at runTestInternal (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:380:16)
-    at runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
-    at Object.worker (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
+    at callAsyncCircusFn (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:216:10)
+    at _callCircusTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at _runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:149:3)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:63:9)
+    at run (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:176:21)
+    at jestAdapter (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:109:19)
+    at runTestInternal (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:472:34)
+    at Object.worker (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/testWorker.js:133:12)]]></failure>
     </testCase>
     <testCase name="FileUploadField should render a label and a file input field" duration="0">
       <failure message="ReferenceError: component is not defined"><![CDATA[ReferenceError: component is not defined
-    at Object.<anonymous> (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\SuppOfficer\__test__\SystemSetup.test.js:23:14)
-    at Promise.then.completed (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:276:28)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/SuppOfficer/__test__/SystemSetup.test.js:23:14)
+    at Promise.then.completed (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:276:28)
     at new Promise (<anonymous>)
-    at callAsyncCircusFn (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:216:10)
-    at _callCircusTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:212:40)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at _runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:149:3)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:63:9)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:57:9)
-    at run (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:25:3)
-    at runAndTransformResultsToJestFormat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
-    at jestAdapter (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
-    at runTestInternal (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:380:16)
-    at runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
-    at Object.worker (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
+    at callAsyncCircusFn (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:216:10)
+    at _callCircusTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at _runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:149:3)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:63:9)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:57:9)
+    at run (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:176:21)
+    at jestAdapter (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:109:19)
+    at runTestInternal (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:472:34)
+    at Object.worker (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/testWorker.js:133:12)]]></failure>
     </testCase>
-    <testCase name="FileUploadField should attach the label to the input field" duration="1">
+    <testCase name="FileUploadField should attach the label to the input field" duration="0">
       <failure message="ReferenceError: component is not defined"><![CDATA[ReferenceError: component is not defined
-    at Object.<anonymous> (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\SuppOfficer\__test__\SystemSetup.test.js:29:14)
-    at Promise.then.completed (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:276:28)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/SuppOfficer/__test__/SystemSetup.test.js:29:14)
+    at Promise.then.completed (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:276:28)
     at new Promise (<anonymous>)
-    at callAsyncCircusFn (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:216:10)
-    at _callCircusTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:212:40)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at _runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:149:3)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:63:9)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:57:9)
-    at run (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:25:3)
-    at runAndTransformResultsToJestFormat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
-    at jestAdapter (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
-    at runTestInternal (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:380:16)
-    at runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
-    at Object.worker (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
+    at callAsyncCircusFn (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:216:10)
+    at _callCircusTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at _runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:149:3)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:63:9)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:57:9)
+    at run (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:176:21)
+    at jestAdapter (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:109:19)
+    at runTestInternal (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:472:34)
+    at Object.worker (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/testWorker.js:133:12)]]></failure>
     </testCase>
-    <testCase name="FileUploadField should not show preview if no csv has been selected" duration="1">
+    <testCase name="FileUploadField should not show preview if no csv has been selected" duration="0">
       <failure message="ReferenceError: component is not defined"><![CDATA[ReferenceError: component is not defined
-    at Object.<anonymous> (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\SuppOfficer\__test__\SystemSetup.test.js:34:14)
-    at Promise.then.completed (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:276:28)
+    at Object.<anonymous> (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/SuppOfficer/__test__/SystemSetup.test.js:34:14)
+    at Promise.then.completed (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:276:28)
     at new Promise (<anonymous>)
-    at callAsyncCircusFn (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\utils.js:216:10)
-    at _callCircusTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:212:40)
-    at processTicksAndRejections (internal/process/task_queues.js:93:5)
-    at _runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:149:3)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:63:9)
-    at _runTestsForDescribeBlock (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:57:9)
-    at run (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\run.js:25:3)
-    at runAndTransformResultsToJestFormat (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapterInit.js:176:21)
-    at jestAdapter (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-circus\build\legacy-code-todo-rewrite\jestAdapter.js:109:19)
-    at runTestInternal (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:380:16)
-    at runTest (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\runTest.js:472:34)
-    at Object.worker (C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\node_modules\jest-runner\build\testWorker.js:133:12)]]></failure>
+    at callAsyncCircusFn (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/utils.js:216:10)
+    at _callCircusTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:212:40)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at _runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:149:3)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:63:9)
+    at _runTestsForDescribeBlock (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:57:9)
+    at run (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:176:21)
+    at jestAdapter (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:109:19)
+    at runTestInternal (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:380:16)
+    at runTest (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/runTest.js:472:34)
+    at Object.worker (/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/node_modules/jest-runner/build/testWorker.js:133:12)]]></failure>
     </testCase>
   </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\Login\__test__\loginForm.test.js">
-    <testCase name="Renders the Text" duration="30"/>
-    <testCase name="Renders the Email input field" duration="17"/>
-    <testCase name="Updates to Email input field" duration="30"/>
-    <testCase name="Renders the Password input field" duration="17"/>
-    <testCase name="Updates to Password input field" duration="16"/>
-    <testCase name="Renders the Submit Button" duration="190"/>
-    <testCase name="Test Button Click" duration="110"/>
-  </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\Professor\MyLecturesProfessor\__test__\MyLecturesProfessor.test.js">
-    <testCase name="LectureList" duration="593"/>
-  </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\__test__\DeleteLectures.test.js">
-    <testCase name="DeleteLectures test" duration="194"/>
-  </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\Student\__test__\HomePageCalendar_Student.test.js">
-    <testCase name="Renders the HomePage Calendar with events for the student Correctly" duration="489"/>
-    <testCase name="Renders the HomePage Calendar with events for the student Correctly" duration="420"/>
-    <testCase name="Check view change" duration="960"/>
-  </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\__tests__\API.test.js">
-    <testCase name="test getUser no errors" duration="8"/>
-    <testCase name="test getUser error" duration="10"/>
-    <testCase name="test login no errors" duration="2"/>
-    <testCase name="test login response not ok, json ok" duration="2"/>
-    <testCase name="test login response not ok, json null" duration="4"/>
-    <testCase name="test login fetch rejected" duration="1"/>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/__tests__/API.test.js">
+    <testCase name="test getUser no errors" duration="4"/>
+    <testCase name="test getUser error" duration="1"/>
+    <testCase name="test login no errors" duration="1"/>
+    <testCase name="test login response not ok, json ok" duration="1"/>
+    <testCase name="test login response not ok, json null" duration="1"/>
+    <testCase name="test login fetch rejected" duration="0"/>
     <testCase name="test getStudentCourses no errors" duration="1"/>
-    <testCase name="test getStudentCourses error" duration="2"/>
-    <testCase name="test getTeacherLectures no errors" duration="1"/>
+    <testCase name="test getStudentCourses error" duration="0"/>
+    <testCase name="test getTeacherLectures no errors" duration="0"/>
     <testCase name="test getTeacherLectures error" duration="3"/>
-    <testCase name="test getLectures no errors" duration="1"/>
+    <testCase name="test getLectures no errors" duration="4"/>
     <testCase name="test getLectures error" duration="1"/>
-    <testCase name="test getBookings no errors" duration="1"/>
-    <testCase name="test getBookings error" duration="2"/>
+    <testCase name="test getBookings no errors" duration="0"/>
+    <testCase name="test getBookings error" duration="1"/>
     <testCase name="test addBooking no errors" duration="1"/>
     <testCase name="test addBooking response not ok, json ok" duration="1"/>
     <testCase name="test addBooking response not ok, json null" duration="1"/>
-    <testCase name="test addBooking fetch rejected" duration="1"/>
+    <testCase name="test addBooking fetch rejected" duration="0"/>
     <testCase name="test deleteLectureById no errors" duration="1"/>
-    <testCase name="test deleteLectureById response not ok, json ok" duration="1"/>
+    <testCase name="test deleteLectureById response not ok, json ok" duration="0"/>
     <testCase name="test deleteLectureById response not ok, json null" duration="1"/>
-    <testCase name="test deleteLectureById fetch rejected" duration="1"/>
+    <testCase name="test deleteLectureById fetch rejected" duration="0"/>
     <testCase name="test cancelBooking no errors" duration="1"/>
     <testCase name="test cancelBooking response not ok, json ok" duration="1"/>
-    <testCase name="test cancelBooking response not ok, json null" duration="1"/>
+    <testCase name="test cancelBooking response not ok, json null" duration="0"/>
     <testCase name="test cancelBooking fetch rejected" duration="1"/>
-    <testCase name="test ChangeLecturemodeById no errors" duration="1"/>
-    <testCase name="test ChangeLecturemodeById response not ok, json ok" duration="1"/>
-    <testCase name="test ChangeLecturemodeById response not ok, json null" duration="1"/>
+    <testCase name="test ChangeLecturemodeById no errors" duration="0"/>
+    <testCase name="test ChangeLecturemodeById response not ok, json ok" duration="0"/>
+    <testCase name="test ChangeLecturemodeById response not ok, json null" duration="0"/>
   </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\__test__\components.test.js">
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Student/__test__/Student_Page.test.js">
+    <testCase name="Renders Student Header Correctly" duration="69"/>
+    <testCase name="Check with Wrong Credentials" duration="12"/>
+    <testCase name="Check Book a Seat" duration="34"/>
+    <testCase name="Check HomePage" duration="372"/>
+    <testCase name="Check Tutorial" duration="173"/>
+    <testCase name="Check Logout" duration="16"/>
+  </file>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Student/__test__/HomePageCalendar_Student.test.js">
+    <testCase name="Renders the HomePage Calendar with events for the student Correctly" duration="271"/>
+    <testCase name="Renders the HomePage Calendar with events for the student Correctly" duration="187"/>
+    <testCase name="Check view change" duration="339"/>
+  </file>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Login/__test__/loginForm.test.js">
+    <testCase name="Renders the Text" duration="10"/>
+    <testCase name="Renders the Email input field" duration="6"/>
+    <testCase name="Updates to Email input field" duration="27"/>
+    <testCase name="Renders the Password input field" duration="7"/>
+    <testCase name="Updates to Password input field" duration="12"/>
+    <testCase name="Renders the Submit Button" duration="88"/>
+    <testCase name="Test Button Click" duration="51"/>
+  </file>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Professor/MyLecturesProfessor/__test__/MyLecturesProfessor.test.js">
+    <testCase name="LectureList" duration="200"/>
+  </file>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/BookingManager/__test__/Attendance.test.js">
+    <testCase name="Attendance test" duration="41"/>
+  </file>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/BookingManager/__test__/DeleteLectures.test.js">
+    <testCase name="DeleteLectures test" duration="47"/>
+  </file>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/BookingManager/__test__/Booking.test.js">
+    <testCase name="Bookings test" duration="39"/>
+  </file>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/__test__/components.test.js">
     <testCase name="renders App component" duration="15"/>
   </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\App.test.js">
-    <testCase name="renders learn react link" duration="2"/>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/App.test.js">
+    <testCase name="renders learn react link" duration="0"/>
   </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\__test__\Attendance.test.js">
-    <testCase name="Attendance test" duration="184"/>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Professor/__test__/StatisticsPage.test.js">
+    <testCase name="Check if Statistics render correctly" duration="879"/>
   </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\BookingManager\__test__\Booking.test.js">
-    <testCase name="Bookings test" duration="183"/>
-  </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\__tests__\User.test.js">
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/__tests__/User.test.js">
     <testCase name="User constructor" duration="1"/>
   </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\Professor\__test__\Professor_Page.test.js">
-    <testCase name="Renders Professor Header Correctly" duration="88"/>
-    <testCase name="Check Authentication Error" duration="11"/>
-    <testCase name="Check with Wrong Credentials" duration="7"/>
-    <testCase name="Check Home Page" duration="28"/>
-    <testCase name="Check My Lectures" duration="16"/>
-    <testCase name="Check Register Attendance" duration="25"/>
-    <testCase name="Check Statistics" duration="1688"/>
-    <testCase name="Check Tutorial" duration="869"/>
-    <testCase name="Check Logout" duration="45"/>
-  </file>
-  <file path="C:\Users\Ludovico\Desktop\poli\Magistrale\Secondo Anno\Software Engineering II\Progetto\PULSeBS_Group1\pulsebs_frontend\src\Components\Professor\__test__\StatisticsPage.test.js">
-    <testCase name="Check if Statistics render correctly" duration="2439"/>
+  <file path="/Users/giandonatofarina/Desktop/PULSeBS_Group1/pulsebs_frontend/src/Components/Professor/__test__/Professor_Page.test.js">
+    <testCase name="Renders Professor Header Correctly" duration="133"/>
+    <testCase name="Check Authentication Error" duration="22"/>
+    <testCase name="Check with Wrong Credentials" duration="25"/>
+    <testCase name="Check Home Page" duration="49"/>
+    <testCase name="Check My Lectures" duration="35"/>
+    <testCase name="Check Register Attendance" duration="52"/>
+    <testCase name="Check Statistics" duration="582"/>
+    <testCase name="Check Tutorial" duration="384"/>
+    <testCase name="Check Logout" duration="14"/>
   </file>
 </testExecutions>
