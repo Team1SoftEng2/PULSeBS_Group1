@@ -22,6 +22,7 @@ class systemSetup extends Component{
       }
     
     onChangeHandler=event=>{
+        console.log(event.target.files[0])
         switch(event.target.files[0].name){
             case "Students.csv":
                 if(this.state.Student===null)
@@ -167,7 +168,7 @@ class systemSetup extends Component{
                         <Col md={4}></Col>
                             <Col md={3}>
                             <label className={this.state.Student===null ? "custom-file-upload" : "custom-file-selected"}>
-                            <input type="file" 
+                            <input type="file" id="file" 
                                 disabled={this.state.Student!==null} onChange={this.onChangeHandler} />
                                 Students  
                             </label>
@@ -186,7 +187,7 @@ class systemSetup extends Component{
                             <Col md={4}></Col>
                             <Col md={3}>
                             <label className={this.state.Professor===null ? "custom-file-upload" : "custom-file-selected"}>
-                                <input type="file" disabled={this.state.Professor!==null} onChange={this.onChangeHandler}/> 
+                                <input type="file" name="file" id="file" disabled={this.state.Professor!==null} onChange={this.onChangeHandler}/> 
                                 <i className="fa fa-cloud-upload" />
                                     Professors  
                                 </label>
@@ -204,7 +205,7 @@ class systemSetup extends Component{
                             <Col md={4}></Col>
                             <Col md={3}>
                             <label className={this.state.Courses===null ? "custom-file-upload" : "custom-file-selected"}>
-                            <input type="file" disabled={this.state.Courses!==null} onChange={this.onChangeHandler}/> 
+                            <input type="file" name="file" id="file" disabled={this.state.Courses!==null} onChange={this.onChangeHandler}/> 
                             <i className="fa fa-cloud-upload" />
                                 Courses  
                             </label>
@@ -222,7 +223,7 @@ class systemSetup extends Component{
                             <Col md={4}></Col>
                             <Col md={3}>
                             <label className={this.state.Enrollment===null ? "custom-file-upload" : "custom-file-selected"}>
-                            <input type="file" disabled={this.state.Enrollment!==null} onChange={this.onChangeHandler}/> 
+                            <input type="file" name="file" id="file" disabled={this.state.Enrollment!==null} onChange={this.onChangeHandler}/> 
                             <i className="fa fa-cloud-upload" />
                                 Enrollment  
                         </label>
@@ -240,7 +241,7 @@ class systemSetup extends Component{
                         <Col md={4}></Col>
                             <Col md={3}>
                             <label className={this.state.Schedule===null ? "custom-file-upload" : "custom-file-selected"}>
-                            <input type="file" disabled={this.state.Schedule!==null} onChange={this.onChangeHandler}/> 
+                            <input type="file" name="file" id="file" disabled={this.state.Schedule!==null} onChange={this.onChangeHandler}/> 
                             <i className="fa fa-cloud-upload" />
                                 Schedule  
                             </label>
@@ -257,7 +258,7 @@ class systemSetup extends Component{
                                  
                     </div>
                 </Container>
-                <button type="button" class="button"
+                <button type="button" class="button" id="upload"
                         disabled={this.state.fileSelected!==5} 
                         onClick={this.onClickHandler}>Upload</button> 
 
