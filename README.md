@@ -3,7 +3,9 @@
 ## Users
 - The password for all the students uploaded via CSV file is `test`
 - Student: s27001, test
-- Teacher: t37001, test
+           s27001, test
+- Teacher: t37001, test;
+           t37002, test
 - Support Officer: so47001, test
 - Booking Manager: bm57001,test
 

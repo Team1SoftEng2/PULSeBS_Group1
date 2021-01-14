@@ -1,115 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
   <file path="D:\Desktop\se2\PULSeBS_Group1\PULSeBS_Group1\server\__tests__\unit_tests\Parser.test.js">
-    <testCase name="test CSVtoJSON No errors" duration="6"/>
-    <testCase name="test createLectures No errors" duration="13"/>
+    <testCase name="test CSVtoJSON No errors" duration="8"/>
+    <testCase name="test createLectures No errors" duration="14"/>
     <testCase name="test createLectures DB erros" duration="2"/>
-  </file>
-  <file path="D:\Desktop\se2\PULSeBS_Group1\PULSeBS_Group1\server\__tests__\unit_tests\Email.test.js">
-    <testCase name="sending email" duration="4"/>
-    <testCase name="sending email with wrong message obj" duration="2"/>
-    <testCase name="sending email by Lecture Id" duration="12"/>
-  </file>
-  <file path="D:\Desktop\se2\PULSeBS_Group1\PULSeBS_Group1\server\__tests__\unit_tests\service.test.js">
-    <testCase name="AuthenticationService Test Testing getUserById" duration="5"/>
-    <testCase name="AuthenticationService Test Testing checkPassword" duration="215"/>
-    <testCase name="BookingsService Testing getBookings" duration="1"/>
-    <testCase name="BookingsService Testing apiBookingsPOST" duration="1"/>
-    <testCase name="BookingsService Testing apiBookingsDelete" duration="1"/>
-    <testCase name="BookingsService getLecturesAttendance" duration="0"/>
-    <testCase name="BookingsService getBooksList" duration="0"/>
-    <testCase name="CourseService Test Testing getCourseById" duration="0"/>
-    <testCase name="CourseService Test Testing getStudentCourses" duration="1"/>
-    <testCase name="CourseService Test Testing getCourseByTeacherID" duration="1"/>
-    <testCase name="LecturesService Test getLectures" duration="0"/>
-    <testCase name="LecturesService Test getLectureById" duration="1"/>
-    <testCase name="LecturesService Test deleteLectureById" duration="1"/>
-    <testCase name="LecturesService Test getLecturesDelectList" duration="1"/>
   </file>
   <file path="D:\Desktop\se2\PULSeBS_Group1\PULSeBS_Group1\server\__tests__\unit_tests\Course.test.js">
     <testCase name="get a course given his ID" duration="11"/>
-    <testCase name="get a course given a non existing ID" duration="2"/>
+    <testCase name="get a course given a non existing ID" duration="1"/>
     <testCase name="get a course given an ID but an error in the service occours" duration="2"/>
     <testCase name="get courses given student ID" duration="2"/>
     <testCase name="get courses given wrong student ID" duration="1"/>
-    <testCase name="get courses given student ID but simulate db error" duration="2"/>
+    <testCase name="get courses given student ID but simulate db error" duration="1"/>
     <testCase name="get lectures with bookings number given CourseID" duration="2"/>
     <testCase name="get lectures with bookings number given CourseID but an error in geLectures occours" duration="1"/>
-    <testCase name="get lectures with bookings number given and CourseID but no lectures are found" duration="1"/>
-    <testCase name="get lectures with bookings number given CourseID but an error occours in getBookings" duration="1"/>
-    <testCase name="get courses by teacherID" duration="2"/>
-    <testCase name="get courses by teacherID but an error occours in getCourseByTeacherID" duration="1"/>
-    <testCase name="get courses by teacherID but no course is found" duration="6"/>
+    <testCase name="get lectures with bookings number given and CourseID but no lectures are found" duration="2"/>
+    <testCase name="get lectures with bookings number given CourseID but an error occours in getBookings" duration="2"/>
+    <testCase name="get courses by teacherID" duration="1"/>
+    <testCase name="get courses by teacherID but an error occours in getCourseByTeacherID" duration="10"/>
+    <testCase name="get courses by teacherID but no course is found" duration="1"/>
+  </file>
+  <file path="D:\Desktop\se2\PULSeBS_Group1\PULSeBS_Group1\server\__tests__\unit_tests\Email.test.js">
+    <testCase name="sending email" duration="7"/>
+    <testCase name="sending email with wrong message obj" duration="3"/>
+    <testCase name="sending email by Lecture Id" duration="9"/>
+  </file>
+  <file path="D:\Desktop\se2\PULSeBS_Group1\PULSeBS_Group1\server\__tests__\unit_tests\service.test.js">
+    <testCase name="AuthenticationService Test Testing getUserById" duration="7"/>
+    <testCase name="AuthenticationService Test Testing checkPassword" duration="211"/>
+    <testCase name="BookingsService Testing getBookings" duration="2"/>
+    <testCase name="BookingsService Testing apiBookingsPOST" duration="1"/>
+    <testCase name="BookingsService Testing apiBookingsDelete" duration="1"/>
+    <testCase name="BookingsService getLecturesAttendance" duration="1"/>
+    <testCase name="BookingsService getBooksList" duration="1"/>
+    <testCase name="CourseService Test Testing getCourseById" duration="2"/>
+    <testCase name="CourseService Test Testing getStudentCourses" duration="0"/>
+    <testCase name="CourseService Test Testing getCourseByTeacherID" duration="0"/>
+    <testCase name="LecturesService Test getLectures" duration="1"/>
+    <testCase name="LecturesService Test getLectureById" duration="0"/>
+    <testCase name="LecturesService Test deleteLectureById" duration="0"/>
+    <testCase name="LecturesService Test getLecturesDelectList" duration="1"/>
   </file>
   <file path="D:\Desktop\se2\PULSeBS_Group1\PULSeBS_Group1\server\__tests__\unit_tests\components.test.js">
     <testCase name="Booking constructor" duration="2"/>
-    <testCase name="Course constructor" duration="3"/>
-    <testCase name="Lecture constructor" duration="7"/>
+    <testCase name="Course constructor" duration="2"/>
+    <testCase name="Lecture constructor" duration="15"/>
     <testCase name="User constructor" duration="4"/>
   </file>
   <file path="D:\Desktop\se2\PULSeBS_Group1\PULSeBS_Group1\server\__tests__\unit_tests\Uploads.test.js">
     <testCase name="test parseStudentCSV No errors" duration="8"/>
-    <testCase name="test parseStudentCSV csv error" duration="4"/>
-    <testCase name="test parseStudentCSV db error" duration="1"/>
+    <testCase name="test parseStudentCSV csv error" duration="5"/>
+    <testCase name="test parseStudentCSV db error" duration="2"/>
     <testCase name="test parseTeachersCSV No errors" duration="1"/>
     <testCase name="test parseTeachersCSV csv error" duration="4"/>
     <testCase name="test parseTeachersCSV db error" duration="1"/>
-    <testCase name="test parseCoursesCSV No errors" duration="2"/>
-    <testCase name="test parseCoursesCSV csv error" duration="2"/>
+    <testCase name="test parseCoursesCSV No errors" duration="1"/>
+    <testCase name="test parseCoursesCSV csv error" duration="3"/>
     <testCase name="test parseCoursesCSV db error" duration="1"/>
     <testCase name="test parseCourseAttendanceCSV No errors" duration="1"/>
-    <testCase name="test parseCourseAttendanceCSV csv error" duration="1"/>
-    <testCase name="test parseCourseAttendanceCSV db error" duration="0"/>
-    <testCase name="test parseScheduleCSV No errors" duration="2"/>
+    <testCase name="test parseCourseAttendanceCSV csv error" duration="3"/>
+    <testCase name="test parseCourseAttendanceCSV db error" duration="3"/>
+    <testCase name="test parseScheduleCSV No errors" duration="3"/>
     <testCase name="test parseScheduleCSV csv error" duration="2"/>
     <testCase name="test parseScheduleCSV db error" duration="1"/>
   </file>
   <file path="D:\Desktop\se2\PULSeBS_Group1\PULSeBS_Group1\server\__tests__\unit_tests\Bookings.test.js">
-    <testCase name="get all bookings given a lectureId" duration="7"/>
+    <testCase name="get all bookings given a lectureId" duration="6"/>
     <testCase name="get all bookings given a lectureId but an error occours in db" duration="1"/>
     <testCase name="get all bookings given a lectureId without bookings" duration="1"/>
     <testCase name="add a booking to a lecture" duration="7"/>
-    <testCase name="add a booking to a lecture that does not exist" duration="1"/>
-    <testCase name="add a booking to a lecture that is after the deadline" duration="2"/>
+    <testCase name="add a booking to a lecture that does not exist" duration="0"/>
+    <testCase name="add a booking to a lecture that is after the deadline" duration="1"/>
     <testCase name="add a booking to a lecture but an error in db occours when finding it" duration="1"/>
-    <testCase name="add a booking to a lecture but an error in db occours when I try to save the booking in db" duration="2"/>
+    <testCase name="add a booking to a lecture but an error in db occours when I try to save the booking in db" duration="6"/>
     <testCase name="delete a booking given studentId and LectureId" duration="1"/>
     <testCase name="delete a booking given studentId and LectureId but an error in apiBookingsDelete occours" duration="1"/>
-    <testCase name="delete a booking given studentId and LectureId and remove a booking from waitinglist" duration="0"/>
-    <testCase name="try to add a booking to the waiting list but alredy present" duration="0"/>
+    <testCase name="delete a booking given studentId and LectureId and remove a booking from waitinglist" duration="1"/>
+    <testCase name="try to add a booking to the waiting list but alredy present" duration="1"/>
     <testCase name="add a booking to the waiting list" duration="1"/>
-    <testCase name="try to add a booking to the waiting list but an error in getBookingInWaitingList occours " duration="6"/>
+    <testCase name="try to add a booking to the waiting list but an error in getBookingInWaitingList occours " duration="1"/>
     <testCase name="add a booking to the waiting list but an error occours in bookingWaitingListPOST " duration="1"/>
-    <testCase name="get bookings in waiting list by studentId" duration="1"/>
+    <testCase name="get bookings in waiting list by studentId" duration="2"/>
     <testCase name="get bookings in waiting list by studentId but an error in getBookingsInWaitingList occours" duration="1"/>
     <testCase name="get bookings in waiting list by studentId but no booking is found" duration="1"/>
-    <testCase name="get all booking list" duration="1"/>
-    <testCase name="do not get all booking list" duration="1"/>
+    <testCase name="get all booking list" duration="0"/>
+    <testCase name="do not get all booking list" duration="0"/>
     <testCase name="get all attendance list" duration="1"/>
     <testCase name="do not get all attendance list" duration="1"/>
   </file>
   <file path="D:\Desktop\se2\PULSeBS_Group1\PULSeBS_Group1\server\__tests__\unit_tests\Lectures.test.js">
-    <testCase name="get all lectures test" duration="7"/>
+    <testCase name="get all lectures test" duration="6"/>
     <testCase name="get all lectures test given a CourseID" duration="1"/>
     <testCase name="get all lectures given a non existing courseId" duration="1"/>
     <testCase name="get all lectures but an error occours in the db" duration="1"/>
     <testCase name="get all lectures available to a teacher" duration="1"/>
     <testCase name="get all lectures available to a teacher with no courses" duration="1"/>
     <testCase name="get all lectures available to a teacher but an error occurs in getCourseByTeacherID" duration="1"/>
-    <testCase name="get all lectures available to a teacher but an error occurs in getLecture" duration="0"/>
+    <testCase name="get all lectures available to a teacher but an error occurs in getLecture" duration="1"/>
     <testCase name="get all lectures available to a teacher with a course with no lectures" duration="0"/>
     <testCase name="delete a lecture by id and in time" duration="16"/>
-    <testCase name="delete a lecture by id and not in time" duration="1"/>
+    <testCase name="delete a lecture by id and not in time" duration="2"/>
     <testCase name="delete a non existing lecture" duration="1"/>
     <testCase name="delete lecture but an error occours in db when search for a lecture" duration="0"/>
     <testCase name="delete a lecture but an error occours in db when deleting it" duration="2"/>
-    <testCase name="Testing deadlineNotification test without errors" duration="2"/>
+    <testCase name="Testing deadlineNotification test without errors" duration="4"/>
     <testCase name="Testing deadlineNotification test with email error" duration="2"/>
     <testCase name="Testing deadlineNotification test with bookings error" duration="2"/>
     <testCase name="Testing deadlineNotification test with lectures error" duration="0"/>
-    <testCase name="Testing deadlineNotification test with courses error" duration="2"/>
+    <testCase name="Testing deadlineNotification test with courses error" duration="3"/>
     <testCase name="online a lecture by id should return 200 status code" duration="3"/>
-    <testCase name="online a lecture by id should error when the lecture is less than 30 minutes away" duration="2"/>
-    <testCase name="online a lecture by id get all deleted lectures list" duration="2"/>
+    <testCase name="online a lecture by id should error when the lecture is less than 30 minutes away" duration="1"/>
+    <testCase name="online a lecture by id get all deleted lectures list" duration="1"/>
   </file>
 </testExecutions>
