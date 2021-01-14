@@ -54,10 +54,10 @@ export default function Attendance() {
               </Form.Control>
             </Col>
             <Col>
-              Month-Year : &nbsp;
+              Date : &nbsp;
               <Form.Control
                 className={style["cos"]}
-                type="month"
+                type="date"
                 name="dob"
                 placeholder="Date of Birth"
                 onChange={(e) => itemChange(e.target.value, "timeFormat")}

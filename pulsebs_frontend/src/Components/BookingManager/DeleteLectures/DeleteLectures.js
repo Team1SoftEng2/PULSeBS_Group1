@@ -52,10 +52,10 @@ export default function DeleteLectures() {
               </Form.Control>
             </Col>
             <Col>
-              Month-Year :{" "}
+              Date :{" "}
               <Form.Control
                 className={style["cos"]}
-                type="month"
+                type="date"
                 name="dob"
                 placeholder="Date of Birth"
                 onChange={(e) => itemChange(e.target.value, "timeFormat")}
