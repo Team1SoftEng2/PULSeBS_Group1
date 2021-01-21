@@ -1,5 +1,14 @@
 # PULSeBS_Group1
 
+## Docker
+The project can be run with Docker with the following commands:
+- To get the image: `docker pull s279321/pulsebs_group1:releaseX`
+- To run the image: `docker run -p 3000:3000 s279321/pulsebs_group1:releaseX`
+
+Where X can be 1 or 2 depending on which release you want to run.
+
+Then the application will be available at http://localhost:3000
+
 ## Users
 - The password for all the students uploaded via CSV file is `test`
 - Student: s27001, test
