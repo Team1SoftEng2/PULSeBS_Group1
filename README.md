@@ -10,13 +10,17 @@ Where X can be 1 or 2 depending on which release you want to run.
 Then the application will be available at http://localhost:3000
 
 ## Users
-- The password for all the students uploaded via CSV file is `test`
-- Student: s27001, test
-           s27002, test
-- Teacher: t37001, test;
-           t37002, test
-- Support Officer: so47001, test
-- Booking Manager: bm57001,test
+
+| Role | Username | Password |
+|--------|---------|--------|
+| Student | s27001 | test |  
+| Student | s27001 | test |  
+| Teacher | t37001 | test | 
+| Teacher | t37001 | test |
+| Support Officer | so47001 | test |
+| Booking Manager | bm57001 | test |
+
+Password for all users uploaded via CSV file is `test`
 
 ## Badges
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Team1SoftEng2_PULSeBS_Group1&metric=alert_status)](https://sonarcloud.io/dashboard?id=Team1SoftEng2_PULSeBS_Group1)
