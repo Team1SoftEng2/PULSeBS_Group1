@@ -14,9 +14,9 @@ Then the application will be available at http://localhost:3000
 | Role | Username | Password |
 |--------|---------|--------|
 | Student | s27001 | test |  
-| Student | s27001 | test |  
+| Student | s27002 | test |  
 | Teacher | t37001 | test | 
-| Teacher | t37001 | test |
+| Teacher | t37002 | test |
 | Support Officer | so47001 | test |
 | Booking Manager | bm57001 | test |
 
